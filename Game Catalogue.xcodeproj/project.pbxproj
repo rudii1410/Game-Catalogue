@@ -11,6 +11,8 @@
 		CF432A1526C786C700A73D96 /* FavouritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1426C786C700A73D96 /* FavouritesScreen.swift */; };
 		CF432A1826C786D100A73D96 /* ExploreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1726C786D100A73D96 /* ExploreScreen.swift */; };
 		CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */; };
+		CF432A2826C78E7200A73D96 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A2726C78E7200A73D96 /* AsyncImage.swift */; };
+		CF432A2B26C799BA00A73D96 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A2A26C799BA00A73D96 /* ImageSlider.swift */; };
 		CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54A3B826C6514E00F89E4F /* HomeScreen.swift */; };
 		CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */; };
 		CF6213F326C3934200580054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F226C3934200580054 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		CF432A1426C786C700A73D96 /* FavouritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesScreen.swift; sourceTree = "<group>"; };
 		CF432A1726C786D100A73D96 /* ExploreScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreScreen.swift; sourceTree = "<group>"; };
 		CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		CF432A2726C78E7200A73D96 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		CF432A2A26C799BA00A73D96 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
 		CF54A3B826C6514E00F89E4F /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		CF6213EB26C3934100580054 /* Game Catalogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Catalogue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game_CatalogueApp.swift; sourceTree = "<group>"; };
@@ -50,6 +54,15 @@
 				12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF432A2626C78D5600A73D96 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CF432A2726C78E7200A73D96 /* AsyncImage.swift */,
+				CF432A2A26C799BA00A73D96 /* ImageSlider.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		CF54A3B726C6513600F89E4F /* Screen */ = {
@@ -84,6 +97,7 @@
 		CF6213ED26C3934100580054 /* Game Catalogue */ = {
 			isa = PBXGroup;
 			children = (
+				CF432A2626C78D5600A73D96 /* Components */,
 				CF54A3B726C6513600F89E4F /* Screen */,
 				CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */,
 				CF6213F226C3934200580054 /* Assets.xcassets */,
@@ -224,9 +238,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF432A1526C786C700A73D96 /* FavouritesScreen.swift in Sources */,
+				CF432A2B26C799BA00A73D96 /* ImageSlider.swift in Sources */,
 				CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */,
 				CF432A1826C786D100A73D96 /* ExploreScreen.swift in Sources */,
 				CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */,
+				CF432A2826C78E7200A73D96 /* AsyncImage.swift in Sources */,
 				CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
