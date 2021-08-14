@@ -11,7 +11,28 @@ import SwiftUI
 struct GameCatalogueApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                HomeScreen()
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("Home")
+                    }
+                FavouritesScreen()
+                    .tabItem {
+                        Image(systemName: "heart")
+                        Text("Favourites")
+                    }
+                ExploreScreen()
+                    .tabItem {
+                        Image(systemName: "globe")
+                        Text("Explore")
+                    }
+                ProfileScreen()
+                    .tabItem {
+                        Image(systemName: "person")
+                        Text("Profile")
+                    }
+            }
         }
     }
 }
