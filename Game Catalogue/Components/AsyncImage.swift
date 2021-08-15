@@ -9,8 +9,8 @@ import SwiftUI
 import Combine
 
 struct AsyncImage: View {
-    @ObservedObject var imageLoader: ImageLoader
-    @State var image: UIImage = UIImage()
+    @ObservedObject private var imageLoader: ImageLoader
+    @State private var image: UIImage = UIImage()
 
     init(urlStr: String) {
         imageLoader = ImageLoader(urlStr: urlStr)
@@ -22,7 +22,9 @@ struct AsyncImage: View {
             .onReceive(imageLoader.didChange) { data in
                 self.image = data
             }
-            .cornerRadius(10)
+            .onAppear {
+                imageLoader.load()
+            }
     }
 }
 
@@ -34,11 +36,15 @@ class ImageLoader: ObservableObject {
         }
     }
     private let defaultImage = UIImage() // TODO: placeholer image
+    private var url: URL?
 
     init(urlStr: String) {
         image = defaultImage
-
-        guard let url = URL(string: urlStr) else { return }
+        self.url = URL(string: urlStr)
+    }
+    
+    func load() {
+        guard let url = self.url else { return }
         URLSession.shared.dataTask(with: url) { data, _, _ in
             guard let data = data else { return }
             DispatchQueue.main.async {

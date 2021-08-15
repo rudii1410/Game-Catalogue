@@ -13,7 +13,7 @@ struct ItemListHorizontal: View {
     var onSeeAllPressed: (() -> Void)?
 
     var body: some View {
-        VStack {
+        VStack(spacing: 6) {
             HStack {
                 Text(sectionTitle)
                     .asSectionTitle()
@@ -22,7 +22,9 @@ struct ItemListHorizontal: View {
                         self.onSeeAllPressed!()
                     }
                 }
-            }.padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+            }
+            .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top) {
                     Spacer(minLength: 12)
@@ -47,6 +49,7 @@ private struct ItemListChild: View {
         VStack {
             AsyncImage(urlStr: data.imageUrl)
                 .frame(width: ItemListChild.SIZE, height: ItemListChild.SIZE)
+                .cornerRadius(10, antialiased: true)
             Text(data.title)
                 .font(.system(size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
