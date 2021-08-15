@@ -8,20 +8,16 @@
 import SwiftUI
 
 struct ImageSlider: View {
-    private let spaceBetweenImage: CGFloat = 12
-    private let ratio: CGFloat = 0.85
+    private static let SPACING: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 24 : 12
+    private static let RATIO: CGFloat = 0.85
+    private static let IMAGEWIDTH: CGFloat = UIScreen.main.bounds.width
 
-    private var urls: [String] = []
-    private var onPress: ((Int) -> Void)?
+    var height: CGFloat = 0.35 * UIScreen.main.bounds.height
+    var urls: [String] = []
+    var onPress: ((Int) -> Void)?
+
     @GestureState private var dragState = DragState.inactive
-    @State private var imageWidth: CGFloat = 0
     @State private var activeIdx = 0
-
-    init(imageUrls: [String], onPress: ((Int) -> Void)? = nil) {
-        urls = imageUrls
-        self.onPress = onPress
-        recalculateWidth()
-    }
 
     var body: some View {
         ZStack {
@@ -29,43 +25,32 @@ struct ImageSlider: View {
                 AsyncImage(urlStr: urls[idx])
                     .padding(EdgeInsets(
                         top: 0,
-                        leading: CGFloat(2 * spaceBetweenImage),
+                        leading: ImageSlider.SPACING,
                         bottom: 0,
-                        trailing: CGFloat(2 * spaceBetweenImage)
+                        trailing: ImageSlider.SPACING
                     ))
-                    .frame(width: imageWidth)
+                    .frame(width: ImageSlider.IMAGEWIDTH)
+                    .frame(maxHeight: height)
                     .aspectRatio(contentMode: .fit)
                     .offset(x: getOffset(idx: idx))
-                    .animation(.interpolatingSpring(stiffness: 100.0, damping: 30.0, initialVelocity: 10.0))
-                    .scaleEffect(activeIdx == idx ? 1 : ratio)
+                    .animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
+                    .scaleEffect(activeIdx == idx ? 1 : ImageSlider.RATIO)
                     .onTapGesture(count: 1) {
-                        guard let onPress = self.onPress else { return }
-                        onPress(idx)
+                        self.onPress?(idx)
                     }
             }
         }
         .gesture(dragGesture)
-        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-            recalculateWidth()
-        }
     }
 
     private func getOffset(idx: Int) -> CGFloat {
         let relativePosition = idx - activeIdx
-        let adjustment = (imageWidth - (imageWidth * ratio) + spaceBetweenImage) / 2
-        print(adjustment)
+        let width = UIScreen.main.bounds.width
+        let adjustment = width - (width * ImageSlider.RATIO) + ImageSlider.SPACING
         return (
-            (CGFloat(relativePosition) * (imageWidth * ratio + spaceBetweenImage)) +
+            (CGFloat(relativePosition) * (width * ImageSlider.RATIO)) +
                 (CGFloat(relativePosition.signum()) * adjustment)
         )
-    }
-
-    private func recalculateWidth() {
-        imageWidth = UIScreen.main.bounds.width - (2 * spaceBetweenImage)
-    }
-
-    public func hehehe() -> ImageSlider {
-        return self
     }
 }
 
@@ -81,14 +66,14 @@ extension ImageSlider {
     }
 
     private func onEnded(_ drag: DragGesture.Value) {
-        let dragThreshold: CGFloat = 200
-        let dragPredictedWidth = drag.predictedEndTranslation.width
-        let dragTranslationWidth = drag.translation.width
-        if dragPredictedWidth > dragThreshold || dragTranslationWidth > dragThreshold {
+        let threshold: CGFloat = 0.1 * ImageSlider.IMAGEWIDTH
+        let predictedWidth = drag.predictedEndTranslation.width
+        let translationWidth = drag.translation.width
+        if predictedWidth > threshold || translationWidth > threshold {
             if activeIdx > 0 {
                 activeIdx -= 1
             }
-        } else if (dragPredictedWidth) < (-1 * dragThreshold) || (dragTranslationWidth) < (-1 * dragThreshold) {
+        } else if (predictedWidth) < (-1 * threshold) || (translationWidth) < (-1 * threshold) {
             if activeIdx < urls.count - 1 {
                 activeIdx += 1
             }
