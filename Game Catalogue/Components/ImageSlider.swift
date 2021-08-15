@@ -35,7 +35,7 @@ struct ImageSlider: View {
                     .offset(x: getOffset(idx: idx))
                     .animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
                     .scaleEffect(activeIdx == idx ? 1 : ImageSlider.RATIO)
-                    .onTapGesture(count: 1) {
+                    .onTapGesture {
                         self.onPress?(idx)
                     }
             }

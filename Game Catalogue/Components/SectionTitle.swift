@@ -14,6 +14,5 @@ struct SectionTitle: View {
             .font(.title2)
             .fontWeight(.semibold)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
     }
 }

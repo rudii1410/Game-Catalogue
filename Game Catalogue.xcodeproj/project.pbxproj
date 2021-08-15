@@ -18,6 +18,7 @@
 		CF6213F326C3934200580054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F226C3934200580054 /* Assets.xcassets */; };
 		CF6213F626C3934200580054 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F526C3934200580054 /* Preview Assets.xcassets */; };
 		CFD34E9E26C8EE67001832D8 /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34E9D26C8EE67001832D8 /* SectionTitle.swift */; };
+		CFD34EA126C8F52E001832D8 /* ItemListHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CF6213F526C3934200580054 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CF6213F726C3934200580054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFD34E9D26C8EE67001832D8 /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
+		CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListHorizontal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				CF432A2726C78E7200A73D96 /* AsyncImage.swift */,
 				CF432A2A26C799BA00A73D96 /* ImageSlider.swift */,
 				CFD34E9D26C8EE67001832D8 /* SectionTitle.swift */,
+				CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				CFD34E9E26C8EE67001832D8 /* SectionTitle.swift in Sources */,
 				CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */,
 				CF432A2826C78E7200A73D96 /* AsyncImage.swift in Sources */,
+				CFD34EA126C8F52E001832D8 /* ItemListHorizontal.swift in Sources */,
 				CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
