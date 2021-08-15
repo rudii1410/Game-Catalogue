@@ -15,7 +15,8 @@ struct ItemListHorizontal: View {
     var body: some View {
         VStack {
             HStack {
-                SectionTitle(text: sectionTitle)
+                Text(sectionTitle)
+                    .asSectionTitle()
                 if self.onSeeAllPressed != nil {
                     Button("See all") {
                         self.onSeeAllPressed!()
