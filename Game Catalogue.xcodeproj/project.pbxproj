@@ -20,6 +20,7 @@
 		CFD34EA126C8F52E001832D8 /* ItemListHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */; };
 		CFD34EA526C9017D001832D8 /* ItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA426C9017D001832D8 /* ItemGrid.swift */; };
 		CFD34EA926C90855001832D8 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA826C90855001832D8 /* Text.swift */; };
+		CFD34EB326C93823001832D8 /* GamesVerticalGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EB226C93823001832D8 /* GamesVerticalGrid.swift */; };
 		CFD34EB726C93CB2001832D8 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EB626C93CB2001832D8 /* RoundedCorner.swift */; };
 		CFD34EBC26C93D06001832D8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EBB26C93D06001832D8 /* View.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListHorizontal.swift; sourceTree = "<group>"; };
 		CFD34EA426C9017D001832D8 /* ItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGrid.swift; sourceTree = "<group>"; };
 		CFD34EA826C90855001832D8 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		CFD34EB226C93823001832D8 /* GamesVerticalGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesVerticalGrid.swift; sourceTree = "<group>"; };
 		CFD34EB626C93CB2001832D8 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		CFD34EBB26C93D06001832D8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +76,7 @@
 				CF432A2A26C799BA00A73D96 /* ImageSlider.swift */,
 				CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */,
 				CFD34EA426C9017D001832D8 /* ItemGrid.swift */,
+				CFD34EB226C93823001832D8 /* GamesVerticalGrid.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				CFD34EA526C9017D001832D8 /* ItemGrid.swift in Sources */,
 				CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */,
 				CF432A1826C786D100A73D96 /* ExploreScreen.swift in Sources */,
+				CFD34EB326C93823001832D8 /* GamesVerticalGrid.swift in Sources */,
 				CFD34EA926C90855001832D8 /* Text.swift in Sources */,
 				CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */,
 				CF432A2826C78E7200A73D96 /* AsyncImage.swift in Sources */,

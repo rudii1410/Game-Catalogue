@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemGrid: View {
     private static let ColumnCount = 3
-    private static let Spacing = 10
+    private static let Spacing = 15
     private let cardWidth = (UIScreen.main.bounds.width - CGFloat(ItemGrid.ColumnCount * ItemGrid.Spacing))
         / CGFloat(ItemGrid.ColumnCount)
     private let columns = [GridItem](repeating: GridItem(.flexible()), count: ItemGrid.ColumnCount)
@@ -52,28 +52,10 @@ struct ItemGrid: View {
                             .lineLimit(1)
                     }
                     .frame(width: cardWidth)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
+                    .asCard()
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
         }
-    }
-}
-
-private struct RoundedCorner: Shape {
-
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(
-            roundedRect: rect,
-            byRoundingCorners: corners,
-            cornerRadii: CGSize(width: radius, height: radius)
-        )
-        return Path(path.cgPath)
     }
 }
