@@ -20,6 +20,8 @@
 		CFD34EA126C8F52E001832D8 /* ItemListHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */; };
 		CFD34EA526C9017D001832D8 /* ItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA426C9017D001832D8 /* ItemGrid.swift */; };
 		CFD34EA926C90855001832D8 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA826C90855001832D8 /* Text.swift */; };
+		CFD34EB726C93CB2001832D8 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EB626C93CB2001832D8 /* RoundedCorner.swift */; };
+		CFD34EBC26C93D06001832D8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EBB26C93D06001832D8 /* View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListHorizontal.swift; sourceTree = "<group>"; };
 		CFD34EA426C9017D001832D8 /* ItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGrid.swift; sourceTree = "<group>"; };
 		CFD34EA826C90855001832D8 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		CFD34EB626C93CB2001832D8 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		CFD34EBB26C93D06001832D8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +69,7 @@
 		CF432A2626C78D5600A73D96 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CFD34EA726C9083C001832D8 /* Style */,
+				CFD34EB526C93CA5001832D8 /* Shape */,
 				CF432A2726C78E7200A73D96 /* AsyncImage.swift */,
 				CF432A2A26C799BA00A73D96 /* ImageSlider.swift */,
 				CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */,
@@ -106,6 +110,7 @@
 		CF6213ED26C3934100580054 /* Game Catalogue */ = {
 			isa = PBXGroup;
 			children = (
+				CFD34EBA26C93CEC001832D8 /* Extension */,
 				CF432A2626C78D5600A73D96 /* Components */,
 				CF54A3B726C6513600F89E4F /* Screen */,
 				CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */,
@@ -124,12 +129,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		CFD34EA726C9083C001832D8 /* Style */ = {
+		CFD34EB526C93CA5001832D8 /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				CFD34EB626C93CB2001832D8 /* RoundedCorner.swift */,
+			);
+			path = Shape;
+			sourceTree = "<group>";
+		};
+		CFD34EBA26C93CEC001832D8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				CFD34EA826C90855001832D8 /* Text.swift */,
+				CFD34EBB26C93D06001832D8 /* View.swift */,
 			);
-			path = Style;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		FC607325D685CF6188089A6B /* Pods */ = {
@@ -254,6 +268,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD34EBC26C93D06001832D8 /* View.swift in Sources */,
+				CFD34EB726C93CB2001832D8 /* RoundedCorner.swift in Sources */,
 				CF432A1526C786C700A73D96 /* FavouritesScreen.swift in Sources */,
 				CF432A2B26C799BA00A73D96 /* ImageSlider.swift in Sources */,
 				CFD34EA526C9017D001832D8 /* ItemGrid.swift in Sources */,
