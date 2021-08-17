@@ -11,6 +11,7 @@ import Combine
 struct AsyncImage: View {
     @ObservedObject private var imageLoader: ImageLoader
     @State private var image: UIImage = UIImage()
+    @State var contentMode = ContentMode.fill
 
     init(urlStr: String) {
         imageLoader = ImageLoader(urlStr: urlStr)
@@ -19,12 +20,18 @@ struct AsyncImage: View {
     var body: some View {
         Image(uiImage: image)
             .resizable()
+            .aspectRatio(contentMode: contentMode)
             .onReceive(imageLoader.didChange) { data in
                 self.image = data
             }
             .onAppear {
                 imageLoader.load()
             }
+    }
+
+    func aspectRatio(contentMode: ContentMode) -> some View {
+        self.contentMode = contentMode
+        return self
     }
 }
 

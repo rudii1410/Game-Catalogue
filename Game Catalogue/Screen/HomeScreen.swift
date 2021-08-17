@@ -74,6 +74,7 @@ struct HomeScreen: View {
                 .navigationBarTitle("Games catalogue", displayMode: .large)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

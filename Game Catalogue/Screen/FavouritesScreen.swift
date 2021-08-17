@@ -32,7 +32,8 @@ struct FavouritesScreen: View {
                             .cornerRadius(10)
                         VStack(alignment: .leading, spacing: 2) {
                             Text(data.title)
-                                .font(.headline)
+                                .font(.title2)
+                                .fontWeight(.bold)
                                 .lineLimit(1)
                                 .padding(.vertical, 1)
                             Text("Release on: \(data.releaseDate)")
@@ -57,6 +58,7 @@ struct FavouritesScreen: View {
             }
             .navigationBarTitle("Favourites", displayMode: .inline)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func onItemTap() {
