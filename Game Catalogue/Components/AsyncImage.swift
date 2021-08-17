@@ -42,7 +42,7 @@ class ImageLoader: ObservableObject {
         image = defaultImage
         self.url = URL(string: urlStr)
     }
-    
+
     func load() {
         guard let url = self.url else { return }
         URLSession.shared.dataTask(with: url) { data, _, _ in

@@ -13,8 +13,10 @@ struct ImageSlider: View {
     private static let IMAGEWIDTH: CGFloat = UIScreen.main.bounds.width
 
     var height: CGFloat = 0.35 * UIScreen.main.bounds.height
-    var urls: [String] = []
+    @Binding var urls: [String]
     var onPress: ((Int) -> Void)?
+
+    private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
 
     @GestureState private var dragState = DragState.inactive
     @State private var activeIdx = 0
@@ -41,6 +43,13 @@ struct ImageSlider: View {
             }
         }
         .gesture(dragGesture)
+        .onReceive(self.timer) { _ in
+            let dataSum = self.urls.count == 0 ? 1 : self.urls.count
+            self.activeIdx =  (self.activeIdx + 1) % dataSum
+        }
+        .onAppear {
+            print(urls.count)
+        }
     }
 
     private func getOffset(idx: Int) -> CGFloat {
