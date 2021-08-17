@@ -109,9 +109,9 @@ extension HomeScreen {
             onSeeAllPressed: seeAllGamePublisher
         )
     }
-    
+
     private func seeAllGamePublisher() {
-        
+
     }
 }
 

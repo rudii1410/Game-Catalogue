@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		31B0BD083288C76F7BC78DFB /* Pods_Game_Catalogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */; };
 		CF3E794F26CB740F0087227E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E794E26CB740F0087227E /* UIColor.swift */; };
+		CF3E795226CB84C80087227E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E795126CB84C80087227E /* SearchBar.swift */; };
 		CF432A1526C786C700A73D96 /* FavouritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1426C786C700A73D96 /* FavouritesScreen.swift */; };
 		CF432A1826C786D100A73D96 /* ExploreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1726C786D100A73D96 /* ExploreScreen.swift */; };
 		CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */; };
@@ -31,6 +32,7 @@
 		3F3FC36BE2D4F44DB715F468 /* Pods-Game Catalogue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Catalogue.debug.xcconfig"; path = "Target Support Files/Pods-Game Catalogue/Pods-Game Catalogue.debug.xcconfig"; sourceTree = "<group>"; };
 		C2444ACDC4281FD1375B1BDB /* Pods-Game Catalogue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Catalogue.release.xcconfig"; path = "Target Support Files/Pods-Game Catalogue/Pods-Game Catalogue.release.xcconfig"; sourceTree = "<group>"; };
 		CF3E794E26CB740F0087227E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		CF3E795126CB84C80087227E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CF432A1426C786C700A73D96 /* FavouritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesScreen.swift; sourceTree = "<group>"; };
 		CF432A1726C786D100A73D96 /* ExploreScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreScreen.swift; sourceTree = "<group>"; };
 		CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */,
 				CFD34EA426C9017D001832D8 /* ItemGrid.swift */,
 				CFD34EB226C93823001832D8 /* GamesVerticalGrid.swift */,
+				CF3E795126CB84C80087227E /* SearchBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				CFD34EB326C93823001832D8 /* GamesVerticalGrid.swift in Sources */,
 				CFD34EA926C90855001832D8 /* Text.swift in Sources */,
 				CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */,
+				CF3E795226CB84C80087227E /* SearchBar.swift in Sources */,
 				CF432A2826C78E7200A73D96 /* AsyncImage.swift in Sources */,
 				CFD34EA126C8F52E001832D8 /* ItemListHorizontal.swift in Sources */,
 				CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */,
