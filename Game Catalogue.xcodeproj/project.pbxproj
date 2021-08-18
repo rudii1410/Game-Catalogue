@@ -11,7 +11,6 @@
 		CF3E794F26CB740F0087227E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E794E26CB740F0087227E /* UIColor.swift */; };
 		CF3E795226CB84C80087227E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E795126CB84C80087227E /* SearchBar.swift */; };
 		CF432A1526C786C700A73D96 /* FavouritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1426C786C700A73D96 /* FavouritesScreen.swift */; };
-		CF432A1826C786D100A73D96 /* ExploreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1726C786D100A73D96 /* ExploreScreen.swift */; };
 		CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */; };
 		CF432A2826C78E7200A73D96 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A2726C78E7200A73D96 /* AsyncImage.swift */; };
 		CF432A2B26C799BA00A73D96 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A2A26C799BA00A73D96 /* ImageSlider.swift */; };
@@ -34,7 +33,6 @@
 		CF3E794E26CB740F0087227E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CF3E795126CB84C80087227E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CF432A1426C786C700A73D96 /* FavouritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesScreen.swift; sourceTree = "<group>"; };
-		CF432A1726C786D100A73D96 /* ExploreScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreScreen.swift; sourceTree = "<group>"; };
 		CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		CF432A2726C78E7200A73D96 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		CF432A2A26C799BA00A73D96 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 			children = (
 				CF54A3B826C6514E00F89E4F /* HomeScreen.swift */,
 				CF432A1426C786C700A73D96 /* FavouritesScreen.swift */,
-				CF432A1726C786D100A73D96 /* ExploreScreen.swift */,
 				CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */,
 			);
 			path = Screen;
@@ -284,7 +281,6 @@
 				CF432A2B26C799BA00A73D96 /* ImageSlider.swift in Sources */,
 				CFD34EA526C9017D001832D8 /* ItemGrid.swift in Sources */,
 				CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */,
-				CF432A1826C786D100A73D96 /* ExploreScreen.swift in Sources */,
 				CFD34EB326C93823001832D8 /* GamesVerticalGrid.swift in Sources */,
 				CFD34EA926C90855001832D8 /* Text.swift in Sources */,
 				CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */,

@@ -22,11 +22,6 @@ struct GameCatalogueApp: App {
                         Image(systemName: "heart")
                         Text("Favourites")
                     }
-                ExploreScreen()
-                    .tabItem {
-                        Image(systemName: "globe")
-                        Text("Explore")
-                    }
                 ProfileScreen()
                     .tabItem {
                         Image(systemName: "person")
