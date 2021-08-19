@@ -18,6 +18,9 @@
 		CF432A2826C78E7200A73D96 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A2726C78E7200A73D96 /* AsyncImage.swift */; };
 		CF432A2B26C799BA00A73D96 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A2A26C799BA00A73D96 /* ImageSlider.swift */; };
 		CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54A3B826C6514E00F89E4F /* HomeScreen.swift */; };
+		CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */; };
+		CF5AB40526CE16C30097C09D /* PublisherListScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */; };
+		CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */; };
 		CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */; };
 		CF6213F326C3934200580054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F226C3934200580054 /* Assets.xcassets */; };
 		CF6213F626C3934200580054 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F526C3934200580054 /* Preview Assets.xcassets */; };
@@ -45,6 +48,9 @@
 		CF432A2726C78E7200A73D96 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		CF432A2A26C799BA00A73D96 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
 		CF54A3B826C6514E00F89E4F /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreen.swift; sourceTree = "<group>"; };
+		CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreenViewModel.swift; sourceTree = "<group>"; };
+		CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardWithText.swift; sourceTree = "<group>"; };
 		CF6213EB26C3934100580054 /* Game Catalogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Catalogue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game_CatalogueApp.swift; sourceTree = "<group>"; };
 		CF6213F226C3934200580054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +121,7 @@
 				CFD34EA426C9017D001832D8 /* ItemGrid.swift */,
 				CFD34EB226C93823001832D8 /* GamesVerticalGrid.swift */,
 				CF3E795126CB84C80087227E /* SearchBar.swift */,
+				CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */,
 				CF9AC95D26CE5B11004341BD /* LoadingView.swift */,
 			);
 			path = Components;
@@ -125,10 +132,20 @@
 			children = (
 				CF54A3B826C6514E00F89E4F /* HomeScreen.swift */,
 				CF4045C126CE461A00560D4D /* Publisher Detail */,
+				CF5AB3FD26CE08470097C09D /* Publisher List */,
 				CF432A1426C786C700A73D96 /* FavouritesScreen.swift */,
 				CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */,
 			);
 			path = Screen;
+			sourceTree = "<group>";
+		};
+		CF5AB3FD26CE08470097C09D /* Publisher List */ = {
+			isa = PBXGroup;
+			children = (
+				CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */,
+				CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */,
+			);
+			path = "Publisher List";
 			sourceTree = "<group>";
 		};
 		CF6213E226C3934100580054 = {
@@ -314,9 +331,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFD34EBC26C93D06001832D8 /* View.swift in Sources */,
+				CF5AB40526CE16C30097C09D /* PublisherListScreenViewModel.swift in Sources */,
 				CF0595AF26CD04CD00143D6E /* Request.swift in Sources */,
 				CF0595B426CD139400143D6E /* RAWGResponse.swift in Sources */,
+				CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */,
 				CF3E794F26CB740F0087227E /* UIColor.swift in Sources */,
+				CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */,
 				CFD34EB726C93CB2001832D8 /* RoundedCorner.swift in Sources */,
 				CF432A1526C786C700A73D96 /* FavouritesScreen.swift in Sources */,
 				CF432A2B26C799BA00A73D96 /* ImageSlider.swift in Sources */,
