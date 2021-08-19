@@ -18,7 +18,7 @@ class PublisherListScreenViewModel: ObservableObject {
     init() {
         loadMorePublisherIfNeeded(nil)
     }
-    
+
     public func onItemPressed(_ item: PublisherModel) {
         self.selectedPublisher = item
         self.navigateToPublisherDetail = true
