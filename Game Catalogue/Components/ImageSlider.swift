@@ -47,9 +47,6 @@ struct ImageSlider: View {
             let dataSum = self.urls.count == 0 ? 1 : self.urls.count
             self.activeIdx =  (self.activeIdx + 1) % dataSum
         }
-        .onAppear {
-            print(urls.count)
-        }
     }
 
     private func getOffset(idx: Int) -> CGFloat {

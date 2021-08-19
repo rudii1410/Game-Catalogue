@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31B0BD083288C76F7BC78DFB /* Pods_Game_Catalogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */; };
+		CF0595AB26CD020E00143D6E /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0595AA26CD020E00143D6E /* HomeScreenViewModel.swift */; };
 		CF0595AF26CD04CD00143D6E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0595AE26CD04CD00143D6E /* Request.swift */; };
 		CF0595B426CD139400143D6E /* RAWGResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0595B326CD139400143D6E /* RAWGResponse.swift */; };
 		CF3E794F26CB740F0087227E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E794E26CB740F0087227E /* UIColor.swift */; };
@@ -38,6 +39,7 @@
 		12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Game_Catalogue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3FC36BE2D4F44DB715F468 /* Pods-Game Catalogue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Catalogue.debug.xcconfig"; path = "Target Support Files/Pods-Game Catalogue/Pods-Game Catalogue.debug.xcconfig"; sourceTree = "<group>"; };
 		C2444ACDC4281FD1375B1BDB /* Pods-Game Catalogue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Catalogue.release.xcconfig"; path = "Target Support Files/Pods-Game Catalogue/Pods-Game Catalogue.release.xcconfig"; sourceTree = "<group>"; };
+		CF0595AA26CD020E00143D6E /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		CF0595AE26CD04CD00143D6E /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		CF0595B326CD139400143D6E /* RAWGResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAWGResponse.swift; sourceTree = "<group>"; };
 		CF3E794E26CB740F0087227E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -86,6 +88,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF0595A926CD01FC00143D6E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CF54A3B826C6514E00F89E4F /* HomeScreen.swift */,
+				CF0595AA26CD020E00143D6E /* HomeScreenViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		CF0595AD26CD04C000143D6E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,9 +141,9 @@
 		CF54A3B726C6513600F89E4F /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				CF54A3B826C6514E00F89E4F /* HomeScreen.swift */,
 				CF4045C126CE461A00560D4D /* Publisher Detail */,
 				CF5AB3FD26CE08470097C09D /* Publisher List */,
+				CF0595A926CD01FC00143D6E /* Home */,
 				CF432A1426C786C700A73D96 /* FavouritesScreen.swift */,
 				CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */,
 			);
@@ -350,6 +361,7 @@
 				CF432A2826C78E7200A73D96 /* AsyncImage.swift in Sources */,
 				CFD34EA126C8F52E001832D8 /* ItemListHorizontal.swift in Sources */,
 				CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */,
+				CF0595AB26CD020E00143D6E /* HomeScreenViewModel.swift in Sources */,
 				CF9AC95B26CE575C004341BD /* PublisherDetailScreen.swift in Sources */,
 				CF9AC95E26CE5B11004341BD /* LoadingView.swift in Sources */,
 			);

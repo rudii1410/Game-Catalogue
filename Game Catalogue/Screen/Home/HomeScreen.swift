@@ -13,9 +13,11 @@ struct HomeScreen: View {
     @State private var test = 0
     @State private var games: [GamesGridData] = []
     @State private var isLoadingGamesData = false
+    @State private var isReachMaxFetch: Bool = false
     @State private var fetchCounter = 0
     @State private var headerImgs: [String] = []
-    @State private var isReachMaxFetch: Bool = false
+
+    @ObservedObject private var model = HomeScreenViewModel()
 
     let dummyItemlistData = ItemListData(
         imageUrl: "https://statik.tempo.co/data/2019/09/11/id_871476/871476_720.jpg",
@@ -38,43 +40,39 @@ struct HomeScreen: View {
     }
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 30) {
-                    renderImageSlider()
-                    Divider()
-                    renderGamePublisher()
-                    Divider()
-                    renderGameGenre()
-                    Divider()
-                    renderGameList()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 30) {
+                renderImageSlider()
+                Divider()
+                renderGamePublisher()
+                Divider()
+                renderGameGenre()
+                Divider()
+                renderGameList()
 
-                    if isLoadingGamesData {
-                        HStack(alignment: .center, spacing: 6) {
-                            Spacer()
-                            ProgressView()
-                            Text("Fetching more data for you, hang tight!")
-                                .font(.system(size: 12))
-                                .fontWeight(.medium)
-                            Spacer()
-                        }
-                    }
-
-                    if isReachMaxFetch {
-                        Text("Whoaa you arrive at the end. Maybe go to the Explore tab to see more??")
+                if isLoadingGamesData {
+                    HStack(alignment: .center, spacing: 6) {
+                        Spacer()
+                        ProgressView()
+                        Text("Fetching more data for you, hang tight!")
                             .font(.system(size: 12))
                             .fontWeight(.medium)
-                            .multilineTextAlignment(.center)
-                            .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
-                            .frame(maxWidth: .infinity, alignment: .center)
+                        Spacer()
                     }
-
-                    Spacer(minLength: 8)
                 }
-                .navigationBarTitle("Games catalogue", displayMode: .large)
+
+                if isReachMaxFetch {
+                    Text("Whoaa you arrive at the end. Maybe go to the Explore tab to see more??")
+                        .font(.system(size: 12))
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.center)
+                        .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+
+                Spacer(minLength: 8)
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -91,28 +89,34 @@ extension HomeScreen {
             }
             Spacer()
         }.onAppear {
-            self.headerImgs = [
-                "https://statik.tempo.co/data/2019/09/11/id_871476/871476_720.jpg",
-                "https://statik.tempo.co/data/2019/09/11/id_871476/871476_720.jpg",
-                "https://statik.tempo.co/data/2019/09/11/id_871476/871476_720.jpg",
-                "https://statik.tempo.co/data/2019/09/11/id_871476/871476_720.jpg",
-                "https://statik.tempo.co/data/2019/09/11/id_871476/871476_720.jpg"
-            ]
+            print("header onappear")
+            loadComingSoonGames()
         }
+    }
+
+    private func loadComingSoonGames() {
+//        Request("https://api.rawg.io/api/games")
+//            .addQuery(key: "key", value: "0dd5a3de194e446795b7420b983df40a")
+//            .addHeader(key: "page_size", value: "20")
+//            .result(requestResponse)
+    }
+
+    private func requestResponse(_ response: Response<RAWGResponse<GameShort>>) {
+
     }
 }
 
 extension HomeScreen {
     func renderGamePublisher() -> some View {
-        return ItemListHorizontal(
-            sectionTitle: "Game Publisher",
-            data: [ItemListData](repeating: dummyItemlistData, count: 6),
-            onSeeAllPressed: seeAllGamePublisher
-        )
-    }
+        return Group {
+            NavigationLink(destination: PublisherListScreen(), isActive: self.$model.navigateToPublisherList, label: { EmptyView() })
 
-    private func seeAllGamePublisher() {
-
+            ItemListHorizontal(
+                sectionTitle: "Game Publisher",
+                data: [ItemListData](repeating: dummyItemlistData, count: 6),
+                onSeeAllPressed: { self.model.navigateToPublisherList = true }
+            )
+        }
     }
 }
 
