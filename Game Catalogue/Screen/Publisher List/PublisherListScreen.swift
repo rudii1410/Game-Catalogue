@@ -1,8 +1,18 @@
 //
-//  PublisherListScreen.swift
-//  Game Catalogue
+//  This file is part of Game Catalogue.
 //
-//  Created by Rudiyanto on 19/08/21.
+//  Game Catalogue is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  Game Catalogue is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
 import SwiftUI
@@ -14,20 +24,24 @@ struct PublisherListScreen: View {
 
     @ObservedObject private var model = PublisherListScreenViewModel()
 
+    init(_ data: [Publisher]) {
+        self.model.gamePublisher = data
+    }
+
     var body: some View {
         ScrollView {
             NavigationLink(
                 destination: PublisherDetailScreen(
-                    slug: "slug"
+                    slug: self.model.selectedPublisher?.slug ?? "" // TODO: revised this later
                 ),
                 isActive: self.$model.navigateToPublisherDetail,
                 label: { EmptyView() }
             )
             LazyVGrid(columns: gridLayout) {
-                ForEach(self.model.gamePublisher, id: \.ids) { data in
+                ForEach(self.model.gamePublisher, id: \.id) { data in
                     ImageCardWithText(
-                        data.imgUrl,
-                        label: data.label
+                        data.imageBackground,
+                        label: data.name
                     ) { self.model.onItemPressed(data) }
                     .frame(height: 150)
                     .onAppear {

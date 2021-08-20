@@ -1,30 +1,39 @@
 //
-//  PublisherListScreenViewModel.swift
-//  Game Catalogue
+//  This file is part of Game Catalogue.
 //
-//  Created by Rudiyanto on 19/08/21.
+//  Game Catalogue is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  Game Catalogue is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
 import Foundation
 import Combine
 
 class PublisherListScreenViewModel: ObservableObject {
-    @Published var gamePublisher: [PublisherModel] = []
-    @Published var navigateToPublisherDetail: Bool = false
-    var selectedPublisher: PublisherModel?
+    @Published var gamePublisher: [Publisher] = []
+    @Published var navigateToPublisherDetail = false
+    var selectedPublisher: Publisher?
 
-    private var isLoadingMoreData: Bool = false
+    private var isLoadingMoreData = false
+    private var page = 2
 
-    init() {
-        loadMorePublisherIfNeeded(nil)
-    }
+    private let publisherRepo = GamePublisherRepository()
 
-    public func onItemPressed(_ item: PublisherModel) {
+    public func onItemPressed(_ item: Publisher) {
         self.selectedPublisher = item
         self.navigateToPublisherDetail = true
     }
 
-    public func loadMorePublisherIfNeeded(_ item: PublisherModel?) {
+    public func loadMorePublisherIfNeeded(_ item: Publisher?) {
         if isLoadingMoreData { return }
         guard let item = item else {
             loadMore()
@@ -32,22 +41,22 @@ class PublisherListScreenViewModel: ObservableObject {
         }
 
         let tresholdIdx = gamePublisher.index(gamePublisher.endIndex, offsetBy: -3)
-        if gamePublisher.firstIndex(where: { $0.ids == item.ids }) == tresholdIdx {
+        if gamePublisher.firstIndex(where: { $0.id == item.id }) == tresholdIdx {
             loadMore()
         }
     }
 
     private func loadMore() {
         isLoadingMoreData = true
-        let publishers = (0...25).map { _ in
-            PublisherModel(
-                ids: UUID.init().uuidString,
-                label: "Publisher",
-                imgUrl: "https://statik.tempo.co/data/2019/09/11/id_871476/871476_720.jpg"
-            )
+        publisherRepo.getPublisherList(page: page, count: Constant.maxPublisherDataLoad) { response in
+            guard let result = response.response?.results else { return }
+
+            DispatchQueue.main.async {
+                self.gamePublisher.append(contentsOf: result)
+                self.page += 1
+                self.isLoadingMoreData = false
+            }
         }
-        self.gamePublisher.append(contentsOf: publishers)
-        isLoadingMoreData = false
     }
 }
 

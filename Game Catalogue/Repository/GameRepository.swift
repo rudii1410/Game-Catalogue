@@ -20,6 +20,7 @@ import Keys
 class GameRepository {
     func getUpcomingRelease(
         endDate inputEndDate: Date? = nil,
+        page: Int = 1,
         count: Int = 10,
         callback: @escaping (Response<RAWGResponse<GameShort>>) -> Void
     ) {
@@ -46,6 +47,21 @@ class GameRepository {
             .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
             .addQuery(key: "dates", value: fDates)
             .addQuery(key: "ordering", value: "-rating")
+            .addQuery(key: "page", value: String(page))
+            .addQuery(key: "page_size", value: String(count))
+            .result(callback)
+    }
+    
+    func getGameListByPublisher(
+        publisherId: String,
+        page: Int = 1,
+        count: Int = 10,
+        callback: @escaping (Response<RAWGResponse<GameShort>>) -> Void
+    ) {
+        Request("\(Constant.rawgApiUrl)/games")
+            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
+            .addQuery(key: "publishers", value: publisherId)
+            .addQuery(key: "page", value: String(page))
             .addQuery(key: "page_size", value: String(count))
             .result(callback)
     }

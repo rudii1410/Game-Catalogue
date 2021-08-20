@@ -19,14 +19,20 @@ import Keys
 
 class GamePublisherRepository {
     func getPublisherList(
-        page: Int = 1,
-        count: Int = 10,
+        page: Int,
+        count: Int,
         callback: @escaping (Response<RAWGResponse<Publisher>>) -> Void
     ) {
         Request("\(Constant.rawgApiUrl)/publishers")
             .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
             .addQuery(key: "page", value: String(page))
             .addQuery(key: "page_size", value: String(count))
+            .result(callback)
+    }
+    
+    func getPublisherDetail(id: String, callback: @escaping (Response<Publisher>) -> Void) {
+        Request("\(Constant.rawgApiUrl)/publishers/\(id)")
+            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
             .result(callback)
     }
 }
