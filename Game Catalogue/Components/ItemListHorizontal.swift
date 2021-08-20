@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ItemListHorizontal: View {
     var sectionTitle: String = ""
-    var data: [ItemListData] = []
+    var data: [ItemListHorizontalData] = []
     var onSeeAllPressed: (() -> Void)?
+    var onItemPressed: ((String) -> Void)
 
     var body: some View {
         VStack(spacing: 6) {
@@ -19,7 +20,7 @@ struct ItemListHorizontal: View {
                     .asSectionTitle()
                 if self.onSeeAllPressed != nil {
                     Button("See all") {
-                        self.onSeeAllPressed!()
+                        self.onSeeAllPressed?()
                     }
                 }
             }
@@ -29,8 +30,10 @@ struct ItemListHorizontal: View {
                 HStack(alignment: .top) {
                     Spacer(minLength: 12)
                     ForEach(0..<data.count, id: \.self) { idx in
-                        ItemListChild(idx: idx, data: data[idx])
-                            .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
+                        ItemListChild(idx: idx, data: data[idx]) { id in
+                            self.onItemPressed(id)
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
                     }
                     Spacer(minLength: 12)
                 }
@@ -43,7 +46,8 @@ private struct ItemListChild: View {
     private static let SIZE: CGFloat = 125
 
     var idx: Int
-    var data: ItemListData
+    var data: ItemListHorizontalData
+    var onPressed: (String) -> Void
 
     var body: some View {
         VStack {
@@ -61,13 +65,13 @@ private struct ItemListChild: View {
         }
         .frame(width: ItemListChild.SIZE)
         .onTapGesture {
-            data.onClick(idx)
+            self.onPressed(data.id)
         }
     }
 }
 
-struct ItemListData {
+struct ItemListHorizontalData {
+    var id: String
     var imageUrl: String
     var title: String
-    var onClick: (Int) -> Void
 }

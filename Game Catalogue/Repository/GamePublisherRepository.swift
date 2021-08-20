@@ -15,17 +15,18 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class GameShort: Codable {
-    let id: Int
-    let slug, name: String
-    let released, backgroundImage: String?
-    let rating: Double?
-    let ratingsCount: Int?
+import Keys
 
-    enum CodingKeys: String, CodingKey {
-        case id, slug, name, released
-        case backgroundImage = "background_image"
-        case rating
-        case ratingsCount = "ratings_count"
+class GamePublisherRepository {
+    func getPublisherList(
+        page: Int = 1,
+        count: Int = 10,
+        callback: @escaping (Response<RAWGResponse<Publisher>>) -> Void
+    ) {
+        Request("\(Constant.rawgApiUrl)/publishers")
+            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
+            .addQuery(key: "page", value: String(page))
+            .addQuery(key: "page_size", value: String(count))
+            .result(callback)
     }
 }

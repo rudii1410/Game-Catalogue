@@ -16,7 +16,7 @@
 //
 
 class RAWGResponse<T: Codable>: Codable {
-    let count: Int?
+    let count: Int
     let next, previous: String?
-    let results: [T]?
+    let results: [T]
 }

@@ -15,17 +15,17 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class GameShort: Codable {
+class Publisher: Codable {
     let id: Int
-    let slug, name: String
-    let released, backgroundImage: String?
-    let rating: Double?
-    let ratingsCount: Int?
+    let name, slug: String
+    let gamesCount: Int
+    let imageBackground: String
+    let publisherDescription: String?
 
     enum CodingKeys: String, CodingKey {
-        case id, slug, name, released
-        case backgroundImage = "background_image"
-        case rating
-        case ratingsCount = "ratings_count"
+        case id, name, slug
+        case gamesCount = "games_count"
+        case imageBackground = "image_background"
+        case publisherDescription = "description"
     }
 }
