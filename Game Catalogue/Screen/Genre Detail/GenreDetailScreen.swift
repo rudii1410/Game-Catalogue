@@ -14,7 +14,7 @@ struct GenreDetailScreen: View {
     @State private var isLoadingGamesData = false
     @State private var isReachMaxFetch: Bool = false
     @State private var fetchCounter = 0
-    
+
     var body: some View {
         ScrollView {
             LazyVStack {

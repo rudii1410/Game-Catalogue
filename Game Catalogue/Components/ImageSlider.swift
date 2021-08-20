@@ -42,7 +42,7 @@ struct ImageSlider: View {
         }
         .gesture(dragGesture)
         .onReceive(self.timer) { _ in
-            let dataSum = self.urls.count == 0 ? 1 : self.urls.count
+            let dataSum = self.urls.isEmpty ? 1 : self.urls.count
             self.activeIdx =  (self.activeIdx + 1) % dataSum
         }
     }

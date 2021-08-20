@@ -14,7 +14,6 @@
 		CF15055A26CFB4B90064809A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15055926CFB4B90064809A /* Constant.swift */; };
 		CF15055D26CFB58B0064809A /* GameShort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15055C26CFB58B0064809A /* GameShort.swift */; };
 		CF15056126CFB6200064809A /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15056026CFB6200064809A /* GameRepository.swift */; };
-		CF3E794F26CB740F0087227E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E794E26CB740F0087227E /* UIColor.swift */; };
 		CF3E795226CB84C80087227E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E795126CB84C80087227E /* SearchBar.swift */; };
 		CF4045C826CE4E1000560D4D /* PublisherDetailScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */; };
 		CF432A1526C786C700A73D96 /* FavouritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1426C786C700A73D96 /* FavouritesScreen.swift */; };
@@ -51,7 +50,6 @@
 		CF15055926CFB4B90064809A /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		CF15055C26CFB58B0064809A /* GameShort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameShort.swift; sourceTree = "<group>"; };
 		CF15056026CFB6200064809A /* GameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
-		CF3E794E26CB740F0087227E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CF3E795126CB84C80087227E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailScreenViewModel.swift; sourceTree = "<group>"; };
 		CF432A1426C786C700A73D96 /* FavouritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesScreen.swift; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 			children = (
 				CFD34EA826C90855001832D8 /* Text.swift */,
 				CFD34EBB26C93D06001832D8 /* View.swift */,
-				CF3E794E26CB740F0087227E /* UIColor.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -408,7 +405,6 @@
 				CF0595B426CD139400143D6E /* RAWGResponse.swift in Sources */,
 				CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */,
 				CF9AC98426CE96EF004341BD /* LoadableImage.swift in Sources */,
-				CF3E794F26CB740F0087227E /* UIColor.swift in Sources */,
 				CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */,
 				CFD34EB726C93CB2001832D8 /* RoundedCorner.swift in Sources */,
 				CF15055D26CFB58B0064809A /* GameShort.swift in Sources */,

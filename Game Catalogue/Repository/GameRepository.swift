@@ -15,7 +15,6 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Foundation
 import Keys
 
 class GameRepository {

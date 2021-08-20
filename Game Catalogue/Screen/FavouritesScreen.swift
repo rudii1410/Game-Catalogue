@@ -58,7 +58,7 @@ struct FavouritesScreen: View {
             .listStyle(PlainListStyle())
         }
     }
-    
+
     private func onItemTap() {
         print("tapped")
     }
