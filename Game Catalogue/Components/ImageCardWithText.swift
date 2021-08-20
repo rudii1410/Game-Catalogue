@@ -11,7 +11,7 @@ struct ImageCardWithText: View {
     private let imageUrl: String
     private let label: String?
     private let onPress: (() -> Void)?
-    
+
     init(_ imageUrl: String, label: String? = nil, onPress: (() -> Void)? = nil) {
         self.imageUrl = imageUrl
         self.label = label
@@ -27,14 +27,17 @@ struct ImageCardWithText: View {
 
     var body: some View {
         ZStack {
-            AsyncImage(urlStr: imageUrl)
-                .frame(
-                    minWidth: 0,
-                    maxWidth: .infinity,
-                    minHeight: 0,
-                    maxHeight: .infinity,
-                    alignment: .center
-                )
+            LoadableImage(imageUrl) { image in
+                image.resizable()
+                    .clipped()
+                    .frame(
+                        minWidth: 0,
+                        maxWidth: .infinity,
+                        minHeight: 0,
+                        maxHeight: .infinity,
+                        alignment: .center
+                    )
+            }
             LinearGradient(
                 gradient: gradientColor,
                 startPoint: .bottom,

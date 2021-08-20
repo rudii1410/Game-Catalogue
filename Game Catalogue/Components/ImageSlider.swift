@@ -24,22 +24,20 @@ struct ImageSlider: View {
     var body: some View {
         ZStack {
             ForEach(0..<urls.count, id: \.self) { idx in
-                AsyncImage(urlStr: urls[idx])
-                    .padding(EdgeInsets(
-                        top: 0,
-                        leading: ImageSlider.SPACING,
-                        bottom: 0,
-                        trailing: ImageSlider.SPACING
-                    ))
-                    .frame(width: ImageSlider.IMAGEWIDTH)
-                    .frame(maxHeight: height)
-                    .aspectRatio(contentMode: .fit)
-                    .offset(x: getOffset(idx: idx))
-                    .animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
-                    .scaleEffect(activeIdx == idx ? 1 : ImageSlider.RATIO)
-                    .onTapGesture {
-                        self.onPress?(idx)
-                    }
+                LoadableImage(urls[idx]) { image in
+                    image.resizable()
+                        .clipped()
+                        .cornerRadius(5, antialiased: true)
+                        .padding(.horizontal, ImageSlider.SPACING)
+                        .frame(width: ImageSlider.IMAGEWIDTH)
+                        .frame(maxHeight: height)
+                        .offset(x: getOffset(idx: idx))
+                        .animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
+                        .scaleEffect(activeIdx == idx ? 1 : ImageSlider.RATIO)
+                        .onTapGesture {
+                            self.onPress?(idx)
+                        }
+                }
             }
         }
         .gesture(dragGesture)

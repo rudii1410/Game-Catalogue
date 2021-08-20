@@ -28,9 +28,12 @@ struct GamesVerticalGrid: View {
             LazyVGrid(columns: gridLayout) {
                 ForEach(0..<datas.count, id: \.self) { idx in
                     VStack(alignment: .leading, spacing: 0) {
-                        AsyncImage(urlStr: self.datas[idx].imgUrl)
-                            .frame(width: cardWidth, height: cardWidth)
-                            .clipShape(RoundedCorner(radius: 10, corners: [.topLeft, .topRight]))
+                        LoadableImage(self.datas[idx].imgUrl) { image in
+                            image.resizable()
+                                .clipped()
+                                .frame(width: cardWidth, height: cardWidth)
+                                .clipShape(RoundedCorner(radius: 10, corners: [.topLeft, .topRight]))
+                        }   
                         VStack(alignment: .leading, spacing: 2) {
                             Text(datas[idx].title)
                                 .font(.system(size: 16))

@@ -1,41 +1,36 @@
 //
-//  AsyncImage.swift
+//  LoadableImage.swift
 //  Game Catalogue
 //
-//  Created by Rudiyanto on 14/08/21.
+//  Created by Rudiyanto on 19/08/21.
 //
 
 import SwiftUI
 import Combine
 
-struct AsyncImage: View {
+struct LoadableImage<Content>: View where Content: View {
     @ObservedObject private var imageLoader: ImageLoader
     @State private var image: UIImage = UIImage()
-    @State var contentMode = ContentMode.fill
+    private let callback: (Image) -> Content
 
-    init(urlStr: String) {
+    init(
+        _ urlStr: String,
+        @ViewBuilder callback: @escaping (_ img: Image) -> Content
+    ) {
         imageLoader = ImageLoader(urlStr: urlStr)
+        self.callback = callback
     }
 
     var body: some View {
-        Image(uiImage: image)
-            .resizable()
-            .aspectRatio(contentMode: contentMode)
+        self.callback(Image(uiImage: self.image))
             .onReceive(imageLoader.didChange) { data in
                 self.image = data
             }
-            .onAppear {
-                imageLoader.load()
-            }
-    }
-
-    func aspectRatio(contentMode: ContentMode) -> some View {
-        self.contentMode = contentMode
-        return self
+            .onAppear { imageLoader.load() }
     }
 }
 
-class ImageLoader: ObservableObject {
+private class ImageLoader: ObservableObject {
     var didChange = PassthroughSubject<UIImage, Never>()
     var image = UIImage() {
         didSet {

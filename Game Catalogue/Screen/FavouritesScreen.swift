@@ -26,9 +26,11 @@ struct FavouritesScreen: View {
                 id: \.self
             ) { data in
                 HStack(spacing: 12) {
-                    AsyncImage(urlStr: data.imgUrl)
-                        .frame(width: 100, height: 100)
-                        .cornerRadius(10)
+                    LoadableImage("https://statik.tempo.co/data/2019/09/11/id_871476/871476_720.jpg") { image in
+                        image.resizable()
+                            .frame(width: 100, height: 100)
+                            .cornerRadius(10)
+                    }
                     VStack(alignment: .leading, spacing: 2) {
                         Text(data.title)
                             .font(.title2)
