@@ -7,4 +7,11 @@ target 'Game Catalogue' do
 
   # Pods for Game Catalogue
   pod 'SwiftLint'
+  
+  plugin 'cocoapods-keys', {
+    :project => "GameCatalogue",
+    :keys => [
+      "RawgApiKey",
+    ]
+  }
 end
