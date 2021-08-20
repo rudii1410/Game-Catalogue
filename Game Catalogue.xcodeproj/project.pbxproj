@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,9 @@
 		CF0595AB26CD020E00143D6E /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0595AA26CD020E00143D6E /* HomeScreenViewModel.swift */; };
 		CF0595AF26CD04CD00143D6E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0595AE26CD04CD00143D6E /* Request.swift */; };
 		CF0595B426CD139400143D6E /* RAWGResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0595B326CD139400143D6E /* RAWGResponse.swift */; };
+		CF15055A26CFB4B90064809A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15055926CFB4B90064809A /* Constant.swift */; };
+		CF15055D26CFB58B0064809A /* GameShort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15055C26CFB58B0064809A /* GameShort.swift */; };
+		CF15056126CFB6200064809A /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15056026CFB6200064809A /* GameRepository.swift */; };
 		CF3E794F26CB740F0087227E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E794E26CB740F0087227E /* UIColor.swift */; };
 		CF3E795226CB84C80087227E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E795126CB84C80087227E /* SearchBar.swift */; };
 		CF4045C826CE4E1000560D4D /* PublisherDetailScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */; };
@@ -24,6 +27,7 @@
 		CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */; };
 		CF6213F326C3934200580054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F226C3934200580054 /* Assets.xcassets */; };
 		CF6213F626C3934200580054 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F526C3934200580054 /* Preview Assets.xcassets */; };
+		CF81947626CFC653002EAD89 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CF81947526CFC653002EAD89 /* .swiftlint.yml */; };
 		CF9AC95B26CE575C004341BD /* PublisherDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC95A26CE575C004341BD /* PublisherDetailScreen.swift */; };
 		CF9AC95E26CE5B11004341BD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC95D26CE5B11004341BD /* LoadingView.swift */; };
 		CF9AC96726CE607C004341BD /* GenreDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC96626CE607C004341BD /* GenreDetailScreen.swift */; };
@@ -44,6 +48,9 @@
 		CF0595AA26CD020E00143D6E /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		CF0595AE26CD04CD00143D6E /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		CF0595B326CD139400143D6E /* RAWGResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAWGResponse.swift; sourceTree = "<group>"; };
+		CF15055926CFB4B90064809A /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		CF15055C26CFB58B0064809A /* GameShort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameShort.swift; sourceTree = "<group>"; };
+		CF15056026CFB6200064809A /* GameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
 		CF3E794E26CB740F0087227E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CF3E795126CB84C80087227E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailScreenViewModel.swift; sourceTree = "<group>"; };
@@ -59,6 +66,7 @@
 		CF6213F226C3934200580054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF6213F526C3934200580054 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CF6213F726C3934200580054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF81947526CFC653002EAD89 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		CF9AC95A26CE575C004341BD /* PublisherDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailScreen.swift; sourceTree = "<group>"; };
 		CF9AC95D26CE5B11004341BD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CF9AC96626CE607C004341BD /* GenreDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDetailScreen.swift; sourceTree = "<group>"; };
@@ -113,8 +121,26 @@
 			isa = PBXGroup;
 			children = (
 				CF0595B326CD139400143D6E /* RAWGResponse.swift */,
+				CF15055C26CFB58B0064809A /* GameShort.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CF15055426CFB3A60064809A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */,
+				CF15055926CFB4B90064809A /* Constant.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CF15055F26CFB60D0064809A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CF15056026CFB6200064809A /* GameRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		CF4045C126CE461A00560D4D /* Publisher Detail */ = {
@@ -185,14 +211,16 @@
 		CF6213ED26C3934100580054 /* Game Catalogue */ = {
 			isa = PBXGroup;
 			children = (
+				CF15055F26CFB60D0064809A /* Repository */,
+				CF15055426CFB3A60064809A /* App */,
 				CF0595B226CD138600143D6E /* Model */,
 				CF0595AD26CD04C000143D6E /* Utilities */,
 				CFD34EBA26C93CEC001832D8 /* Extension */,
 				CF432A2626C78D5600A73D96 /* Components */,
 				CF54A3B726C6513600F89E4F /* Screen */,
-				CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */,
 				CF6213F226C3934200580054 /* Assets.xcassets */,
 				CF6213F726C3934200580054 /* Info.plist */,
+				CF81947526CFC653002EAD89 /* .swiftlint.yml */,
 				CF6213F426C3934200580054 /* Preview Content */,
 			);
 			path = "Game Catalogue";
@@ -302,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF81947626CFC653002EAD89 /* .swiftlint.yml in Resources */,
 				CF6213F626C3934200580054 /* Preview Assets.xcassets in Resources */,
 				CF6213F326C3934200580054 /* Assets.xcassets in Resources */,
 			);
@@ -382,15 +411,18 @@
 				CF3E794F26CB740F0087227E /* UIColor.swift in Sources */,
 				CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */,
 				CFD34EB726C93CB2001832D8 /* RoundedCorner.swift in Sources */,
+				CF15055D26CFB58B0064809A /* GameShort.swift in Sources */,
 				CF432A1526C786C700A73D96 /* FavouritesScreen.swift in Sources */,
 				CF432A2B26C799BA00A73D96 /* ImageSlider.swift in Sources */,
 				CFD34EA526C9017D001832D8 /* ItemGrid.swift in Sources */,
 				CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */,
 				CFD34EB326C93823001832D8 /* GamesVerticalGrid.swift in Sources */,
 				CF4045C826CE4E1000560D4D /* PublisherDetailScreenViewModel.swift in Sources */,
+				CF15055A26CFB4B90064809A /* Constant.swift in Sources */,
 				CF9AC96726CE607C004341BD /* GenreDetailScreen.swift in Sources */,
 				CFD34EA926C90855001832D8 /* Text.swift in Sources */,
 				CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */,
+				CF15056126CFB6200064809A /* GameRepository.swift in Sources */,
 				CF3E795226CB84C80087227E /* SearchBar.swift in Sources */,
 				CFD34EA126C8F52E001832D8 /* ItemListHorizontal.swift in Sources */,
 				CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */,

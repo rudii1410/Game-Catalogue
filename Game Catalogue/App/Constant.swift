@@ -15,8 +15,6 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class RAWGResponse<T: Codable>: Codable {
-    let count: Int?
-    let next, previous: String?
-    let results: [T]?
+enum Constant {
+    static let rawgApiUrl: String = "https://api.rawg.io/api"
 }
