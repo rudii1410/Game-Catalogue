@@ -34,6 +34,8 @@ struct PublisherDetailScreen: View {
                     image.resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(height: 200)
+                        .padding(.top, 8)
+                        .clipped()
                 }
 
                 HTMLView(htmlString: self.model.desc, dynamicHeight: $htmlHeight)

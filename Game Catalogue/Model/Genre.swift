@@ -20,12 +20,12 @@ class Genre: Codable {
     let name, slug: String
     let gamesCount: Int
     let imageBackground: String
-    let publisherDescription: String?
+    let genreDescription: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name, slug
         case gamesCount = "games_count"
         case imageBackground = "image_background"
-        case publisherDescription = "description"
+        case genreDescription = "description"
     }
 }

@@ -65,4 +65,18 @@ class GameRepository {
             .addQuery(key: "page_size", value: String(count))
             .result(callback)
     }
+
+    func getGameListByGenre(
+        genreId: String,
+        page: Int = 1,
+        count: Int = 10,
+        callback: @escaping (Response<RAWGResponse<GameShort>>) -> Void
+    ) {
+        Request("\(Constant.rawgApiUrl)/games")
+            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
+            .addQuery(key: "genre", value: genreId)
+            .addQuery(key: "page", value: String(page))
+            .addQuery(key: "page_size", value: String(count))
+            .result(callback)
+    }
 }

@@ -24,7 +24,7 @@ struct ItemListHorizontal: View {
                     }
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+            .padding(.horizontal, 12)
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top) {
@@ -33,7 +33,7 @@ struct ItemListHorizontal: View {
                         ItemListChild(idx: idx, data: data[idx]) { id in
                             self.onItemPressed(id)
                         }
-                        .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
+                        .padding(.horizontal, 12)
                     }
                     Spacer(minLength: 12)
                 }

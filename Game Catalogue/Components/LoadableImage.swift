@@ -52,15 +52,11 @@ private class ImageLoader: ObservableObject {
 
     init(urlStr: String) {
         image = defaultImage
-        print(urlStr)
         self.url = URL(string: urlStr)
     }
 
     func load() {
-        guard let url = self.url else {
-            print("fail to load url image")
-            return
-        }
+        guard let url = self.url else { return }
         let cache = URLCache.shared
         let request = URLRequest(
             url: url,

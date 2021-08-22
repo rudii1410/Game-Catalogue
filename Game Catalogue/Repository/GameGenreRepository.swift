@@ -30,7 +30,7 @@ class GameGenreRepository {
             .result(callback)
     }
 
-    func getGenreDetail(id: String, callback: @escaping (Response<Publisher>) -> Void) {
+    func getGenreDetail(id: String, callback: @escaping (Response<Genre>) -> Void) {
         Request("\(Constant.rawgApiUrl)/genres/\(id)")
             .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
             .result(callback)

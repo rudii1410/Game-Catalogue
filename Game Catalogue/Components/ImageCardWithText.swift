@@ -46,11 +46,14 @@ struct ImageCardWithText: View {
             if label != nil {
                 VStack {
                     Spacer()
-                    Text(label!)
+                    Text(label ?? "")
                         .fontWeight(.bold)
                         .padding(.bottom, 6)
+                        .padding(.horizontal, 8)
                         .foregroundColor(.white)
                         .font(.title2)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
         }

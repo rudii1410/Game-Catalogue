@@ -30,7 +30,7 @@ struct GenreListScreen: View {
     var body: some View {
         ScrollView {
             NavigationLink(
-                destination: PublisherDetailScreen(
+                destination: GenreDetailScreen(
                     slug: self.model.selectedSlug
                 ),
                 isActive: self.$model.navigateToGenreDetail,
