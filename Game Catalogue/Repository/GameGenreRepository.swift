@@ -15,9 +15,24 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-enum Constant {
-    static let rawgApiUrl: String = "https://api.rawg.io/api"
-    static let maxPublisherDataLoad: Int = 10
-    static let maxGameDataLoad: Int = 10
-    static let maxGenreDataLoad: Int = 10
+import Keys
+
+class GameGenreRepository {
+    func getGenreList(
+        page: Int,
+        count: Int,
+        callback: @escaping (Response<RAWGResponse<Genre>>) -> Void
+    ) {
+        Request("\(Constant.rawgApiUrl)/genres")
+            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
+            .addQuery(key: "page", value: String(page))
+            .addQuery(key: "page_size", value: String(count))
+            .result(callback)
+    }
+
+    func getGenreDetail(id: String, callback: @escaping (Response<Publisher>) -> Void) {
+        Request("\(Constant.rawgApiUrl)/genres/\(id)")
+            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
+            .result(callback)
+    }
 }

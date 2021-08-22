@@ -15,9 +15,17 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-enum Constant {
-    static let rawgApiUrl: String = "https://api.rawg.io/api"
-    static let maxPublisherDataLoad: Int = 10
-    static let maxGameDataLoad: Int = 10
-    static let maxGenreDataLoad: Int = 10
+class Genre: Codable {
+    let id: Int
+    let name, slug: String
+    let gamesCount: Int
+    let imageBackground: String
+    let publisherDescription: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id, name, slug
+        case gamesCount = "games_count"
+        case imageBackground = "image_background"
+        case publisherDescription = "description"
+    }
 }

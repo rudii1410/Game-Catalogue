@@ -15,18 +15,9 @@ struct ItemGrid: View {
     private let columns = [GridItem](repeating: GridItem(.flexible()), count: ItemGrid.ColumnCount)
 
     var sectionTitle: String = ""
-    var data: [ItemListData] = []
+    var data: [ItemGridData] = []
     var onSeeAllPressed: (() -> Void)?
-
-    init(
-        sectionTitle: String,
-        data: [ItemListData],
-        onSeeAllPressed: (() -> Void)?
-    ) {
-        self.sectionTitle = sectionTitle
-        self.onSeeAllPressed = onSeeAllPressed
-        self.data = data
-    }
+    var onItemPressed: (String) -> Void
 
     var body: some View {
         VStack(spacing: 6) {
@@ -35,7 +26,7 @@ struct ItemGrid: View {
                     .asSectionTitle()
                 if self.onSeeAllPressed != nil {
                     Button("See all") {
-                        self.onSeeAllPressed!()
+                        self.onSeeAllPressed?()
                     }
                 }
             }
@@ -53,13 +44,21 @@ struct ItemGrid: View {
                         Text(data[idx].title)
                             .font(.system(size: 14))
                             .lineLimit(2)
-                            .padding(EdgeInsets(top: 6, leading: 4, bottom: 6, trailing: 4))
+                            .padding(.horizontal, 4)
+                            .padding(.vertical, 6)
                     }
                     .frame(width: cardWidth)
                     .asCard()
+                    .onTapGesture {
+                        self.onItemPressed(self.data[idx].id)
+                    }
                 }
             }
             .padding(.horizontal, 12)
         }
     }
+}
+
+struct ItemGridData {
+    let id, imageUrl, title: String
 }
