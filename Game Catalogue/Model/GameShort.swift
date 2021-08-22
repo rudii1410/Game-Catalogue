@@ -18,7 +18,8 @@
 class GameShort: Codable {
     let id: Int
     let slug, name: String
-    let released, backgroundImage: String?
+    let released: String?
+    let backgroundImage: String
     let rating: Double?
     let ratingsCount: Int?
 

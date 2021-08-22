@@ -1,8 +1,18 @@
 //
-//  Request.swift
-//  Game Catalogue
+//  This file is part of Game Catalogue.
 //
-//  Created by Rudiyanto on 18/08/21.
+//  Game Catalogue is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  Game Catalogue is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
 import Foundation
@@ -70,7 +80,7 @@ class Request {
         }
         request.httpMethod = self.method
 
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             guard error == nil else {
                 requestCallback(Response<T>(error: RequestError.serverError(error?.localizedDescription ?? "Error")))
                 return
@@ -87,7 +97,8 @@ class Request {
                 requestCallback(Response(error: RequestError.parsingError("null response")))
                 return
             }
-        }.resume()
+        }
+        .resume()
     }
 
     private func constructUrl() -> URL? {

@@ -29,7 +29,7 @@ class GamePublisherRepository {
             .addQuery(key: "page_size", value: String(count))
             .result(callback)
     }
-    
+
     func getPublisherDetail(id: String, callback: @escaping (Response<Publisher>) -> Void) {
         Request("\(Constant.rawgApiUrl)/publishers/\(id)")
             .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)

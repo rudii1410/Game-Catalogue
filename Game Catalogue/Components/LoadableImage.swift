@@ -1,16 +1,27 @@
 //
-//  LoadableImage.swift
-//  Game Catalogue
+//  This file is part of Game Catalogue.
 //
-//  Created by Rudiyanto on 19/08/21.
+//  Game Catalogue is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  Game Catalogue is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
 import SwiftUI
 import Combine
 
+private let defaultImage = UIImage(named: "placeholder") ?? UIImage()
 struct LoadableImage<Content>: View where Content: View {
     @ObservedObject private var imageLoader: ImageLoader
-    @State private var image: UIImage = UIImage()
+    @State private var image = defaultImage
     private let callback: (Image) -> Content
 
     init(
@@ -37,21 +48,38 @@ private class ImageLoader: ObservableObject {
             didChange.send(image)
         }
     }
-    private let defaultImage = UIImage() // TODO: placeholer image
     private var url: URL?
 
     init(urlStr: String) {
         image = defaultImage
+        print(urlStr)
         self.url = URL(string: urlStr)
     }
 
     func load() {
-        guard let url = self.url else { return }
-        URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let data = data else { return }
-            DispatchQueue.main.async {
-                self.image = UIImage(data: data) ?? self.defaultImage
+        guard let url = self.url else {
+            print("fail to load url image")
+            return
+        }
+        let cache = URLCache.shared
+        let request = URLRequest(
+            url: url,
+            cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad,
+            timeoutInterval: 60
+        )
+        guard let cacheImageData = cache.cachedResponse(for: request)?.data else {
+            URLSession.shared.dataTask(with: url) { data, response, _ in
+                guard let data = data, let response = response else { return }
+                let cacheData = CachedURLResponse(response: response, data: data)
+                cache.storeCachedResponse(cacheData, for: request)
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: data) ?? defaultImage
+                }
             }
-        }.resume()
+            .resume()
+            return
+        }
+        print("loading image from cache \(String(describing: request.url?.absoluteString))")
+        self.image = UIImage(data: cacheImageData) ?? defaultImage
     }
 }

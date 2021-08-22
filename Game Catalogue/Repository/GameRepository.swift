@@ -51,7 +51,7 @@ class GameRepository {
             .addQuery(key: "page_size", value: String(count))
             .result(callback)
     }
-    
+
     func getGameListByPublisher(
         publisherId: String,
         page: Int = 1,
