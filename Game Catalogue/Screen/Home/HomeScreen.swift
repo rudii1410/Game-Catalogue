@@ -1,8 +1,18 @@
 //
-//  HomeScreen.swift
-//  Game Catalogue
+//  This file is part of Game Catalogue.
 //
-//  Created by Rudiyanto on 13/08/21.
+//  Game Catalogue is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  Game Catalogue is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
 import SwiftUI
@@ -10,55 +20,28 @@ import SwiftUI
 struct HomeScreen: View {
     static let imgs = "https://statik.tempo.co/data/2019/09/11/id_871476/871476_720.jpg"
 
-    @State private var test = 0
     @State private var games: [GamesGridData] = []
     @State private var isLoadingGamesData = false
-    @State private var isReachMaxFetch: Bool = false
+    @State private var isReachMaxFetch = false
     @State private var fetchCounter = 0
     @State private var headerImgs: [String] = []
 
     @ObservedObject private var model = HomeScreenViewModel()
-
-    let dummyItemlistData = ItemListData(
-        imageUrl: "https://statik.tempo.co/data/2019/09/11/id_871476/871476_720.jpg",
-        title: "title adasda asdas das asdaasdasd",
-        onClick: { idx in
-            print(idx)
-        }
-    )
     let maxFetch = 3
-
-    init() {
-        let start = self.games.count
-        let end = start + 10
-        for key in start...end-1 {
-            let add = key % 3 == 0 ? "asdahs hsgdkaj dajsghdahsdh agsdhgs sdsd" : ""
-            games.append(GamesGridData(identifier: String(key), imgUrl: HomeScreen.imgs, title: "Title games \(add)", releaseDate: "21-01-1990", rating: "5.0"))
-        }
-        self.games.append(contentsOf: games)
-        fetchCounter += 1
-    }
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 30) {
+            VStack(alignment: .leading, spacing: 20) {
                 renderImageSlider()
                 Divider()
                 renderGamePublisher()
                 Divider()
                 renderGameGenre()
                 Divider()
-                renderGameList()
+//                renderGameList()
 
                 if isLoadingGamesData {
-                    HStack(alignment: .center, spacing: 6) {
-                        Spacer()
-                        ProgressView()
-                        Text("Fetching more data for you, hang tight!")
-                            .font(.system(size: 12))
-                            .fontWeight(.medium)
-                        Spacer()
-                    }
+                    LoadingView()
                 }
 
                 if isReachMaxFetch {
@@ -81,80 +64,104 @@ extension HomeScreen {
         return VStack(spacing: 8) {
             Text("Upcoming Release")
                 .asSectionTitle()
-                .padding(EdgeInsets(top: 16, leading: 12, bottom: 0, trailing: 12))
+                .padding(.horizontal, 12)
+                .padding(.top, 16)
             ImageSlider(
-                urls: self.$headerImgs
+                urls: self.$model.upcomingGamesBanner
             ) { idx in
-                test = idx
+                model.onBannerImagePressed(idx)
             }
-            Spacer()
         }.onAppear {
-            print("header onappear")
-            loadComingSoonGames()
+            self.model.fetchUpcomingReleaseGame()
         }
-    }
-
-    private func loadComingSoonGames() {
-//        Request("https://api.rawg.io/api/games")
-//            .addQuery(key: "key", value: "0dd5a3de194e446795b7420b983df40a")
-//            .addHeader(key: "page_size", value: "20")
-//            .result(requestResponse)
-    }
-
-    private func requestResponse(_ response: Response<RAWGResponse<GameShort>>) {
-
     }
 }
 
 extension HomeScreen {
     func renderGamePublisher() -> some View {
         return Group {
-            NavigationLink(destination: PublisherListScreen(), isActive: self.$model.navigateToPublisherList, label: { EmptyView() })
-
+            NavigationLink(
+                destination: PublisherListScreen(self.model.publisherList),
+                isActive: self.$model.navigateToPublisherList,
+                label: { EmptyView() }
+            )
+            NavigationLink(
+                destination: PublisherDetailScreen(
+                    slug: self.model.selectedPublisherSlug
+                ),
+                isActive: self.$model.navigateToPublisherDetail,
+                label: { EmptyView() }
+            )
             ItemListHorizontal(
                 sectionTitle: "Game Publisher",
-                data: [ItemListData](repeating: dummyItemlistData, count: 6),
-                onSeeAllPressed: { self.model.navigateToPublisherList = true }
+                data: self.model.gamePublisherList,
+                onSeeAllPressed: { self.model.navigateToPublisherList = true },
+                onItemPressed: { id in
+                    self.model.selectedPublisherSlug = id
+                    self.model.navigateToPublisherDetail = true
+                }
             )
+        }.onAppear {
+            self.model.fetchPublisherList()
         }
     }
 }
 
 extension HomeScreen {
     func renderGameGenre() -> some View {
-        return ItemGrid(
-            sectionTitle: "Popular Genres",
-            data: [ItemListData](repeating: dummyItemlistData, count: 6),
-            onSeeAllPressed: {
-                print("see all")
-            }
-        )
+        return Group {
+            NavigationLink(
+                destination: GenreListScreen(self.model.genreList),
+                isActive: self.$model.navigateToGenreList,
+                label: { EmptyView() }
+            )
+            NavigationLink(
+                destination: GenreDetailScreen(
+                    slug: self.model.selectedGenreSlug
+                ),
+                isActive: self.$model.navigateToGenreDetail,
+                label: { EmptyView() }
+            )
+            ItemGrid(
+                sectionTitle: "Popular Genres",
+                data: self.model.gameGenreList,
+                onSeeAllPressed: {
+                    self.model.navigateToGenreList = true
+                },
+                onItemPressed: { id in
+                    self.model.selectedGenreSlug = id
+                    self.model.navigateToGenreDetail = true
+                }
+            )
+        }.onAppear {
+            self.model.fetchGenreList()
+        }
     }
 }
 
 extension HomeScreen {
-    func renderGameList() -> some View {
-        return GamesVerticalGrid(
-            title: "You may like these games",
-            datas: $games
-        ) {
-            if isReachMaxFetch || isLoadingGamesData { return }
-
-            isLoadingGamesData = true
-            let start = self.games.count
-            let end = start + 10
-            print("\(start) \(end)")
-            var games: [GamesGridData] = []
-            for key in start...end-1 {
-                let add = key % 3 == 0 ? "asdahs hsgdkaj dajsghdahsdh agsdhgs sdsd" : ""
-                games.append(GamesGridData(identifier: String(key), imgUrl: HomeScreen.imgs, title: "Title games \(add)", releaseDate: "21-01-1990", rating: "5.0"))
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.games.append(contentsOf: games)
-                fetchCounter += 1
-                isReachMaxFetch = fetchCounter > maxFetch
-                isLoadingGamesData = false
-            }
-        }
-    }
+//    func renderGameList() -> some View {
+//        return GamesVerticalGrid(
+//            title: "You may like these games",
+//            datas: [$games]
+//        ) {
+//            if isReachMaxFetch || isLoadingGamesData { return }
+//
+//            isLoadingGamesData = true
+//            let start = self.games.count
+//            let end = start + 10
+//            print("\(start) \(end)")
+//            var games: [GamesGridData] = []
+//            for key in start...end - 1 {
+//                let add = key % 3 == 0 ? "asdahs hsgdkaj dajsghdahsdh agsdhgs sdsd" : ""
+//                games.append(GamesGridData(identifier: String(key), imgUrl: HomeScreen.imgs, title: "Title games \(add)", releaseDate: "21-01-1990", rating: "5.0"))
+//            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//                self.games.append(contentsOf: games)
+//                fetchCounter += 1
+//                isReachMaxFetch = fetchCounter > maxFetch
+//                isLoadingGamesData = false
+//            }
+//        }
+//    }
 }
