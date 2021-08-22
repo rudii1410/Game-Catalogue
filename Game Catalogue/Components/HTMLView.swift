@@ -14,6 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
+//  swiftlint:disable line_length
+//  swiftlint:disable force_cast
 
 import SwiftUI
 import WebKit
