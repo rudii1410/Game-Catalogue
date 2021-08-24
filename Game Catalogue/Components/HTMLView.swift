@@ -53,7 +53,8 @@ struct HTMLView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        let headerString = "<head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></head>"
-        uiView.loadHTMLString(headerString + htmlString, baseURL: Bundle.main.bundleURL)
+        let fontSize = UIFont.preferredFont(forTextStyle: .body).pointSize
+        let content = "<head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'><style type='text/css'>body { font-family: 'SFUIText'; font-size: \(fontSize); text-align: justify; line-height: 1.4; margin: 0; padding: 0; } p:last-child { margin: 0; padding: 0; }</style></head><body>\(self.htmlString)</body>"
+        uiView.loadHTMLString(content, baseURL: Bundle.main.bundleURL)
     }
 }

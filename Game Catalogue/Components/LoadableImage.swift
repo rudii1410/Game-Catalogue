@@ -43,39 +43,53 @@ struct LoadableImage<Content>: View where Content: View {
 
 private class ImageLoader: ObservableObject {
     var didChange = PassthroughSubject<UIImage, Never>()
-    var image = UIImage() {
-        didSet {
-            didChange.send(image)
-        }
-    }
+
     private var url: URL?
+    private let mainQueue = DispatchQueue.main
+    private let imageQueue = DispatchQueue.global(qos: .userInteractive)
 
     init(urlStr: String) {
-        image = defaultImage
         self.url = URL(string: urlStr)
     }
 
     func load() {
         guard let url = self.url else { return }
-        let cache = URLCache.shared
-        let request = URLRequest(
-            url: url,
-            cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad,
-            timeoutInterval: 60
-        )
-        guard let cacheImageData = cache.cachedResponse(for: request)?.data else {
-            URLSession.shared.dataTask(with: url) { data, response, _ in
-                guard let data = data, let response = response else { return }
-                let cacheData = CachedURLResponse(response: response, data: data)
-                cache.storeCachedResponse(cacheData, for: request)
-                DispatchQueue.main.async {
-                    self.image = UIImage(data: data) ?? defaultImage
-                }
+        self.loadFromCache(url: url)
+    }
+
+    private func loadFromCache(url: URL) {
+        imageQueue.async {
+            let cache = URLCache.shared
+            let request = URLRequest(
+                url: url,
+                cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad,
+                timeoutInterval: 60
+            )
+
+            guard let cacheImageData = cache.cachedResponse(for: request)?.data else {
+                self.loadFromUrl(url: url, request: request, cache: cache)
+                return
             }
-            .resume()
-            return
+            print("loading image from cache \(String(describing: request.url?.absoluteString))")
+            let imageData = UIImage(data: cacheImageData) ?? defaultImage
+            self.mainQueue.async {
+                self.didChange.send(imageData)
+            }
         }
-        print("loading image from cache \(String(describing: request.url?.absoluteString))")
-        self.image = UIImage(data: cacheImageData) ?? defaultImage
+    }
+
+    private func loadFromUrl(url: URL, request: URLRequest, cache: URLCache ) {
+        URLSession.shared.dataTask(with: request) { data, response, _ in
+            guard let data = data, let response = response else { return }
+            cache.storeCachedResponse(
+                CachedURLResponse(response: response, data: data),
+                for: request
+            )
+            let imageData = UIImage(data: data) ?? defaultImage
+            self.mainQueue.async {
+                self.didChange.send(imageData)
+            }
+        }
+        .resume()
     }
 }
