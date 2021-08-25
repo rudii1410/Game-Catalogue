@@ -1,4 +1,4 @@
-////
+//
 //  This file is part of Game Catalogue.
 //
 //  Game Catalogue is free software: you can redistribute it and/or modify
@@ -13,9 +13,9 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
-//  TODO: extends from BaseDetail
+//
 
-class Platform: Codable {
+class Platform: Codable { // TODO: extends from BaseDetail
     let id: Int
     let name, slug: String
     let gamesCount: Int?

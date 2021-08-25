@@ -13,7 +13,7 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
-//  TODO: Delete this
+//
 
 class Genre: Codable {
     let id: Int
