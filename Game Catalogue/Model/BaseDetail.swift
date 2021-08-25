@@ -1,4 +1,4 @@
-//
+////
 //  This file is part of Game Catalogue.
 //
 //  Game Catalogue is free software: you can redistribute it and/or modify
@@ -13,19 +13,19 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
-//  TODO: Delete this
+//
 
-class Genre: Codable {
+class BaseDetail: Codable {
     let id: Int
     let name, slug: String
     let gamesCount: Int
     let imageBackground: String
-    let genreDescription: String?
+    let description: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name, slug
         case gamesCount = "games_count"
         case imageBackground = "image_background"
-        case genreDescription = "description"
+        case description
     }
 }
