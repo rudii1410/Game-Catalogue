@@ -47,6 +47,7 @@ private class ImageLoader: ObservableObject {
     private var url: URL?
     private let mainQueue = DispatchQueue.main
     private let imageQueue = DispatchQueue.global(qos: .userInteractive)
+    private let maxRetryAttempt = 5
 
     init(urlStr: String) {
         self.url = URL(string: urlStr)
@@ -71,21 +72,30 @@ private class ImageLoader: ObservableObject {
                 return
             }
             print("loading image from cache \(String(describing: request.url?.absoluteString))")
-            let imageData = UIImage(data: cacheImageData) ?? defaultImage
+            guard let imageData = UIImage(data: cacheImageData) else {
+                self.loadFromUrl(url: url, request: request, cache: cache)
+                return
+            }
             self.mainQueue.async {
                 self.didChange.send(imageData)
             }
         }
     }
 
-    private func loadFromUrl(url: URL, request: URLRequest, cache: URLCache ) {
+    private func loadFromUrl(url: URL, request: URLRequest, cache: URLCache, retry: Int = 1) {
+        if retry == maxRetryAttempt { return }
+
+        print("fetch from url attempt \(retry) \(String(describing: request.url?.absoluteString))")
         URLSession.shared.dataTask(with: request) { data, response, _ in
             guard let data = data, let response = response else { return }
             cache.storeCachedResponse(
                 CachedURLResponse(response: response, data: data),
                 for: request
             )
-            let imageData = UIImage(data: data) ?? defaultImage
+            guard let imageData = UIImage(data: data) else {
+                self.loadFromUrl(url: url, request: request, cache: cache, retry: retry + 1)
+                return
+            }
             self.mainQueue.async {
                 self.didChange.send(imageData)
             }

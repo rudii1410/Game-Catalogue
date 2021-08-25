@@ -16,8 +16,101 @@
 //
 
 import Combine
+import Foundation
 
 class GameDetailScreenViewModel: ObservableObject {
-    @Published var imageUrls: [String] = []
-    @Published var selectedTab: Int = 0
+    @Published var bannerImage: String = ""
+    @Published var gameTitle: String = "Game title"
+    @Published var genreStr: String = ""
+    @Published var rating: String = "0"
+    @Published var ratingCount: String = "0"
+    @Published var desc: String = "<p></p>"
+    @Published var screenshots: [String] = ["", "", ""]
+    @Published var platformStr: String = ""
+    @Published var releaseDate: String = ""
+    @Published var developers: String = ""
+    @Published var publisher: String = ""
+    @Published var gameList: [GameShort] = []
+    @Published var isLoading = true
+
+    private let gameRepo = GameRepository()
+    private var page = 1
+    private var isLoadingMoreData = false
+    private let mainQueue: DispatchQueue = .main
+    private var genreSlugStr = ""
+    private var isLoadingData = true
+    private var isLoadingScreenshot = true
+
+    func loadGames() {
+        if isLoadingMoreData || genreSlugStr.isEmpty { return }
+
+        isLoadingMoreData = true
+        gameRepo.getGameListByGenres(
+            genres: self.genreSlugStr,
+            page: self.page,
+            count: Constant.maxGameDataLoad
+        ) { response in
+            guard let result = response.response?.results else { return }
+
+            self.mainQueue.async {
+                self.gameList.append(contentsOf: result)
+                self.page += 1
+                self.isLoadingMoreData = false
+            }
+        }
+    }
+
+    func loadGameDetail(slug: String) {
+        self.isLoading = true
+        self.isLoadingData = true
+        self.isLoadingScreenshot = true
+
+        gameRepo.getGameDetail(id: slug) { response in
+            guard let result = response.response else { return }
+
+            let genreStr = result.genres?.map { $0.name }.joined(separator: ", ") ?? ""
+            let platformStr = result.platforms?.map { $0.platform.name }.joined(separator: ", ") ?? ""
+            let developers = result.developers?.map { $0.name }.joined(separator: ", ") ?? ""
+            let publishers = result.publishers?.map { $0.name }.joined(separator: ", ") ?? ""
+            self.mainQueue.async {
+                self.bannerImage = result.backgroundImage
+                self.gameTitle = result.name
+                self.genreStr = genreStr
+                self.rating = String(result.rating ?? 0)
+                self.ratingCount = String(result.ratingsCount ?? 0)
+                self.desc = result.description
+                self.platformStr = platformStr
+                self.releaseDate = self.reformatDate(date: result.released)
+                self.developers = developers
+                self.publisher = publishers
+                self.isLoadingData = false
+                self.updateLoadingState()
+            }
+
+            self.genreSlugStr = result.genres?.map { $0.slug }.joined(separator: ",") ?? ""
+            self.loadGames()
+        }
+        gameRepo.getGameScreenShots(id: slug) { response in
+            guard let result = response.response?.results else { return }
+            let screenshots = result.map { $0.image }
+            self.mainQueue.async {
+                self.screenshots = screenshots
+                self.isLoadingScreenshot = false
+                self.updateLoadingState()
+            }
+        }
+    }
+
+    private func updateLoadingState() {
+        self.isLoading = self.isLoadingData || self.isLoadingScreenshot
+    }
+
+    private func reformatDate(date: String?) -> String {
+        guard let date = date else { return "" }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        guard let convertedDate = dateFormatter.date(from: date) else { return "" }
+        dateFormatter.dateFormat = "MMM d, y"
+        return dateFormatter.string(from: convertedDate)
+    }
 }

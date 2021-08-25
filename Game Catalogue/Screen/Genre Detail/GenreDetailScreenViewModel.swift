@@ -64,8 +64,8 @@ class GenreDetailScreenViewModel: ObservableObject {
 
     private func loadGameList() {
         isLoadingMoreData = true
-        gameRepo.getGameListByGenre(
-            genreId: slug,
+        gameRepo.getGameListByGenres(
+            genres: slug,
             page: page,
             count: Constant.maxGameDataLoad
         ) { response in
