@@ -15,25 +15,12 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class GameShort: Codable {
-    let id: Int
-    let slug, name: String
-    let released: String?
-    let backgroundImage: String
-    let rating: Double?
-    let ratingsCount: Int?
+import Foundation
 
-    enum CodingKeys: String, CodingKey {
-        case id, slug, name, released
-        case backgroundImage = "background_image"
-        case rating
-        case ratingsCount = "ratings_count"
-    }
-
-    func getFormattedString(format: String) -> String {
-        guard let data = released?.toDate(format: "yyyy-MM-dd") else {
-            return released ?? "-"
-        }
-        return data.toString(format: format)
+extension String {
+    func toDate(format: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.date(from: self)
     }
 }

@@ -51,6 +51,8 @@
 		CFD34EB326C93823001832D8 /* GamesVerticalGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EB226C93823001832D8 /* GamesVerticalGrid.swift */; };
 		CFD34EB726C93CB2001832D8 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EB626C93CB2001832D8 /* RoundedCorner.swift */; };
 		CFD34EBC26C93D06001832D8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EBB26C93D06001832D8 /* View.swift */; };
+		CFE8D9DD26D8EE310054834B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE8D9DC26D8EE310054834B /* String.swift */; };
+		CFE8D9DF26D8EF320054834B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE8D9DE26D8EF320054834B /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +104,8 @@
 		CFD34EB226C93823001832D8 /* GamesVerticalGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesVerticalGrid.swift; sourceTree = "<group>"; };
 		CFD34EB626C93CB2001832D8 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		CFD34EBB26C93D06001832D8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		CFE8D9DC26D8EE310054834B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		CFE8D9DE26D8EF320054834B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +313,8 @@
 			children = (
 				CFD34EA826C90855001832D8 /* Text.swift */,
 				CFD34EBB26C93D06001832D8 /* View.swift */,
+				CFE8D9DC26D8EE310054834B /* String.swift */,
+				CFE8D9DE26D8EF320054834B /* Date.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 			files = (
 				CFD34EBC26C93D06001832D8 /* View.swift in Sources */,
 				CF5AB40526CE16C30097C09D /* PublisherListScreenViewModel.swift in Sources */,
+				CFE8D9DD26D8EE310054834B /* String.swift in Sources */,
 				CF0595AF26CD04CD00143D6E /* Request.swift in Sources */,
 				CF0595B426CD139400143D6E /* RAWGResponse.swift in Sources */,
 				CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */,
@@ -490,6 +497,7 @@
 				CF0595AB26CD020E00143D6E /* HomeScreenViewModel.swift in Sources */,
 				CF9AC95B26CE575C004341BD /* PublisherDetailScreen.swift in Sources */,
 				CF879AAE26D5330B0039EE8C /* GameDetail.swift in Sources */,
+				CFE8D9DF26D8EF320054834B /* Date.swift in Sources */,
 				CF9AC95E26CE5B11004341BD /* LoadingView.swift in Sources */,
 				CF4D587D26D205C8002F6F54 /* HTMLView.swift in Sources */,
 				CF9AC96B26CE60DA004341BD /* GenreDetailScreenViewModel.swift in Sources */,
@@ -627,7 +635,7 @@
 				DEVELOPMENT_TEAM = RLQU784C73;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Game Catalogue/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -635,7 +643,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.rudiyanto.Game-Catalogue";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -650,7 +658,7 @@
 				DEVELOPMENT_TEAM = RLQU784C73;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Game Catalogue/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -658,7 +666,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.rudiyanto.Game-Catalogue";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
