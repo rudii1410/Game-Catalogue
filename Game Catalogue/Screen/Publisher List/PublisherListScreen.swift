@@ -32,7 +32,7 @@ struct PublisherListScreen: View {
         ScrollView {
             NavigationLink(
                 destination: PublisherDetailScreen(
-                    slug: self.model.selectedPublisher?.slug ?? "" // TODO: revised this later
+                    slug: self.model.selectedPublisher?.slug ?? ""
                 ),
                 isActive: self.$model.navigateToPublisherDetail,
                 label: { EmptyView() }

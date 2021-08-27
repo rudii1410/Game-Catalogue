@@ -70,7 +70,7 @@ class PublisherDetailScreenViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.gameTitle = result.name
                 self.imageUrl = result.imageBackground
-                self.desc = result.publisherDescription ?? "" // TODO: revised later
+                self.desc = result.publisherDescription ?? ""
             }
         }
     }

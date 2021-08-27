@@ -30,7 +30,6 @@ struct LoadableImage<Content>: View where Content: View {
         _ urlStr: String,
         @ViewBuilder callback: @escaping (_ img: Image) -> Content
     ) {
-        print("loadable image created")
         self.urlStr = urlStr
         self.callback = callback
     }
@@ -55,10 +54,6 @@ private class ImageLoader: ObservableObject {
     private var urlCache = URLCache.shared
     private var memImageCache = ImageCache.getImageCache()
 
-    init() {
-        print("image loader created")
-    }
-
     func load(_ urlStr: String) {
         guard let url = URL(string: urlStr) else { return }
         loadFromMemCache(url: url)
@@ -69,7 +64,6 @@ private class ImageLoader: ObservableObject {
             self.loadFromUrlCache(url: url)
             return
         }
-        print("loading image from mem cache \(String(describing: url.absoluteString))")
         self.didChange.send(fromMemCache)
     }
 
@@ -89,7 +83,6 @@ private class ImageLoader: ObservableObject {
             return
         }
 
-        print("loading image from url cache \(String(describing: url.absoluteString))")
         self.mainQueue.async {
             self.didChange.send(imageData)
         }
@@ -98,7 +91,6 @@ private class ImageLoader: ObservableObject {
     private func loadFromUrl(url: URL, request: URLRequest, retry: Int = 1) {
         if retry == maxRetryAttempt { return }
 
-        print("fetch from url attempt \(retry) \(String(describing: request.url?.absoluteString))")
         URLSession.shared.dataTask(with: request) { data, response, _ in
             guard let data = data, let response = response else {
                 self.loadFromUrl(url: url, request: request, retry: retry + 1)
@@ -134,7 +126,6 @@ private class ImageCache {
     }
 
     func set(forKey: String, image: UIImage) {
-        print("store")
         cache.setObject(image, forKey: NSString(string: forKey))
     }
 }

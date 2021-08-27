@@ -70,7 +70,7 @@ class GenreDetailScreenViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.genreTitle = result.name
                 self.imageUrl = result.imageBackground
-                self.desc = result.genreDescription ?? "" // TODO: revised later
+                self.desc = result.genreDescription ?? ""
             }
         }
     }

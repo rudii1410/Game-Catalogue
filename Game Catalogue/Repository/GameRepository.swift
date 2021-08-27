@@ -27,7 +27,7 @@ class GameRepository {
         var dateComponent = DateComponents()
         dateComponent.day = 1
         guard let startDate = Calendar.current.date(byAdding: dateComponent, to: Date()) else {
-            return // TODO: revisit this later
+            return
         }
 
         var tempEndDate = inputEndDate
@@ -36,7 +36,7 @@ class GameRepository {
             tempEndDate = Calendar.current.date(byAdding: dateComponent, to: Date())
         }
         guard let endDate = tempEndDate else {
-            return // TODO: revisit this later
+            return
         }
 
         let format = DateFormatter()

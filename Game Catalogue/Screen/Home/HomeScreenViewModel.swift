@@ -44,7 +44,6 @@ class HomeScreenViewModel: ObservableObject {
     private let genreRepo = GameGenreRepository()
 
     public func onBannerImagePressed(_ idx: Int) {
-        print("pressed \(idx)")
         self.onGameSelected(self.upcomingGames[idx].slug)
     }
 
