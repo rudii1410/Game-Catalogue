@@ -61,6 +61,7 @@ struct ContentView: View {
                 Text("Profile")
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

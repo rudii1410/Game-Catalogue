@@ -24,15 +24,20 @@ class HomeScreenViewModel: ObservableObject {
     @Published var navigateToPublisherDetail = false
     @Published var navigateToGenreList = false
     @Published var navigateToGenreDetail = false
-    @Published var upcomingGamesBanner: [String] = ["", "", ""]
+    @Published var navigateToGameDetail = false
+    @Published var upcomingGamesBanner: [String] = []
     @Published var gamePublisherList: [ItemListHorizontalData] = []
     @Published var gameGenreList: [ItemGridData] = []
+    @Published var isLoadingGameData = false
+    @Published var gameList: [GameShort] = []
 
     var upcomingGames: [GameShort] = []
     var publisherList: [Publisher] = []
     var genreList: [Genre] = []
     var selectedPublisherSlug = ""
     var selectedGenreSlug = ""
+    var selectedGameSlug = ""
+    private var gameListPage = 1
 
     private let gameRepo = GameRepository()
     private let publisherRepo = GamePublisherRepository()
@@ -86,5 +91,29 @@ class HomeScreenViewModel: ObservableObject {
                 self.gameGenreList = listData
             }
         }
+    }
+
+    func fetchGameList() {
+        if self.isLoadingGameData { return }
+        self.isLoadingGameData = true
+
+        gameRepo.getGameListByGenres(
+            genres: "action",
+            page: self.gameListPage,
+            count: Constant.maxGameDataLoad
+        ) { response in
+            guard let result = response.response?.results else { return }
+
+            DispatchQueue.main.async {
+                self.gameList.append(contentsOf: result)
+                self.gameListPage += 1
+                self.isLoadingGameData = false
+            }
+        }
+    }
+
+    func onGameSelected(_ slug: String) {
+        self.selectedGameSlug = slug
+        self.navigateToGameDetail = true
     }
 }

@@ -18,39 +18,29 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    static let imgs = "https://statik.tempo.co/data/2019/09/11/id_871476/871476_720.jpg"
-
-    @State private var games: [GamesGridData] = []
-    @State private var isLoadingGamesData = false
-    @State private var isReachMaxFetch = false
-    @State private var fetchCounter = 0
-    @State private var headerImgs: [String] = []
-
     @ObservedObject private var model = HomeScreenViewModel()
-    let maxFetch = 3
+
+    init() {
+        self.model.fetchUpcomingReleaseGame()
+        self.model.fetchPublisherList()
+    }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                renderImageSlider()
+        GeometryReader { fullScreen in
+            ScrollView {
+                renderImageSlider(fullScreen)
                 Divider()
+                    .padding(.vertical, 20)
                 renderGamePublisher()
                 Divider()
+                    .padding(.vertical, 20)
                 renderGameGenre()
                 Divider()
-//                renderGameList()
+                    .padding(.vertical, 20)
+                renderGameList()
 
-                if isLoadingGamesData {
+                if self.model.isLoadingGameData {
                     LoadingView()
-                }
-
-                if isReachMaxFetch {
-                    Text("Whoaa you arrive at the end. Maybe go to the Explore tab to see more??")
-                        .font(.system(size: 12))
-                        .fontWeight(.medium)
-                        .multilineTextAlignment(.center)
-                        .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
-                        .frame(maxWidth: .infinity, alignment: .center)
                 }
 
                 Spacer(minLength: 8)
@@ -60,7 +50,7 @@ struct HomeScreen: View {
 }
 
 extension HomeScreen {
-    func renderImageSlider() -> some View {
+    func renderImageSlider(_ screen: GeometryProxy) -> some View {
         return VStack(spacing: 8) {
             Text("Upcoming Release")
                 .asSectionTitle()
@@ -71,9 +61,10 @@ extension HomeScreen {
             ) { idx in
                 model.onBannerImagePressed(idx)
             }
-        }.onAppear {
-            self.model.fetchUpcomingReleaseGame()
+            .padding(.horizontal, 12)
+            .frame(width: screen.size.width, height: screen.size.width / 2)
         }
+        .padding(.bottom, 4)
     }
 }
 
@@ -101,8 +92,6 @@ extension HomeScreen {
                     self.model.navigateToPublisherDetail = true
                 }
             )
-        }.onAppear {
-            self.model.fetchPublisherList()
         }
     }
 }
@@ -140,28 +129,24 @@ extension HomeScreen {
 }
 
 extension HomeScreen {
-//    func renderGameList() -> some View {
-//        return GamesVerticalGrid(
-//            title: "You may like these games",
-//            datas: [$games]
-//        ) {
-//            if isReachMaxFetch || isLoadingGamesData { return }
-//
-//            isLoadingGamesData = true
-//            let start = self.games.count
-//            let end = start + 10
-//            print("\(start) \(end)")
-//            var games: [GamesGridData] = []
-//            for key in start...end - 1 {
-//                let add = key % 3 == 0 ? "asdahs hsgdkaj dajsghdahsdh agsdhgs sdsd" : ""
-//                games.append(GamesGridData(identifier: String(key), imgUrl: HomeScreen.imgs, title: "Title games \(add)", releaseDate: "21-01-1990", rating: "5.0"))
-//            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//                self.games.append(contentsOf: games)
-//                fetchCounter += 1
-//                isReachMaxFetch = fetchCounter > maxFetch
-//                isLoadingGamesData = false
-//            }
-//        }
-//    }
+    func renderGameList() -> some View {
+        return Group {
+            NavigationLink(
+                destination: GameDetailScreen(
+                    slug: self.model.selectedGameSlug
+                ),
+                isActive: self.$model.navigateToGameDetail,
+                label: { EmptyView() }
+            )
+            GamesVerticalGrid(
+                title: "You may like these games",
+                datas: self.$model.gameList,
+                loadMore: self.model.fetchGameList,
+                onItemTap: self.model.onGameSelected
+            )
+            .onAppear {
+                self.model.fetchGameList()
+            }
+        }
+    }
 }
