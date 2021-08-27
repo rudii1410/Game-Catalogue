@@ -19,7 +19,7 @@ import SwiftUI
 
 struct FavouritesScreen: View {
     var datas = [GamesGridData](
-        repeating: GamesGridData(identifier: UUID().uuidString, imgUrl: HomeScreen.imgs, title: "Title games", releaseDate: "21-01-1990", rating: "5.0"),
+        repeating: GamesGridData(identifier: UUID().uuidString, imgUrl: "", title: "Title games", releaseDate: "21-01-1990", rating: "5.0"),
         count: 100
     )
     @State var searchText: String = ""

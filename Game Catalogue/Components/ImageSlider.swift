@@ -38,6 +38,9 @@ struct ImageSlider: View {
                             .clipped()
                             .scaledToFill()
                             .tag(idx)
+                            .onTapGesture {
+                                self.onPress?(idx)
+                            }
                     }
                 }
             }

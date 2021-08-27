@@ -45,6 +45,7 @@ class HomeScreenViewModel: ObservableObject {
 
     public func onBannerImagePressed(_ idx: Int) {
         print("pressed \(idx)")
+        self.onGameSelected(self.upcomingGames[idx].slug)
     }
 
     func fetchUpcomingReleaseGame() {

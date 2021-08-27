@@ -23,7 +23,9 @@ class PublisherDetailScreenViewModel: ObservableObject {
     @Published var desc = ""
     @Published var gameTitle = ""
     @Published var gameList: [GameShort] = []
+    @Published var navigateToGameDetail = false
 
+    var selectedGameSlug = ""
     private var isLoadingMoreData = false
     private var page = 1
     private var slug = ""
@@ -37,32 +39,14 @@ class PublisherDetailScreenViewModel: ObservableObject {
         loadGameList()
     }
 
-    func loadMoreGameIfNeeded(_ item: GameShort? = nil) {
-        if isLoadingMoreData { return }
-        guard let item = item else {
-            loadGameList()
-            return
-        }
-
-        let tresholdIdx = gameList.index(gameList.endIndex, offsetBy: -3)
-        if gameList.firstIndex(where: { $0.id == item.id }) == tresholdIdx {
-            loadGameList()
-        }
+    func onGameTap(_ slug: String) {
+        self.selectedGameSlug = slug
+        self.navigateToGameDetail = true
     }
 
-    private func loadPublisherDetail() {
-        publisherRepo.getPublisherDetail(id: slug) { response in
-            guard let result = response.response else { return }
+    func loadGameList() {
+        if self.isLoadingMoreData { return }
 
-            DispatchQueue.main.async {
-                self.gameTitle = result.name
-                self.imageUrl = result.imageBackground
-                self.desc = result.publisherDescription ?? "" // TODO: revised later
-            }
-        }
-    }
-
-    private func loadGameList() {
         isLoadingMoreData = true
         gameRepo.getGameListByPublisher(
             publisherId: slug,
@@ -75,6 +59,18 @@ class PublisherDetailScreenViewModel: ObservableObject {
                 self.gameList.append(contentsOf: result)
                 self.page += 1
                 self.isLoadingMoreData = false
+            }
+        }
+    }
+
+    private func loadPublisherDetail() {
+        publisherRepo.getPublisherDetail(id: slug) { response in
+            guard let result = response.response else { return }
+
+            DispatchQueue.main.async {
+                self.gameTitle = result.name
+                self.imageUrl = result.imageBackground
+                self.desc = result.publisherDescription ?? "" // TODO: revised later
             }
         }
     }

@@ -32,6 +32,9 @@ class GameDetailScreenViewModel: ObservableObject {
     @Published var publisher: String = ""
     @Published var gameList: [GameShort] = []
     @Published var isLoading = true
+    @Published var navigateToGameDetail = false
+
+    var selectedGameSlug = ""
 
     private let gameRepo = GameRepository()
     private var page = 1
@@ -40,6 +43,11 @@ class GameDetailScreenViewModel: ObservableObject {
     private var genreSlugStr = ""
     private var isLoadingData = true
     private var isLoadingScreenshot = true
+
+    func onGameTap(_ slug: String) {
+        self.selectedGameSlug = slug
+        self.navigateToGameDetail = true
+    }
 
     func loadGames() {
         if isLoadingMoreData || genreSlugStr.isEmpty { return }

@@ -27,6 +27,13 @@ struct HomeScreen: View {
 
     var body: some View {
         GeometryReader { fullScreen in
+            NavigationLink(
+                destination: GameDetailScreen(
+                    slug: self.model.selectedGameSlug
+                ),
+                isActive: self.$model.navigateToGameDetail,
+                label: { EmptyView() }
+            )
             ScrollView {
                 renderImageSlider(fullScreen)
                 Divider()
@@ -130,23 +137,14 @@ extension HomeScreen {
 
 extension HomeScreen {
     func renderGameList() -> some View {
-        return Group {
-            NavigationLink(
-                destination: GameDetailScreen(
-                    slug: self.model.selectedGameSlug
-                ),
-                isActive: self.$model.navigateToGameDetail,
-                label: { EmptyView() }
-            )
-            GamesVerticalGrid(
-                title: "You may like these games",
-                datas: self.$model.gameList,
-                loadMore: self.model.fetchGameList,
-                onItemTap: self.model.onGameSelected
-            )
-            .onAppear {
-                self.model.fetchGameList()
-            }
+        return GamesVerticalGrid(
+            title: "You may like these games",
+            datas: self.$model.gameList,
+            loadMore: self.model.fetchGameList,
+            onItemTap: self.model.onGameSelected
+        )
+        .onAppear {
+            self.model.fetchGameList()
         }
     }
 }

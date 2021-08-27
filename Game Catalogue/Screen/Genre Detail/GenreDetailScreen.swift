@@ -28,6 +28,13 @@ struct GenreDetailScreen: View {
 
     var body: some View {
         ScrollView {
+            NavigationLink(
+                destination: GameDetailScreen(
+                    slug: self.model.selectedGameSlug
+                ),
+                isActive: self.$model.navigateToGameDetail,
+                label: { EmptyView() }
+            )
             LazyVStack {
                 LoadableImage(self.model.imageUrl) { image in
                     image.resizable()
@@ -47,10 +54,10 @@ struct GenreDetailScreen: View {
 
                 GamesVerticalGrid(
                     title: "Game from this genre",
-                    datas: self.$model.gameList
-                ) {
-                    self.model.loadMoreGameIfNeeded()
-                }
+                    datas: self.$model.gameList,
+                    loadMore: self.model.loadGameList,
+                    onItemTap: self.model.onGameTap
+                )
                 .padding(.bottom, 8)
                 LoadingView()
             }

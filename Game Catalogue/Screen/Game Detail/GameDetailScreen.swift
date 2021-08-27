@@ -49,6 +49,13 @@ struct GameDetailScreen: View {
         return GeometryReader { fullScreen in
             ScrollView {
                 VStack {
+                    NavigationLink(
+                        destination: GameDetailScreen(
+                            slug: self.model.selectedGameSlug
+                        ),
+                        isActive: self.$model.navigateToGameDetail,
+                        label: { EmptyView() }
+                    )
                     renderHeaderSection()
                         .padding(.bottom, 22)
                     renderGameDescSection()
@@ -61,10 +68,10 @@ struct GameDetailScreen: View {
                         .padding(.bottom, 22)
                     GamesVerticalGrid(
                         title: "Game like this",
-                        datas: self.$model.gameList
-                    ) {
-                        self.model.loadGames()
-                    }
+                        datas: self.$model.gameList,
+                        loadMore: self.model.loadGames,
+                        onItemTap: self.model.onGameTap
+                    )
                     .padding(.bottom, 8)
                     LoadingView()
                     Spacer(minLength: 22)
@@ -137,12 +144,13 @@ struct GameDetailScreen: View {
             Text("Game Screenshots")
                 .font(.title3)
                 .bold()
+                .padding(.horizontal, 12)
             ImageSlider(
                 urls: self.$model.screenshots
             )
+            .padding(.horizontal, 12)
             .frame(width: screen.size.width, height: screen.size.width / 2)
         }
-        .padding(.horizontal, 12)
     }
 
     private func renderPlatformAndReleaseDateSection() -> some View {

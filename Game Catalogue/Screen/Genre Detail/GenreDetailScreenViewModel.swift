@@ -23,7 +23,9 @@ class GenreDetailScreenViewModel: ObservableObject {
     @Published var desc = ""
     @Published var genreTitle = ""
     @Published var gameList: [GameShort] = []
+    @Published var navigateToGameDetail = false
 
+    var selectedGameSlug = ""
     private var isLoadingMoreData = false
     private var page = 1
     private var slug = ""
@@ -37,32 +39,14 @@ class GenreDetailScreenViewModel: ObservableObject {
         loadGameList()
     }
 
-    func loadMoreGameIfNeeded(_ item: GameShort? = nil) {
+    func onGameTap(_ slug: String) {
+        self.selectedGameSlug = slug
+        self.navigateToGameDetail = true
+    }
+
+    func loadGameList() {
         if isLoadingMoreData { return }
-        guard let item = item else {
-            loadGameList()
-            return
-        }
 
-        let tresholdIdx = gameList.index(gameList.endIndex, offsetBy: -3)
-        if gameList.firstIndex(where: { $0.id == item.id }) == tresholdIdx {
-            loadGameList()
-        }
-    }
-
-    private func loadGenreDetail() {
-        genreRepo.getGenreDetail(id: slug) { response in
-            guard let result = response.response else { return }
-
-            DispatchQueue.main.async {
-                self.genreTitle = result.name
-                self.imageUrl = result.imageBackground
-                self.desc = result.genreDescription ?? "" // TODO: revised later
-            }
-        }
-    }
-
-    private func loadGameList() {
         isLoadingMoreData = true
         gameRepo.getGameListByGenres(
             genres: slug,
@@ -75,6 +59,18 @@ class GenreDetailScreenViewModel: ObservableObject {
                 self.gameList.append(contentsOf: result)
                 self.page += 1
                 self.isLoadingMoreData = false
+            }
+        }
+    }
+
+    private func loadGenreDetail() {
+        genreRepo.getGenreDetail(id: slug) { response in
+            guard let result = response.response else { return }
+
+            DispatchQueue.main.async {
+                self.genreTitle = result.name
+                self.imageUrl = result.imageBackground
+                self.desc = result.genreDescription ?? "" // TODO: revised later
             }
         }
     }
