@@ -19,87 +19,129 @@ import SwiftUI
 import Combine
 
 private let defaultImage = UIImage(named: "placeholder") ?? UIImage()
+
 struct LoadableImage<Content>: View where Content: View {
-    @ObservedObject private var imageLoader: ImageLoader
+    @ObservedObject private var imageLoader = ImageLoader()
     @State private var image = defaultImage
     private let callback: (Image) -> Content
+    private let urlStr: String
 
     init(
         _ urlStr: String,
         @ViewBuilder callback: @escaping (_ img: Image) -> Content
     ) {
-        imageLoader = ImageLoader(urlStr: urlStr)
+        print("loadable image created")
+        self.urlStr = urlStr
         self.callback = callback
     }
 
     var body: some View {
         self.callback(Image(uiImage: self.image))
-            .onReceive(imageLoader.didChange) { data in
+            .onReceive(self.imageLoader.didChange) { data in
                 self.image = data
             }
-            .onAppear { imageLoader.load() }
+            .onAppear {
+                self.imageLoader.load(urlStr)
+            }
     }
 }
 
 private class ImageLoader: ObservableObject {
     var didChange = PassthroughSubject<UIImage, Never>()
 
-    private var url: URL?
     private let mainQueue = DispatchQueue.main
     private let imageQueue = DispatchQueue.global(qos: .userInteractive)
     private let maxRetryAttempt = 5
+    private var urlCache = URLCache.shared
+    private var memImageCache = ImageCache.getImageCache()
 
-    init(urlStr: String) {
-        self.url = URL(string: urlStr)
+    init() {
+        print("image loader created")
     }
 
-    func load() {
-        guard let url = self.url else { return }
-        self.loadFromCache(url: url)
+    func load(_ urlStr: String) {
+        guard let url = URL(string: urlStr) else { return }
+        loadFromMemCache(url: url)
     }
 
-    private func loadFromCache(url: URL) {
-        imageQueue.async {
-            let cache = URLCache.shared
-            let request = URLRequest(
-                url: url,
-                cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad,
-                timeoutInterval: 60
-            )
+    private func loadFromMemCache(url: URL) {
+        guard let fromMemCache = self.memImageCache.get(forKey: url.absoluteString) else {
+            self.loadFromUrlCache(url: url)
+            return
+        }
+        print("loading image from mem cache \(String(describing: url.absoluteString))")
+        self.didChange.send(fromMemCache)
+    }
 
-            guard let cacheImageData = cache.cachedResponse(for: request)?.data else {
-                self.loadFromUrl(url: url, request: request, cache: cache)
-                return
-            }
-            print("loading image from cache \(String(describing: request.url?.absoluteString))")
-            guard let imageData = UIImage(data: cacheImageData) else {
-                self.loadFromUrl(url: url, request: request, cache: cache)
-                return
-            }
-            self.mainQueue.async {
-                self.didChange.send(imageData)
-            }
+    private func loadFromUrlCache(url: URL) {
+        let request = URLRequest(
+            url: url,
+            cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad,
+            timeoutInterval: 60
+        )
+
+        guard let cacheImageData = self.urlCache.cachedResponse(for: request)?.data else {
+            self.loadFromUrl(url: url, request: request)
+            return
+        }
+        guard let imageData = UIImage(data: cacheImageData) else {
+            self.loadFromUrl(url: url, request: request)
+            return
+        }
+
+        print("loading image from url cache \(String(describing: url.absoluteString))")
+        self.mainQueue.async {
+            self.didChange.send(imageData)
         }
     }
 
-    private func loadFromUrl(url: URL, request: URLRequest, cache: URLCache, retry: Int = 1) {
+    private func loadFromUrl(url: URL, request: URLRequest, retry: Int = 1) {
         if retry == maxRetryAttempt { return }
 
         print("fetch from url attempt \(retry) \(String(describing: request.url?.absoluteString))")
         URLSession.shared.dataTask(with: request) { data, response, _ in
-            guard let data = data, let response = response else { return }
-            cache.storeCachedResponse(
-                CachedURLResponse(response: response, data: data),
-                for: request
-            )
-            guard let imageData = UIImage(data: data) else {
-                self.loadFromUrl(url: url, request: request, cache: cache, retry: retry + 1)
+            guard let data = data, let response = response else {
+                self.loadFromUrl(url: url, request: request, retry: retry + 1)
                 return
             }
+
+            guard let imageData = UIImage(data: data) else {
+                self.loadFromUrl(url: url, request: request, retry: retry + 1)
+                return
+            }
+
             self.mainQueue.async {
                 self.didChange.send(imageData)
+                self.urlCache.storeCachedResponse(
+                    CachedURLResponse(response: response, data: data),
+                    for: request
+                )
+                self.memImageCache.set(
+                    forKey: url.absoluteString,
+                    image: imageData
+                )
             }
         }
         .resume()
+    }
+}
+
+private class ImageCache {
+    var cache = NSCache<NSString, UIImage>()
+
+    func get(forKey: String) -> UIImage? {
+        return cache.object(forKey: NSString(string: forKey))
+    }
+
+    func set(forKey: String, image: UIImage) {
+        print("store")
+        cache.setObject(image, forKey: NSString(string: forKey))
+    }
+}
+
+private extension ImageCache {
+    private static var imageCache = ImageCache()
+    static func getImageCache() -> ImageCache {
+        return imageCache
     }
 }

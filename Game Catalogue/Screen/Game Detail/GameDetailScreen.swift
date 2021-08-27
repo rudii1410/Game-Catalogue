@@ -41,19 +41,19 @@ struct GameDetailScreen: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
         } else {
             renderContent()
-                .navigationBarTitle(self.model.gameTitle, displayMode: .large)
+                .navigationBarTitle("Game Details", displayMode: .inline)
         }
     }
 
     private func renderContent() -> some View {
-        return Group {
+        return GeometryReader { fullScreen in
             ScrollView {
                 VStack {
                     renderHeaderSection()
                         .padding(.bottom, 22)
                     renderGameDescSection()
                         .padding(.bottom, 22)
-                    renderGameScreenshotSection()
+                    renderGameScreenshotSection(fullScreen)
                         .padding(.bottom, 22)
                     renderPlatformAndReleaseDateSection()
                         .padding(.bottom, 22)
@@ -74,14 +74,19 @@ struct GameDetailScreen: View {
     }
 
     private func renderHeaderSection() -> some View {
-        return VStack {
+        return VStack(alignment: .leading) {
             LoadableImage(self.model.bannerImage) { image in
                 image.resizable()
                     .frame(height: 200)
                     .aspectRatio(contentMode: .fit)
             }
 
-            Spacer(minLength: 18)
+            Text(self.model.gameTitle)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .padding(.init(top: 16, leading: 12, bottom: 8, trailing: 12))
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
 
             HStack(alignment: .center, spacing: 0) {
                 VStack(alignment: .leading, spacing: 4) {
@@ -91,6 +96,7 @@ struct GameDetailScreen: View {
                     Text(self.model.genreStr)
                         .font(.system(size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
@@ -126,16 +132,17 @@ struct GameDetailScreen: View {
         .padding(.horizontal, 12)
     }
 
-    private func renderGameScreenshotSection() -> some View {
+    private func renderGameScreenshotSection(_ screen: GeometryProxy) -> some View {
         return VStack(alignment: .leading, spacing: 8) {
             Text("Game Screenshots")
                 .font(.title3)
                 .bold()
-                .padding(.horizontal, 12)
             ImageSlider(
                 urls: self.$model.screenshots
             )
+            .frame(width: screen.size.width, height: screen.size.width / 2)
         }
+        .padding(.horizontal, 12)
     }
 
     private func renderPlatformAndReleaseDateSection() -> some View {

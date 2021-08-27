@@ -28,6 +28,7 @@ struct GamesVerticalGrid: View {
     var title: String
     @Binding var datas: [GameShort]
     var loadMore: (() -> Void)?
+    var onItemTap: ((String) -> Void)?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -37,14 +38,15 @@ struct GamesVerticalGrid: View {
 
             LazyVGrid(columns: gridLayout) {
                 ForEach(0..<datas.count, id: \.self) { idx in
-                    VStack(alignment: .leading, spacing: 0) {
-                        renderBody(game: self.datas[idx])
-                    }
-                    .frame(width: cardWidth)
-                    .asCard()
-                    .onAppear {
-                        loadDataIfNeeded(datas[idx])
-                    }
+                    renderBody(game: self.datas[idx])
+                        .frame(width: cardWidth)
+                        .asCard()
+                        .onAppear {
+                            loadDataIfNeeded(self.datas[idx])
+                        }
+                        .onTapGesture {
+                            self.onItemTap?(self.datas[idx].slug)
+                        }
                 }
             }
             .padding(.horizontal, 12)
@@ -55,7 +57,7 @@ struct GamesVerticalGrid: View {
     }
 
     private func renderBody(game: GameShort) -> some View {
-        return Group {
+        return VStack(alignment: .leading, spacing: 0) {
             LoadableImage(game.backgroundImage) { image in
                 image.resizable()
                     .clipped()
@@ -68,7 +70,7 @@ struct GamesVerticalGrid: View {
                     .fontWeight(.semibold)
                     .lineLimit(1)
                     .padding(.vertical, 2)
-                Text("Release: \(game.released ?? "-")")
+                Text("Release: \(game.getFormattedString(format: "MMM d, y"))")
                     .font(.system(size: 14))
                     .fontWeight(.light)
                 HStack(spacing: 4) {
