@@ -17,7 +17,6 @@
 		CF377CA726D6585700D1A9F4 /* Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF377CA626D6585700D1A9F4 /* Screenshot.swift */; };
 		CF3E795226CB84C80087227E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E795126CB84C80087227E /* SearchBar.swift */; };
 		CF4045C826CE4E1000560D4D /* PublisherDetailScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */; };
-		CF432A1526C786C700A73D96 /* FavouritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1426C786C700A73D96 /* FavouritesScreen.swift */; };
 		CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */; };
 		CF432A2B26C799BA00A73D96 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A2A26C799BA00A73D96 /* ImageSlider.swift */; };
 		CF4D587D26D205C8002F6F54 /* HTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D587C26D205C8002F6F54 /* HTMLView.swift */; };
@@ -68,7 +67,6 @@
 		CF377CA626D6585700D1A9F4 /* Screenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screenshot.swift; sourceTree = "<group>"; };
 		CF3E795126CB84C80087227E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailScreenViewModel.swift; sourceTree = "<group>"; };
-		CF432A1426C786C700A73D96 /* FavouritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesScreen.swift; sourceTree = "<group>"; };
 		CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		CF432A2A26C799BA00A73D96 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
 		CF4D587C26D205C8002F6F54 /* HTMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLView.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 				CF4045C126CE461A00560D4D /* Publisher Detail */,
 				CF5AB3FD26CE08470097C09D /* Publisher List */,
 				CF0595A926CD01FC00143D6E /* Home */,
-				CF432A1426C786C700A73D96 /* FavouritesScreen.swift */,
 				CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */,
 			);
 			path = Screen;
@@ -471,7 +468,6 @@
 				CF4D588326D231E5002F6F54 /* Genre.swift in Sources */,
 				CFD34EB726C93CB2001832D8 /* RoundedCorner.swift in Sources */,
 				CF15055D26CFB58B0064809A /* GameShort.swift in Sources */,
-				CF432A1526C786C700A73D96 /* FavouritesScreen.swift in Sources */,
 				CF432A2B26C799BA00A73D96 /* ImageSlider.swift in Sources */,
 				CF9AC97626CE648B004341BD /* GameDetailScreen.swift in Sources */,
 				CFD34EA526C9017D001832D8 /* ItemGrid.swift in Sources */,
