@@ -22,7 +22,7 @@ class GameRepository {
         endDate inputEndDate: Date? = nil,
         page: Int = 1,
         count: Int = 10,
-        callback: @escaping (Response<RAWGResponse<GameShort>>) -> Void
+        callback: @escaping (Response<ListResponse<GameShort>>) -> Void
     ) {
         var dateComponent = DateComponents()
         dateComponent.day = 1
@@ -56,7 +56,7 @@ class GameRepository {
         publisherId: String,
         page: Int = 1,
         count: Int = 10,
-        callback: @escaping (Response<RAWGResponse<GameShort>>) -> Void
+        callback: @escaping (Response<ListResponse<GameShort>>) -> Void
     ) {
         Request("\(Constant.rawgApiUrl)/games")
             .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
@@ -70,7 +70,7 @@ class GameRepository {
         genres: String,
         page: Int = 1,
         count: Int = 10,
-        callback: @escaping (Response<RAWGResponse<GameShort>>) -> Void
+        callback: @escaping (Response<ListResponse<GameShort>>) -> Void
     ) {
         Request("\(Constant.rawgApiUrl)/games")
             .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
@@ -88,7 +88,7 @@ class GameRepository {
 
     func getGameScreenShots(
         id: String,
-        callback: @escaping (Response<RAWGResponse<Screenshot>>) -> Void
+        callback: @escaping (Response<ListResponse<Screenshot>>) -> Void
     ) {
         Request("\(Constant.rawgApiUrl)/games/\(id)/screenshots")
             .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)

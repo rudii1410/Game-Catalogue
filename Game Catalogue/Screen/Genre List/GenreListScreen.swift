@@ -23,7 +23,7 @@ struct GenreListScreen: View {
 
     @ObservedObject private var model = GenreListScreenViewModel()
 
-    init(_ genreList: [Genre]) {
+    init(_ genreList: [BaseDetail]) {
         self.model.genreList = genreList
     }
 

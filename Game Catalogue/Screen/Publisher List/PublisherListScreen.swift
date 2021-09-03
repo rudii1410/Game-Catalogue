@@ -24,7 +24,7 @@ struct PublisherListScreen: View {
 
     @ObservedObject private var model = PublisherListScreenViewModel()
 
-    init(_ data: [Publisher]) {
+    init(_ data: [BaseDetail]) {
         self.model.gamePublisher = data
     }
 

@@ -21,7 +21,7 @@ class GameGenreRepository {
     func getGenreList(
         page: Int,
         count: Int,
-        callback: @escaping (Response<RAWGResponse<Genre>>) -> Void
+        callback: @escaping (Response<ListResponse<BaseDetail>>) -> Void
     ) {
         Request("\(Constant.rawgApiUrl)/genres")
             .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
@@ -30,7 +30,7 @@ class GameGenreRepository {
             .result(callback)
     }
 
-    func getGenreDetail(id: String, callback: @escaping (Response<Genre>) -> Void) {
+    func getGenreDetail(id: String, callback: @escaping (Response<BaseDetail>) -> Void) {
         Request("\(Constant.rawgApiUrl)/genres/\(id)")
             .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
             .result(callback)

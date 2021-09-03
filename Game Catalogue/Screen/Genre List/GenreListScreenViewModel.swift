@@ -20,19 +20,19 @@ import Foundation
 
 class GenreListScreenViewModel: ObservableObject {
     @Published var navigateToGenreDetail = false
-    @Published var genreList: [Genre] = []
+    @Published var genreList: [BaseDetail] = []
 
     var selectedSlug = ""
     private var isLoadingMoreData = false
     private var page = 2
     private let genreRepo = GameGenreRepository()
 
-    public func onItemPressed(_ genre: Genre) {
+    public func onItemPressed(_ genre: BaseDetail) {
         selectedSlug = genre.slug
         navigateToGenreDetail = true
     }
 
-    public func loadMoreGenreIfNeeded(_ genre: Genre?) {
+    public func loadMoreGenreIfNeeded(_ genre: BaseDetail?) {
         if isLoadingMoreData { return }
         guard let item = genre else {
             loadMore()

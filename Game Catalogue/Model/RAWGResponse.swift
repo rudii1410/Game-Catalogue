@@ -15,7 +15,7 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class RAWGResponse<T: Codable>: Codable {
+class ListResponse<T: Codable>: Codable {
     let count: Int
     let next, previous: String?
     let results: [T]

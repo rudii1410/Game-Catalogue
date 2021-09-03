@@ -21,7 +21,7 @@ class GamePublisherRepository {
     func getPublisherList(
         page: Int,
         count: Int,
-        callback: @escaping (Response<RAWGResponse<Publisher>>) -> Void
+        callback: @escaping (Response<ListResponse<BaseDetail>>) -> Void
     ) {
         Request("\(Constant.rawgApiUrl)/publishers")
             .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
@@ -30,7 +30,7 @@ class GamePublisherRepository {
             .result(callback)
     }
 
-    func getPublisherDetail(id: String, callback: @escaping (Response<Publisher>) -> Void) {
+    func getPublisherDetail(id: String, callback: @escaping (Response<BaseDetail>) -> Void) {
         Request("\(Constant.rawgApiUrl)/publishers/\(id)")
             .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
             .result(callback)

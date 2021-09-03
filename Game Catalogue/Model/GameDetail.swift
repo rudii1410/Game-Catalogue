@@ -24,7 +24,7 @@ class GameDetail: Codable {
     let backgroundImage: String
     let rating: Double?
     let ratingsCount: Int?
-    let genres: [Genre]?
+    let genres: [BaseDetail]?
     let platforms: [GamePlatform]?
     let publishers: [BaseDetail]?
     let developers: [BaseDetail]?

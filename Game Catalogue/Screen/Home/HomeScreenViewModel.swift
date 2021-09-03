@@ -32,8 +32,8 @@ class HomeScreenViewModel: ObservableObject {
     @Published var gameList: [GameShort] = []
 
     var upcomingGames: [GameShort] = []
-    var publisherList: [Publisher] = []
-    var genreList: [Genre] = []
+    var publisherList: [BaseDetail] = []
+    var genreList: [BaseDetail] = []
     var selectedPublisherSlug = ""
     var selectedGenreSlug = ""
     var selectedGameSlug = ""

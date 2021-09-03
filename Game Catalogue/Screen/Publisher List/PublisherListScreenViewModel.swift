@@ -19,21 +19,21 @@ import Foundation
 import Combine
 
 class PublisherListScreenViewModel: ObservableObject {
-    @Published var gamePublisher: [Publisher] = []
+    @Published var gamePublisher: [BaseDetail] = []
     @Published var navigateToPublisherDetail = false
-    var selectedPublisher: Publisher?
+    var selectedPublisher: BaseDetail?
 
     private var isLoadingMoreData = false
     private var page = 2
 
     private let publisherRepo = GamePublisherRepository()
 
-    public func onItemPressed(_ item: Publisher) {
+    public func onItemPressed(_ item: BaseDetail) {
         self.selectedPublisher = item
         self.navigateToPublisherDetail = true
     }
 
-    public func loadMorePublisherIfNeeded(_ item: Publisher?) {
+    public func loadMorePublisherIfNeeded(_ item: BaseDetail?) {
         if isLoadingMoreData { return }
         guard let item = item else {
             loadMore()

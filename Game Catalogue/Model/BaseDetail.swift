@@ -22,7 +22,7 @@ class BaseDetail: Codable {
     let imageBackground: String
     let description: String?
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id, name, slug
         case gamesCount = "games_count"
         case imageBackground = "image_background"
