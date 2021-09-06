@@ -21,6 +21,7 @@ import Combine
 class PublisherListScreenViewModel: ObservableObject {
     @Published var gamePublisher: [BaseDetail] = []
     @Published var navigateToPublisherDetail = false
+    @Published var showErrorNetwork = false
     var selectedPublisher: BaseDetail?
 
     private var isLoadingMoreData = false
@@ -49,7 +50,12 @@ class PublisherListScreenViewModel: ObservableObject {
     private func loadMore() {
         isLoadingMoreData = true
         publisherRepo.getPublisherList(page: page, count: Constant.maxPublisherDataLoad) { response in
-            guard let result = response.response?.results else { return }
+            guard let result = response.response?.results else {
+                if response.error?.type == RequestError.NetworkError {
+                    self.showErrorNetwork = true
+                }
+                return
+            }
 
             DispatchQueue.main.async {
                 self.gamePublisher.append(contentsOf: result)

@@ -68,5 +68,15 @@ struct PublisherDetailScreen: View {
             self.model.gameTitle,
             displayMode: .large
         )
+        .alert(isPresented: self.$model.showErrorNetwork) {
+            Alert(
+                title: Text("Unable to load the data"),
+                message: Text("The connection to the server was lost. Go check your internet connection"),
+                dismissButton: .default(
+                    Text("Close App"),
+                    action: { exit(0) }
+                )
+            )
+        }
     }
 }

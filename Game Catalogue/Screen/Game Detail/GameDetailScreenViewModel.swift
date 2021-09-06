@@ -33,6 +33,7 @@ class GameDetailScreenViewModel: ObservableObject {
     @Published var gameList: [GameShort] = []
     @Published var isLoading = true
     @Published var navigateToGameDetail = false
+    @Published var showErrorNetwork = false
 
     var selectedGameSlug = ""
 
@@ -74,7 +75,12 @@ class GameDetailScreenViewModel: ObservableObject {
         self.isLoadingScreenshot = true
 
         gameRepo.getGameDetail(id: slug) { response in
-            guard let result = response.response else { return }
+            guard let result = response.response else {
+                if response.error?.type == RequestError.NetworkError {
+                    self.showErrorNetwork = true
+                }
+                return
+            }
 
             let genreStr = result.genres?.map { $0.name }.joined(separator: ", ") ?? ""
             let platformStr = result.platforms?.map { $0.platform.name }.joined(separator: ", ") ?? ""

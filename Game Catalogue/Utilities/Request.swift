@@ -16,6 +16,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - RequestMethod
 enum RequestMethod: String {
@@ -24,11 +25,20 @@ enum RequestMethod: String {
 }
 
 // MARK: - RequestError
-enum RequestError: Error {
-    case initializeUrlError(String)
-    case serverError(String)
-    case parsingError(String)
+struct RequestError {
+    static let NetworkError = 0
+    static let URLInitializationError = 1
+    static let ServerError = 2
+
+    let type: Int
+    let message: String
+
+    init(_ type: Int, message: String? = nil) {
+        self.type = type
+        self.message = message ?? ""
+    }
 }
+
 
 // MARK: - Generic Response
 class Response<T: Codable> {
@@ -70,7 +80,9 @@ class Request {
 
     public func result<T: Codable>(_ requestCallback: @escaping (Response<T>) -> Void) {
         guard let url = constructUrl() else {
-            requestCallback(Response<T>(error: RequestError.initializeUrlError("Error initializing url")))
+            requestCallback(Response<T>(
+                error: RequestError(RequestError.URLInitializationError, message: "Error initializing url")
+            ))
             return
         }
 
@@ -82,19 +94,30 @@ class Request {
 
         URLSession.shared.dataTask(with: request) { data, _, error in
             guard error == nil else {
-                requestCallback(Response<T>(error: RequestError.serverError(error?.localizedDescription ?? "Error")))
+                var responseError = RequestError(RequestError.ServerError, message: error?.localizedDescription)
+                if error is URLError {
+                    if let urlErr = error as? URLError, urlErr.code == URLError.Code.notConnectedToInternet {
+                        responseError = RequestError(RequestError.NetworkError, message: error?.localizedDescription)
+                    }
+                }
+
+                requestCallback(Response<T>(error: responseError))
                 return
             }
 
             do {
                 guard let data = data else {
-                    requestCallback(Response<T>(error: RequestError.serverError("null response")))
+                    requestCallback(
+                        Response<T>(error: RequestError(RequestError.ServerError, message: "response null"))
+                    )
                     return
                 }
                 let object = try JSONDecoder().decode(T.self, from: data)
                 requestCallback(Response(success: object))
             } catch {
-                requestCallback(Response(error: RequestError.parsingError("null response")))
+                requestCallback(
+                    Response<T>(error: RequestError(RequestError.ServerError, message: "response null"))
+                )
                 return
             }
         }

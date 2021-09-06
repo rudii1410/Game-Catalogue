@@ -30,6 +30,7 @@ class HomeScreenViewModel: ObservableObject {
     @Published var gameGenreList: [ItemGridData] = []
     @Published var isLoadingGameData = false
     @Published var gameList: [GameShort] = []
+    @Published var showErrorNetwork = false
 
     var upcomingGames: [GameShort] = []
     var publisherList: [BaseDetail] = []
@@ -49,7 +50,12 @@ class HomeScreenViewModel: ObservableObject {
 
     func fetchUpcomingReleaseGame() {
         gameRepo.getUpcomingRelease { response in
-            guard let result = response.response?.results else { return }
+            guard let result = response.response?.results else {
+                if response.error?.type == RequestError.NetworkError {
+                    self.showErrorNetwork = true
+                }
+                return
+            }
 
             self.upcomingGames = result
             var banner: [String] = []

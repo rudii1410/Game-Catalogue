@@ -24,6 +24,7 @@ class GenreDetailScreenViewModel: ObservableObject {
     @Published var genreTitle = ""
     @Published var gameList: [GameShort] = []
     @Published var navigateToGameDetail = false
+    @Published var showErrorNetwork = false
 
     var selectedGameSlug = ""
     private var isLoadingMoreData = false
@@ -65,7 +66,12 @@ class GenreDetailScreenViewModel: ObservableObject {
 
     private func loadGenreDetail() {
         genreRepo.getGenreDetail(id: slug) { response in
-            guard let result = response.response else { return }
+            guard let result = response.response else {
+                if response.error?.type == RequestError.NetworkError {
+                    self.showErrorNetwork = true
+                }
+                return
+            }
 
             DispatchQueue.main.async {
                 self.genreTitle = result.name

@@ -24,6 +24,7 @@ class PublisherDetailScreenViewModel: ObservableObject {
     @Published var gameTitle = ""
     @Published var gameList: [GameShort] = []
     @Published var navigateToGameDetail = false
+    @Published var showErrorNetwork = false
 
     var selectedGameSlug = ""
     private var isLoadingMoreData = false
@@ -65,7 +66,12 @@ class PublisherDetailScreenViewModel: ObservableObject {
 
     private func loadPublisherDetail() {
         publisherRepo.getPublisherDetail(id: slug) { response in
-            guard let result = response.response else { return }
+            guard let result = response.response else {
+                if response.error?.type == RequestError.NetworkError {
+                    self.showErrorNetwork = true
+                }
+                return
+            }
 
             DispatchQueue.main.async {
                 self.gameTitle = result.name
