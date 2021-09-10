@@ -23,6 +23,7 @@
 		CF4D588026D231B8002F6F54 /* GameGenreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D587F26D231B8002F6F54 /* GameGenreRepository.swift */; };
 		CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54A3B826C6514E00F89E4F /* HomeScreen.swift */; };
 		CF585DA426EB0D4800A86FA4 /* WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF585DA326EB0D4800A86FA4 /* WebImage.swift */; };
+		CF585DA826EB37AA00A86FA4 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF585DA726EB37AA00A86FA4 /* Database.swift */; };
 		CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */; };
 		CF5AB40526CE16C30097C09D /* PublisherListScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */; };
 		CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */; };
@@ -71,6 +72,7 @@
 		CF4D587F26D231B8002F6F54 /* GameGenreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGenreRepository.swift; sourceTree = "<group>"; };
 		CF54A3B826C6514E00F89E4F /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		CF585DA326EB0D4800A86FA4 /* WebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImage.swift; sourceTree = "<group>"; };
+		CF585DA726EB37AA00A86FA4 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreen.swift; sourceTree = "<group>"; };
 		CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreenViewModel.swift; sourceTree = "<group>"; };
 		CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardWithText.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				CF0595AE26CD04CD00143D6E /* Request.swift */,
+				CF585DA726EB37AA00A86FA4 /* Database.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				CFE8D9DF26D8EF320054834B /* Date.swift in Sources */,
 				CF9AC95E26CE5B11004341BD /* LoadingView.swift in Sources */,
 				CF4D587D26D205C8002F6F54 /* HTMLView.swift in Sources */,
+				CF585DA826EB37AA00A86FA4 /* Database.swift in Sources */,
 				CF9AC96B26CE60DA004341BD /* GenreDetailScreenViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
