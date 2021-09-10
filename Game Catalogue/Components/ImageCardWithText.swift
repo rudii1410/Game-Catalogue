@@ -16,6 +16,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ImageCardWithText: View {
     private let imageUrl: String
@@ -37,17 +38,17 @@ struct ImageCardWithText: View {
 
     var body: some View {
         ZStack {
-            LoadableImage(imageUrl) { image in
-                image.resizable()
-                    .clipped()
-                    .frame(
-                        minWidth: 0,
-                        maxWidth: .infinity,
-                        minHeight: 0,
-                        maxHeight: .infinity,
-                        alignment: .center
-                    )
-            }
+            WebImage(url: URL(string: imageUrl))
+                .defaultPlaceholder()
+                .resizable()
+                .clipped()
+                .frame(
+                    minWidth: 0,
+                    maxWidth: .infinity,
+                    minHeight: 0,
+                    maxHeight: .infinity,
+                    alignment: .center
+                )
             LinearGradient(
                 gradient: gradientColor,
                 startPoint: .bottom,

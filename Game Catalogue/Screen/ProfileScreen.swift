@@ -16,24 +16,25 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfileScreen: View {
     var body: some View {
         VStack {
-            LoadableImage("https://rudiyanto.dev/img/self.jpg") { image in
-                image.resizable()
-                    .frame(
-                        minWidth: 100,
-                        idealWidth: 200,
-                        maxWidth: 250,
-                        minHeight: 100,
-                        idealHeight: 200,
-                        maxHeight: 250,
-                        alignment: .center
-                    )
-                    .aspectRatio(contentMode: .fill)
-                    .cornerRadius(10)
-            }
+            WebImage(url: URL(string: "https://rudiyanto.dev/img/self.jpg"))
+                .defaultPlaceholder()
+                .resizable()
+                .frame(
+                    minWidth: 100,
+                    idealWidth: 200,
+                    maxWidth: 250,
+                    minHeight: 100,
+                    idealHeight: 200,
+                    maxHeight: 250,
+                    alignment: .center
+                )
+                .aspectRatio(contentMode: .fill)
+                .cornerRadius(10)
             Text("Rudiyanto")
                 .font(.title)
                 .fontWeight(.bold)

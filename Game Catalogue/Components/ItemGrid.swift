@@ -16,6 +16,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ItemGrid: View {
     private static let ColumnCount = 3
@@ -45,12 +46,12 @@ struct ItemGrid: View {
             LazyVGrid(columns: columns) {
                 ForEach(0..<data.count, id: \.self) { idx in
                     VStack(spacing: 0) {
-                        LoadableImage(self.data[idx].imageUrl) { image in
-                            image.resizable()
-                                .clipped()
-                                .frame(width: cardWidth, height: cardWidth)
-                                .clipShape(RoundedCorner(radius: 10, corners: [.topLeft, .topRight]))
-                        }
+                        WebImage(url: URL(string: self.data[idx].imageUrl))
+                            .defaultPlaceholder()
+                            .resizable()
+                            .clipped()
+                            .frame(width: cardWidth, height: cardWidth)
+                            .clipShape(RoundedCorner(radius: 10, corners: [.topLeft, .topRight]))
                         Text(data[idx].title)
                             .font(.system(size: 14))
                             .lineLimit(2)

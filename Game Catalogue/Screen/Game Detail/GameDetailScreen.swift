@@ -16,6 +16,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct GameDetailScreen: View {
     @ObservedObject private var model = GameDetailScreenViewModel()
@@ -92,11 +93,11 @@ struct GameDetailScreen: View {
 
     private func renderHeaderSection() -> some View {
         return VStack(alignment: .leading) {
-            LoadableImage(self.model.bannerImage) { image in
-                image.resizable()
-                    .frame(height: 200)
-                    .aspectRatio(contentMode: .fit)
-            }
+            WebImage(url: URL(string: self.model.bannerImage))
+                .defaultPlaceholder()
+                .resizable()
+                .frame(height: 200)
+                .aspectRatio(contentMode: .fit)
 
             Text(self.model.gameTitle)
                 .font(.largeTitle)
