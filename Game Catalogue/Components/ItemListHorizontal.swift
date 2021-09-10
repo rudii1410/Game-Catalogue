@@ -16,6 +16,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ItemListHorizontal: View {
     var sectionTitle: String = ""
@@ -61,12 +62,12 @@ private struct ItemListChild: View {
 
     var body: some View {
         VStack {
-            LoadableImage(data.imageUrl) { img in
-                img.resizable()
-                    .clipped()
-                    .frame(width: ItemListChild.SIZE, height: ItemListChild.SIZE)
-                    .cornerRadius(10, antialiased: true)
-            }
+            WebImage(url: URL(string: data.imageUrl))
+                .defaultPlaceholder()
+                .resizable()
+                .clipped()
+                .frame(width: ItemListChild.SIZE, height: ItemListChild.SIZE)
+                .cornerRadius(10, antialiased: true)
             Text(data.title)
                 .font(.system(size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)

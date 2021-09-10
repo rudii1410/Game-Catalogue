@@ -22,6 +22,7 @@
 		CF4D587D26D205C8002F6F54 /* HTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D587C26D205C8002F6F54 /* HTMLView.swift */; };
 		CF4D588026D231B8002F6F54 /* GameGenreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D587F26D231B8002F6F54 /* GameGenreRepository.swift */; };
 		CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54A3B826C6514E00F89E4F /* HomeScreen.swift */; };
+		CF585DA426EB0D4800A86FA4 /* WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF585DA326EB0D4800A86FA4 /* WebImage.swift */; };
 		CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */; };
 		CF5AB40526CE16C30097C09D /* PublisherListScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */; };
 		CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */; };
@@ -40,7 +41,6 @@
 		CF9AC97226CE61B1004341BD /* GenreListScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC97126CE61B1004341BD /* GenreListScreenViewModel.swift */; };
 		CF9AC97626CE648B004341BD /* GameDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC97526CE648B004341BD /* GameDetailScreen.swift */; };
 		CF9AC97926CE64CA004341BD /* GameDetailScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC97826CE64CA004341BD /* GameDetailScreenViewModel.swift */; };
-		CF9AC98426CE96EF004341BD /* LoadableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC98326CE96EF004341BD /* LoadableImage.swift */; };
 		CFA5EADC26CFD1E2004AA327 /* GamePublisherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5EADB26CFD1E2004AA327 /* GamePublisherRepository.swift */; };
 		CFD34EA126C8F52E001832D8 /* ItemListHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */; };
 		CFD34EA526C9017D001832D8 /* ItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA426C9017D001832D8 /* ItemGrid.swift */; };
@@ -70,6 +70,7 @@
 		CF4D587C26D205C8002F6F54 /* HTMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLView.swift; sourceTree = "<group>"; };
 		CF4D587F26D231B8002F6F54 /* GameGenreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGenreRepository.swift; sourceTree = "<group>"; };
 		CF54A3B826C6514E00F89E4F /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		CF585DA326EB0D4800A86FA4 /* WebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImage.swift; sourceTree = "<group>"; };
 		CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreen.swift; sourceTree = "<group>"; };
 		CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreenViewModel.swift; sourceTree = "<group>"; };
 		CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardWithText.swift; sourceTree = "<group>"; };
@@ -90,7 +91,6 @@
 		CF9AC97126CE61B1004341BD /* GenreListScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListScreenViewModel.swift; sourceTree = "<group>"; };
 		CF9AC97526CE648B004341BD /* GameDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailScreen.swift; sourceTree = "<group>"; };
 		CF9AC97826CE64CA004341BD /* GameDetailScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailScreenViewModel.swift; sourceTree = "<group>"; };
-		CF9AC98326CE96EF004341BD /* LoadableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableImage.swift; sourceTree = "<group>"; };
 		CFA5EADB26CFD1E2004AA327 /* GamePublisherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePublisherRepository.swift; sourceTree = "<group>"; };
 		CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListHorizontal.swift; sourceTree = "<group>"; };
 		CFD34EA426C9017D001832D8 /* ItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGrid.swift; sourceTree = "<group>"; };
@@ -191,7 +191,6 @@
 				CF3E795126CB84C80087227E /* SearchBar.swift */,
 				CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */,
 				CF9AC95D26CE5B11004341BD /* LoadingView.swift */,
-				CF9AC98326CE96EF004341BD /* LoadableImage.swift */,
 				CF4D587C26D205C8002F6F54 /* HTMLView.swift */,
 			);
 			path = Components;
@@ -306,6 +305,7 @@
 				CFD34EBB26C93D06001832D8 /* View.swift */,
 				CFE8D9DC26D8EE310054834B /* String.swift */,
 				CFE8D9DE26D8EF320054834B /* Date.swift */,
+				CF585DA326EB0D4800A86FA4 /* WebImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -453,11 +453,11 @@
 			files = (
 				CFD34EBC26C93D06001832D8 /* View.swift in Sources */,
 				CF5AB40526CE16C30097C09D /* PublisherListScreenViewModel.swift in Sources */,
+				CF585DA426EB0D4800A86FA4 /* WebImage.swift in Sources */,
 				CFE8D9DD26D8EE310054834B /* String.swift in Sources */,
 				CF0595AF26CD04CD00143D6E /* Request.swift in Sources */,
 				CF0595B426CD139400143D6E /* RAWGResponse.swift in Sources */,
 				CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */,
-				CF9AC98426CE96EF004341BD /* LoadableImage.swift in Sources */,
 				CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */,
 				CFD34EB726C93CB2001832D8 /* RoundedCorner.swift in Sources */,
 				CF15055D26CFB58B0064809A /* GameShort.swift in Sources */,

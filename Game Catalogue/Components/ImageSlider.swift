@@ -35,8 +35,8 @@ struct ImageSlider: View {
             TabView(selection: $activeIdx) {
                 ForEach(0..<self.urls.count, id: \.self) { idx in
                     WebImage(url: URL(string: urls[idx]))
+                        .defaultPlaceholder()
                         .resizable()
-                        .placeholder(Image(systemName: "placeholder"))
                         .scaledToFill()
                         .tag(idx)
                         .onTapGesture {
