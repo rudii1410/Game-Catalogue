@@ -95,4 +95,32 @@ class GameRepository {
             .addQuery(key: "page_size", value: "10")
             .result(callback)
     }
+
+    func addGameToFavourites(
+        slug: String,
+        name: String,
+        imageUrl: String,
+        rating: Double,
+        releaseDate: Date
+    ) -> Bool {
+        let favourite = Favourite(context: Database.shared.context)
+        favourite.slug = slug
+        favourite.name = name
+        favourite.image = imageUrl
+        favourite.rating = rating
+        favourite.releaseDate = releaseDate
+        favourite.createAt = Date()
+
+        return Database.shared.save()
+    }
+
+    func removeGameToFavourites(
+        _ item: Favourite
+    ) {
+        Database.shared.delete(item: item)
+    }
+
+    func fetchFavourites(offset: Int, limit: Int) -> [Favourite] {
+        return Database.shared.fetchAll(offset: offset, size: limit)
+    }
 }

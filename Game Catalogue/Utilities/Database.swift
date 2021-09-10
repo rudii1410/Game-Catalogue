@@ -30,17 +30,19 @@ class Database {
         return container.viewContext
     }()
 
-    func save() {
+    func save() -> Bool {
         do {
             try context.save()
+            return true
         } catch {
             context.rollback()
         }
+        return false
     }
 
-    func delete(item: NSManagedObject) {
+    func delete<T: NSManagedObject>(item: T) {
         context.delete(item)
-        save()
+        _ = save()
     }
 
     func fetchAll<T: NSManagedObject>(
