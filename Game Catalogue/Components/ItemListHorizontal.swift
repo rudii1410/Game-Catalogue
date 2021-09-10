@@ -39,12 +39,11 @@ struct ItemListHorizontal: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top) {
-                    Spacer(minLength: 12)
                     ForEach(0..<data.count, id: \.self) { idx in
                         ItemListChild(idx: idx, data: data[idx]) { id in
                             self.onItemPressed(id)
                         }
-                        .padding(.horizontal, 12)
+                        .padding(.leading, 12)
                     }
                     Spacer(minLength: 12)
                 }
