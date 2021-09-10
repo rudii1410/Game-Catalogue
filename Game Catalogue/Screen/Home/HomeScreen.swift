@@ -79,7 +79,7 @@ extension HomeScreen {
                 model.onBannerImagePressed(idx)
             }
             .padding(.horizontal, 12)
-            .frame(width: screen.size.width, height: screen.size.width / 2)
+            .frame(width: screen.size.width, height: screen.size.width * (2 / 3))
         }
         .padding(.bottom, 4)
     }

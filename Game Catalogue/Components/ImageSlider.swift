@@ -16,6 +16,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ImageSlider: View {
     private static let SPACING: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 24 : 12
@@ -33,15 +34,14 @@ struct ImageSlider: View {
         GeometryReader { proxy in
             TabView(selection: $activeIdx) {
                 ForEach(0..<self.urls.count, id: \.self) { idx in
-                    LoadableImage(urls[idx]) { image in
-                        image.resizable()
-                            .clipped()
-                            .scaledToFill()
-                            .tag(idx)
-                            .onTapGesture {
-                                self.onPress?(idx)
-                            }
-                    }
+                    WebImage(url: URL(string: urls[idx]))
+                        .resizable()
+                        .placeholder(Image(systemName: "placeholder"))
+                        .scaledToFill()
+                        .tag(idx)
+                        .onTapGesture {
+                            self.onPress?(idx)
+                        }
                 }
             }
             .tabViewStyle(PageTabViewStyle())
