@@ -18,17 +18,20 @@
 import CoreData
 
 class Database {
-    public static let shared = Database()
+    static let shared = Database()
 
-    lazy var context: NSManagedObjectContext = {
-       let container = NSPersistentContainer(name: "Database")
-        container.loadPersistentStores { storeDescription, error in
+    var context: NSManagedObjectContext
+
+    private init() {
+        let persistentContainer = NSPersistentContainer(name: "Database")
+        persistentContainer.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         }
-        return container.viewContext
-    }()
+
+        context = persistentContainer.viewContext
+    }
 
     func save() -> Bool {
         do {
@@ -47,16 +50,33 @@ class Database {
 
     func fetchAll<T: NSManagedObject>(
         offset: Int = 0,
-        size: Int = 10
-    ) -> [T] {
+        size: Int = 10,
+        predicate: NSPredicate? = nil,
+        callback: ([T]) -> Void
+    ) {
         let request = T.fetchRequest()
         request.fetchOffset = offset
         request.fetchLimit = size
-        
+        request.predicate = predicate
+
         do {
-            return try context.fetch(request) as? [T] ?? []
+            let result = try context.fetch(request) as? [T] ?? []
+            callback(result)
         } catch {
-            return []
+            callback([])
         }
+    }
+
+    func fetchFirst<T: NSManagedObject>(
+        predicate: NSPredicate? = nil,
+        callback: (T) -> Void
+    ) {
+        let request = T.fetchRequest()
+        request.predicate = predicate
+
+        do {
+            let result = try context.fetch(request) as? [T] ?? []
+            if !result.isEmpty { callback(result[0]) }
+        } catch {}
     }
 }

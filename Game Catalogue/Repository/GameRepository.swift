@@ -101,26 +101,33 @@ class GameRepository {
         name: String,
         imageUrl: String,
         rating: Double,
-        releaseDate: Date
-    ) -> Bool {
+        releaseDate: Date?
+    ) -> Favourite? {
         let favourite = Favourite(context: Database.shared.context)
         favourite.slug = slug
         favourite.name = name
         favourite.image = imageUrl
         favourite.rating = rating
         favourite.releaseDate = releaseDate
-        favourite.createAt = Date()
+        favourite.createdAt = Date()
 
-        return Database.shared.save()
+        if Database.shared.save() { return favourite } else { return nil }
     }
 
-    func removeGameToFavourites(
+    func removeGameFromFavourites(
         _ item: Favourite
     ) {
         Database.shared.delete(item: item)
     }
 
-    func fetchFavourites(offset: Int, limit: Int) -> [Favourite] {
-        return Database.shared.fetchAll(offset: offset, size: limit)
+    func fetchFavourites(offset: Int, limit: Int, callback: ([Favourite]) -> Void) {
+        Database.shared.fetchAll(offset: offset, size: limit, callback: callback)
+    }
+
+    func getFavouriteBySlug(slug: String, callback: (Favourite) -> Void) {
+        let predicate = NSPredicate(
+            format: "slug = %@", slug
+        )
+        Database.shared.fetchFirst(predicate: predicate, callback: callback)
     }
 }
