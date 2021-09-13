@@ -35,6 +35,7 @@ class GameDetailScreenViewModel: ObservableObject {
     @Published var navigateToGameDetail = false
     @Published var showErrorNetwork = false
     @Published var favouriteData: Favourite?
+    @Published var imgFadeOut = false
 
     var selectedGameSlug = ""
 
@@ -53,12 +54,8 @@ class GameDetailScreenViewModel: ObservableObject {
     }
 
     func onFavouriteTap() {
-        print("on fav tap")
         guard let favData = favouriteData else {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMM d, y"
-            let convertedDate = dateFormatter.date(from: self.releaseDate)
-            print("adding \(self.selectedGameSlug)")
+            let convertedDate = self.releaseDate.toDate(format: "MMM d, y")
             favouriteData = gameRepo.addGameToFavourites(
                 slug: self.currentgameSlug,
                 name: self.gameTitle,
@@ -66,7 +63,6 @@ class GameDetailScreenViewModel: ObservableObject {
                 rating: Double(self.rating) ?? 0,
                 releaseDate: convertedDate
             )
-            print(favouriteData)
             return
         }
         gameRepo.removeGameFromFavourites(favData)

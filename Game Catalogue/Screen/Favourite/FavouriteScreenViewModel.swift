@@ -36,7 +36,6 @@ class FavouriteScreenViewModel: ObservableObject {
     }
 
     func onItemTap(slug: String) {
-        print(slug)
         selectedSlug = slug
         navigateToGameDetail = true
     }
@@ -44,6 +43,8 @@ class FavouriteScreenViewModel: ObservableObject {
     func reloadData() {
         favourites = []
         dataOffset = 0
+        isLoadingMoreData = false
+        canLoadMoreData = false
         loadFavouriteIfNeeded(nil)
     }
 
@@ -54,7 +55,7 @@ class FavouriteScreenViewModel: ObservableObject {
             return
         }
 
-        let tresholdIdx = favourites.index(favourites.endIndex, offsetBy: -3)
+        let tresholdIdx = favourites.index(favourites.endIndex, offsetBy: -2)
         if favourites.firstIndex(where: { $0.slug == item.slug }) == tresholdIdx {
             loadMore()
         }
@@ -68,8 +69,8 @@ class FavouriteScreenViewModel: ObservableObject {
                 return
             }
             favourites += result
-            dataOffset += 1
+            dataOffset += 10
+            isLoadingMoreData = false
         }
-        isLoadingMoreData = false
     }
 }

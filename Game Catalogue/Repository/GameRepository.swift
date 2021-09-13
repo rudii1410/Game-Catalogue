@@ -121,7 +121,8 @@ class GameRepository {
     }
 
     func fetchFavourites(offset: Int, limit: Int, callback: ([Favourite]) -> Void) {
-        Database.shared.fetchAll(offset: offset, size: limit, callback: callback)
+        let sort = NSSortDescriptor(key: #keyPath(Favourite.createdAt), ascending: false)
+        Database.shared.fetchAll(offset: offset, size: limit, sortDesc: [sort], callback: callback)
     }
 
     func getFavouriteBySlug(slug: String, callback: (Favourite) -> Void) {

@@ -49,15 +49,17 @@ class Database {
     }
 
     func fetchAll<T: NSManagedObject>(
-        offset: Int = 0,
-        size: Int = 10,
+        offset: Int? = nil,
+        size: Int? = nil,
         predicate: NSPredicate? = nil,
+        sortDesc: [NSSortDescriptor] = [],
         callback: ([T]) -> Void
     ) {
         let request = T.fetchRequest()
-        request.fetchOffset = offset
-        request.fetchLimit = size
+        if let offset = offset { request.fetchOffset = offset }
+        if let size = size { request.fetchLimit = size }
         request.predicate = predicate
+        request.sortDescriptors = sortDesc
 
         do {
             let result = try context.fetch(request) as? [T] ?? []
