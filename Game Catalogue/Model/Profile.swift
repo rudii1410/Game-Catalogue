@@ -15,12 +15,16 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Foundation
+struct Profile {
+    let fullname, profilePic, webUrl: String
 
-extension Date {
-    func toString(format: String? = nil) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format == nil ? "MMM d, y" : format
-        return dateFormatter.string(from: self)
+    init(fullname: String?, profilePic: String?, webUrl: String?) {
+        self.fullname = fullname ?? ""
+        self.profilePic = profilePic ?? ""
+        self.webUrl = webUrl ?? ""
+    }
+
+    func isEmpty() -> Bool {
+        return fullname.isEmpty && profilePic.isEmpty && webUrl.isEmpty
     }
 }

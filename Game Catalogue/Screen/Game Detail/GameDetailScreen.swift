@@ -43,6 +43,22 @@ struct GameDetailScreen: View {
         } else {
             renderContent()
                 .navigationBarTitle("Game Details", displayMode: .inline)
+                .toolbar {
+                    ToolbarItem {
+                        Image(systemName: model.favouriteData == nil ? "heart" : "heart.fill")
+                            .opacity(self.model.imgFadeOut ? 0 : 1)
+                            .animation(.easeInOut(duration: 0.3))
+                            .onTapGesture {
+                                self.model.imgFadeOut.toggle()
+                                model.onFavouriteTap()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                    withAnimation {
+                                        self.model.imgFadeOut.toggle()
+                                    }
+                                }
+                            }
+                    }
+                }
                 .alert(isPresented: self.$model.showErrorNetwork) {
                     Alert(
                         title: Text("Unable to load the data"),
