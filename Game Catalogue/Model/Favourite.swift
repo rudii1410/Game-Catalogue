@@ -29,11 +29,21 @@ class Favourite: NSManagedObject, Identifiable {
     @NSManaged public var rating: Double
     @NSManaged public var releaseDate: Date?
     @NSManaged public var slug: String
+    @NSManaged public var genres: String
 
     func getReleaseDate() -> String {
         guard let date = releaseDate else {
             return "-"
         }
         return date.toString()
+    }
+
+    func getGenreAsArray() -> [String] {
+        let result = genres.components(separatedBy: ",")
+        if result.count == 1 && result[0] == "" {
+            return []
+        } else {
+            return result
+        }
     }
 }

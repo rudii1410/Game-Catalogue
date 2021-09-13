@@ -40,6 +40,7 @@ class GameDetailScreenViewModel: ObservableObject {
     var selectedGameSlug = ""
 
     private var currentgameSlug = ""
+    private var currentGameGenreId = ""
     private let gameRepo = GameRepository()
     private var page = 1
     private var isLoadingMoreData = false
@@ -56,13 +57,15 @@ class GameDetailScreenViewModel: ObservableObject {
     func onFavouriteTap() {
         guard let favData = favouriteData else {
             let convertedDate = self.releaseDate.toDate(format: "MMM d, y")
-            favouriteData = gameRepo.addGameToFavourites(
-                slug: self.currentgameSlug,
-                name: self.gameTitle,
-                imageUrl: self.bannerImage,
-                rating: Double(self.rating) ?? 0,
-                releaseDate: convertedDate
-            )
+            let favourite = Favourite(context: Database.shared.context)
+            favourite.slug = self.currentgameSlug
+            favourite.name = self.gameTitle
+            favourite.image = self.bannerImage
+            favourite.rating = Double(self.rating) ?? 0
+            favourite.releaseDate = convertedDate
+            favourite.genres = self.currentGameGenreId
+            favourite.createdAt = Date()
+            favouriteData = gameRepo.addGameToFavourites(favourite)
             return
         }
         gameRepo.removeGameFromFavourites(favData)
@@ -106,6 +109,7 @@ class GameDetailScreenViewModel: ObservableObject {
             }
 
             let genreStr = result.genres?.map { $0.name }.joined(separator: ", ") ?? ""
+            self.currentGameGenreId = result.genres?.map { String($0.id) }.joined(separator: ",") ?? ""
             let platformStr = result.platforms?.map { $0.platform.name }.joined(separator: ", ") ?? ""
             let developers = result.developers?.map { $0.name }.joined(separator: ", ") ?? ""
             let publishers = result.publishers?.map { $0.name }.joined(separator: ", ") ?? ""

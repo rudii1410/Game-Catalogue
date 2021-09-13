@@ -96,21 +96,7 @@ class GameRepository {
             .result(callback)
     }
 
-    func addGameToFavourites(
-        slug: String,
-        name: String,
-        imageUrl: String,
-        rating: Double,
-        releaseDate: Date?
-    ) -> Favourite? {
-        let favourite = Favourite(context: Database.shared.context)
-        favourite.slug = slug
-        favourite.name = name
-        favourite.image = imageUrl
-        favourite.rating = rating
-        favourite.releaseDate = releaseDate
-        favourite.createdAt = Date()
-
+    func addGameToFavourites(_ favourite: Favourite) -> Favourite? {
         if Database.shared.save() { return favourite } else { return nil }
     }
 
@@ -120,7 +106,7 @@ class GameRepository {
         Database.shared.delete(item: item)
     }
 
-    func fetchFavourites(offset: Int, limit: Int, callback: ([Favourite]) -> Void) {
+    func fetchFavourites(offset: Int?, limit: Int?, callback: ([Favourite]) -> Void) {
         let sort = NSSortDescriptor(key: #keyPath(Favourite.createdAt), ascending: false)
         Database.shared.fetchAll(offset: offset, size: limit, sortDesc: [sort], callback: callback)
     }
@@ -130,5 +116,18 @@ class GameRepository {
             format: "slug = %@", slug
         )
         Database.shared.fetchFirst(predicate: predicate, callback: callback)
+    }
+
+    func getUserFavouriteGameGenre(callback: ([String]) -> Void) {
+        fetchFavourites(offset: nil, limit: nil) { result in
+            var genres = Set<String>()
+            result.forEach { fav in
+                fav.getGenreAsArray().forEach { genre in
+                    genres.insert(genre)
+                }
+            }
+
+            callback(Array(genres))
+        }
     }
 }

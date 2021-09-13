@@ -103,17 +103,21 @@ class HomeScreenViewModel: ObservableObject {
         if self.isLoadingGameData { return }
         self.isLoadingGameData = true
 
-        gameRepo.getGameListByGenres(
-            genres: "action",
-            page: self.gameListPage,
-            count: Constant.maxGameDataLoad
-        ) { response in
-            guard let result = response.response?.results else { return }
+        gameRepo.getUserFavouriteGameGenre { result in
+            let genres = result.isEmpty ? "action" : result.joined(separator: ",")
 
-            DispatchQueue.main.async {
-                self.gameList.append(contentsOf: result)
-                self.gameListPage += 1
-                self.isLoadingGameData = false
+            gameRepo.getGameListByGenres(
+                genres: genres,
+                page: self.gameListPage,
+                count: Constant.maxGameDataLoad
+            ) { response in
+                guard let result = response.response?.results else { return }
+
+                DispatchQueue.main.async {
+                    self.gameList.append(contentsOf: result)
+                    self.gameListPage += 1
+                    self.isLoadingGameData = false
+                }
             }
         }
     }
