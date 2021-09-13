@@ -44,6 +44,7 @@
 		CF9AC97626CE648B004341BD /* GameDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC97526CE648B004341BD /* GameDetailScreen.swift */; };
 		CF9AC97926CE64CA004341BD /* GameDetailScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC97826CE64CA004341BD /* GameDetailScreenViewModel.swift */; };
 		CFA5EADC26CFD1E2004AA327 /* GamePublisherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5EADB26CFD1E2004AA327 /* GamePublisherRepository.swift */; };
+		CFC61BEC26EB665300417D1D /* FavouriteScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC61BEB26EB665300417D1D /* FavouriteScreenViewModel.swift */; };
 		CFD34EA126C8F52E001832D8 /* ItemListHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */; };
 		CFD34EA526C9017D001832D8 /* ItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA426C9017D001832D8 /* ItemGrid.swift */; };
 		CFD34EA926C90855001832D8 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA826C90855001832D8 /* Text.swift */; };
@@ -52,6 +53,8 @@
 		CFD34EBC26C93D06001832D8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EBB26C93D06001832D8 /* View.swift */; };
 		CFE8D9DD26D8EE310054834B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE8D9DC26D8EE310054834B /* String.swift */; };
 		CFE8D9DF26D8EF320054834B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE8D9DE26D8EF320054834B /* Date.swift */; };
+		CFE8D9E126D8F99B0054834B /* FavouriteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE8D9E026D8F99B0054834B /* FavouriteScreen.swift */; };
+		CFF788DB26EDBF8500A9CBA2 /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF788DA26EDBF8500A9CBA2 /* Favourite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +99,7 @@
 		CF9AC97526CE648B004341BD /* GameDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailScreen.swift; sourceTree = "<group>"; };
 		CF9AC97826CE64CA004341BD /* GameDetailScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailScreenViewModel.swift; sourceTree = "<group>"; };
 		CFA5EADB26CFD1E2004AA327 /* GamePublisherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePublisherRepository.swift; sourceTree = "<group>"; };
+		CFC61BEB26EB665300417D1D /* FavouriteScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreenViewModel.swift; sourceTree = "<group>"; };
 		CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListHorizontal.swift; sourceTree = "<group>"; };
 		CFD34EA426C9017D001832D8 /* ItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGrid.swift; sourceTree = "<group>"; };
 		CFD34EA826C90855001832D8 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 		CFD34EBB26C93D06001832D8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CFE8D9DC26D8EE310054834B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		CFE8D9DE26D8EF320054834B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		CFE8D9E026D8F99B0054834B /* FavouriteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreen.swift; sourceTree = "<group>"; };
+		CFF788DA26EDBF8500A9CBA2 /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,7 @@
 				CF879AB026D5380E0039EE8C /* Platform.swift */,
 				CF879AB326D53C070039EE8C /* BaseDetail.swift */,
 				CF377CA626D6585700D1A9F4 /* Screenshot.swift */,
+				CFF788DA26EDBF8500A9CBA2 /* Favourite.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,6 +211,7 @@
 		CF54A3B726C6513600F89E4F /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				CFC61BEA26EB64EA00417D1D /* Favourite */,
 				CF9AC97426CE6479004341BD /* Game Detail */,
 				CF9AC96D26CE6163004341BD /* Genre List */,
 				CF9AC96526CE6047004341BD /* Genre Detail */,
@@ -294,6 +302,15 @@
 				CF9AC97826CE64CA004341BD /* GameDetailScreenViewModel.swift */,
 			);
 			path = "Game Detail";
+			sourceTree = "<group>";
+		};
+		CFC61BEA26EB64EA00417D1D /* Favourite */ = {
+			isa = PBXGroup;
+			children = (
+				CFE8D9E026D8F99B0054834B /* FavouriteScreen.swift */,
+				CFC61BEB26EB665300417D1D /* FavouriteScreenViewModel.swift */,
+			);
+			path = Favourite;
 			sourceTree = "<group>";
 		};
 		CFD34EB526C93CA5001832D8 /* Shape */ = {
@@ -480,6 +497,7 @@
 				CF9AC96726CE607C004341BD /* GenreDetailScreen.swift in Sources */,
 				CFD34EA926C90855001832D8 /* Text.swift in Sources */,
 				CFA5EADC26CFD1E2004AA327 /* GamePublisherRepository.swift in Sources */,
+				CFC61BEC26EB665300417D1D /* FavouriteScreenViewModel.swift in Sources */,
 				CF377CA726D6585700D1A9F4 /* Screenshot.swift in Sources */,
 				CF879AB426D53C070039EE8C /* BaseDetail.swift in Sources */,
 				CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */,
@@ -494,6 +512,8 @@
 				CF9AC95B26CE575C004341BD /* PublisherDetailScreen.swift in Sources */,
 				CF879AAE26D5330B0039EE8C /* GameDetail.swift in Sources */,
 				CFE8D9DF26D8EF320054834B /* Date.swift in Sources */,
+				CFE8D9E126D8F99B0054834B /* FavouriteScreen.swift in Sources */,
+				CFF788DB26EDBF8500A9CBA2 /* Favourite.swift in Sources */,
 				CF9AC95E26CE5B11004341BD /* LoadingView.swift in Sources */,
 				CF4D587D26D205C8002F6F54 /* HTMLView.swift in Sources */,
 				CF585DA826EB37AA00A86FA4 /* Database.swift in Sources */,
