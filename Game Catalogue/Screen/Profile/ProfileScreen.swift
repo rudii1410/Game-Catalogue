@@ -46,7 +46,7 @@ struct ProfileScreen: View {
 
     private var renderProfileImage: some View {
         ZStack {
-            WebImage(url: URL(string: self.model.isEditMode ? self.model.tempImageUrl : self.model.imageUrl))
+            WebImage(url: URL(string: self.model.isEditMode ? self.model.tempImageUrl : self.model.profile.profilePic))
                 .defaultPlaceholder()
                 .resizable()
                 .frame(
@@ -95,7 +95,7 @@ struct ProfileScreen: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
             } else {
-                Text(self.model.fullname)
+                Text(self.model.profile.fullname)
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.top, 10)
@@ -115,8 +115,8 @@ struct ProfileScreen: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
             } else {
-                Button(self.model.webUrlStr) {
-                    guard let url = URL(string: self.model.webUrlStr) else { return }
+                Button(self.model.profile.webUrl) {
+                    guard let url = URL(string: self.model.profile.webUrl) else { return }
                     UIApplication.shared.open(url)
                 }
             }
@@ -127,7 +127,7 @@ struct ProfileScreen: View {
         Group {
             if self.model.isEditMode {
                 HStack {
-                    Button("Cancel", action: self.model.saveData)
+                    Button("Cancel") { self.model.isEditMode = false }
                         .buttonStyle(MyButtonStyle(primaryColor: .red, secondaryColor: .white))
                     Button("Save", action: self.model.saveData)
                         .buttonStyle(MyButtonStyle(primaryColor: .blue, secondaryColor: .white))

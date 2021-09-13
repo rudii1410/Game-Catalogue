@@ -19,14 +19,19 @@ import Combine
 import Foundation
 
 class ProfileScreenViewModel: ObservableObject {
-    @Published var imageUrl = "https://rudiyanto.dev/img/self.jpg"
-    @Published var fullname = "Rudiyanto"
-    @Published var webUrlStr = "https://rudiyanto.dev"
+    private var profileRepo = ProfileRepository()
+
+    var profile: Profile
     @Published var isEditMode = false
     @Published var tempImageUrl = ""
     @Published var tempFullname = ""
     @Published var tempWebUrlStr = ""
     @Published var showImgUrlAlert = false
+
+    init() {
+        self.profile = ProfileRepository.defaultProfile
+        loadProfileData()
+    }
 
     func onTapProfile() {
         if !isEditMode { return }
@@ -34,15 +39,35 @@ class ProfileScreenViewModel: ObservableObject {
     }
 
     func saveData() {
-        
+        let profile = Profile(
+            fullname: tempFullname,
+            profilePic: tempImageUrl,
+            webUrl: tempWebUrlStr
+        )
+        updateProfileData(profile: profile)
+        isEditMode = false
     }
 
     func toggleEditMode() {
         if !isEditMode {
-            tempImageUrl = imageUrl
-            tempFullname = fullname
-            tempWebUrlStr = webUrlStr
+            tempImageUrl = profile.profilePic
+            tempFullname = profile.fullname
+            tempWebUrlStr = profile.webUrl
         }
         isEditMode.toggle()
+    }
+
+    func loadProfileData() {
+        let profile = profileRepo.getProfile()
+        if profile.isEmpty() {
+            updateProfileData(profile: ProfileRepository.defaultProfile)
+        } else {
+            self.profile = profile
+        }
+    }
+
+    private func updateProfileData(profile: Profile) {
+        profileRepo.storeProfileData(profile: profile)
+        self.profile = profile
     }
 }

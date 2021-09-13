@@ -53,6 +53,8 @@
 		CFD34EBC26C93D06001832D8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EBB26C93D06001832D8 /* View.swift */; };
 		CFD515AF26EF0E4E004DE1A3 /* ProfileScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD515AE26EF0E4E004DE1A3 /* ProfileScreenViewModel.swift */; };
 		CFD515B126EF2739004DE1A3 /* TextfieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD515B026EF2739004DE1A3 /* TextfieldAlert.swift */; };
+		CFD515B326EF2FF2004DE1A3 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD515B226EF2FF2004DE1A3 /* ProfileRepository.swift */; };
+		CFD515B526EF30C9004DE1A3 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD515B426EF30C9004DE1A3 /* Profile.swift */; };
 		CFE8D9DD26D8EE310054834B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE8D9DC26D8EE310054834B /* String.swift */; };
 		CFE8D9DF26D8EF320054834B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE8D9DE26D8EF320054834B /* Date.swift */; };
 		CFE8D9E126D8F99B0054834B /* FavouriteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE8D9E026D8F99B0054834B /* FavouriteScreen.swift */; };
@@ -110,6 +112,8 @@
 		CFD34EBB26C93D06001832D8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CFD515AE26EF0E4E004DE1A3 /* ProfileScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewModel.swift; sourceTree = "<group>"; };
 		CFD515B026EF2739004DE1A3 /* TextfieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldAlert.swift; sourceTree = "<group>"; };
+		CFD515B226EF2FF2004DE1A3 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		CFD515B426EF30C9004DE1A3 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		CFE8D9DC26D8EE310054834B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		CFE8D9DE26D8EF320054834B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		CFE8D9E026D8F99B0054834B /* FavouriteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreen.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				CF879AB326D53C070039EE8C /* BaseDetail.swift */,
 				CF377CA626D6585700D1A9F4 /* Screenshot.swift */,
 				CFF788DA26EDBF8500A9CBA2 /* Favourite.swift */,
+				CFD515B426EF30C9004DE1A3 /* Profile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				CF15056026CFB6200064809A /* GameRepository.swift */,
+				CFD515B226EF2FF2004DE1A3 /* ProfileRepository.swift */,
 				CFA5EADB26CFD1E2004AA327 /* GamePublisherRepository.swift */,
 				CF4D587F26D231B8002F6F54 /* GameGenreRepository.swift */,
 			);
@@ -510,8 +516,10 @@
 				CF4D588026D231B8002F6F54 /* GameGenreRepository.swift in Sources */,
 				CF15055A26CFB4B90064809A /* Constant.swift in Sources */,
 				CF9AC96726CE607C004341BD /* GenreDetailScreen.swift in Sources */,
+				CFD515B326EF2FF2004DE1A3 /* ProfileRepository.swift in Sources */,
 				CFD34EA926C90855001832D8 /* Text.swift in Sources */,
 				CFA5EADC26CFD1E2004AA327 /* GamePublisherRepository.swift in Sources */,
+				CFD515B526EF30C9004DE1A3 /* Profile.swift in Sources */,
 				CFC61BEC26EB665300417D1D /* FavouriteScreenViewModel.swift in Sources */,
 				CF377CA726D6585700D1A9F4 /* Screenshot.swift in Sources */,
 				CF879AB426D53C070039EE8C /* BaseDetail.swift in Sources */,
