@@ -102,7 +102,3 @@ extension GamesVerticalGrid {
         }
     }
 }
-
-struct GamesGridData: Hashable {
-    let identifier: String, imgUrl: String, title: String, releaseDate: String, rating: String
-}

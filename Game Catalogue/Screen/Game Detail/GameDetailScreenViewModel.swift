@@ -34,9 +34,11 @@ class GameDetailScreenViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var navigateToGameDetail = false
     @Published var showErrorNetwork = false
+    @Published var favouriteData: Favourite?
 
     var selectedGameSlug = ""
 
+    private var currentgameSlug = ""
     private let gameRepo = GameRepository()
     private var page = 1
     private var isLoadingMoreData = false
@@ -48,6 +50,27 @@ class GameDetailScreenViewModel: ObservableObject {
     func onGameTap(_ slug: String) {
         self.selectedGameSlug = slug
         self.navigateToGameDetail = true
+    }
+
+    func onFavouriteTap() {
+        print("on fav tap")
+        guard let favData = favouriteData else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d, y"
+            let convertedDate = dateFormatter.date(from: self.releaseDate)
+            print("adding \(self.selectedGameSlug)")
+            favouriteData = gameRepo.addGameToFavourites(
+                slug: self.currentgameSlug,
+                name: self.gameTitle,
+                imageUrl: self.bannerImage,
+                rating: Double(self.rating) ?? 0,
+                releaseDate: convertedDate
+            )
+            print(favouriteData)
+            return
+        }
+        gameRepo.removeGameFromFavourites(favData)
+        favouriteData = nil
     }
 
     func loadGames() {
@@ -73,7 +96,11 @@ class GameDetailScreenViewModel: ObservableObject {
         self.isLoading = true
         self.isLoadingData = true
         self.isLoadingScreenshot = true
+        self.currentgameSlug = slug
 
+        gameRepo.getFavouriteBySlug(slug: slug) { result in
+            favouriteData = result
+        }
         gameRepo.getGameDetail(id: slug) { response in
             guard let result = response.response else {
                 if response.error?.type == RequestError.NetworkError {

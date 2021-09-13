@@ -18,9 +18,9 @@
 import Foundation
 
 extension Date {
-    func toString(format: String) -> String {
+    func toString(format: String? = nil) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, y"
+        dateFormatter.dateFormat = format == nil ? "MMM d, y" : format
         return dateFormatter.string(from: self)
     }
 }
