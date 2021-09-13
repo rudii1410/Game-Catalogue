@@ -16,6 +16,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct GenreDetailScreen: View {
     @ObservedObject private var model = GenreDetailScreenViewModel()
@@ -36,13 +37,13 @@ struct GenreDetailScreen: View {
                 label: { EmptyView() }
             )
             LazyVStack {
-                LoadableImage(self.model.imageUrl) { image in
-                    image.resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: 200)
-                        .padding(.top, 8)
-                        .clipped()
-                }
+                WebImage(url: URL(string: self.model.imageUrl))
+                    .defaultPlaceholder()
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 200)
+                    .padding(.top, 8)
+                    .clipped()
 
                 HTMLView(htmlString: self.model.desc, dynamicHeight: $htmlHeight)
                     .padding(.horizontal, 12)

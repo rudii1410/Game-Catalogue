@@ -15,12 +15,11 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Foundation
+import SwiftUI
+import SDWebImageSwiftUI
 
-extension Date {
-    func toString(format: String? = nil) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format == nil ? "MMM d, y" : format
-        return dateFormatter.string(from: self)
+extension WebImage {
+    func defaultPlaceholder() -> WebImage {
+        return placeholder(Image("placeholder"))
     }
 }

@@ -16,6 +16,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct GameDetailScreen: View {
     @ObservedObject private var model = GameDetailScreenViewModel()
@@ -42,6 +43,22 @@ struct GameDetailScreen: View {
         } else {
             renderContent()
                 .navigationBarTitle("Game Details", displayMode: .inline)
+                .toolbar {
+                    ToolbarItem {
+                        Image(systemName: model.favouriteData == nil ? "heart" : "heart.fill")
+                            .opacity(self.model.imgFadeOut ? 0 : 1)
+                            .animation(.easeInOut(duration: 0.3))
+                            .onTapGesture {
+                                self.model.imgFadeOut.toggle()
+                                model.onFavouriteTap()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                    withAnimation {
+                                        self.model.imgFadeOut.toggle()
+                                    }
+                                }
+                            }
+                    }
+                }
                 .alert(isPresented: self.$model.showErrorNetwork) {
                     Alert(
                         title: Text("Unable to load the data"),
@@ -92,11 +109,11 @@ struct GameDetailScreen: View {
 
     private func renderHeaderSection() -> some View {
         return VStack(alignment: .leading) {
-            LoadableImage(self.model.bannerImage) { image in
-                image.resizable()
-                    .frame(height: 200)
-                    .aspectRatio(contentMode: .fit)
-            }
+            WebImage(url: URL(string: self.model.bannerImage))
+                .defaultPlaceholder()
+                .resizable()
+                .frame(height: 200)
+                .aspectRatio(contentMode: .fit)
 
             Text(self.model.gameTitle)
                 .font(.largeTitle)

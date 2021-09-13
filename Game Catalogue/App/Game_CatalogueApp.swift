@@ -42,6 +42,16 @@ struct ContentView: View {
             }
 
             NavigationView {
+                FavouritesScreen()
+                    .navigationBarTitle("Favourite Games", displayMode: .large)
+            }
+            .tag(Tab.favourite)
+            .tabItem {
+                Image(systemName: "heart")
+                Text("Favourites")
+            }
+
+            NavigationView {
                 ProfileScreen()
                     .navigationBarTitle("My Profile", displayMode: .inline)
             }
@@ -57,5 +67,6 @@ struct ContentView: View {
 
 enum Tab {
     case home
+    case favourite
     case profile
 }

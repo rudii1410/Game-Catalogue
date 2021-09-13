@@ -16,6 +16,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct GamesVerticalGrid: View {
     private static let ColumnCount = 2
@@ -58,12 +59,12 @@ struct GamesVerticalGrid: View {
 
     private func renderBody(game: GameShort) -> some View {
         return VStack(alignment: .leading, spacing: 0) {
-            LoadableImage(game.backgroundImage) { image in
-                image.resizable()
-                    .clipped()
-                    .frame(width: cardWidth, height: cardWidth)
-                    .clipShape(RoundedCorner(radius: 10, corners: [.topLeft, .topRight]))
-            }
+            WebImage(url: URL(string: game.backgroundImage))
+                .defaultPlaceholder()
+                .resizable()
+                .clipped()
+                .frame(width: cardWidth, height: cardWidth)
+                .clipShape(RoundedCorner(radius: 10, corners: [.topLeft, .topRight]))
             VStack(alignment: .leading, spacing: 2) {
                 Text(game.name)
                     .font(.system(size: 16))
@@ -100,8 +101,4 @@ extension GamesVerticalGrid {
             self.loadMore?()
         }
     }
-}
-
-struct GamesGridData: Hashable {
-    let identifier: String, imgUrl: String, title: String, releaseDate: String, rating: String
 }

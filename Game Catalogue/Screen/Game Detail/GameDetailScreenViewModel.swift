@@ -34,9 +34,13 @@ class GameDetailScreenViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var navigateToGameDetail = false
     @Published var showErrorNetwork = false
+    @Published var favouriteData: Favourite?
+    @Published var imgFadeOut = false
 
     var selectedGameSlug = ""
 
+    private var currentgameSlug = ""
+    private var currentGameGenreId = ""
     private let gameRepo = GameRepository()
     private var page = 1
     private var isLoadingMoreData = false
@@ -48,6 +52,24 @@ class GameDetailScreenViewModel: ObservableObject {
     func onGameTap(_ slug: String) {
         self.selectedGameSlug = slug
         self.navigateToGameDetail = true
+    }
+
+    func onFavouriteTap() {
+        guard let favData = favouriteData else {
+            let convertedDate = self.releaseDate.toDate(format: "MMM d, y")
+            let favourite = Favourite(context: Database.shared.context)
+            favourite.slug = self.currentgameSlug
+            favourite.name = self.gameTitle
+            favourite.image = self.bannerImage
+            favourite.rating = Double(self.rating) ?? 0
+            favourite.releaseDate = convertedDate
+            favourite.genres = self.currentGameGenreId
+            favourite.createdAt = Date()
+            favouriteData = gameRepo.addGameToFavourites(favourite)
+            return
+        }
+        gameRepo.removeGameFromFavourites(favData)
+        favouriteData = nil
     }
 
     func loadGames() {
@@ -73,7 +95,11 @@ class GameDetailScreenViewModel: ObservableObject {
         self.isLoading = true
         self.isLoadingData = true
         self.isLoadingScreenshot = true
+        self.currentgameSlug = slug
 
+        gameRepo.getFavouriteBySlug(slug: slug) { result in
+            favouriteData = result
+        }
         gameRepo.getGameDetail(id: slug) { response in
             guard let result = response.response else {
                 if response.error?.type == RequestError.NetworkError {
@@ -83,6 +109,7 @@ class GameDetailScreenViewModel: ObservableObject {
             }
 
             let genreStr = result.genres?.map { $0.name }.joined(separator: ", ") ?? ""
+            self.currentGameGenreId = result.genres?.map { String($0.id) }.joined(separator: ",") ?? ""
             let platformStr = result.platforms?.map { $0.platform.name }.joined(separator: ", ") ?? ""
             let developers = result.developers?.map { $0.name }.joined(separator: ", ") ?? ""
             let publishers = result.publishers?.map { $0.name }.joined(separator: ", ") ?? ""
