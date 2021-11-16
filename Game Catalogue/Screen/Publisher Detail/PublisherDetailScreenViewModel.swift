@@ -32,7 +32,7 @@ class PublisherDetailScreenViewModel: ObservableObject {
     private var slug = ""
     private var cancellableSet: Set<AnyCancellable> = []
 
-    private let publisherRepo = GamePublisherRepository()
+    private let publisherRepo = GamePublisherRepositoryImpl()
     private let gameRepo = GameRepositoryImpl()
 
     func loadData(_ slug: String) {
@@ -64,19 +64,16 @@ class PublisherDetailScreenViewModel: ObservableObject {
     }
 
     private func loadPublisherDetail() {
-        publisherRepo.getPublisherDetail(id: slug) { response in
-            guard let result = response.response else {
-                if response.error?.type == RequestError.NetworkError {
-                    self.showErrorNetwork = true
+        publisherRepo
+            .getPublisherDetail(id: slug)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { result in
+                    self.gameTitle = result.name
+                    self.imageUrl = result.imageBackground
+                    self.desc = result.description ?? ""
                 }
-                return
-            }
-
-            DispatchQueue.main.async {
-                self.gameTitle = result.name
-                self.imageUrl = result.imageBackground
-                self.desc = result.description ?? ""
-            }
-        }
+            )
+            .store(in: &cancellableSet)
     }
 }

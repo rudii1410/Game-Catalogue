@@ -42,7 +42,7 @@ class HomeScreenViewModel: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
 
     private let gameRepo = GameRepositoryImpl()
-    private let publisherRepo = GamePublisherRepository()
+    private let publisherRepo = GamePublisherRepositoryImpl()
     private let genreRepo = GameGenreRepository()
 
     public func onBannerImagePressed(_ idx: Int) {
@@ -68,20 +68,22 @@ class HomeScreenViewModel: ObservableObject {
     }
 
     func fetchPublisherList() {
-        publisherRepo.getPublisherList(page: 1, count: Constant.maxPublisherDataLoad) { response in
-            guard let result = response.response?.results else { return }
-
-            self.publisherList = result
-            var listData: [ItemListHorizontalData] = []
-            for data in result {
-                listData.append(
-                    ItemListHorizontalData(id: data.slug, imageUrl: data.imageBackground, title: data.name)
-                )
-            }
-            DispatchQueue.main.async {
-                self.gamePublisherList = listData
-            }
-        }
+        publisherRepo
+            .getPublisherList(page: 1, count: Constant.maxPublisherDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.publisherList = response.results
+                    var listData: [ItemListHorizontalData] = []
+                    for data in response.results {
+                        listData.append(
+                            ItemListHorizontalData(id: data.slug, imageUrl: data.imageBackground, title: data.name)
+                        )
+                    }
+                    self.gamePublisherList = listData
+                }
+            )
+            .store(in: &cancellableSet)
     }
 
     func fetchGenreList() {
