@@ -26,7 +26,8 @@ class GenreListScreenViewModel: ObservableObject {
     var selectedSlug = ""
     private var isLoadingMoreData = false
     private var page = 2
-    private let genreRepo = GameGenreRepository()
+    private var cancellableSet: Set<AnyCancellable> = []
+    private let genreRepo = GameGenreRepositoryImpl()
 
     public func onItemPressed(_ genre: BaseDetail) {
         selectedSlug = genre.slug
@@ -48,19 +49,16 @@ class GenreListScreenViewModel: ObservableObject {
 
     private func loadMore() {
         isLoadingMoreData = true
-        genreRepo.getGenreList(page: page, count: Constant.maxGenreDataLoad) { response in
-            guard let result = response.response?.results else {
-                if response.error?.type == RequestError.NetworkError {
-                    self.showErrorNetwork = true
+        genreRepo
+            .getGenreList(page: page, count: Constant.maxGenreDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.genreList.append(contentsOf: response.results)
+                    self.page += 1
+                    self.isLoadingMoreData = false
                 }
-                return
-            }
-
-            DispatchQueue.main.async {
-                self.genreList.append(contentsOf: result)
-                self.page += 1
-                self.isLoadingMoreData = false
-            }
-        }
+            )
+            .store(in: &cancellableSet)
     }
 }

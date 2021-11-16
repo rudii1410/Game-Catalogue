@@ -32,7 +32,7 @@ class GenreDetailScreenViewModel: ObservableObject {
     private var slug = ""
     private var cancellableSet: Set<AnyCancellable> = []
 
-    private let genreRepo = GameGenreRepository()
+    private let genreRepo = GameGenreRepositoryImpl()
     private let gameRepo = GameRepositoryImpl()
 
     func loadData(_ slug: String) {
@@ -64,19 +64,16 @@ class GenreDetailScreenViewModel: ObservableObject {
     }
 
     private func loadGenreDetail() {
-        genreRepo.getGenreDetail(id: slug) { response in
-            guard let result = response.response else {
-                if response.error?.type == RequestError.NetworkError {
-                    self.showErrorNetwork = true
+        genreRepo
+            .getGenreDetail(id: slug)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { result in
+                    self.genreTitle = result.name
+                    self.imageUrl = result.imageBackground
+                    self.desc = result.description ?? ""
                 }
-                return
-            }
-
-            DispatchQueue.main.async {
-                self.genreTitle = result.name
-                self.imageUrl = result.imageBackground
-                self.desc = result.description ?? ""
-            }
-        }
+            )
+            .store(in: &cancellableSet)
     }
 }

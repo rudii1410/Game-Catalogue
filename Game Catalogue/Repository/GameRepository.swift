@@ -33,7 +33,7 @@ protocol GameRepository {
 
 class GameRepositoryImpl: GameRepository {
     private let rawgApiKey = GameCatalogueKeys().rawgApiKey
-    private let db = Database.shared
+    private let sharedDb = Database.shared
 
     func getUpcomingRelease(
         endDate inputEndDate: Date? = nil,
@@ -112,20 +112,20 @@ class GameRepositoryImpl: GameRepository {
     }
 
     func addGameToFavourites(_ favourite: Favourite) -> AnyPublisher<Void, Error> {
-        return db.save()
+        return sharedDb.save()
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 
     func removeGameFromFavourites(_ item: Favourite) -> AnyPublisher<Void, Error> {
-        return db.delete(item: item)
+        return sharedDb.delete(item: item)
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 
     func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[Favourite], Error> {
         let sort = NSSortDescriptor(key: #keyPath(Favourite.createdAt), ascending: false)
-        return db.fetchAll(offset: offset, size: limit, sortDesc: [sort])
+        return sharedDb.fetchAll(offset: offset, size: limit, sortDesc: [sort])
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
@@ -134,7 +134,7 @@ class GameRepositoryImpl: GameRepository {
         let predicate = NSPredicate(
             format: "slug = %@", slug
         )
-        return db.fetchFirst(predicate: predicate)
+        return sharedDb.fetchFirst(predicate: predicate)
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }

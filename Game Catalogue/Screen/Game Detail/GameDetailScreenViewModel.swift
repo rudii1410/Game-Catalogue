@@ -89,7 +89,7 @@ class GameDetailScreenViewModel: ObservableObject {
         gameRepo
             .getGameListByGenres(genres: self.genreSlugStr, page: self.page, count: Constant.maxGameDataLoad)
             .sink(
-                receiveCompletion: {_ in },
+                receiveCompletion: { _ in },
                 receiveValue: { response in
                     self.gameList.append(contentsOf: response.results)
                     self.page += 1
@@ -120,24 +120,25 @@ class GameDetailScreenViewModel: ObservableObject {
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { result in
-                    self.currentGameGenreId     = result.genres?.map { String($0.id) }.joined(separator: ",") ?? ""
+                    self.currentGameGenreId     = self.joinArrayString(result.genres?.map { String($0.id) }, ",")
                     self.bannerImage            = result.backgroundImage
                     self.gameTitle              = result.name
-                    self.genreStr               = result.genres?.map { $0.name }.joined(separator: ", ") ?? ""
+                    self.genreStr               = self.joinArrayString(result.genres?.map { $0.name })
                     self.rating                 = String(result.rating ?? 0)
                     self.ratingCount            = String(result.ratingsCount ?? 0)
                     self.desc                   = result.description
-                    self.platformStr            = result.platforms?.map { $0.platform.name }.joined(separator: ", ") ?? ""
+                    self.platformStr            = self.joinArrayString(result.platforms?.map { $0.platform.name })
                     self.releaseDate            = self.reformatDate(date: result.released)
-                    self.developers             = result.developers?.map { $0.name }.joined(separator: ", ") ?? ""
-                    self.publisher              = result.publishers?.map { $0.name }.joined(separator: ", ") ?? ""
-                    self.genreSlugStr           = result.genres?.map { $0.slug }.joined(separator: ",") ?? ""
+                    self.developers             = self.joinArrayString(result.developers?.map { $0.name })
+                    self.publisher              = self.joinArrayString(result.publishers?.map { $0.name })
+                    self.genreSlugStr           = self.joinArrayString(result.genres?.map { $0.slug })
                     self.isLoadingData          = false
-                    
+
                     self.updateLoadingState()
                     self.loadGames()
                 }
-            ).store(in: &cancellableSet)
+            )
+            .store(in: &cancellableSet)
 
         gameRepo
             .getGameScreenShots(id: slug)
@@ -148,7 +149,8 @@ class GameDetailScreenViewModel: ObservableObject {
                     self.isLoadingScreenshot = false
                     self.updateLoadingState()
                 }
-            ).store(in: &cancellableSet)
+            )
+            .store(in: &cancellableSet)
     }
 
     private func updateLoadingState() {
@@ -162,5 +164,9 @@ class GameDetailScreenViewModel: ObservableObject {
         guard let convertedDate = dateFormatter.date(from: date) else { return "" }
         dateFormatter.dateFormat = "MMM d, y"
         return dateFormatter.string(from: convertedDate)
+    }
+
+    private func joinArrayString(_ arr: [String]?, _ separator: String = ", ") -> String {
+        return arr?.joined(separator: ", ") ?? ""
     }
 }

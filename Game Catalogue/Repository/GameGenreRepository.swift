@@ -15,24 +15,28 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+import Combine
 import Keys
 
-class GameGenreRepository {
-    func getGenreList(
-        page: Int,
-        count: Int,
-        callback: @escaping (Response<ListResponse<BaseDetail>>) -> Void
-    ) {
-        Request("\(Constant.rawgApiUrl)/genres")
-            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
+protocol GameGenreRepository {
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<ListResponse<BaseDetail>, Error>
+    func getGenreDetail(id: String) -> AnyPublisher<BaseDetail, Error>
+}
+
+class GameGenreRepositoryImpl: GameGenreRepository {
+    private let rawgApiKey = GameCatalogueKeys().rawgApiKey
+
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<ListResponse<BaseDetail>, Error> {
+        return Request("\(Constant.rawgApiUrl)/genres")
+            .addQuery(key: "key", value: rawgApiKey)
             .addQuery(key: "page", value: String(page))
             .addQuery(key: "page_size", value: String(count))
-            .result(callback)
+            .resultPublisher()
     }
 
-    func getGenreDetail(id: String, callback: @escaping (Response<BaseDetail>) -> Void) {
-        Request("\(Constant.rawgApiUrl)/genres/\(id)")
-            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
-            .result(callback)
+    func getGenreDetail(id: String) -> AnyPublisher<BaseDetail, Error> {
+        return Request("\(Constant.rawgApiUrl)/genres/\(id)")
+            .addQuery(key: "key", value: rawgApiKey)
+            .resultPublisher()
     }
 }

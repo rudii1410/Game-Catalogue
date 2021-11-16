@@ -43,7 +43,7 @@ class HomeScreenViewModel: ObservableObject {
 
     private let gameRepo = GameRepositoryImpl()
     private let publisherRepo = GamePublisherRepositoryImpl()
-    private let genreRepo = GameGenreRepository()
+    private let genreRepo = GameGenreRepositoryImpl()
 
     public func onBannerImagePressed(_ idx: Int) {
         self.onGameSelected(self.upcomingGames[idx].slug)
@@ -87,30 +87,32 @@ class HomeScreenViewModel: ObservableObject {
     }
 
     func fetchGenreList() {
-        genreRepo.getGenreList(page: 1, count: Constant.maxGenreDataLoad) { response in
-            guard let result = response.response?.results else { return }
-
-            self.genreList = result
-            let listData = result[...5].map { data in
-                ItemGridData(id: data.slug, imageUrl: data.imageBackground, title: data.name)
-            }
-            DispatchQueue.main.async {
-                self.gameGenreList = listData
-            }
-        }
+        genreRepo
+            .getGenreList(page: 1, count: Constant.maxGenreDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.genreList = response.results
+                    let listData = response.results[...5].map { data in
+                        ItemGridData(id: data.slug, imageUrl: data.imageBackground, title: data.name)
+                    }
+                    self.gameGenreList = listData
+                }
+            )
+            .store(in: &cancellableSet)
     }
 
     func fetchGameList() {
         if self.isLoadingGameData { return }
         self.isLoadingGameData = true
-        
+
         gameRepo
             .getUserFavouriteGameGenre()
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { result in
                     let genres = result.isEmpty ? "action" : result.joined(separator: ",")
-                    
+
                     self.gameRepo
                         .getGameListByGenres(genres: genres, page: self.gameListPage, count: Constant.maxGameDataLoad)
                         .sink(
