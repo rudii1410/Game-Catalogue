@@ -50,12 +50,12 @@ class Request {
         self.header[key] = value
         return self
     }
-    
-    public func resultPublisher<T>() -> AnyPublisher<T, RequestError> where T: Codable {
+
+    public func resultPublisher<T>() -> AnyPublisher<T, Error> where T: Codable {
         guard let url = constructUrl() else {
-            return Fail<T, RequestError>(error: RequestError.invalidUrl("Invalid URL")).eraseToAnyPublisher()
+            return Fail<T, Error>(error: RequestError.invalidUrl("Invalid URL")).eraseToAnyPublisher()
         }
-        
+
         let request = constructRequest(url)
         return URLSession.shared
             .dataTaskPublisher(for: request)
@@ -83,14 +83,14 @@ class Request {
 
         return rawUrl.url?.absoluteURL
     }
-    
+
     private func constructRequest(_ url: URL) -> URLRequest {
         var request = URLRequest(url: url)
         for (key, value) in self.header {
             request.addValue(value, forHTTPHeaderField: key)
         }
         request.httpMethod = self.method
-        
+
         return request
     }
 }

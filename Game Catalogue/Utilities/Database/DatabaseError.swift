@@ -1,4 +1,4 @@
-////
+//
 //  This file is part of Game Catalogue.
 //
 //  Game Catalogue is free software: you can redistribute it and/or modify
@@ -15,8 +15,9 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Foundation
-
-enum GenericError: Error {
-    case error(_ error: String)
+public enum DatabaseError: Error, Equatable {
+    case saveFail
+    case deleteFail
+    case fetchFail(error: String)
+    case noData
 }

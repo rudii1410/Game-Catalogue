@@ -15,6 +15,7 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+// TODO: DELETE
 class Response<T: Codable> {
     let isSuccess: Bool
     let error: RequestError?
