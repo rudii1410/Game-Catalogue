@@ -30,9 +30,10 @@ class PublisherDetailScreenViewModel: ObservableObject {
     private var isLoadingMoreData = false
     private var page = 1
     private var slug = ""
+    private var cancellableSet: Set<AnyCancellable> = []
 
     private let publisherRepo = GamePublisherRepository()
-    private let gameRepo = GameRepository()
+    private let gameRepo = GameRepositoryImpl()
 
     func loadData(_ slug: String) {
         self.slug = slug
@@ -49,19 +50,17 @@ class PublisherDetailScreenViewModel: ObservableObject {
         if self.isLoadingMoreData { return }
 
         isLoadingMoreData = true
-        gameRepo.getGameListByPublisher(
-            publisherId: slug,
-            page: page,
-            count: Constant.maxGameDataLoad
-        ) { response in
-            guard let result = response.response?.results else { return }
-
-            DispatchQueue.main.async {
-                self.gameList.append(contentsOf: result)
-                self.page += 1
-                self.isLoadingMoreData = false
-            }
-        }
+        gameRepo
+            .getGameListByPublisher(publisherId: slug, page: page, count: Constant.maxGameDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.gameList.append(contentsOf: response.results)
+                    self.page += 1
+                    self.isLoadingMoreData = false
+                }
+            )
+            .store(in: &cancellableSet)
     }
 
     private func loadPublisherDetail() {

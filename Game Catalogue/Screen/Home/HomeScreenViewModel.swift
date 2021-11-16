@@ -39,8 +39,9 @@ class HomeScreenViewModel: ObservableObject {
     var selectedGenreSlug = ""
     var selectedGameSlug = ""
     private var gameListPage = 1
+    private var cancellableSet: Set<AnyCancellable> = []
 
-    private let gameRepo = GameRepository()
+    private let gameRepo = GameRepositoryImpl()
     private let publisherRepo = GamePublisherRepository()
     private let genreRepo = GameGenreRepository()
 
@@ -49,23 +50,21 @@ class HomeScreenViewModel: ObservableObject {
     }
 
     func fetchUpcomingReleaseGame() {
-        gameRepo.getUpcomingRelease { response in
-            guard let result = response.response?.results else {
-                if response.error?.type == RequestError.NetworkError {
-                    self.showErrorNetwork = true
+        print("fetching upcoming release")
+        gameRepo
+            .getUpcomingRelease()
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.upcomingGames = response.results
+                    var banner: [String] = []
+                    for data in response.results {
+                        banner.append(data.backgroundImage)
+                    }
+                    self.upcomingGamesBanner = banner
                 }
-                return
-            }
-
-            self.upcomingGames = result
-            var banner: [String] = []
-            for data in result {
-                banner.append(data.backgroundImage)
-            }
-            DispatchQueue.main.async {
-                self.upcomingGamesBanner = banner
-            }
-        }
+            )
+            .store(in: &cancellableSet)
     }
 
     func fetchPublisherList() {
@@ -102,24 +101,28 @@ class HomeScreenViewModel: ObservableObject {
     func fetchGameList() {
         if self.isLoadingGameData { return }
         self.isLoadingGameData = true
-
-        gameRepo.getUserFavouriteGameGenre { result in
-            let genres = result.isEmpty ? "action" : result.joined(separator: ",")
-
-            gameRepo.getGameListByGenres(
-                genres: genres,
-                page: self.gameListPage,
-                count: Constant.maxGameDataLoad
-            ) { response in
-                guard let result = response.response?.results else { return }
-
-                DispatchQueue.main.async {
-                    self.gameList.append(contentsOf: result)
-                    self.gameListPage += 1
-                    self.isLoadingGameData = false
+        
+        gameRepo
+            .getUserFavouriteGameGenre()
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { result in
+                    let genres = result.isEmpty ? "action" : result.joined(separator: ",")
+                    
+                    self.gameRepo
+                        .getGameListByGenres(genres: genres, page: self.gameListPage, count: Constant.maxGameDataLoad)
+                        .sink(
+                            receiveCompletion: { _ in },
+                            receiveValue: { response in
+                                self.gameList.append(contentsOf: response.results)
+                                self.gameListPage += 1
+                                self.isLoadingGameData = false
+                            }
+                        )
+                        .store(in: &self.cancellableSet)
                 }
-            }
-        }
+            )
+            .store(in: &cancellableSet)
     }
 
     func onGameSelected(_ slug: String) {
