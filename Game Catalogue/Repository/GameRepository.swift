@@ -33,7 +33,11 @@ protocol GameRepository {
 
 class GameRepositoryImpl: GameRepository {
     private let rawgApiKey = GameCatalogueKeys().rawgApiKey
-    private let sharedDb = Database.shared
+    private let sharedDb: Database
+
+    init(database: Database) {
+        self.sharedDb = database
+    }
 
     func getUpcomingRelease(
         endDate inputEndDate: Date? = nil,
@@ -145,7 +149,9 @@ class GameRepositoryImpl: GameRepository {
                 var genres = Set<String>()
                 for fav in output {
                     for genre in fav.getGenreAsArray() {
-                        genres.insert(genre)
+                        genres.insert(
+                            genre.trimmingCharacters(in: .whitespacesAndNewlines)
+                        )
                     }
                 }
                 return Array(genres)

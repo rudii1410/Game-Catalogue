@@ -19,7 +19,7 @@ import Combine
 import Foundation
 
 class ProfileScreenViewModel: ObservableObject {
-    private var profileRepo = ProfileRepository()
+    private let profileRepo: ProfileRepository
 
     var profile: Profile
     @Published var isEditMode = false
@@ -28,7 +28,8 @@ class ProfileScreenViewModel: ObservableObject {
     @Published var tempWebUrlStr = ""
     @Published var showImgUrlAlert = false
 
-    init() {
+    init(container: ServiceContainer) {
+        self.profileRepo = container.get()
         self.profile = ProfileRepository.defaultProfile
         loadProfileData()
     }

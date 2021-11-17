@@ -32,8 +32,15 @@ class GenreDetailScreenViewModel: ObservableObject {
     private var slug = ""
     private var cancellableSet: Set<AnyCancellable> = []
 
-    private let genreRepo = GameGenreRepositoryImpl()
-    private let gameRepo = GameRepositoryImpl()
+    let container: ServiceContainer
+    private let genreRepo: GameGenreRepositoryImpl
+    private let gameRepo: GameRepositoryImpl
+
+    init(container: ServiceContainer) {
+        self.container = container
+        self.genreRepo = container.get()
+        self.gameRepo = container.get()
+    }
 
     func loadData(_ slug: String) {
         self.slug = slug

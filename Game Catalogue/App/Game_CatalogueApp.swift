@@ -23,8 +23,9 @@ struct GameCatalogueApp: App {
 
     init() {
         serviceContainer.register(Database())
+        serviceContainer.register(UserDefaults.standard)
         serviceContainer.register(GameRepositoryImpl(database: serviceContainer.get()))
-        serviceContainer.register(ProfileRepository())
+        serviceContainer.register(ProfileRepository(userDef: serviceContainer.get()))
         serviceContainer.register(GamePublisherRepositoryImpl())
         serviceContainer.register(GameGenreRepositoryImpl())
     }
@@ -57,7 +58,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                FavouritesScreen()
+                FavouritesScreen(container: self.serviceContainer)
                     .navigationBarTitle("Favourite Games", displayMode: .large)
             }
             .tag(Tab.favourite)
@@ -67,7 +68,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                ProfileScreen()
+                ProfileScreen(container: self.serviceContainer)
                     .navigationBarTitle("My Profile", displayMode: .inline)
             }
             .tag(Tab.profile)

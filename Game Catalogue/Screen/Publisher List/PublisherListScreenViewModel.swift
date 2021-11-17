@@ -28,7 +28,13 @@ class PublisherListScreenViewModel: ObservableObject {
     private var page = 2
     private var cancellableSet: Set<AnyCancellable> = []
 
-    private let publisherRepo = GamePublisherRepositoryImpl()
+    let container: ServiceContainer
+    private let publisherRepo: GamePublisherRepositoryImpl
+
+    init(container: ServiceContainer) {
+        self.container = container
+        self.publisherRepo = container.get()
+    }
 
     public func onItemPressed(_ item: BaseDetail) {
         self.selectedPublisher = item

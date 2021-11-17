@@ -32,8 +32,15 @@ class PublisherDetailScreenViewModel: ObservableObject {
     private var slug = ""
     private var cancellableSet: Set<AnyCancellable> = []
 
-    private let publisherRepo = GamePublisherRepositoryImpl()
-    private let gameRepo = GameRepositoryImpl()
+    let container: ServiceContainer
+    private let publisherRepo: GamePublisherRepositoryImpl
+    private let gameRepo: GameRepositoryImpl
+
+    init(container: ServiceContainer) {
+        self.container = container
+        self.publisherRepo = container.get()
+        self.gameRepo = container.get()
+    }
 
     func loadData(_ slug: String) {
         self.slug = slug

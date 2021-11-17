@@ -27,7 +27,13 @@ class GenreListScreenViewModel: ObservableObject {
     private var isLoadingMoreData = false
     private var page = 2
     private var cancellableSet: Set<AnyCancellable> = []
-    private let genreRepo = GameGenreRepositoryImpl()
+    let container: ServiceContainer
+    private let genreRepo: GameGenreRepositoryImpl
+
+    init(container: ServiceContainer) {
+        self.container = container
+        self.genreRepo = container.get()
+    }
 
     public func onItemPressed(_ genre: BaseDetail) {
         selectedSlug = genre.slug

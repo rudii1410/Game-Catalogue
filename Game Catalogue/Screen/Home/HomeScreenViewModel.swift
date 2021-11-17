@@ -41,16 +41,23 @@ class HomeScreenViewModel: ObservableObject {
     private var gameListPage = 1
     private var cancellableSet: Set<AnyCancellable> = []
 
-    private let gameRepo = GameRepositoryImpl()
-    private let publisherRepo = GamePublisherRepositoryImpl()
-    private let genreRepo = GameGenreRepositoryImpl()
+    let container: ServiceContainer
+    private let gameRepo: GameRepositoryImpl
+    private let publisherRepo: GamePublisherRepositoryImpl
+    private let genreRepo: GameGenreRepositoryImpl
+
+    init(container: ServiceContainer) {
+        self.container = container
+        self.gameRepo = container.get()
+        self.publisherRepo = container.get()
+        self.genreRepo = container.get()
+    }
 
     public func onBannerImagePressed(_ idx: Int) {
         self.onGameSelected(self.upcomingGames[idx].slug)
     }
 
     func fetchUpcomingReleaseGame() {
-        print("fetching upcoming release")
         gameRepo
             .getUpcomingRelease()
             .sink(

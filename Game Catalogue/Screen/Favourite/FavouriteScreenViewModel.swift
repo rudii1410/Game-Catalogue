@@ -26,8 +26,14 @@ class FavouriteScreenViewModel: ObservableObject {
     private var dataOffset = 0
     private var isLoadingMoreData = false
     private var canLoadMoreData = true
-    private let gameRepo = GameRepositoryImpl()
+    private let gameRepo: GameRepositoryImpl
     private var cancellableSet: Set<AnyCancellable> = []
+    let container: ServiceContainer
+
+    init(container: ServiceContainer) {
+        self.container = container
+        self.gameRepo = container.get()
+    }
 
     func performDelete(index: IndexSet) {
         index.forEach {

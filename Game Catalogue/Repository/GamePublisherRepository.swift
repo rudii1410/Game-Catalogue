@@ -18,12 +18,12 @@
 import Combine
 import Keys
 
-protocol GamePublisherRepositry {
+protocol GamePublisherRepository {
     func getPublisherList(page: Int, count: Int) -> AnyPublisher<ListResponse<BaseDetail>, Error>
     func getPublisherDetail(id: String) -> AnyPublisher<BaseDetail, Error>
 }
 
-class GamePublisherRepositoryImpl: GamePublisherRepositry {
+class GamePublisherRepositoryImpl: GamePublisherRepository {
     private let rawgApiKey = GameCatalogueKeys().rawgApiKey
 
     func getPublisherList(page: Int, count: Int) -> AnyPublisher<ListResponse<BaseDetail>, Error> {

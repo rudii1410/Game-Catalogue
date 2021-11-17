@@ -41,7 +41,6 @@ class GameDetailScreenViewModel: ObservableObject {
 
     private var currentgameSlug = ""
     private var currentGameGenreId = ""
-    private let gameRepo = GameRepositoryImpl()
     private var page = 1
     private var isLoadingMoreData = false
     private let mainQueue: DispatchQueue = .main
@@ -49,6 +48,13 @@ class GameDetailScreenViewModel: ObservableObject {
     private var isLoadingData = true
     private var isLoadingScreenshot = true
     private var cancellableSet: Set<AnyCancellable> = []
+    let container: ServiceContainer
+    private let gameRepo: GameRepositoryImpl
+
+    init(container: ServiceContainer) {
+        self.container = container
+        self.gameRepo = container.get()
+    }
 
     func onGameTap(_ slug: String) {
         self.selectedGameSlug = slug
@@ -56,9 +62,10 @@ class GameDetailScreenViewModel: ObservableObject {
     }
 
     func onFavouriteTap() {
+        let database: Database = self.container.get()
         guard let favData = favouriteData else {
             let convertedDate = self.releaseDate.toDate(format: "MMM d, y")
-            let favourite = Favourite(context: Database.shared.context)
+            let favourite = Favourite(context: database.bgContext)
             favourite.slug = self.currentgameSlug
             favourite.name = self.gameTitle
             favourite.image = self.bannerImage
