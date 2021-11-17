@@ -69,7 +69,9 @@ class GameDetailScreenViewModel: ObservableObject {
 
             gameRepo
                 .addGameToFavourites(favourite)
-                .sink(receiveCompletion: { _ in }, receiveValue: { })
+                .sink(receiveCompletion: { _ in }, receiveValue: {
+                    self.favouriteData = favourite
+                })
                 .store(in: &cancellableSet)
 
             return

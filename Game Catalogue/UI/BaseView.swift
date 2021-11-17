@@ -1,4 +1,4 @@
-//
+////
 //  This file is part of Game Catalogue.
 //
 //  Game Catalogue is free software: you can redistribute it and/or modify
@@ -17,15 +17,14 @@
 
 import SwiftUI
 
-extension View {
-    func asCard() -> some View {
-        self.overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray, lineWidth: 1)
-        )
+struct BaseView: ViewModifier {
+    func body(content: Content) -> some View {
+        content
     }
-    
-    func inject() -> some View {
-        return self.modifier(<#T##modifier: T##T#>)
+}
+
+extension View {
+    func useBaseView() -> some View {
+        return self.modifier(BaseView())
     }
 }
