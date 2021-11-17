@@ -31,6 +31,7 @@
 		CF6213F326C3934200580054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F226C3934200580054 /* Assets.xcassets */; };
 		CF6213F626C3934200580054 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F526C3934200580054 /* Preview Assets.xcassets */; };
 		CF68E7402744B6F1002917F1 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68E73F2744B6F1002917F1 /* BaseView.swift */; };
+		CF68E7432744BB89002917F1 /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68E7422744BB89002917F1 /* ServiceContainer.swift */; };
 		CF7EF8FE26EB5FAF00FA946E /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF7EF8FC26EB5FAF00FA946E /* Database.xcdatamodeld */; };
 		CF81947626CFC653002EAD89 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CF81947526CFC653002EAD89 /* .swiftlint.yml */; };
 		CF879AAE26D5330B0039EE8C /* GameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF879AAD26D5330B0039EE8C /* GameDetail.swift */; };
@@ -95,6 +96,7 @@
 		CF6213F526C3934200580054 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CF6213F726C3934200580054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF68E73F2744B6F1002917F1 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		CF68E7422744BB89002917F1 /* ServiceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
 		CF7EF8FD26EB5FAF00FA946E /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		CF81947526CFC653002EAD89 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		CF879AAD26D5330B0039EE8C /* GameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetail.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 		CF68E7412744B72D002917F1 /* DI */ = {
 			isa = PBXGroup;
 			children = (
+				CF68E7422744BB89002917F1 /* ServiceContainer.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				CFD515B126EF2739004DE1A3 /* TextfieldAlert.swift in Sources */,
 				CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */,
 				CF0595AB26CD020E00143D6E /* HomeScreenViewModel.swift in Sources */,
+				CF68E7432744BB89002917F1 /* ServiceContainer.swift in Sources */,
 				CF9AC95B26CE575C004341BD /* PublisherDetailScreen.swift in Sources */,
 				CF879AAE26D5330B0039EE8C /* GameDetail.swift in Sources */,
 				CFE8D9DF26D8EF320054834B /* Date.swift in Sources */,

@@ -19,20 +19,35 @@ import SwiftUI
 
 @main
 struct GameCatalogueApp: App {
+    private let serviceContainer = ServiceContainer()
+
+    init() {
+        serviceContainer.register(Database())
+        serviceContainer.register(GameRepositoryImpl(database: serviceContainer.get()))
+        serviceContainer.register(ProfileRepository())
+        serviceContainer.register(GamePublisherRepositoryImpl())
+        serviceContainer.register(GameGenreRepositoryImpl())
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(container: self.serviceContainer)
         }
     }
 }
 
 struct ContentView: View {
     @State private var currentTab: Tab = .home
+    private let serviceContainer: ServiceContainer
+
+    init(container: ServiceContainer) {
+        self.serviceContainer = container
+    }
 
     var body: some View {
         TabView(selection: $currentTab) {
             NavigationView {
-                HomeScreen()
+                HomeScreen(container: self.serviceContainer)
                     .navigationBarTitle("Games catalogue", displayMode: .large)
             }
             .tag(Tab.home)

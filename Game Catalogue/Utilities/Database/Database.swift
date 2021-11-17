@@ -19,11 +19,10 @@ import CoreData
 import Combine
 
 class Database {
-    static let shared = Database()
+    let mainContext: NSManagedObjectContext
+    let bgContext: NSManagedObjectContext
 
-    var context: NSManagedObjectContext
-
-    private init() {
+    init() {
         let persistentContainer = NSPersistentContainer(name: "Database")
         persistentContainer.loadPersistentStores { _, error in
             if let error = error as NSError? {
@@ -31,17 +30,18 @@ class Database {
             }
         }
 
-        context = persistentContainer.viewContext
+        mainContext = persistentContainer.viewContext
+        bgContext = persistentContainer.newBackgroundContext()
     }
 
     func save() -> Future<Void, Error> {
         Future { promise in
             do {
-                try self.context.save()
+                try self.bgContext.save()
                 promise(.success(()))
             } catch {
                 promise(.failure(DatabaseError.saveFail))
-                self.context.rollback()
+                self.bgContext.rollback()
             }
         }
     }
@@ -49,12 +49,12 @@ class Database {
     func delete<T: NSManagedObject>(item: T) -> Future<Void, Error> {
         Future { promise in
             do {
-                self.context.delete(item)
-                try self.context.save()
+                self.bgContext.delete(item)
+                try self.bgContext.save()
                 promise(.success(()))
             } catch {
                 promise(.failure(DatabaseError.deleteFail))
-                self.context.rollback()
+                self.bgContext.rollback()
             }
         }
     }
@@ -66,14 +66,14 @@ class Database {
         sortDesc: [NSSortDescriptor] = []
     ) -> Future<[T], Error> {
         Future { promise in
-            let request = T.fetchRequest()
+            let request = NSFetchRequest<T>(entityName: String(describing: T.self))
             if let offset = offset { request.fetchOffset = offset }
             if let size = size { request.fetchLimit = size }
             request.predicate = predicate
             request.sortDescriptors = sortDesc
 
             do {
-                let result = try self.context.fetch(request) as? [T] ?? []
+                let result = try self.mainContext.fetch(request)
                 promise(.success(result))
             } catch {
                 promise(.failure(DatabaseError.fetchFail(error: error.localizedDescription)))
@@ -83,11 +83,11 @@ class Database {
 
     func fetchFirst<T: NSManagedObject>(predicate: NSPredicate? = nil) -> Future<T, Error> {
         Future { promise in
-            let request = T.fetchRequest()
+            let request = NSFetchRequest<T>(entityName: String(describing: T.self))
             request.predicate = predicate
 
             do {
-                let result = try self.context.fetch(request) as? [T] ?? []
+                let result = try self.mainContext.fetch(request)
                 if result.isEmpty {
                     promise(.failure(DatabaseError.noData))
                 } else {

@@ -17,11 +17,21 @@
 
 import SwiftUI
 
-extension View {
-    func asCard() -> some View {
-        self.overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray, lineWidth: 1)
-        )
+class ServiceContainer {
+    private var container: [String: AnyObject] = [:]
+
+    func register(_ service: AnyObject) {
+        let key = String(describing: type(of: service))
+        self.container[key] = service
+        print("Registering \(key)")
+    }
+
+    func get<T>() -> T {
+        let key = String(describing: T.self)
+
+        guard let service = self.container[key] as? T else {
+            preconditionFailure("\(key) is not registered in service container")
+        }
+        return service
     }
 }
