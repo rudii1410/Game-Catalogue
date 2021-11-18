@@ -18,9 +18,10 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    @ObservedObject private var model = HomeScreenViewModel()
+    @ObservedObject var model: HomeScreenViewModel
 
-    init() {
+    init(container: ServiceContainer) {
+        self.model = HomeScreenViewModel(container: container)
         self.model.fetchUpcomingReleaseGame()
         self.model.fetchPublisherList()
     }
@@ -29,6 +30,7 @@ struct HomeScreen: View {
         GeometryReader { fullScreen in
             NavigationLink(
                 destination: GameDetailScreen(
+                    container: self.model.container,
                     slug: self.model.selectedGameSlug
                 ),
                 isActive: self.$model.navigateToGameDetail,
@@ -89,12 +91,15 @@ extension HomeScreen {
     func renderGamePublisher() -> some View {
         return Group {
             NavigationLink(
-                destination: PublisherListScreen(self.model.publisherList),
+                destination: PublisherListScreen(
+                    container: self.model.container,
+                    self.model.publisherList),
                 isActive: self.$model.navigateToPublisherList,
                 label: { EmptyView() }
             )
             NavigationLink(
                 destination: PublisherDetailScreen(
+                    container: self.model.container,
                     slug: self.model.selectedPublisherSlug
                 ),
                 isActive: self.$model.navigateToPublisherDetail,
@@ -117,12 +122,16 @@ extension HomeScreen {
     func renderGameGenre() -> some View {
         return Group {
             NavigationLink(
-                destination: GenreListScreen(self.model.genreList),
+                destination: GenreListScreen(
+                    container: self.model.container,
+                    self.model.genreList
+                ),
                 isActive: self.$model.navigateToGenreList,
                 label: { EmptyView() }
             )
             NavigationLink(
                 destination: GenreDetailScreen(
+                    container: self.model.container,
                     slug: self.model.selectedGenreSlug
                 ),
                 isActive: self.$model.navigateToGenreDetail,

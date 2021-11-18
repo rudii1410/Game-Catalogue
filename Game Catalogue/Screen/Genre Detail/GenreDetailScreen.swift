@@ -19,11 +19,12 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct GenreDetailScreen: View {
-    @ObservedObject private var model = GenreDetailScreenViewModel()
+    @ObservedObject private var model: GenreDetailScreenViewModel
     @State private var htmlHeight: CGFloat = 50.0
     private var slug: String
 
-    init(slug: String) {
+    init(container: ServiceContainer, slug: String) {
+        self.model = GenreDetailScreenViewModel(container: container)
         self.slug = slug
     }
 
@@ -31,6 +32,7 @@ struct GenreDetailScreen: View {
         ScrollView {
             NavigationLink(
                 destination: GameDetailScreen(
+                    container: self.model.container,
                     slug: self.model.selectedGameSlug
                 ),
                 isActive: self.$model.navigateToGameDetail,
