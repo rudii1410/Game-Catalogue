@@ -15,24 +15,28 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+import Combine
 import Keys
 
-class GamePublisherRepository {
-    func getPublisherList(
-        page: Int,
-        count: Int,
-        callback: @escaping (Response<ListResponse<BaseDetail>>) -> Void
-    ) {
-        Request("\(Constant.rawgApiUrl)/publishers")
-            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
+protocol GamePublisherRepository {
+    func getPublisherList(page: Int, count: Int) -> AnyPublisher<ListResponse<BaseDetail>, Error>
+    func getPublisherDetail(id: String) -> AnyPublisher<BaseDetail, Error>
+}
+
+class GamePublisherRepositoryImpl: GamePublisherRepository {
+    private let rawgApiKey = GameCatalogueKeys().rawgApiKey
+
+    func getPublisherList(page: Int, count: Int) -> AnyPublisher<ListResponse<BaseDetail>, Error> {
+        return Request("\(Constant.rawgApiUrl)/publishers")
+            .addQuery(key: "key", value: rawgApiKey)
             .addQuery(key: "page", value: String(page))
             .addQuery(key: "page_size", value: String(count))
-            .result(callback)
+            .resultPublisher()
     }
 
-    func getPublisherDetail(id: String, callback: @escaping (Response<BaseDetail>) -> Void) {
-        Request("\(Constant.rawgApiUrl)/publishers/\(id)")
-            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
-            .result(callback)
+    func getPublisherDetail(id: String) -> AnyPublisher<BaseDetail, Error> {
+        return Request("\(Constant.rawgApiUrl)/publishers/\(id)")
+            .addQuery(key: "key", value: rawgApiKey)
+            .resultPublisher()
     }
 }

@@ -26,8 +26,15 @@ class PublisherListScreenViewModel: ObservableObject {
 
     private var isLoadingMoreData = false
     private var page = 2
+    private var cancellableSet: Set<AnyCancellable> = []
 
-    private let publisherRepo = GamePublisherRepository()
+    let container: ServiceContainer
+    private let publisherRepo: GamePublisherRepositoryImpl
+
+    init(container: ServiceContainer) {
+        self.container = container
+        self.publisherRepo = container.get()
+    }
 
     public func onItemPressed(_ item: BaseDetail) {
         self.selectedPublisher = item
@@ -49,20 +56,17 @@ class PublisherListScreenViewModel: ObservableObject {
 
     private func loadMore() {
         isLoadingMoreData = true
-        publisherRepo.getPublisherList(page: page, count: Constant.maxPublisherDataLoad) { response in
-            guard let result = response.response?.results else {
-                if response.error?.type == RequestError.NetworkError {
-                    self.showErrorNetwork = true
+        publisherRepo
+            .getPublisherList(page: page, count: Constant.maxPublisherDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.gamePublisher.append(contentsOf: response.results)
+                    self.page += 1
+                    self.isLoadingMoreData = false
                 }
-                return
-            }
-
-            DispatchQueue.main.async {
-                self.gamePublisher.append(contentsOf: result)
-                self.page += 1
-                self.isLoadingMoreData = false
-            }
-        }
+            )
+            .store(in: &cancellableSet)
     }
 }
 

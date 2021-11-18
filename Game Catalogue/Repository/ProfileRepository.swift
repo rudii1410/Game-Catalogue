@@ -27,12 +27,15 @@ class ProfileRepository {
         webUrl: "https://rudiyanto.dev"
     )
 
-    private var userDef = UserDefaults.standard
+    private let userDef: UserDefaults
+    init(userDef: UserDefaults) {
+        self.userDef = userDef
+    }
 
     func storeProfileData(profile: Profile) {
-        UserDefaults.standard.setValue(profile.fullname, forKey: ProfileRepository.fullnameKey)
-        UserDefaults.standard.setValue(profile.profilePic, forKey: ProfileRepository.profilePicKey)
-        UserDefaults.standard.setValue(profile.webUrl, forKey: ProfileRepository.webUrlKey)
+        userDef.setValue(profile.fullname, forKey: ProfileRepository.fullnameKey)
+        userDef.setValue(profile.profilePic, forKey: ProfileRepository.profilePicKey)
+        userDef.setValue(profile.webUrl, forKey: ProfileRepository.webUrlKey)
     }
 
     func getProfile() -> Profile {

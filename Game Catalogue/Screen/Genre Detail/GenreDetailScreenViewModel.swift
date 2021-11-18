@@ -30,9 +30,17 @@ class GenreDetailScreenViewModel: ObservableObject {
     private var isLoadingMoreData = false
     private var page = 1
     private var slug = ""
+    private var cancellableSet: Set<AnyCancellable> = []
 
-    private let genreRepo = GameGenreRepository()
-    private let gameRepo = GameRepository()
+    let container: ServiceContainer
+    private let genreRepo: GameGenreRepositoryImpl
+    private let gameRepo: GameRepositoryImpl
+
+    init(container: ServiceContainer) {
+        self.container = container
+        self.genreRepo = container.get()
+        self.gameRepo = container.get()
+    }
 
     func loadData(_ slug: String) {
         self.slug = slug
@@ -49,35 +57,30 @@ class GenreDetailScreenViewModel: ObservableObject {
         if isLoadingMoreData { return }
 
         isLoadingMoreData = true
-        gameRepo.getGameListByGenres(
-            genres: slug,
-            page: page,
-            count: Constant.maxGameDataLoad
-        ) { response in
-            guard let result = response.response?.results else { return }
-
-            DispatchQueue.main.async {
-                self.gameList.append(contentsOf: result)
-                self.page += 1
-                self.isLoadingMoreData = false
-            }
-        }
+        gameRepo
+            .getGameListByGenres(genres: slug, page: page, count: Constant.maxGameDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.gameList.append(contentsOf: response.results)
+                    self.page += 1
+                    self.isLoadingMoreData = false
+                }
+            )
+            .store(in: &cancellableSet)
     }
 
     private func loadGenreDetail() {
-        genreRepo.getGenreDetail(id: slug) { response in
-            guard let result = response.response else {
-                if response.error?.type == RequestError.NetworkError {
-                    self.showErrorNetwork = true
+        genreRepo
+            .getGenreDetail(id: slug)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { result in
+                    self.genreTitle = result.name
+                    self.imageUrl = result.imageBackground
+                    self.desc = result.description ?? ""
                 }
-                return
-            }
-
-            DispatchQueue.main.async {
-                self.genreTitle = result.name
-                self.imageUrl = result.imageBackground
-                self.desc = result.description ?? ""
-            }
-        }
+            )
+            .store(in: &cancellableSet)
     }
 }

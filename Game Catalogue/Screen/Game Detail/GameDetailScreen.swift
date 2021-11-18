@@ -19,10 +19,11 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct GameDetailScreen: View {
-    @ObservedObject private var model = GameDetailScreenViewModel()
+    @ObservedObject private var model: GameDetailScreenViewModel
     @State private var htmlHeight: CGFloat = 50.0
 
-    init(slug: String) {
+    init(container: ServiceContainer, slug: String) {
+        self.model = GameDetailScreenViewModel(container: container)
         self.model.loadGameDetail(slug: slug)
     }
 
@@ -78,6 +79,7 @@ struct GameDetailScreen: View {
                 VStack {
                     NavigationLink(
                         destination: GameDetailScreen(
+                            container: self.model.container,
                             slug: self.model.selectedGameSlug
                         ),
                         isActive: self.$model.navigateToGameDetail,

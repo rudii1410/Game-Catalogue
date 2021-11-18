@@ -21,9 +21,10 @@ private let columnCount = 2
 struct GenreListScreen: View {
     private let gridLayout = [GridItem](repeating: GridItem(.flexible()), count: columnCount)
 
-    @ObservedObject private var model = GenreListScreenViewModel()
+    @ObservedObject private var model: GenreListScreenViewModel
 
-    init(_ genreList: [BaseDetail]) {
+    init(container: ServiceContainer, _ genreList: [BaseDetail]) {
+        self.model = GenreListScreenViewModel(container: container)
         self.model.genreList = genreList
     }
 
@@ -31,6 +32,7 @@ struct GenreListScreen: View {
         ScrollView {
             NavigationLink(
                 destination: GenreDetailScreen(
+                    container: self.model.container,
                     slug: self.model.selectedSlug
                 ),
                 isActive: self.$model.navigateToGenreDetail,
