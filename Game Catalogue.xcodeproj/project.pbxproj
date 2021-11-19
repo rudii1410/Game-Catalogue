@@ -64,7 +64,6 @@
 		CFF788DB26EDBF8500A9CBA2 /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF788DA26EDBF8500A9CBA2 /* Favourite.swift */; };
 		CFFC1B0927439BB30056C0EC /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC1B0827439BB30056C0EC /* RequestError.swift */; };
 		CFFC1B0C2743B0900056C0EC /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC1B0B2743B0900056C0EC /* DatabaseError.swift */; };
-		CFFD92C2274393C8005C24D1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFD92C1274393C8005C24D1 /* Response.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,7 +128,6 @@
 		CFF788DA26EDBF8500A9CBA2 /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
 		CFFC1B0827439BB30056C0EC /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		CFFC1B0B2743B0900056C0EC /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
-		CFFD92C1274393C8005C24D1 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -413,7 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				CF0595AE26CD04CD00143D6E /* Request.swift */,
-				CFFD92C1274393C8005C24D1 /* Response.swift */,
 				CFFC1B0827439BB30056C0EC /* RequestError.swift */,
 			);
 			path = Networking;
@@ -584,7 +581,6 @@
 				CF9AC96726CE607C004341BD /* GenreDetailScreen.swift in Sources */,
 				CFD515B326EF2FF2004DE1A3 /* ProfileRepository.swift in Sources */,
 				CFD34EA926C90855001832D8 /* Text.swift in Sources */,
-				CFFD92C2274393C8005C24D1 /* Response.swift in Sources */,
 				CFFC1B0C2743B0900056C0EC /* DatabaseError.swift in Sources */,
 				CFA5EADC26CFD1E2004AA327 /* GamePublisherRepository.swift in Sources */,
 				CFD515B526EF30C9004DE1A3 /* Profile.swift in Sources */,
