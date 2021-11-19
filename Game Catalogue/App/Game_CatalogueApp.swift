@@ -48,7 +48,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $currentTab) {
             NavigationView {
-                HomeScreen(container: self.serviceContainer)
+                HomeScreen(model: .init(container: self.serviceContainer))
                     .navigationBarTitle("Games catalogue", displayMode: .large)
             }
             .tag(Tab.home)
@@ -58,7 +58,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                FavouritesScreen(container: self.serviceContainer)
+                FavouritesScreen(model: .init(container: self.serviceContainer))
                     .navigationBarTitle("Favourite Games", displayMode: .large)
             }
             .tag(Tab.favourite)
@@ -68,7 +68,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                ProfileScreen(container: self.serviceContainer)
+                ProfileScreen(model: .init(container: self.serviceContainer))
                     .navigationBarTitle("My Profile", displayMode: .inline)
             }
             .tag(Tab.profile)

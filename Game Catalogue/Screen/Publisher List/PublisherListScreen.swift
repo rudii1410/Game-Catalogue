@@ -24,8 +24,8 @@ struct PublisherListScreen: View {
 
     @ObservedObject private var model: PublisherListScreenViewModel
 
-    init(container: ServiceContainer, _ data: [BaseDetail]) {
-        self.model = PublisherListScreenViewModel(container: container)
+    init(model: PublisherListScreenViewModel, _ data: [BaseDetail]) {
+        self.model = model
         self.model.gamePublisher = data
     }
 
@@ -33,7 +33,7 @@ struct PublisherListScreen: View {
         ScrollView {
             NavigationLink(
                 destination: PublisherDetailScreen(
-                    container: self.model.container,
+                    model: .init(container: self.model.container),
                     slug: self.model.selectedPublisher?.slug ?? ""
                 ),
                 isActive: self.$model.navigateToPublisherDetail,

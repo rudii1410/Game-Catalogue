@@ -20,8 +20,8 @@ import SwiftUI
 struct HomeScreen: View {
     @ObservedObject var model: HomeScreenViewModel
 
-    init(container: ServiceContainer) {
-        self.model = HomeScreenViewModel(container: container)
+    init(model: HomeScreenViewModel) {
+        self.model = model
         self.model.fetchUpcomingReleaseGame()
         self.model.fetchPublisherList()
     }
@@ -30,7 +30,7 @@ struct HomeScreen: View {
         GeometryReader { fullScreen in
             NavigationLink(
                 destination: GameDetailScreen(
-                    container: self.model.container,
+                    model: .init(container: self.model.container),
                     slug: self.model.selectedGameSlug
                 ),
                 isActive: self.$model.navigateToGameDetail,
@@ -92,14 +92,15 @@ extension HomeScreen {
         return Group {
             NavigationLink(
                 destination: PublisherListScreen(
-                    container: self.model.container,
-                    self.model.publisherList),
+                    model: .init(container: self.model.container),
+                    self.model.publisherList
+                ),
                 isActive: self.$model.navigateToPublisherList,
                 label: { EmptyView() }
             )
             NavigationLink(
                 destination: PublisherDetailScreen(
-                    container: self.model.container,
+                    model: .init(container: self.model.container),
                     slug: self.model.selectedPublisherSlug
                 ),
                 isActive: self.$model.navigateToPublisherDetail,
@@ -123,7 +124,7 @@ extension HomeScreen {
         return Group {
             NavigationLink(
                 destination: GenreListScreen(
-                    container: self.model.container,
+                    model: .init(container: self.model.container),
                     self.model.genreList
                 ),
                 isActive: self.$model.navigateToGenreList,
@@ -131,7 +132,7 @@ extension HomeScreen {
             )
             NavigationLink(
                 destination: GenreDetailScreen(
-                    container: self.model.container,
+                    model: .init(container: self.model.container),
                     slug: self.model.selectedGenreSlug
                 ),
                 isActive: self.$model.navigateToGenreDetail,
