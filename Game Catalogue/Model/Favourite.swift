@@ -17,26 +17,14 @@
 
 import CoreData
 
-class Favourite: NSManagedObject, Identifiable {
-    @nonobjc
-    public class func fetchRequest() -> NSFetchRequest<Favourite> {
-        return NSFetchRequest<Favourite>(entityName: "Favourite")
-    }
-
-    @NSManaged public var createdAt: Date
-    @NSManaged public var image: String
-    @NSManaged public var name: String
-    @NSManaged public var rating: Double
-    @NSManaged public var releaseDate: Date?
-    @NSManaged public var slug: String
-    @NSManaged public var genres: String
-
-    func getReleaseDate() -> String {
-        guard let date = releaseDate else {
-            return "-"
-        }
-        return date.toString()
-    }
+struct Favourite {
+    let createdAt: Date
+    let image: String
+    let name: String
+    let rating: Double
+    let releaseDate: Date?
+    let slug: String
+    let genres: String
 
     func getGenreAsArray() -> [String] {
         let result = genres.components(separatedBy: ",")

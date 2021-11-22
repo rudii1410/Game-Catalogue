@@ -16,22 +16,22 @@
 //
 
 class BaseDetail {
-    let id: Int = 0
-    let name: String = ""
-    let slug: String = ""
-    let gamesCount: Int = 0
-    let imageBackground: String = ""
-    let description: String? = nil
+    var id: Int = 0
+    var name: String = ""
+    var slug: String = ""
+    var gamesCount: Int = 0
+    var imageBackground: String = ""
+    var description: String? = nil
 }
 
 class Game: BaseDetail {
-    let released: String? = nil
-    let rating: Double? = nil
-    let ratingsCount: Int? = nil
-    let genres: [BaseDetail]? = nil
-    let platforms: [GamePlatform]? = nil
-    let publishers: [BaseDetail]? = nil
-    let developers: [BaseDetail]? = nil
+    var released: String? = nil
+    var rating: Double? = nil
+    var ratingsCount: Int? = nil
+    var genres: [Genre]? = nil
+    var platforms: [GamePlatform]? = nil
+    var publishers: [Publisher]? = nil
+    var developers: [Developer]? = nil
 
     func getFormattedString(format: String) -> String {
         guard let data = released?.toDate(format: "yyyy-MM-dd") else {
@@ -41,19 +41,25 @@ class Game: BaseDetail {
     }
 }
 
-class GamePlatform: BaseDetail {
-    let platform: GamePlatformDetail? = nil
-    let releasedAt: String = ""
-    let requirements: Requirements? = nil
+class GamePlatform {
+    var platform: GamePlatformDetail? = nil
+    var releasedAt: String = ""
+    var requirements: Requirements? = nil
 }
 
 class GamePlatformDetail: BaseDetail {
-    let image: String? = nil
-    let yearStart: Int? = nil
-    let yearEnd: Int? = nil
+    var image: String? = nil
+    var yearStart: Int? = nil
+    var yearEnd: Int? = nil
 }
 
 class Requirements {
-    let minimum: String? = nil
-    let recommended: String? = nil
+    var minimum: String? = nil
+    var recommended: String? = nil
 }
+
+class Genre: BaseDetail {}
+
+class Publisher: BaseDetail {}
+
+class Developer: BaseDetail {}

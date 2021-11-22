@@ -18,128 +18,128 @@
 import Keys
 import Combine
 
-protocol GameRepository {
-    func getUpcomingRelease(endDate inputEndDate: Date?, page: Int, count: Int) -> AnyPublisher<ListResponse<GameShort>, Error>
-    func getGameListByPublisher(publisherId: String, page: Int, count: Int) -> AnyPublisher<ListResponse<GameShort>, Error>
-    func getGameListByGenres(genres: String, page: Int, count: Int) -> AnyPublisher<ListResponse<GameShort>, Error>
-    func getGameDetail(id: String) -> AnyPublisher<GameDetail, Error>
-    func getGameScreenShots(id: String) -> AnyPublisher<ListResponse<Screenshot>, Error>
+protocol GameRepositoryInterface {
+    func getUpcomingRelease(endDate inputEndDate: Date?, page: Int, count: Int) -> AnyPublisher<[Game], Error>
+    func getGameListByPublisher(publisherId: String, page: Int, count: Int) -> AnyPublisher<[Game], Error>
+    func getGameListByGenres(genres: String, page: Int, count: Int) -> AnyPublisher<[Game], Error>
+    func getGameDetail(id: String) -> AnyPublisher<Game, Error>
+    func getGameScreenShots(id: String) -> AnyPublisher<[Screenshot], Error>
     func addGameToFavourites(_ favourite: Favourite) -> AnyPublisher<Void, Error>
-    func removeGameFromFavourites(_ favourite: Favourite) -> AnyPublisher<Void, Error>
+    func removeGameFromFavourites(_ slug: String) -> AnyPublisher<Void, Error>
     func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[Favourite], Error>
     func getFavouriteBySlug(slug: String) -> AnyPublisher<Favourite, Error>
     func getUserFavouriteGameGenre() -> AnyPublisher<[String], Error>
 }
 
-class GameRepositoryImpl: GameRepository {
-    private let rawgApiKey = GameCatalogueKeys().rawgApiKey
-    private let sharedDb: Database
+class GameRepositry: GameRepositoryInterface {
+    private let localDataSource: LocalDataSource
+    private let remoteDataSource: RemoteDataSource
+    private let database: Database
 
-    init(database: Database) {
-        self.sharedDb = database
+    init(local: LocalDataSource, remote: RemoteDataSource, database: Database) {
+        self.localDataSource = local
+        self.remoteDataSource = remote
+        self.database = database
     }
+}
 
+extension GameRepositry {
     func getUpcomingRelease(
         endDate inputEndDate: Date? = nil,
         page: Int = 1,
         count: Int = 10
-    ) -> AnyPublisher<ListResponse<GameShort>, Error> {
-        var dateComponent = DateComponents()
-        dateComponent.day = 1
-        guard let startDate = Calendar.current.date(byAdding: dateComponent, to: Date()) else {
-            return Fail<ListResponse<GameShort>, Error>(
-                error: GenericError.error("invalid start date")
-            ).eraseToAnyPublisher()
-        }
-
-        var tempEndDate = inputEndDate
-        if tempEndDate == nil {
-            dateComponent.month = 3
-            tempEndDate = Calendar.current.date(byAdding: dateComponent, to: Date())
-        }
-        guard let endDate = tempEndDate else {
-            return Fail<ListResponse<GameShort>, Error>(
-                error: GenericError.error("invalid end date")
-            ).eraseToAnyPublisher()
-        }
-
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd"
-        let fDates = "\(format.string(from: startDate)),\(format.string(from: endDate))"
-
-        return Request("\(Constant.rawgApiUrl)/games")
-            .addQuery(key: "key", value: rawgApiKey)
-            .addQuery(key: "dates", value: fDates)
-            .addQuery(key: "ordering", value: "-rating")
-            .addQuery(key: "page", value: String(page))
-            .addQuery(key: "page_size", value: String(count))
-            .resultPublisher()
+    ) -> AnyPublisher<[Game], Error> {
+        return self.remoteDataSource
+            .getUpcomingRelease(endDate: inputEndDate, page: page, count: count)
+            .tryMap { output in
+                return Mapper.mapRawgGameShortListToModel(output.results)
+            }
+            .eraseToAnyPublisher()
     }
 
     func getGameListByPublisher(
         publisherId: String,
         page: Int = 1,
         count: Int = 10
-    ) -> AnyPublisher<ListResponse<GameShort>, Error> {
-        return Request("\(Constant.rawgApiUrl)/games")
-            .addQuery(key: "key", value: rawgApiKey)
-            .addQuery(key: "publishers", value: publisherId)
-            .addQuery(key: "page", value: String(page))
-            .addQuery(key: "page_size", value: String(count))
-            .resultPublisher()
+    ) -> AnyPublisher<[Game], Error> {
+        return self.remoteDataSource
+            .getGameListByPublisher(publisherId: publisherId, page: page, count: count)
+            .tryMap { output in
+                return Mapper.mapRawgGameShortListToModel(output.results)
+            }
+            .eraseToAnyPublisher()
     }
 
     func getGameListByGenres(
         genres: String,
         page: Int = 1,
         count: Int = 10
-    ) -> AnyPublisher<ListResponse<GameShort>, Error> {
-        return Request("\(Constant.rawgApiUrl)/games")
-            .addQuery(key: "key", value: rawgApiKey)
-            .addQuery(key: "genres", value: genres)
-            .addQuery(key: "page", value: String(page))
-            .addQuery(key: "page_size", value: String(count))
-            .resultPublisher()
-    }
-
-    func getGameDetail(id: String) -> AnyPublisher<GameDetail, Error> {
-        return Request("\(Constant.rawgApiUrl)/games/\(id)")
-            .addQuery(key: "key", value: rawgApiKey)
-            .resultPublisher()
-    }
-
-    func getGameScreenShots(id: String) -> AnyPublisher<ListResponse<Screenshot>, Error> {
-        return Request("\(Constant.rawgApiUrl)/games/\(id)/screenshots")
-            .addQuery(key: "key", value: rawgApiKey)
-            .addQuery(key: "page_size", value: "10")
-            .resultPublisher()
-    }
-
-    func addGameToFavourites(_ favourite: Favourite) -> AnyPublisher<Void, Error> {
-        return sharedDb.save()
-            .receive(on: DispatchQueue.main)
+    ) -> AnyPublisher<[Game], Error> {
+        return self.remoteDataSource
+            .getGameListByGenres(genres: genres, page: page, count: count)
+            .tryMap { output in
+                return Mapper.mapRawgGameShortListToModel(output.results)
+            }
             .eraseToAnyPublisher()
     }
 
-    func removeGameFromFavourites(_ item: Favourite) -> AnyPublisher<Void, Error> {
-        return sharedDb.delete(item: item)
-            .receive(on: DispatchQueue.main)
+    func getGameDetail(id: String) -> AnyPublisher<Game, Error> {
+        return self.remoteDataSource
+            .getGameDetail(id: id)
+            .tryMap { output in
+                return Mapper.mapRawgGameDetailToModel(output)
+            }
+            .eraseToAnyPublisher()
+    }
+
+    func getGameScreenShots(id: String) -> AnyPublisher<[Screenshot], Error> {
+        return self.remoteDataSource
+            .getGameScreenShots(id: id)
+            .tryMap { output in
+                return Mapper.mapRawgScreenshotListToModel(output.results)
+            }
+            .eraseToAnyPublisher()
+    }
+
+    func addGameToFavourites(_ favourite: Favourite) -> AnyPublisher<Void, Error> {
+        let entity = FavouriteEntity(context: self.database.bgContext)
+        entity.slug = favourite.slug
+        entity.name = favourite.slug
+        entity.image = favourite.image
+        entity.rating = favourite.rating
+        entity.releaseDate = favourite.releaseDate
+        entity.genres = favourite.genres
+        entity.createdAt = favourite.createdAt
+        return self.localDataSource
+            .addGameToFavourites(entity)
+            .eraseToAnyPublisher()
+    }
+
+    func removeGameFromFavourites(_ slug: String) -> AnyPublisher<Void, Error> {
+        return self.localDataSource
+            .getFavouriteBySlug(slug: slug)
+            .tryMap { output in
+                _ = self.localDataSource.removeGameFavouriteByEntity(output)
+                return
+            }
             .eraseToAnyPublisher()
     }
 
     func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[Favourite], Error> {
-        let sort = NSSortDescriptor(key: #keyPath(Favourite.createdAt), ascending: false)
-        return sharedDb.fetchAll(offset: offset, size: limit, sortDesc: [sort])
-            .receive(on: DispatchQueue.main)
+        return self.localDataSource
+            .fetchFavourites(offset: offset, limit: limit)
+            .tryMap { output in
+                return Mapper.mapFavouriteEntityListToModel(output)
+            }
             .eraseToAnyPublisher()
     }
 
     func getFavouriteBySlug(slug: String) -> AnyPublisher<Favourite, Error> {
-        let predicate = NSPredicate(
-            format: "slug = %@", slug
-        )
-        return sharedDb.fetchFirst(predicate: predicate)
-            .receive(on: DispatchQueue.main)
+        return self.localDataSource
+            .getFavouriteBySlug(slug: slug)
+            .tryMap { output in
+                return Mapper.mapFavouriteEntityToModel(output)
+            }
             .eraseToAnyPublisher()
     }
 

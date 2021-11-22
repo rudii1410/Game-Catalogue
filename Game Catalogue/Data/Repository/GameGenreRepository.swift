@@ -18,25 +18,35 @@
 import Combine
 import Keys
 
-protocol GameGenreRepository {
-    func getGenreList(page: Int, count: Int) -> AnyPublisher<ListResponse<BaseDetail>, Error>
-    func getGenreDetail(id: String) -> AnyPublisher<BaseDetail, Error>
+protocol GameGenreRepositoryInterface {
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error>
+    func getGenreDetail(id: String) -> AnyPublisher<Genre, Error>
 }
 
-class GameGenreRepositoryImpl: GameGenreRepository {
-    private let rawgApiKey = GameCatalogueKeys().rawgApiKey
+class GameGenreRepository: GameGenreRepositoryInterface {
+    private let remoteDataSource: RemoteDataSource
 
-    func getGenreList(page: Int, count: Int) -> AnyPublisher<ListResponse<BaseDetail>, Error> {
-        return Request("\(Constant.rawgApiUrl)/genres")
-            .addQuery(key: "key", value: rawgApiKey)
-            .addQuery(key: "page", value: String(page))
-            .addQuery(key: "page_size", value: String(count))
-            .resultPublisher()
+    init(remote: RemoteDataSource) {
+        self.remoteDataSource = remote
+    }
+}
+
+extension GameGenreRepository {
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error> {
+        return self.remoteDataSource
+            .getGenreList(page: page, count: count)
+            .tryMap { output in
+                return Mapper.mapRawgGenreListToModel(output.results)
+            }
+            .eraseToAnyPublisher()
     }
 
-    func getGenreDetail(id: String) -> AnyPublisher<BaseDetail, Error> {
-        return Request("\(Constant.rawgApiUrl)/genres/\(id)")
-            .addQuery(key: "key", value: rawgApiKey)
-            .resultPublisher()
+    func getGenreDetail(id: String) -> AnyPublisher<Genre, Error> {
+        return self.remoteDataSource
+            .getGenreDetail(id: id)
+            .tryMap { output in
+                return Mapper.mapRawgGenreToModel(output)
+            }
+            .eraseToAnyPublisher()
     }
 }

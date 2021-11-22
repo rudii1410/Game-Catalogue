@@ -18,25 +18,35 @@
 import Combine
 import Keys
 
-protocol GamePublisherRepository {
-    func getPublisherList(page: Int, count: Int) -> AnyPublisher<ListResponse<BaseDetail>, Error>
-    func getPublisherDetail(id: String) -> AnyPublisher<BaseDetail, Error>
+protocol GamePublisherRepositoryInterface {
+    func getPublisherList(page: Int, count: Int) -> AnyPublisher<[Publisher], Error>
+    func getPublisherDetail(id: String) -> AnyPublisher<Publisher, Error>
 }
 
-class GamePublisherRepositoryImpl: GamePublisherRepository {
-    private let rawgApiKey = GameCatalogueKeys().rawgApiKey
+class GamePublisherRepository: GamePublisherRepositoryInterface {
+    private let remoteDataSource: RemoteDataSource
 
-    func getPublisherList(page: Int, count: Int) -> AnyPublisher<ListResponse<BaseDetail>, Error> {
-        return Request("\(Constant.rawgApiUrl)/publishers")
-            .addQuery(key: "key", value: rawgApiKey)
-            .addQuery(key: "page", value: String(page))
-            .addQuery(key: "page_size", value: String(count))
-            .resultPublisher()
+    init(remote: RemoteDataSource) {
+        self.remoteDataSource = remote
+    }
+}
+
+extension GamePublisherRepository {
+    func getPublisherList(page: Int, count: Int) -> AnyPublisher<[Publisher], Error> {
+        self.remoteDataSource
+            .getPublisherList(page: page, count: count)
+            .tryMap { output in
+                return Mapper.mapRawgPublisherListToModel(output.results)
+            }
+            .eraseToAnyPublisher()
     }
 
-    func getPublisherDetail(id: String) -> AnyPublisher<BaseDetail, Error> {
-        return Request("\(Constant.rawgApiUrl)/publishers/\(id)")
-            .addQuery(key: "key", value: rawgApiKey)
-            .resultPublisher()
+    func getPublisherDetail(id: String) -> AnyPublisher<Publisher, Error> {
+        self.remoteDataSource
+            .getPublisherDetail(id: id)
+            .tryMap { output in
+                return Mapper.mapRawgPublisherToModel(output)
+            }
+            .eraseToAnyPublisher()
     }
 }
