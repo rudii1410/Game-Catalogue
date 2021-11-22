@@ -31,7 +31,7 @@ class HomeInteractor: HomeUseCase {
     private let genreRepo: GameGenreRepositoryInterface
     private var cancellableSet: Set<AnyCancellable> = []
 
-    init(gameRepo: GameRepositry, publisherRepo: GamePublisherRepository, genreRepo: GameGenreRepository) {
+    init(gameRepo: GameRepository, publisherRepo: GamePublisherRepository, genreRepo: GameGenreRepository) {
         self.gameRepo = gameRepo
         self.publisherRepo = publisherRepo
         self.genreRepo = genreRepo

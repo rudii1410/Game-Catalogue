@@ -31,7 +31,7 @@ protocol GameRepositoryInterface {
     func getUserFavouriteGameGenre() -> AnyPublisher<[String], Error>
 }
 
-class GameRepositry: GameRepositoryInterface {
+class GameRepository: GameRepositoryInterface {
     private let localDataSource: LocalDataSource
     private let remoteDataSource: RemoteDataSource
     private let database: Database
@@ -43,7 +43,7 @@ class GameRepositry: GameRepositoryInterface {
     }
 }
 
-extension GameRepositry {
+extension GameRepository {
     func getUpcomingRelease(
         endDate inputEndDate: Date? = nil,
         page: Int = 1,

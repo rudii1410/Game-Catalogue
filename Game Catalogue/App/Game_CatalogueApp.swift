@@ -23,7 +23,7 @@ struct GameCatalogueApp: App {
 
     init() {
         let database = Database()
-        let gameRepo = GameRepositry(
+        let gameRepo = GameRepository(
             local: LocalDataSource.getInstance(database: database),
             remote: RemoteDataSource.getInstance(),
             database: database
@@ -39,6 +39,8 @@ struct GameCatalogueApp: App {
                 genreRepo: genreRepo
             )
         )
+        serviceContainer.register(FavouriteInteractor(gameRepo: gameRepo))
+        serviceContainer.register(ProfileInteractor(profileRepo: profileRepo))
     }
 
     var body: some Scene {
@@ -69,7 +71,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                FavouritesScreen(model: .init(container: self.serviceContainer))
+                FavouritesScreen(model: .init(interactor: self.serviceContainer.get()))
                     .navigationBarTitle("Favourite Games", displayMode: .large)
             }
             .tag(Tab.favourite)
@@ -79,7 +81,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                ProfileScreen(model: .init(container: self.serviceContainer))
+                ProfileScreen(model: .init(interactor: self.serviceContainer.get()))
                     .navigationBarTitle("My Profile", displayMode: .inline)
             }
             .tag(Tab.profile)

@@ -21,6 +21,9 @@
 		CF1D4FCD274B871100B1E07B /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FCC274B871100B1E07B /* Favourite.swift */; };
 		CF1D4FCF274B8B1700B1E07B /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FCE274B8B1700B1E07B /* Mapper.swift */; };
 		CF1D4FD1274BA55000B1E07B /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD0274BA55000B1E07B /* HomeInteractor.swift */; };
+		CF1D4FD3274BB93C00B1E07B /* PublisherListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD2274BB93C00B1E07B /* PublisherListInteractor.swift */; };
+		CF1D4FD5274BB95700B1E07B /* FavouriteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD4274BB95700B1E07B /* FavouriteInteractor.swift */; };
+		CF1D4FD7274BBBAA00B1E07B /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD6274BBBAA00B1E07B /* ProfileInteractor.swift */; };
 		CF377CA726D6585700D1A9F4 /* RawgScreenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF377CA626D6585700D1A9F4 /* RawgScreenshot.swift */; };
 		CF3E795226CB84C80087227E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E795126CB84C80087227E /* SearchBar.swift */; };
 		CF4045C826CE4E1000560D4D /* PublisherDetailScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */; };
@@ -90,6 +93,9 @@
 		CF1D4FCC274B871100B1E07B /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
 		CF1D4FCE274B8B1700B1E07B /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		CF1D4FD0274BA55000B1E07B /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		CF1D4FD2274BB93C00B1E07B /* PublisherListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListInteractor.swift; sourceTree = "<group>"; };
+		CF1D4FD4274BB95700B1E07B /* FavouriteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteInteractor.swift; sourceTree = "<group>"; };
+		CF1D4FD6274BBBAA00B1E07B /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		CF377CA626D6585700D1A9F4 /* RawgScreenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgScreenshot.swift; sourceTree = "<group>"; };
 		CF3E795126CB84C80087227E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailScreenViewModel.swift; sourceTree = "<group>"; };
@@ -313,6 +319,7 @@
 			children = (
 				CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */,
 				CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */,
+				CF1D4FD2274BB93C00B1E07B /* PublisherListInteractor.swift */,
 			);
 			path = "Publisher List";
 			sourceTree = "<group>";
@@ -434,6 +441,7 @@
 			children = (
 				CFE8D9E026D8F99B0054834B /* FavouriteScreen.swift */,
 				CFC61BEB26EB665300417D1D /* FavouriteScreenViewModel.swift */,
+				CF1D4FD4274BB95700B1E07B /* FavouriteInteractor.swift */,
 			);
 			path = Favourite;
 			sourceTree = "<group>";
@@ -463,6 +471,7 @@
 			children = (
 				CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */,
 				CFD515AE26EF0E4E004DE1A3 /* ProfileScreenViewModel.swift */,
+				CF1D4FD6274BBBAA00B1E07B /* ProfileInteractor.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -636,6 +645,7 @@
 				CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */,
 				CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */,
 				CF1D4FCF274B8B1700B1E07B /* Mapper.swift in Sources */,
+				CF1D4FD5274BB95700B1E07B /* FavouriteInteractor.swift in Sources */,
 				CFD34EB726C93CB2001832D8 /* RoundedCorner.swift in Sources */,
 				CF1D4FBE274B7AF000B1E07B /* RawgListResponse.swift in Sources */,
 				CF15055D26CFB58B0064809A /* RawgGameShort.swift in Sources */,
@@ -659,11 +669,13 @@
 				CFD515B526EF30C9004DE1A3 /* Profile.swift in Sources */,
 				CFC61BEC26EB665300417D1D /* FavouriteScreenViewModel.swift in Sources */,
 				CF377CA726D6585700D1A9F4 /* RawgScreenshot.swift in Sources */,
+				CF1D4FD7274BBBAA00B1E07B /* ProfileInteractor.swift in Sources */,
 				CF1D4FC6274B7F3000B1E07B /* LocalDataSource.swift in Sources */,
 				CF879AB426D53C070039EE8C /* RawgBaseDetail.swift in Sources */,
 				CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */,
 				CF15056126CFB6200064809A /* GameRepository.swift in Sources */,
 				CFFC1B0927439BB30056C0EC /* RequestError.swift in Sources */,
+				CF1D4FD3274BB93C00B1E07B /* PublisherListInteractor.swift in Sources */,
 				CF7EF8FE26EB5FAF00FA946E /* Database.xcdatamodeld in Sources */,
 				CF1D4FCD274B871100B1E07B /* Favourite.swift in Sources */,
 				CF1D4FCB274B869500B1E07B /* Screenshot.swift in Sources */,
