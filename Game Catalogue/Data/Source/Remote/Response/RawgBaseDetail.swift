@@ -15,15 +15,17 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-// TODO: DELETE
-class Response<T: Codable> {
-    let isSuccess: Bool
-    let error: RequestError?
-    let response: T?
+class RawgBaseDetail: Codable {
+    let id: Int
+    let name, slug: String
+    let gamesCount: Int
+    let imageBackground: String
+    let description: String?
 
-    init(error: RequestError? = nil, success: T? = nil) {
-        self.error = error
-        self.response = success
-        self.isSuccess = error == nil && success != nil
+    private enum CodingKeys: String, CodingKey {
+        case id, name, slug
+        case gamesCount = "games_count"
+        case imageBackground = "image_background"
+        case description
     }
 }

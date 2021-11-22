@@ -24,8 +24,8 @@ struct PublisherDetailScreen: View {
     @State private var htmlHeight: CGFloat = 50.0
     private var slug: String
 
-    init(container: ServiceContainer, slug: String) {
-        self.model = PublisherDetailScreenViewModel(container: container)
+    init(model: PublisherDetailScreenViewModel, slug: String) {
+        self.model = model
         self.slug = slug
     }
 
@@ -33,7 +33,7 @@ struct PublisherDetailScreen: View {
         ScrollView {
             NavigationLink(
                 destination: GameDetailScreen(
-                    container: self.model.container,
+                    model: .init(interactor: ServiceContainer.instance.get()),
                     slug: self.model.selectedGameSlug
                 ),
                 isActive: self.$model.navigateToGameDetail,

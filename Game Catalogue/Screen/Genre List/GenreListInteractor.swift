@@ -15,22 +15,21 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class Platform: Codable { // TODO: extends from BaseDetail
-    let id: Int
-    let name, slug: String
-    let gamesCount: Int?
-    let imageBackground: String?
-    let platformDescription: String?
-    let image: String?
-    let yearStart, yearEnd: Int?
+import Combine
 
-    enum CodingKeys: String, CodingKey {
-        case id, name, slug
-        case gamesCount = "games_count"
-        case imageBackground = "image_background"
-        case platformDescription = "description"
-        case image
-        case yearStart = "year_start"
-        case yearEnd = "year_end"
+protocol GenreListUseCase {
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error>
+}
+
+class GenreListInteractor: GenreListUseCase {
+    private let genreRepo: GameGenreRepositoryInterface
+    init(genreRepo: GameGenreRepository) {
+        self.genreRepo = genreRepo
+    }
+}
+
+extension GenreListInteractor {
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error> {
+        return self.genreRepo.getGenreList(page: page, count: count)
     }
 }

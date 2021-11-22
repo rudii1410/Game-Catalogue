@@ -15,8 +15,14 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class ListResponse<T: Codable>: Codable {
-    let count: Int
-    let next, previous: String?
-    let results: [T]
+class RawgScreenshot: Codable {
+    let id: Int
+    let image: String
+    let width, height: Int
+    let isDeleted: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case id, image, width, height
+        case isDeleted = "is_deleted"
+    }
 }

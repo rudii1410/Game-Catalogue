@@ -19,7 +19,7 @@ import Combine
 import Foundation
 
 class ProfileScreenViewModel: ObservableObject {
-    private let profileRepo: ProfileRepository
+    private let profileUsecase: ProfileUseCase
 
     var profile: Profile
     @Published var isEditMode = false
@@ -28,8 +28,8 @@ class ProfileScreenViewModel: ObservableObject {
     @Published var tempWebUrlStr = ""
     @Published var showImgUrlAlert = false
 
-    init(container: ServiceContainer) {
-        self.profileRepo = container.get()
+    init(interactor: ProfileInteractor) {
+        self.profileUsecase = interactor
         self.profile = ProfileRepository.defaultProfile
         loadProfileData()
     }
@@ -59,7 +59,7 @@ class ProfileScreenViewModel: ObservableObject {
     }
 
     func loadProfileData() {
-        let profile = profileRepo.getProfile()
+        let profile = self.profileUsecase.getProfile()
         if profile.isEmpty() {
             updateProfileData(profile: ProfileRepository.defaultProfile)
         } else {
@@ -68,7 +68,7 @@ class ProfileScreenViewModel: ObservableObject {
     }
 
     private func updateProfileData(profile: Profile) {
-        profileRepo.storeProfileData(profile: profile)
+        self.profileUsecase.storeProfileData(profile: profile)
         self.profile = profile
     }
 }

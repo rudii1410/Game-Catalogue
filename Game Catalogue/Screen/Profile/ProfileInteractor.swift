@@ -15,10 +15,24 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class Screenshot {
-    var id: Int = 0
-    var image: String = ""
-    var width: Int = 0
-    var height: Int = 0
-    var isDeleted = false
+protocol ProfileUseCase {
+    func storeProfileData(profile: Profile)
+    func getProfile() -> Profile
+}
+
+class ProfileInteractor: ProfileUseCase {
+    private let profileRepo: ProfileRepository
+    init(profileRepo: ProfileRepository) {
+        self.profileRepo = profileRepo
+    }
+}
+
+extension ProfileInteractor {
+    func storeProfileData(profile: Profile) {
+        return self.profileRepo.storeProfileData(profile: profile)
+    }
+
+    func getProfile() -> Profile {
+        return self.profileRepo.getProfile()
+    }
 }

@@ -20,19 +20,17 @@ import Foundation
 
 class GenreListScreenViewModel: ObservableObject {
     @Published var navigateToGenreDetail = false
-    @Published var genreList: [BaseDetail] = []
+    @Published var genreList: [Genre] = []
     @Published var showErrorNetwork = false
 
     var selectedSlug = ""
     private var isLoadingMoreData = false
     private var page = 2
     private var cancellableSet: Set<AnyCancellable> = []
-    let container: ServiceContainer
-    private let genreRepo: GameGenreRepositoryImpl
+    private let genreListUsecase: GenreListUseCase
 
-    init(container: ServiceContainer) {
-        self.container = container
-        self.genreRepo = container.get()
+    init(interactor: GenreListInteractor) {
+        self.genreListUsecase = interactor
     }
 
     public func onItemPressed(_ genre: BaseDetail) {
@@ -55,12 +53,12 @@ class GenreListScreenViewModel: ObservableObject {
 
     private func loadMore() {
         isLoadingMoreData = true
-        genreRepo
+        self.genreListUsecase
             .getGenreList(page: page, count: Constant.maxGenreDataLoad)
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { response in
-                    self.genreList.append(contentsOf: response.results)
+                    self.genreList.append(contentsOf: response)
                     self.page += 1
                     self.isLoadingMoreData = false
                 }

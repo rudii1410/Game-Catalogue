@@ -27,13 +27,10 @@ class PublisherListScreenViewModel: ObservableObject {
     private var isLoadingMoreData = false
     private var page = 2
     private var cancellableSet: Set<AnyCancellable> = []
+    private let publisherListUsecase: PublisherListUseCase
 
-    let container: ServiceContainer
-    private let publisherRepo: GamePublisherRepositoryImpl
-
-    init(container: ServiceContainer) {
-        self.container = container
-        self.publisherRepo = container.get()
+    init(interactor: PublisherListInteractor) {
+        self.publisherListUsecase = interactor
     }
 
     public func onItemPressed(_ item: BaseDetail) {
@@ -56,12 +53,12 @@ class PublisherListScreenViewModel: ObservableObject {
 
     private func loadMore() {
         isLoadingMoreData = true
-        publisherRepo
+        self.publisherListUsecase
             .getPublisherList(page: page, count: Constant.maxPublisherDataLoad)
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { response in
-                    self.gamePublisher.append(contentsOf: response.results)
+                    self.gamePublisher.append(contentsOf: response)
                     self.page += 1
                     self.isLoadingMoreData = false
                 }

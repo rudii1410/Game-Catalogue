@@ -15,25 +15,22 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class GameShort: Codable {
+class RawgGamePlatformDetail: Codable {
     let id: Int
-    let slug, name: String
-    let released: String?
-    let backgroundImage: String
-    let rating: Double?
-    let ratingsCount: Int?
+    let name, slug: String
+    let gamesCount: Int?
+    let imageBackground: String?
+    let platformDescription: String?
+    let image: String?
+    let yearStart, yearEnd: Int?
 
     enum CodingKeys: String, CodingKey {
-        case id, slug, name, released
-        case backgroundImage = "background_image"
-        case rating
-        case ratingsCount = "ratings_count"
-    }
-
-    func getFormattedString(format: String) -> String {
-        guard let data = released?.toDate(format: "yyyy-MM-dd") else {
-            return released ?? "-"
-        }
-        return data.toString(format: format)
+        case id, name, slug
+        case gamesCount = "games_count"
+        case imageBackground = "image_background"
+        case platformDescription = "description"
+        case image
+        case yearStart = "year_start"
+        case yearEnd = "year_end"
     }
 }

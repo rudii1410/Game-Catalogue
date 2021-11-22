@@ -15,10 +15,21 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class Screenshot {
-    var id: Int = 0
-    var image: String = ""
-    var width: Int = 0
-    var height: Int = 0
-    var isDeleted = false
+import Combine
+
+protocol PublisherListUseCase {
+    func getPublisherList(page: Int, count: Int) -> AnyPublisher<[GamePublisher], Error>
+}
+
+class PublisherListInteractor: PublisherListUseCase {
+    private let publisherRepo: GamePublisherRepositoryInterface
+    init(publisher: GamePublisherRepository) {
+        self.publisherRepo = publisher
+    }
+}
+
+extension PublisherListInteractor {
+    func getPublisherList(page: Int, count: Int) -> AnyPublisher<[GamePublisher], Error> {
+        return self.publisherRepo.getPublisherList(page: page, count: count)
+    }
 }
