@@ -27,7 +27,7 @@ struct GamesVerticalGrid: View {
     private let gridLayout = [GridItem](repeating: GridItem(.flexible()), count: GamesVerticalGrid.ColumnCount)
 
     var title: String
-    @Binding var datas: [GameShort]
+    @Binding var datas: [Game]
     var loadMore: (() -> Void)?
     var onItemTap: ((String) -> Void)?
 
@@ -57,9 +57,9 @@ struct GamesVerticalGrid: View {
         }
     }
 
-    private func renderBody(game: GameShort) -> some View {
+    private func renderBody(game: Game) -> some View {
         return VStack(alignment: .leading, spacing: 0) {
-            WebImage(url: URL(string: game.backgroundImage))
+            WebImage(url: URL(string: game.imageBackground))
                 .defaultPlaceholder()
                 .resizable()
                 .clipped()
@@ -90,7 +90,7 @@ struct GamesVerticalGrid: View {
 }
 
 extension GamesVerticalGrid {
-    private func loadDataIfNeeded(_ item: GameShort?) {
+    private func loadDataIfNeeded(_ item: Game?) {
         guard let item = item else {
             self.loadMore?()
             return

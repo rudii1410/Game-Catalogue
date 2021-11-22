@@ -44,7 +44,7 @@ struct ImageSlider: View {
                         }
                 }
             }
-            .tabViewStyle(PageTabViewStyle())
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .clipShape(RoundedRectangle(cornerRadius: 5))
             .frame(width: proxy.size.width, height: proxy.size.height)
             .onReceive(self.timer) { _ in

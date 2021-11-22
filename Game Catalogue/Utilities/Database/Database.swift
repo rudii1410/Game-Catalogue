@@ -73,7 +73,7 @@ class Database {
             request.sortDescriptors = sortDesc
 
             do {
-                let result = try self.mainContext.fetch(request)
+                let result = try self.bgContext.fetch(request)
                 promise(.success(result))
             } catch {
                 promise(.failure(DatabaseError.fetchFail(error: error.localizedDescription)))
@@ -87,7 +87,7 @@ class Database {
             request.predicate = predicate
 
             do {
-                let result = try self.mainContext.fetch(request)
+                let result = try self.bgContext.fetch(request)
                 if result.isEmpty {
                     promise(.failure(DatabaseError.noData))
                 } else {

@@ -15,23 +15,19 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import SwiftUI
+import CoreData
 
-class ServiceContainer {
-    private var container: [String: AnyObject] = [:]
-
-    func register(_ service: AnyObject) {
-        let key = String(describing: type(of: service))
-        self.container[key] = service
-        print("Registering \(key)")
+class FavouriteEntity: NSManagedObject, Identifiable {
+    @nonobjc
+    public class func fetchRequest() -> NSFetchRequest<FavouriteEntity> {
+        return NSFetchRequest<FavouriteEntity>(entityName: "FavouriteEntity")
     }
 
-    func get<T>() -> T {
-        let key = String(describing: T.self)
-
-        guard let service = self.container[key] as? T else {
-            preconditionFailure("\(key) is not registered in service container")
-        }
-        return service
-    }
+    @NSManaged public var createdAt: Date
+    @NSManaged public var image: String
+    @NSManaged public var name: String
+    @NSManaged public var rating: Double
+    @NSManaged public var releaseDate: Date?
+    @NSManaged public var slug: String
+    @NSManaged public var genres: String
 }

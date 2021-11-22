@@ -21,8 +21,8 @@ import SDWebImageSwiftUI
 struct ProfileScreen: View {
     @ObservedObject private var model: ProfileScreenViewModel
 
-    init(container: ServiceContainer) {
-        self.model = ProfileScreenViewModel(container: container)
+    init(model: ProfileScreenViewModel) {
+        self.model = model
     }
 
     var body: some View {

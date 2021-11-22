@@ -22,7 +22,7 @@ class GenreDetailScreenViewModel: ObservableObject {
     @Published var imageUrl = ""
     @Published var desc = ""
     @Published var genreTitle = ""
-    @Published var gameList: [GameShort] = []
+    @Published var gameList: [Game] = []
     @Published var navigateToGameDetail = false
     @Published var showErrorNetwork = false
 
@@ -31,15 +31,10 @@ class GenreDetailScreenViewModel: ObservableObject {
     private var page = 1
     private var slug = ""
     private var cancellableSet: Set<AnyCancellable> = []
+    private let genreDetailUseCase: GenreDetailUseCase
 
-    let container: ServiceContainer
-    private let genreRepo: GameGenreRepositoryImpl
-    private let gameRepo: GameRepositoryImpl
-
-    init(container: ServiceContainer) {
-        self.container = container
-        self.genreRepo = container.get()
-        self.gameRepo = container.get()
+    init(interactor: GenreDetailInteractor) {
+        self.genreDetailUseCase = interactor
     }
 
     func loadData(_ slug: String) {
@@ -57,12 +52,12 @@ class GenreDetailScreenViewModel: ObservableObject {
         if isLoadingMoreData { return }
 
         isLoadingMoreData = true
-        gameRepo
+        self.genreDetailUseCase
             .getGameListByGenres(genres: slug, page: page, count: Constant.maxGameDataLoad)
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { response in
-                    self.gameList.append(contentsOf: response.results)
+                    self.gameList.append(contentsOf: response)
                     self.page += 1
                     self.isLoadingMoreData = false
                 }
@@ -71,7 +66,7 @@ class GenreDetailScreenViewModel: ObservableObject {
     }
 
     private func loadGenreDetail() {
-        genreRepo
+        self.genreDetailUseCase
             .getGenreDetail(id: slug)
             .sink(
                 receiveCompletion: { _ in },

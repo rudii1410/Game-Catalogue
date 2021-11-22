@@ -22,15 +22,15 @@ struct FavouritesScreen: View {
     @ObservedObject private var model: FavouriteScreenViewModel
     @State var searchText: String = ""
 
-    init(container: ServiceContainer) {
-        self.model = FavouriteScreenViewModel(container: container)
+    init(model: FavouriteScreenViewModel) {
+        self.model = model
     }
 
     var body: some View {
         VStack(spacing: 12) {
             NavigationLink(
                 destination: GameDetailScreen(
-                    container: self.model.container,
+                    model: .init(interactor: ServiceContainer.instance.get()),
                     slug: self.model.selectedSlug
                 ),
                 isActive: self.$model.navigateToGameDetail,
