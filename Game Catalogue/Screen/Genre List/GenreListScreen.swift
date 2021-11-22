@@ -32,7 +32,7 @@ struct GenreListScreen: View {
         ScrollView {
             NavigationLink(
                 destination: GenreDetailScreen(
-                    model: .init(interactor: ServiceContainer.getInstance().get()),
+                    model: .init(interactor: ServiceContainer.instance.get()),
                     slug: self.model.selectedSlug
                 ),
                 isActive: self.$model.navigateToGenreDetail,

@@ -104,7 +104,7 @@ extension GameRepository {
     func addGameToFavourites(_ favourite: Favourite) -> AnyPublisher<Void, Error> {
         let entity = FavouriteEntity(context: self.database.bgContext)
         entity.slug = favourite.slug
-        entity.name = favourite.slug
+        entity.name = favourite.name
         entity.image = favourite.image
         entity.rating = favourite.rating
         entity.releaseDate = favourite.releaseDate

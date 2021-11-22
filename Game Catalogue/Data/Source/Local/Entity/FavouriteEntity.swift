@@ -20,7 +20,7 @@ import CoreData
 class FavouriteEntity: NSManagedObject, Identifiable {
     @nonobjc
     public class func fetchRequest() -> NSFetchRequest<FavouriteEntity> {
-        return NSFetchRequest<FavouriteEntity>(entityName: "Favourite")
+        return NSFetchRequest<FavouriteEntity>(entityName: "FavouriteEntity")
     }
 
     @NSManaged public var createdAt: Date

@@ -33,9 +33,7 @@ protocol RemoteDataSourceInterface {
 final class RemoteDataSource: RemoteDataSourceInterface {
     private let rawgApiKey = GameCatalogueKeys().rawgApiKey
 
-    static func getInstance() -> RemoteDataSource {
-        return RemoteDataSource()
-    }
+    static let instance = RemoteDataSource()
 }
 
 extension RemoteDataSource {

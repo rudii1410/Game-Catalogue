@@ -22,32 +22,32 @@ struct GameCatalogueApp: App {
     init() {
         let database = Database()
         let gameRepo = GameRepository(
-            local: LocalDataSource.getInstance(database: database),
-            remote: RemoteDataSource.getInstance(),
+            local: LocalDataSource.instance(database),
+            remote: RemoteDataSource.instance,
             database: database
         )
-        let publisherRepo = GamePublisherRepository(remote: RemoteDataSource.getInstance())
-        let genreRepo = GameGenreRepository(remote: RemoteDataSource.getInstance())
+        let publisherRepo = GamePublisherRepository(remote: RemoteDataSource.instance)
+        let genreRepo = GameGenreRepository(remote: RemoteDataSource.instance)
         let profileRepo = ProfileRepository(userDef: UserDefaults.standard)
 
-        ServiceContainer.getInstance().register(
+        ServiceContainer.instance.register(
             HomeInteractor(
                 gameRepo: gameRepo,
                 publisherRepo: publisherRepo,
                 genreRepo: genreRepo
             )
         )
-        ServiceContainer.getInstance().register(FavouriteInteractor(gameRepo: gameRepo))
-        ServiceContainer.getInstance().register(ProfileInteractor(profileRepo: profileRepo))
-        ServiceContainer.getInstance().register(PublisherListInteractor(publisher: publisherRepo))
-        ServiceContainer.getInstance().register(
+        ServiceContainer.instance.register(FavouriteInteractor(gameRepo: gameRepo))
+        ServiceContainer.instance.register(ProfileInteractor(profileRepo: profileRepo))
+        ServiceContainer.instance.register(PublisherListInteractor(publisher: publisherRepo))
+        ServiceContainer.instance.register(
             PublisherDetailInteractor(gameRepo: gameRepo, publisherRepo: publisherRepo)
         )
-        ServiceContainer.getInstance().register(
+        ServiceContainer.instance.register(
             GenreDetailInteractor(gameRepo: gameRepo, genreRepo: genreRepo)
         )
-        ServiceContainer.getInstance().register(GenreListInteractor(genreRepo: genreRepo))
-        ServiceContainer.getInstance().register(GameDetailInteractor(gameRepo: gameRepo))
+        ServiceContainer.instance.register(GenreListInteractor(genreRepo: genreRepo))
+        ServiceContainer.instance.register(GameDetailInteractor(gameRepo: gameRepo))
     }
 
     var body: some Scene {
@@ -63,7 +63,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $currentTab) {
             NavigationView {
-                HomeScreen(model: .init(interactor: ServiceContainer.getInstance().get()))
+                HomeScreen(model: .init(interactor: ServiceContainer.instance.get()))
                     .navigationBarTitle("Games catalogue", displayMode: .large)
             }
             .tag(Tab.home)
@@ -73,7 +73,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                FavouritesScreen(model: .init(interactor: ServiceContainer.getInstance().get()))
+                FavouritesScreen(model: .init(interactor: ServiceContainer.instance.get()))
                     .navigationBarTitle("Favourite Games", displayMode: .large)
             }
             .tag(Tab.favourite)
@@ -83,7 +83,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                ProfileScreen(model: .init(interactor: ServiceContainer.getInstance().get()))
+                ProfileScreen(model: .init(interactor: ServiceContainer.instance.get()))
                     .navigationBarTitle("My Profile", displayMode: .inline)
             }
             .tag(Tab.profile)

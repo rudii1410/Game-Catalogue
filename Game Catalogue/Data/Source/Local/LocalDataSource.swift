@@ -32,7 +32,7 @@ class LocalDataSource: LocalDataSourceInterface {
         self.sharedDb = database
     }
 
-    static func getInstance(database: Database) -> LocalDataSource {
+    static let instance: (Database) -> LocalDataSource = { database in
         return LocalDataSource(database: database)
     }
 }

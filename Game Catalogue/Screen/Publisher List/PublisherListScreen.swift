@@ -33,7 +33,7 @@ struct PublisherListScreen: View {
         ScrollView {
             NavigationLink(
                 destination: PublisherDetailScreen(
-                    model: .init(interactor: ServiceContainer.getInstance().get()),
+                    model: .init(interactor: ServiceContainer.instance.get()),
                     slug: self.model.selectedPublisher?.slug ?? ""
                 ),
                 isActive: self.$model.navigateToPublisherDetail,
