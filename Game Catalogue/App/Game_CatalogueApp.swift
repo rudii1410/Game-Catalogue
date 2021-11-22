@@ -22,12 +22,23 @@ struct GameCatalogueApp: App {
     private let serviceContainer = ServiceContainer()
 
     init() {
-        serviceContainer.register(Database())
-        serviceContainer.register(UserDefaults.standard)
-        serviceContainer.register(GameRepositoryImpl(database: serviceContainer.get()))
-        serviceContainer.register(ProfileRepository(userDef: serviceContainer.get()))
-        serviceContainer.register(GamePublisherRepositoryImpl())
-        serviceContainer.register(GameGenreRepositoryImpl())
+        let database = Database()
+        let gameRepo = GameRepositry(
+            local: LocalDataSource.getInstance(database: database),
+            remote: RemoteDataSource.getInstance(),
+            database: database
+        )
+        let publisherRepo = GamePublisherRepository(remote: RemoteDataSource.getInstance())
+        let genreRepo = GameGenreRepository(remote: RemoteDataSource.getInstance())
+        let profileRepo = ProfileRepository(userDef: UserDefaults.standard)
+
+        serviceContainer.register(
+            HomeInteractor(
+                gameRepo: gameRepo,
+                publisherRepo: publisherRepo,
+                genreRepo: genreRepo
+            )
+        )
     }
 
     var body: some Scene {
@@ -48,7 +59,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $currentTab) {
             NavigationView {
-                HomeScreen(model: .init(container: self.serviceContainer))
+                HomeScreen(model: .init(interactor: self.serviceContainer.get()))
                     .navigationBarTitle("Games catalogue", displayMode: .large)
             }
             .tag(Tab.home)

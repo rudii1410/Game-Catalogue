@@ -60,6 +60,6 @@ class Requirements {
 
 class Genre: BaseDetail {}
 
-class Publisher: BaseDetail {}
+class GamePublisher: BaseDetail {}
 
 class Developer: BaseDetail {}

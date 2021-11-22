@@ -19,8 +19,8 @@ import Combine
 import Keys
 
 protocol GamePublisherRepositoryInterface {
-    func getPublisherList(page: Int, count: Int) -> AnyPublisher<[Publisher], Error>
-    func getPublisherDetail(id: String) -> AnyPublisher<Publisher, Error>
+    func getPublisherList(page: Int, count: Int) -> AnyPublisher<[GamePublisher], Error>
+    func getPublisherDetail(id: String) -> AnyPublisher<GamePublisher, Error>
 }
 
 class GamePublisherRepository: GamePublisherRepositoryInterface {
@@ -32,7 +32,7 @@ class GamePublisherRepository: GamePublisherRepositoryInterface {
 }
 
 extension GamePublisherRepository {
-    func getPublisherList(page: Int, count: Int) -> AnyPublisher<[Publisher], Error> {
+    func getPublisherList(page: Int, count: Int) -> AnyPublisher<[GamePublisher], Error> {
         self.remoteDataSource
             .getPublisherList(page: page, count: count)
             .tryMap { output in
@@ -41,7 +41,7 @@ extension GamePublisherRepository {
             .eraseToAnyPublisher()
     }
 
-    func getPublisherDetail(id: String) -> AnyPublisher<Publisher, Error> {
+    func getPublisherDetail(id: String) -> AnyPublisher<GamePublisher, Error> {
         self.remoteDataSource
             .getPublisherDetail(id: id)
             .tryMap { output in
