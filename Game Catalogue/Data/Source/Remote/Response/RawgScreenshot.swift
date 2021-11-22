@@ -15,22 +15,14 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class Platform: Codable { // TODO: extends from BaseDetail
+class RawgScreenshot: Codable {
     let id: Int
-    let name, slug: String
-    let gamesCount: Int?
-    let imageBackground: String?
-    let platformDescription: String?
-    let image: String?
-    let yearStart, yearEnd: Int?
+    let image: String
+    let width, height: Int
+    let isDeleted: Bool
 
     enum CodingKeys: String, CodingKey {
-        case id, name, slug
-        case gamesCount = "games_count"
-        case imageBackground = "image_background"
-        case platformDescription = "description"
-        case image
-        case yearStart = "year_start"
-        case yearEnd = "year_end"
+        case id, image, width, height
+        case isDeleted = "is_deleted"
     }
 }

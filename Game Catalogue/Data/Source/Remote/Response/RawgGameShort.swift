@@ -15,8 +15,18 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class ListResponse<T: Codable>: Codable {
-    let count: Int
-    let next, previous: String?
-    let results: [T]
+class RawgGameShort: Codable {
+    let id: Int
+    let slug, name: String
+    let released: String?
+    let backgroundImage: String
+    let rating: Double?
+    let ratingsCount: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case id, slug, name, released
+        case backgroundImage = "background_image"
+        case rating
+        case ratingsCount = "ratings_count"
+    }
 }

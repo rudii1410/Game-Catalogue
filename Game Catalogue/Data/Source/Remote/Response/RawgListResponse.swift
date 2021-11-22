@@ -15,17 +15,8 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class BaseDetail: Codable {
-    let id: Int
-    let name, slug: String
-    let gamesCount: Int
-    let imageBackground: String
-    let description: String?
-
-    private enum CodingKeys: String, CodingKey {
-        case id, name, slug
-        case gamesCount = "games_count"
-        case imageBackground = "image_background"
-        case description
-    }
+class RawgListResponse<T: Codable>: Codable {
+    let count: Int
+    let next, previous: String?
+    let results: [T]
 }
