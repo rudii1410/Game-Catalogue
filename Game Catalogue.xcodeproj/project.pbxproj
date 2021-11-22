@@ -162,6 +162,7 @@
 		CF0595AD26CD04C000143D6E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CF68E7412744B72D002917F1 /* DI */,
 				CFFC1B0A2743B0550056C0EC /* Database */,
 				CFFD92C0274393A8005C24D1 /* Networking */,
 				CFDF6395272BE07A0055539D /* Errors.swift */,
@@ -202,6 +203,38 @@
 				CF4D587F26D231B8002F6F54 /* GameGenreRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		CF1D4FB5274B784B00B1E07B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CF1D4FB6274B78F900B1E07B /* Source */,
+				CF15055F26CFB60D0064809A /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CF1D4FB6274B78F900B1E07B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				CF1D4FB8274B790B00B1E07B /* Local */,
+				CF1D4FB7274B790500B1E07B /* Remote */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		CF1D4FB7274B790500B1E07B /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		CF1D4FB8274B790B00B1E07B /* Local */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 		CF4045C126CE461A00560D4D /* Publisher Detail */ = {
@@ -267,14 +300,13 @@
 		CF6213ED26C3934100580054 /* Game Catalogue */ = {
 			isa = PBXGroup;
 			children = (
-				CF68E7412744B72D002917F1 /* DI */,
-				CF68E73C2744B49E002917F1 /* UI */,
-				CF15055F26CFB60D0064809A /* Repository */,
 				CF15055426CFB3A60064809A /* App */,
-				CF0595B226CD138600143D6E /* Model */,
-				CF0595AD26CD04C000143D6E /* Utilities */,
+				CF1D4FB5274B784B00B1E07B /* Data */,
 				CFD34EBA26C93CEC001832D8 /* Extension */,
+				CF0595B226CD138600143D6E /* Model */,
 				CF54A3B726C6513600F89E4F /* Screen */,
+				CF68E73C2744B49E002917F1 /* UI */,
+				CF0595AD26CD04C000143D6E /* Utilities */,
 				CF6213F226C3934200580054 /* Assets.xcassets */,
 				CF6213F726C3934200580054 /* Info.plist */,
 				CF81947526CFC653002EAD89 /* .swiftlint.yml */,
