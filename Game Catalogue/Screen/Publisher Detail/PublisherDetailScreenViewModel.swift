@@ -22,7 +22,7 @@ class PublisherDetailScreenViewModel: ObservableObject {
     @Published var imageUrl = ""
     @Published var desc = ""
     @Published var gameTitle = ""
-    @Published var gameList: [GameShort] = []
+    @Published var gameList: [Game] = []
     @Published var navigateToGameDetail = false
     @Published var showErrorNetwork = false
 
@@ -32,14 +32,10 @@ class PublisherDetailScreenViewModel: ObservableObject {
     private var slug = ""
     private var cancellableSet: Set<AnyCancellable> = []
 
-    let container: ServiceContainer
-    private let publisherRepo: GamePublisherRepositoryImpl
-    private let gameRepo: GameRepositoryImpl
+    private let publisherDetailUseCase: PublisherDetailUseCase
 
-    init(container: ServiceContainer) {
-        self.container = container
-        self.publisherRepo = container.get()
-        self.gameRepo = container.get()
+    init(interactor: PublisherDetailInteractor) {
+        self.publisherDetailUseCase = interactor
     }
 
     func loadData(_ slug: String) {
@@ -57,12 +53,12 @@ class PublisherDetailScreenViewModel: ObservableObject {
         if self.isLoadingMoreData { return }
 
         isLoadingMoreData = true
-        gameRepo
+        self.publisherDetailUseCase
             .getGameListByPublisher(publisherId: slug, page: page, count: Constant.maxGameDataLoad)
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { response in
-                    self.gameList.append(contentsOf: response.results)
+                    self.gameList.append(contentsOf: response)
                     self.page += 1
                     self.isLoadingMoreData = false
                 }
@@ -71,7 +67,7 @@ class PublisherDetailScreenViewModel: ObservableObject {
     }
 
     private func loadPublisherDetail() {
-        publisherRepo
+        self.publisherDetailUseCase
             .getPublisherDetail(id: slug)
             .sink(
                 receiveCompletion: { _ in },

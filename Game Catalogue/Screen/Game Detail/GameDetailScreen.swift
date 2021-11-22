@@ -79,7 +79,7 @@ struct GameDetailScreen: View {
                 VStack {
                     NavigationLink(
                         destination: GameDetailScreen(
-                            model: .init(container: self.model.container),
+                            model: .init(interactor: ServiceContainer.getInstance().get()),
                             slug: self.model.selectedGameSlug
                         ),
                         isActive: self.$model.navigateToGameDetail,

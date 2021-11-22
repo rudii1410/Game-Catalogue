@@ -21,17 +21,17 @@ class BaseDetail {
     var slug: String = ""
     var gamesCount: Int = 0
     var imageBackground: String = ""
-    var description: String? = nil
+    var description: String?
 }
 
 class Game: BaseDetail {
-    var released: String? = nil
-    var rating: Double? = nil
-    var ratingsCount: Int? = nil
-    var genres: [Genre]? = nil
-    var platforms: [GamePlatform]? = nil
-    var publishers: [Publisher]? = nil
-    var developers: [Developer]? = nil
+    var released: String?
+    var rating: Double?
+    var ratingsCount: Int?
+    var genres: [Genre]?
+    var platforms: [GamePlatform]?
+    var publishers: [GamePublisher]?
+    var developers: [Developer]?
 
     func getFormattedString(format: String) -> String {
         guard let data = released?.toDate(format: "yyyy-MM-dd") else {
@@ -42,20 +42,20 @@ class Game: BaseDetail {
 }
 
 class GamePlatform {
-    var platform: GamePlatformDetail? = nil
+    var platform: GamePlatformDetail?
     var releasedAt: String = ""
-    var requirements: Requirements? = nil
+    var requirements: Requirements?
 }
 
 class GamePlatformDetail: BaseDetail {
-    var image: String? = nil
-    var yearStart: Int? = nil
-    var yearEnd: Int? = nil
+    var image: String?
+    var yearStart: Int?
+    var yearEnd: Int?
 }
 
 class Requirements {
-    var minimum: String? = nil
-    var recommended: String? = nil
+    var minimum: String?
+    var recommended: String?
 }
 
 class Genre: BaseDetail {}

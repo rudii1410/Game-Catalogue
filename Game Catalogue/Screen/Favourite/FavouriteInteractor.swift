@@ -33,7 +33,7 @@ extension FavouriteInteractor {
     func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[Favourite], Error> {
         return self.gameRepo.fetchFavourites(offset: offset, limit: limit)
     }
-    
+
     func removeGameFromFavourites(_ slug: String) -> AnyPublisher<Void, Error> {
         return self.gameRepo.removeGameFromFavourites(slug)
     }

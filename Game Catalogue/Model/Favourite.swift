@@ -17,7 +17,7 @@
 
 import CoreData
 
-struct Favourite {
+struct Favourite: Hashable {
     let createdAt: Date
     let image: String
     let name: String
@@ -33,5 +33,12 @@ struct Favourite {
         } else {
             return result
         }
+    }
+
+    func getReleaseDate() -> String {
+        guard let date = releaseDate else {
+            return "-"
+        }
+        return date.toString()
     }
 }

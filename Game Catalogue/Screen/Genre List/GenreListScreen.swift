@@ -23,7 +23,7 @@ struct GenreListScreen: View {
 
     @ObservedObject private var model: GenreListScreenViewModel
 
-    init(model: GenreListScreenViewModel, _ genreList: [BaseDetail]) {
+    init(model: GenreListScreenViewModel, _ genreList: [Genre]) {
         self.model = model
         self.model.genreList = genreList
     }
@@ -32,7 +32,7 @@ struct GenreListScreen: View {
         ScrollView {
             NavigationLink(
                 destination: GenreDetailScreen(
-                    model: .init(container: self.model.container),
+                    model: .init(interactor: ServiceContainer.getInstance().get()),
                     slug: self.model.selectedSlug
                 ),
                 isActive: self.$model.navigateToGenreDetail,

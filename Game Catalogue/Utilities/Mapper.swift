@@ -15,7 +15,7 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class Mapper {
+enum Mapper {
     static func mapRawgGameShortListToModel(_ rawList: [RawgGameShort]) -> [Game] {
         return rawList.map { raw in
             let game = Game()
@@ -88,8 +88,8 @@ class Mapper {
         }
     }
 
-    static func mapRawgPublisherToModel(_ publisher: RawgBaseDetail) -> Publisher {
-        let newPublisher = Publisher()
+    static func mapRawgPublisherToModel(_ publisher: RawgBaseDetail) -> GamePublisher {
+        let newPublisher = GamePublisher()
         newPublisher.id = publisher.id
         newPublisher.name = publisher.name
         newPublisher.slug = publisher.slug
@@ -99,13 +99,13 @@ class Mapper {
         return newPublisher
     }
 
-    static func mapRawgPublisherListToModel(_ maybePublishers: [RawgBaseDetail]?) -> [Publisher] {
+    static func mapRawgPublisherListToModel(_ maybePublishers: [RawgBaseDetail]?) -> [GamePublisher] {
         guard let publishers = maybePublishers else { return [] }
         return publishers.map { publisher in
             return Mapper.mapRawgPublisherToModel(publisher)
         }
     }
-    
+
     static func mapRawgDeveloperListToModel(_ maybeDevelopers: [RawgBaseDetail]?) -> [Developer] {
         guard let developers = maybeDevelopers else { return [] }
         return developers.map { developer in

@@ -20,7 +20,7 @@ import CoreData
 class FavouriteEntity: NSManagedObject, Identifiable {
     @nonobjc
     public class func fetchRequest() -> NSFetchRequest<FavouriteEntity> {
-        return NSFetchRequest<Favourite>(entityName: "Favourite")
+        return NSFetchRequest<FavouriteEntity>(entityName: "Favourite")
     }
 
     @NSManaged public var createdAt: Date
@@ -30,11 +30,4 @@ class FavouriteEntity: NSManagedObject, Identifiable {
     @NSManaged public var releaseDate: Date?
     @NSManaged public var slug: String
     @NSManaged public var genres: String
-
-    func getReleaseDate() -> String {
-        guard let date = releaseDate else {
-            return "-"
-        }
-        return date.toString()
-    }
 }

@@ -20,6 +20,10 @@ import SwiftUI
 class ServiceContainer {
     private var container: [String: AnyObject] = [:]
 
+    static func getInstance() -> ServiceContainer {
+        return ServiceContainer()
+    }
+
     func register(_ service: AnyObject) {
         let key = String(describing: type(of: service))
         self.container[key] = service

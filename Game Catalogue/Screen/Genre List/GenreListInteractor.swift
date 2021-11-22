@@ -15,10 +15,21 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class Screenshot {
-    var id: Int = 0
-    var image: String = ""
-    var width: Int = 0
-    var height: Int = 0
-    var isDeleted = false
+import Combine
+
+protocol GenreListUseCase {
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error>
+}
+
+class GenreListInteractor: GenreListUseCase {
+    private let genreRepo: GameGenreRepositoryInterface
+    init(genreRepo: GameGenreRepository) {
+        self.genreRepo = genreRepo
+    }
+}
+
+extension GenreListInteractor {
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error> {
+        return self.genreRepo.getGenreList(page: page, count: count)
+    }
 }

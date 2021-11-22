@@ -19,8 +19,6 @@ import SwiftUI
 
 @main
 struct GameCatalogueApp: App {
-    private let serviceContainer = ServiceContainer()
-
     init() {
         let database = Database()
         let gameRepo = GameRepository(
@@ -32,36 +30,40 @@ struct GameCatalogueApp: App {
         let genreRepo = GameGenreRepository(remote: RemoteDataSource.getInstance())
         let profileRepo = ProfileRepository(userDef: UserDefaults.standard)
 
-        serviceContainer.register(
+        ServiceContainer.getInstance().register(
             HomeInteractor(
                 gameRepo: gameRepo,
                 publisherRepo: publisherRepo,
                 genreRepo: genreRepo
             )
         )
-        serviceContainer.register(FavouriteInteractor(gameRepo: gameRepo))
-        serviceContainer.register(ProfileInteractor(profileRepo: profileRepo))
+        ServiceContainer.getInstance().register(FavouriteInteractor(gameRepo: gameRepo))
+        ServiceContainer.getInstance().register(ProfileInteractor(profileRepo: profileRepo))
+        ServiceContainer.getInstance().register(PublisherListInteractor(publisher: publisherRepo))
+        ServiceContainer.getInstance().register(
+            PublisherDetailInteractor(gameRepo: gameRepo, publisherRepo: publisherRepo)
+        )
+        ServiceContainer.getInstance().register(
+            GenreDetailInteractor(gameRepo: gameRepo, genreRepo: genreRepo)
+        )
+        ServiceContainer.getInstance().register(GenreListInteractor(genreRepo: genreRepo))
+        ServiceContainer.getInstance().register(GameDetailInteractor(gameRepo: gameRepo))
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView(container: self.serviceContainer)
+            ContentView()
         }
     }
 }
 
 struct ContentView: View {
     @State private var currentTab: Tab = .home
-    private let serviceContainer: ServiceContainer
-
-    init(container: ServiceContainer) {
-        self.serviceContainer = container
-    }
 
     var body: some View {
         TabView(selection: $currentTab) {
             NavigationView {
-                HomeScreen(model: .init(interactor: self.serviceContainer.get()))
+                HomeScreen(model: .init(interactor: ServiceContainer.getInstance().get()))
                     .navigationBarTitle("Games catalogue", displayMode: .large)
             }
             .tag(Tab.home)
@@ -71,7 +73,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                FavouritesScreen(model: .init(interactor: self.serviceContainer.get()))
+                FavouritesScreen(model: .init(interactor: ServiceContainer.getInstance().get()))
                     .navigationBarTitle("Favourite Games", displayMode: .large)
             }
             .tag(Tab.favourite)
@@ -81,7 +83,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                ProfileScreen(model: .init(interactor: self.serviceContainer.get()))
+                ProfileScreen(model: .init(interactor: ServiceContainer.getInstance().get()))
                     .navigationBarTitle("My Profile", displayMode: .inline)
             }
             .tag(Tab.profile)

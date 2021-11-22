@@ -30,7 +30,7 @@ struct FavouritesScreen: View {
         VStack(spacing: 12) {
             NavigationLink(
                 destination: GameDetailScreen(
-                    model: .init(container: self.model.container),
+                    model: .init(interactor: ServiceContainer.getInstance().get()),
                     slug: self.model.selectedSlug
                 ),
                 isActive: self.$model.navigateToGameDetail,

@@ -24,6 +24,10 @@
 		CF1D4FD3274BB93C00B1E07B /* PublisherListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD2274BB93C00B1E07B /* PublisherListInteractor.swift */; };
 		CF1D4FD5274BB95700B1E07B /* FavouriteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD4274BB95700B1E07B /* FavouriteInteractor.swift */; };
 		CF1D4FD7274BBBAA00B1E07B /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD6274BBBAA00B1E07B /* ProfileInteractor.swift */; };
+		CF1D4FD9274BBEA300B1E07B /* PublisherDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD8274BBEA300B1E07B /* PublisherDetailInteractor.swift */; };
+		CF1D4FDB274BBFF900B1E07B /* GenreDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FDA274BBFF900B1E07B /* GenreDetailInteractor.swift */; };
+		CF1D4FDD274BC0EC00B1E07B /* GenreListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FDC274BC0EC00B1E07B /* GenreListInteractor.swift */; };
+		CF1D4FDF274BC19500B1E07B /* GameDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FDE274BC19500B1E07B /* GameDetailInteractor.swift */; };
 		CF377CA726D6585700D1A9F4 /* RawgScreenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF377CA626D6585700D1A9F4 /* RawgScreenshot.swift */; };
 		CF3E795226CB84C80087227E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E795126CB84C80087227E /* SearchBar.swift */; };
 		CF4045C826CE4E1000560D4D /* PublisherDetailScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */; };
@@ -96,6 +100,10 @@
 		CF1D4FD2274BB93C00B1E07B /* PublisherListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListInteractor.swift; sourceTree = "<group>"; };
 		CF1D4FD4274BB95700B1E07B /* FavouriteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteInteractor.swift; sourceTree = "<group>"; };
 		CF1D4FD6274BBBAA00B1E07B /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		CF1D4FD8274BBEA300B1E07B /* PublisherDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailInteractor.swift; sourceTree = "<group>"; };
+		CF1D4FDA274BBFF900B1E07B /* GenreDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDetailInteractor.swift; sourceTree = "<group>"; };
+		CF1D4FDC274BC0EC00B1E07B /* GenreListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListInteractor.swift; sourceTree = "<group>"; };
+		CF1D4FDE274BC19500B1E07B /* GameDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailInteractor.swift; sourceTree = "<group>"; };
 		CF377CA626D6585700D1A9F4 /* RawgScreenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgScreenshot.swift; sourceTree = "<group>"; };
 		CF3E795126CB84C80087227E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailScreenViewModel.swift; sourceTree = "<group>"; };
@@ -286,6 +294,7 @@
 			children = (
 				CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */,
 				CF9AC95A26CE575C004341BD /* PublisherDetailScreen.swift */,
+				CF1D4FD8274BBEA300B1E07B /* PublisherDetailInteractor.swift */,
 			);
 			path = "Publisher Detail";
 			sourceTree = "<group>";
@@ -414,6 +423,7 @@
 			children = (
 				CF9AC96626CE607C004341BD /* GenreDetailScreen.swift */,
 				CF9AC96A26CE60DA004341BD /* GenreDetailScreenViewModel.swift */,
+				CF1D4FDA274BBFF900B1E07B /* GenreDetailInteractor.swift */,
 			);
 			path = "Genre Detail";
 			sourceTree = "<group>";
@@ -423,6 +433,7 @@
 			children = (
 				CF9AC96E26CE617A004341BD /* GenreListScreen.swift */,
 				CF9AC97126CE61B1004341BD /* GenreListScreenViewModel.swift */,
+				CF1D4FDC274BC0EC00B1E07B /* GenreListInteractor.swift */,
 			);
 			path = "Genre List";
 			sourceTree = "<group>";
@@ -432,6 +443,7 @@
 			children = (
 				CF9AC97526CE648B004341BD /* GameDetailScreen.swift */,
 				CF9AC97826CE64CA004341BD /* GameDetailScreenViewModel.swift */,
+				CF1D4FDE274BC19500B1E07B /* GameDetailInteractor.swift */,
 			);
 			path = "Game Detail";
 			sourceTree = "<group>";
@@ -641,6 +653,7 @@
 				CF1D4FD1274BA55000B1E07B /* HomeInteractor.swift in Sources */,
 				CFE8D9DD26D8EE310054834B /* String.swift in Sources */,
 				CF1D4FBB274B7A7F00B1E07B /* RemoteDataSource.swift in Sources */,
+				CF1D4FDF274BC19500B1E07B /* GameDetailInteractor.swift in Sources */,
 				CF0595AF26CD04CD00143D6E /* Request.swift in Sources */,
 				CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */,
 				CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */,
@@ -657,9 +670,11 @@
 				CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */,
 				CFD34EB326C93823001832D8 /* GamesVerticalGrid.swift in Sources */,
 				CF4045C826CE4E1000560D4D /* PublisherDetailScreenViewModel.swift in Sources */,
+				CF1D4FD9274BBEA300B1E07B /* PublisherDetailInteractor.swift in Sources */,
 				CF9AC97926CE64CA004341BD /* GameDetailScreenViewModel.swift in Sources */,
 				CF4D588026D231B8002F6F54 /* GameGenreRepository.swift in Sources */,
 				CF15055A26CFB4B90064809A /* Constant.swift in Sources */,
+				CF1D4FDB274BBFF900B1E07B /* GenreDetailInteractor.swift in Sources */,
 				CF9AC96726CE607C004341BD /* GenreDetailScreen.swift in Sources */,
 				CF1D4FC9274B7FE000B1E07B /* Game.swift in Sources */,
 				CFD515B326EF2FF2004DE1A3 /* ProfileRepository.swift in Sources */,
@@ -669,6 +684,7 @@
 				CFD515B526EF30C9004DE1A3 /* Profile.swift in Sources */,
 				CFC61BEC26EB665300417D1D /* FavouriteScreenViewModel.swift in Sources */,
 				CF377CA726D6585700D1A9F4 /* RawgScreenshot.swift in Sources */,
+				CF1D4FDD274BC0EC00B1E07B /* GenreListInteractor.swift in Sources */,
 				CF1D4FD7274BBBAA00B1E07B /* ProfileInteractor.swift in Sources */,
 				CF1D4FC6274B7F3000B1E07B /* LocalDataSource.swift in Sources */,
 				CF879AB426D53C070039EE8C /* RawgBaseDetail.swift in Sources */,

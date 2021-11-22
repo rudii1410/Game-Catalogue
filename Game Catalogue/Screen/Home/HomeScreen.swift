@@ -30,7 +30,7 @@ struct HomeScreen: View {
         GeometryReader { fullScreen in
             NavigationLink(
                 destination: GameDetailScreen(
-                    model: .init(container: self.model.container),
+                    model: .init(interactor: ServiceContainer.getInstance().get()),
                     slug: self.model.selectedGameSlug
                 ),
                 isActive: self.$model.navigateToGameDetail,
@@ -92,7 +92,7 @@ extension HomeScreen {
         return Group {
             NavigationLink(
                 destination: PublisherListScreen(
-                    model: .init(container: self.model.container),
+                    model: .init(interactor: ServiceContainer.getInstance().get()),
                     self.model.publisherList
                 ),
                 isActive: self.$model.navigateToPublisherList,
@@ -100,7 +100,7 @@ extension HomeScreen {
             )
             NavigationLink(
                 destination: PublisherDetailScreen(
-                    model: .init(container: self.model.container),
+                    model: .init(interactor: ServiceContainer.getInstance().get()),
                     slug: self.model.selectedPublisherSlug
                 ),
                 isActive: self.$model.navigateToPublisherDetail,
@@ -124,7 +124,7 @@ extension HomeScreen {
         return Group {
             NavigationLink(
                 destination: GenreListScreen(
-                    model: .init(container: self.model.container),
+                    model: .init(interactor: ServiceContainer.getInstance().get()),
                     self.model.genreList
                 ),
                 isActive: self.$model.navigateToGenreList,
@@ -132,7 +132,7 @@ extension HomeScreen {
             )
             NavigationLink(
                 destination: GenreDetailScreen(
-                    model: .init(container: self.model.container),
+                    model: .init(interactor: ServiceContainer.getInstance().get()),
                     slug: self.model.selectedGenreSlug
                 ),
                 isActive: self.$model.navigateToGenreDetail,

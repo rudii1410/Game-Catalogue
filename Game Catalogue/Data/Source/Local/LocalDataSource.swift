@@ -38,7 +38,7 @@ class LocalDataSource: LocalDataSourceInterface {
 }
 
 extension LocalDataSource {
-    func addGameToFavourites(_ FavouriteEntity: FavouriteEntity) -> AnyPublisher<Void, Error> {
+    func addGameToFavourites(_ entity: FavouriteEntity) -> AnyPublisher<Void, Error> {
         return sharedDb.save()
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
