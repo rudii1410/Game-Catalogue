@@ -22,7 +22,7 @@ class GenreDetailScreenViewModel: ObservableObject {
     @Published var imageUrl = ""
     @Published var desc = ""
     @Published var genreTitle = ""
-    @Published var gameList: [GameShort] = []
+    @Published var gameList: [Game] = []
     @Published var navigateToGameDetail = false
     @Published var showErrorNetwork = false
 
@@ -30,9 +30,12 @@ class GenreDetailScreenViewModel: ObservableObject {
     private var isLoadingMoreData = false
     private var page = 1
     private var slug = ""
+    private var cancellableSet: Set<AnyCancellable> = []
+    private let genreDetailUseCase: GenreDetailUseCase
 
-    private let genreRepo = GameGenreRepository()
-    private let gameRepo = GameRepository()
+    init(interactor: GenreDetailInteractor) {
+        self.genreDetailUseCase = interactor
+    }
 
     func loadData(_ slug: String) {
         self.slug = slug
@@ -49,35 +52,30 @@ class GenreDetailScreenViewModel: ObservableObject {
         if isLoadingMoreData { return }
 
         isLoadingMoreData = true
-        gameRepo.getGameListByGenres(
-            genres: slug,
-            page: page,
-            count: Constant.maxGameDataLoad
-        ) { response in
-            guard let result = response.response?.results else { return }
-
-            DispatchQueue.main.async {
-                self.gameList.append(contentsOf: result)
-                self.page += 1
-                self.isLoadingMoreData = false
-            }
-        }
+        self.genreDetailUseCase
+            .getGameListByGenres(genres: slug, page: page, count: Constant.maxGameDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.gameList.append(contentsOf: response)
+                    self.page += 1
+                    self.isLoadingMoreData = false
+                }
+            )
+            .store(in: &cancellableSet)
     }
 
     private func loadGenreDetail() {
-        genreRepo.getGenreDetail(id: slug) { response in
-            guard let result = response.response else {
-                if response.error?.type == RequestError.NetworkError {
-                    self.showErrorNetwork = true
+        self.genreDetailUseCase
+            .getGenreDetail(id: slug)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { result in
+                    self.genreTitle = result.name
+                    self.imageUrl = result.imageBackground
+                    self.desc = result.description ?? ""
                 }
-                return
-            }
-
-            DispatchQueue.main.async {
-                self.genreTitle = result.name
-                self.imageUrl = result.imageBackground
-                self.desc = result.description ?? ""
-            }
-        }
+            )
+            .store(in: &cancellableSet)
     }
 }

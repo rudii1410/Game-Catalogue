@@ -15,30 +15,26 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import CoreData
+import Combine
 
-struct Favourite: Hashable {
-    let createdAt: Date
-    let image: String
-    let name: String
-    let rating: Double
-    let releaseDate: Date?
-    let slug: String
-    let genres: String
+protocol FavouriteUseCase {
+    func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[Favourite], Error>
+    func removeGameFromFavourites(_ slug: String) -> AnyPublisher<Void, Error>
+}
 
-    func getGenreAsArray() -> [String] {
-        let result = genres.components(separatedBy: ",")
-        if result.count == 1 && result[0] == "" {
-            return []
-        } else {
-            return result
-        }
+class FavouriteInteractor: FavouriteUseCase {
+    private let gameRepo: GameRepository
+    init(gameRepo: GameRepository) {
+        self.gameRepo = gameRepo
+    }
+}
+
+extension FavouriteInteractor {
+    func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[Favourite], Error> {
+        return self.gameRepo.fetchFavourites(offset: offset, limit: limit)
     }
 
-    func getReleaseDate() -> String {
-        guard let date = releaseDate else {
-            return "-"
-        }
-        return date.toString()
+    func removeGameFromFavourites(_ slug: String) -> AnyPublisher<Void, Error> {
+        return self.gameRepo.removeGameFromFavourites(slug)
     }
 }

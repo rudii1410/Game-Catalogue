@@ -15,10 +15,25 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class Screenshot {
-    var id: Int = 0
-    var image: String = ""
-    var width: Int = 0
-    var height: Int = 0
-    var isDeleted = false
+import SwiftUI
+
+class ServiceContainer {
+    private var container: [String: AnyObject] = [:]
+
+    static var instance = ServiceContainer()
+
+    func register(_ service: AnyObject) {
+        let key = String(describing: type(of: service))
+        self.container[key] = service
+        print("Registering \(key)")
+    }
+
+    func get<T>() -> T {
+        let key = String(describing: T.self)
+
+        guard let service = self.container[key] as? T else {
+            preconditionFailure("\(key) is not registered in service container")
+        }
+        return service
+    }
 }

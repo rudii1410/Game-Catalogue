@@ -30,7 +30,7 @@ class GameDetailScreenViewModel: ObservableObject {
     @Published var releaseDate: String = ""
     @Published var developers: String = ""
     @Published var publisher: String = ""
-    @Published var gameList: [GameShort] = []
+    @Published var gameList: [Game] = []
     @Published var isLoading = true
     @Published var navigateToGameDetail = false
     @Published var showErrorNetwork = false
@@ -41,13 +41,18 @@ class GameDetailScreenViewModel: ObservableObject {
 
     private var currentgameSlug = ""
     private var currentGameGenreId = ""
-    private let gameRepo = GameRepository()
     private var page = 1
     private var isLoadingMoreData = false
     private let mainQueue: DispatchQueue = .main
     private var genreSlugStr = ""
     private var isLoadingData = true
     private var isLoadingScreenshot = true
+    private var cancellableSet: Set<AnyCancellable> = []
+    private let gameDetailUseCase: GameDetailUseCase
+
+    init(interactor: GameDetailInteractor) {
+        self.gameDetailUseCase = interactor
+    }
 
     func onGameTap(_ slug: String) {
         self.selectedGameSlug = slug
@@ -57,18 +62,30 @@ class GameDetailScreenViewModel: ObservableObject {
     func onFavouriteTap() {
         guard let favData = favouriteData else {
             let convertedDate = self.releaseDate.toDate(format: "MMM d, y")
-            let favourite = Favourite(context: Database.shared.context)
-            favourite.slug = self.currentgameSlug
-            favourite.name = self.gameTitle
-            favourite.image = self.bannerImage
-            favourite.rating = Double(self.rating) ?? 0
-            favourite.releaseDate = convertedDate
-            favourite.genres = self.currentGameGenreId
-            favourite.createdAt = Date()
-            favouriteData = gameRepo.addGameToFavourites(favourite)
+            let favourite = Favourite(
+                createdAt: Date(),
+                image: self.bannerImage,
+                name: self.gameTitle,
+                rating: Double(self.rating) ?? 0,
+                releaseDate: convertedDate,
+                slug: self.currentgameSlug,
+                genres: self.currentGameGenreId
+            )
+
+            self.gameDetailUseCase
+                .addGameToFavourites(favourite)
+                .sink(receiveCompletion: { _ in }, receiveValue: {
+                    self.favouriteData = favourite
+                })
+                .store(in: &cancellableSet)
+
             return
         }
-        gameRepo.removeGameFromFavourites(favData)
+
+        self.gameDetailUseCase
+            .removeGameFromFavourites(favData.slug)
+            .sink(receiveCompletion: { _ in }, receiveValue: {})
+            .store(in: &cancellableSet)
         favouriteData = nil
     }
 
@@ -76,19 +93,17 @@ class GameDetailScreenViewModel: ObservableObject {
         if isLoadingMoreData || genreSlugStr.isEmpty { return }
 
         isLoadingMoreData = true
-        gameRepo.getGameListByGenres(
-            genres: self.genreSlugStr,
-            page: self.page,
-            count: Constant.maxGameDataLoad
-        ) { response in
-            guard let result = response.response?.results else { return }
-
-            self.mainQueue.async {
-                self.gameList.append(contentsOf: result)
-                self.page += 1
-                self.isLoadingMoreData = false
-            }
-        }
+        self.gameDetailUseCase
+            .getGameListByGenres(genres: self.genreSlugStr, page: self.page, count: Constant.maxGameDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.gameList.append(contentsOf: response)
+                    self.page += 1
+                    self.isLoadingMoreData = false
+                }
+            )
+            .store(in: &cancellableSet)
     }
 
     func loadGameDetail(slug: String) {
@@ -97,49 +112,54 @@ class GameDetailScreenViewModel: ObservableObject {
         self.isLoadingScreenshot = true
         self.currentgameSlug = slug
 
-        gameRepo.getFavouriteBySlug(slug: slug) { result in
-            favouriteData = result
-        }
-        gameRepo.getGameDetail(id: slug) { response in
-            guard let result = response.response else {
-                if response.error?.type == RequestError.NetworkError {
-                    self.showErrorNetwork = true
+        self.gameDetailUseCase
+            .getFavouriteBySlug(slug: slug)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { result in
+                    self.favouriteData = result
                 }
-                return
-            }
+            )
+            .store(in: &cancellableSet)
 
-            let genreStr = result.genres?.map { $0.name }.joined(separator: ", ") ?? ""
-            self.currentGameGenreId = result.genres?.map { String($0.id) }.joined(separator: ",") ?? ""
-            let platformStr = result.platforms?.map { $0.platform.name }.joined(separator: ", ") ?? ""
-            let developers = result.developers?.map { $0.name }.joined(separator: ", ") ?? ""
-            let publishers = result.publishers?.map { $0.name }.joined(separator: ", ") ?? ""
-            self.mainQueue.async {
-                self.bannerImage = result.backgroundImage
-                self.gameTitle = result.name
-                self.genreStr = genreStr
-                self.rating = String(result.rating ?? 0)
-                self.ratingCount = String(result.ratingsCount ?? 0)
-                self.desc = result.description
-                self.platformStr = platformStr
-                self.releaseDate = self.reformatDate(date: result.released)
-                self.developers = developers
-                self.publisher = publishers
-                self.isLoadingData = false
-                self.updateLoadingState()
-            }
+        self.gameDetailUseCase
+            .getGameDetail(id: slug)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { result in
+                    let platformStr = self.joinArrayString(result.platforms?.map { $0.platform?.name ?? "" })
 
-            self.genreSlugStr = result.genres?.map { $0.slug }.joined(separator: ",") ?? ""
-            self.loadGames()
-        }
-        gameRepo.getGameScreenShots(id: slug) { response in
-            guard let result = response.response?.results else { return }
-            let screenshots = result.map { $0.image }
-            self.mainQueue.async {
-                self.screenshots = screenshots
-                self.isLoadingScreenshot = false
-                self.updateLoadingState()
-            }
-        }
+                    self.currentGameGenreId     = self.joinArrayString(result.genres?.map { String($0.id) }, ",")
+                    self.bannerImage            = result.imageBackground
+                    self.gameTitle              = result.name
+                    self.genreStr               = self.joinArrayString(result.genres?.map { $0.name })
+                    self.rating                 = String(result.rating ?? 0)
+                    self.ratingCount            = String(result.ratingsCount ?? 0)
+                    self.desc                   = result.description ?? ""
+                    self.platformStr            = platformStr
+                    self.releaseDate            = self.reformatDate(date: result.released)
+                    self.developers             = self.joinArrayString(result.developers?.map { $0.name })
+                    self.publisher              = self.joinArrayString(result.publishers?.map { $0.name })
+                    self.genreSlugStr           = self.joinArrayString(result.genres?.map { $0.slug })
+                    self.isLoadingData          = false
+
+                    self.updateLoadingState()
+                    self.loadGames()
+                }
+            )
+            .store(in: &cancellableSet)
+
+        self.gameDetailUseCase
+            .getGameScreenShots(id: slug)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: {response in
+                    self.screenshots = response.map { $0.image }
+                    self.isLoadingScreenshot = false
+                    self.updateLoadingState()
+                }
+            )
+            .store(in: &cancellableSet)
     }
 
     private func updateLoadingState() {
@@ -153,5 +173,9 @@ class GameDetailScreenViewModel: ObservableObject {
         guard let convertedDate = dateFormatter.date(from: date) else { return "" }
         dateFormatter.dateFormat = "MMM d, y"
         return dateFormatter.string(from: convertedDate)
+    }
+
+    private func joinArrayString(_ arr: [String]?, _ separator: String = ", ") -> String {
+        return arr?.joined(separator: ", ") ?? ""
     }
 }

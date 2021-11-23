@@ -15,22 +15,19 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class Platform: Codable { // TODO: extends from BaseDetail
-    let id: Int
-    let name, slug: String
-    let gamesCount: Int?
-    let imageBackground: String?
-    let platformDescription: String?
-    let image: String?
-    let yearStart, yearEnd: Int?
+import CoreData
 
-    enum CodingKeys: String, CodingKey {
-        case id, name, slug
-        case gamesCount = "games_count"
-        case imageBackground = "image_background"
-        case platformDescription = "description"
-        case image
-        case yearStart = "year_start"
-        case yearEnd = "year_end"
+class FavouriteEntity: NSManagedObject, Identifiable {
+    @nonobjc
+    public class func fetchRequest() -> NSFetchRequest<FavouriteEntity> {
+        return NSFetchRequest<FavouriteEntity>(entityName: "FavouriteEntity")
     }
+
+    @NSManaged public var createdAt: Date
+    @NSManaged public var image: String
+    @NSManaged public var name: String
+    @NSManaged public var rating: Double
+    @NSManaged public var releaseDate: Date?
+    @NSManaged public var slug: String
+    @NSManaged public var genres: String
 }

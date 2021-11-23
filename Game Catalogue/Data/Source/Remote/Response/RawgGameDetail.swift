@@ -17,17 +17,17 @@
 
 import Foundation
 
-class GameDetail: Codable {
+class RawgGameDetail: Codable {
     let id: Int
     let slug, name, description: String
     let released: String?
     let backgroundImage: String
     let rating: Double?
     let ratingsCount: Int?
-    let genres: [BaseDetail]?
-    let platforms: [GamePlatform]?
-    let publishers: [BaseDetail]?
-    let developers: [BaseDetail]?
+    let genres: [RawgBaseDetail]?
+    let platforms: [RawgGamePlatform]?
+    let publishers: [RawgBaseDetail]?
+    let developers: [RawgBaseDetail]?
 
     enum CodingKeys: String, CodingKey {
         case id, slug, name, description, released
@@ -38,10 +38,10 @@ class GameDetail: Codable {
     }
 }
 
-class GamePlatform: Codable {
-    let platform: Platform
+class RawgGamePlatform: Codable {
+    let platform: RawgGamePlatformDetail
     let releasedAt: String
-    let requirements: Requirements
+    let requirements: RawgRequirements
 
     enum CodingKeys: String, CodingKey {
         case platform
@@ -50,6 +50,6 @@ class GamePlatform: Codable {
     }
 }
 
-class Requirements: Codable {
+class RawgRequirements: Codable {
     let minimum, recommended: String?
 }

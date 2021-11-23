@@ -15,8 +15,8 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class ListResponse<T: Codable>: Codable {
-    let count: Int
-    let next, previous: String?
-    let results: [T]
+public enum RequestError: Error, Equatable {
+    case invalidJson(_ error: String)
+    case invalidUrl(_ error: String)
+    case serverError(code: Int, error: String)
 }

@@ -15,10 +15,16 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class Screenshot {
-    var id: Int = 0
-    var image: String = ""
-    var width: Int = 0
-    var height: Int = 0
-    var isDeleted = false
+import SwiftUI
+
+struct BaseView: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+    }
+}
+
+extension View {
+    func useBaseView() -> some View {
+        return self.modifier(BaseView())
+    }
 }

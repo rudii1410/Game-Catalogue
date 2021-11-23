@@ -15,24 +15,21 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Keys
+import Combine
 
-class GamePublisherRepository {
-    func getPublisherList(
-        page: Int,
-        count: Int,
-        callback: @escaping (Response<ListResponse<BaseDetail>>) -> Void
-    ) {
-        Request("\(Constant.rawgApiUrl)/publishers")
-            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
-            .addQuery(key: "page", value: String(page))
-            .addQuery(key: "page_size", value: String(count))
-            .result(callback)
+protocol GenreListUseCase {
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error>
+}
+
+class GenreListInteractor: GenreListUseCase {
+    private let genreRepo: GameGenreRepositoryInterface
+    init(genreRepo: GameGenreRepository) {
+        self.genreRepo = genreRepo
     }
+}
 
-    func getPublisherDetail(id: String, callback: @escaping (Response<BaseDetail>) -> Void) {
-        Request("\(Constant.rawgApiUrl)/publishers/\(id)")
-            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
-            .result(callback)
+extension GenreListInteractor {
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error> {
+        return self.genreRepo.getGenreList(page: page, count: count)
     }
 }

@@ -26,11 +26,19 @@ class FavouriteScreenViewModel: ObservableObject {
     private var dataOffset = 0
     private var isLoadingMoreData = false
     private var canLoadMoreData = true
-    private let gameRepo = GameRepository()
+    private var cancellableSet: Set<AnyCancellable> = []
+
+    private let favouriteUsecase: FavouriteUseCase
+    init(interactor: FavouriteInteractor) {
+        self.favouriteUsecase = interactor
+    }
 
     func performDelete(index: IndexSet) {
         index.forEach {
-            gameRepo.removeGameFromFavourites(favourites[$0])
+            self.favouriteUsecase
+                .removeGameFromFavourites(favourites[$0].slug)
+                .sink(receiveCompletion: { _ in }, receiveValue: {})
+                .store(in: &cancellableSet)
             favourites.remove(at: $0)
         }
     }
@@ -63,14 +71,20 @@ class FavouriteScreenViewModel: ObservableObject {
 
     private func loadMore() {
         isLoadingMoreData = true
-        gameRepo.fetchFavourites(offset: dataOffset, limit: 10) { result in
-            if result.isEmpty {
-                canLoadMoreData = false
-                return
-            }
-            favourites += result
-            dataOffset += 10
-            isLoadingMoreData = false
-        }
+        self.favouriteUsecase
+            .fetchFavourites(offset: dataOffset, limit: 10)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { result in
+                    if result.isEmpty {
+                        self.canLoadMoreData = false
+                        return
+                    }
+                    self.favourites += result
+                    self.dataOffset += 10
+                    self.isLoadingMoreData = false
+                }
+            )
+            .store(in: &cancellableSet)
     }
 }

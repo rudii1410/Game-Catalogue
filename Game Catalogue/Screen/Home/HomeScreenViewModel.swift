@@ -29,97 +29,95 @@ class HomeScreenViewModel: ObservableObject {
     @Published var gamePublisherList: [ItemListHorizontalData] = []
     @Published var gameGenreList: [ItemGridData] = []
     @Published var isLoadingGameData = false
-    @Published var gameList: [GameShort] = []
+    @Published var gameList: [Game] = []
     @Published var showErrorNetwork = false
 
-    var upcomingGames: [GameShort] = []
-    var publisherList: [BaseDetail] = []
-    var genreList: [BaseDetail] = []
+    var upcomingGames: [Game] = []
+    var publisherList: [GamePublisher] = []
+    var genreList: [Genre] = []
     var selectedPublisherSlug = ""
     var selectedGenreSlug = ""
     var selectedGameSlug = ""
     private var gameListPage = 1
+    private var cancellableSet: Set<AnyCancellable> = []
 
-    private let gameRepo = GameRepository()
-    private let publisherRepo = GamePublisherRepository()
-    private let genreRepo = GameGenreRepository()
+    private let homeUseCase: HomeUseCase
+
+    init(interactor: HomeInteractor) {
+        self.homeUseCase = interactor
+    }
 
     public func onBannerImagePressed(_ idx: Int) {
         self.onGameSelected(self.upcomingGames[idx].slug)
     }
 
     func fetchUpcomingReleaseGame() {
-        gameRepo.getUpcomingRelease { response in
-            guard let result = response.response?.results else {
-                if response.error?.type == RequestError.NetworkError {
-                    self.showErrorNetwork = true
+        self.homeUseCase
+            .getUpcomingRelease(endDate: nil, page: 1, count: 10)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.upcomingGames = response
+                    var banner: [String] = []
+                    for data in response {
+                        banner.append(data.imageBackground)
+                    }
+                    self.upcomingGamesBanner = banner
                 }
-                return
-            }
-
-            self.upcomingGames = result
-            var banner: [String] = []
-            for data in result {
-                banner.append(data.backgroundImage)
-            }
-            DispatchQueue.main.async {
-                self.upcomingGamesBanner = banner
-            }
-        }
+            )
+            .store(in: &cancellableSet)
     }
 
     func fetchPublisherList() {
-        publisherRepo.getPublisherList(page: 1, count: Constant.maxPublisherDataLoad) { response in
-            guard let result = response.response?.results else { return }
-
-            self.publisherList = result
-            var listData: [ItemListHorizontalData] = []
-            for data in result {
-                listData.append(
-                    ItemListHorizontalData(id: data.slug, imageUrl: data.imageBackground, title: data.name)
-                )
-            }
-            DispatchQueue.main.async {
-                self.gamePublisherList = listData
-            }
-        }
+        self.homeUseCase
+            .getPublisherList(page: 1, count: Constant.maxPublisherDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.publisherList = response
+                    var listData: [ItemListHorizontalData] = []
+                    for data in response {
+                        listData.append(
+                            ItemListHorizontalData(id: data.slug, imageUrl: data.imageBackground, title: data.name)
+                        )
+                    }
+                    self.gamePublisherList = listData
+                }
+            )
+            .store(in: &cancellableSet)
     }
 
     func fetchGenreList() {
-        genreRepo.getGenreList(page: 1, count: Constant.maxGenreDataLoad) { response in
-            guard let result = response.response?.results else { return }
-
-            self.genreList = result
-            let listData = result[...5].map { data in
-                ItemGridData(id: data.slug, imageUrl: data.imageBackground, title: data.name)
-            }
-            DispatchQueue.main.async {
-                self.gameGenreList = listData
-            }
-        }
+        self.homeUseCase
+            .getGenreList(page: 1, count: Constant.maxGenreDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.genreList = response
+                    let listData = response[...5].map { data in
+                        ItemGridData(id: data.slug, imageUrl: data.imageBackground, title: data.name)
+                    }
+                    self.gameGenreList = listData
+                }
+            )
+            .store(in: &cancellableSet)
     }
 
     func fetchGameList() {
         if self.isLoadingGameData { return }
         self.isLoadingGameData = true
 
-        gameRepo.getUserFavouriteGameGenre { result in
-            let genres = result.isEmpty ? "action" : result.joined(separator: ",")
-
-            gameRepo.getGameListByGenres(
-                genres: genres,
-                page: self.gameListPage,
-                count: Constant.maxGameDataLoad
-            ) { response in
-                guard let result = response.response?.results else { return }
-
-                DispatchQueue.main.async {
-                    self.gameList.append(contentsOf: result)
+        self.homeUseCase
+            .getGameListByUserFavourites(page: self.gameListPage, count: Constant.maxGameDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: {
+                    self.gameList.append(contentsOf: $0)
                     self.gameListPage += 1
                     self.isLoadingGameData = false
                 }
-            }
-        }
+            )
+            .store(in: &self.cancellableSet)
     }
 
     func onGameSelected(_ slug: String) {

@@ -20,11 +20,12 @@ import WebKit
 import SDWebImageSwiftUI
 
 struct PublisherDetailScreen: View {
-    @ObservedObject private var model = PublisherDetailScreenViewModel()
+    @ObservedObject private var model: PublisherDetailScreenViewModel
     @State private var htmlHeight: CGFloat = 50.0
     private var slug: String
 
-    init(slug: String) {
+    init(model: PublisherDetailScreenViewModel, slug: String) {
+        self.model = model
         self.slug = slug
     }
 
@@ -32,6 +33,7 @@ struct PublisherDetailScreen: View {
         ScrollView {
             NavigationLink(
                 destination: GameDetailScreen(
+                    model: .init(interactor: ServiceContainer.instance.get()),
                     slug: self.model.selectedGameSlug
                 ),
                 isActive: self.$model.navigateToGameDetail,

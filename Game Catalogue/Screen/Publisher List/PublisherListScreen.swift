@@ -22,9 +22,10 @@ private let columnCount = 2
 struct PublisherListScreen: View {
     private let gridLayout = [GridItem](repeating: GridItem(.flexible()), count: columnCount)
 
-    @ObservedObject private var model = PublisherListScreenViewModel()
+    @ObservedObject private var model: PublisherListScreenViewModel
 
-    init(_ data: [BaseDetail]) {
+    init(model: PublisherListScreenViewModel, _ data: [BaseDetail]) {
+        self.model = model
         self.model.gamePublisher = data
     }
 
@@ -32,6 +33,7 @@ struct PublisherListScreen: View {
         ScrollView {
             NavigationLink(
                 destination: PublisherDetailScreen(
+                    model: .init(interactor: ServiceContainer.instance.get()),
                     slug: self.model.selectedPublisher?.slug ?? ""
                 ),
                 isActive: self.$model.navigateToPublisherDetail,

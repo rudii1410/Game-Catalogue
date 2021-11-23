@@ -15,10 +15,14 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class Screenshot {
-    var id: Int = 0
-    var image: String = ""
-    var width: Int = 0
-    var height: Int = 0
-    var isDeleted = false
+class RawgScreenshot: Codable {
+    let id: Int
+    let image: String
+    let width, height: Int
+    let isDeleted: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case id, image, width, height
+        case isDeleted = "is_deleted"
+    }
 }

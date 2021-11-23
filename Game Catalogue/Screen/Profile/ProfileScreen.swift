@@ -19,7 +19,11 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProfileScreen: View {
-    @ObservedObject private var model = ProfileScreenViewModel()
+    @ObservedObject private var model: ProfileScreenViewModel
+
+    init(model: ProfileScreenViewModel) {
+        self.model = model
+    }
 
     var body: some View {
         VStack {

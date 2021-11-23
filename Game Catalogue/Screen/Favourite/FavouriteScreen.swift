@@ -19,13 +19,20 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct FavouritesScreen: View {
-    @ObservedObject private var model = FavouriteScreenViewModel()
+    @ObservedObject private var model: FavouriteScreenViewModel
     @State var searchText: String = ""
+
+    init(model: FavouriteScreenViewModel) {
+        self.model = model
+    }
 
     var body: some View {
         VStack(spacing: 12) {
             NavigationLink(
-                destination: GameDetailScreen(slug: self.model.selectedSlug),
+                destination: GameDetailScreen(
+                    model: .init(interactor: ServiceContainer.instance.get()),
+                    slug: self.model.selectedSlug
+                ),
                 isActive: self.$model.navigateToGameDetail,
                 label: { EmptyView() }
             )

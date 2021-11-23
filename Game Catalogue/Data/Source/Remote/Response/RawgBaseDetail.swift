@@ -15,24 +15,17 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Keys
+class RawgBaseDetail: Codable {
+    let id: Int
+    let name, slug: String
+    let gamesCount: Int
+    let imageBackground: String
+    let description: String?
 
-class GameGenreRepository {
-    func getGenreList(
-        page: Int,
-        count: Int,
-        callback: @escaping (Response<ListResponse<BaseDetail>>) -> Void
-    ) {
-        Request("\(Constant.rawgApiUrl)/genres")
-            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
-            .addQuery(key: "page", value: String(page))
-            .addQuery(key: "page_size", value: String(count))
-            .result(callback)
-    }
-
-    func getGenreDetail(id: String, callback: @escaping (Response<BaseDetail>) -> Void) {
-        Request("\(Constant.rawgApiUrl)/genres/\(id)")
-            .addQuery(key: "key", value: GameCatalogueKeys().rawgApiKey)
-            .result(callback)
+    private enum CodingKeys: String, CodingKey {
+        case id, name, slug
+        case gamesCount = "games_count"
+        case imageBackground = "image_background"
+        case description
     }
 }

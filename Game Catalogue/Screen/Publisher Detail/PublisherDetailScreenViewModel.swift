@@ -22,7 +22,7 @@ class PublisherDetailScreenViewModel: ObservableObject {
     @Published var imageUrl = ""
     @Published var desc = ""
     @Published var gameTitle = ""
-    @Published var gameList: [GameShort] = []
+    @Published var gameList: [Game] = []
     @Published var navigateToGameDetail = false
     @Published var showErrorNetwork = false
 
@@ -30,9 +30,13 @@ class PublisherDetailScreenViewModel: ObservableObject {
     private var isLoadingMoreData = false
     private var page = 1
     private var slug = ""
+    private var cancellableSet: Set<AnyCancellable> = []
 
-    private let publisherRepo = GamePublisherRepository()
-    private let gameRepo = GameRepository()
+    private let publisherDetailUseCase: PublisherDetailUseCase
+
+    init(interactor: PublisherDetailInteractor) {
+        self.publisherDetailUseCase = interactor
+    }
 
     func loadData(_ slug: String) {
         self.slug = slug
@@ -49,35 +53,30 @@ class PublisherDetailScreenViewModel: ObservableObject {
         if self.isLoadingMoreData { return }
 
         isLoadingMoreData = true
-        gameRepo.getGameListByPublisher(
-            publisherId: slug,
-            page: page,
-            count: Constant.maxGameDataLoad
-        ) { response in
-            guard let result = response.response?.results else { return }
-
-            DispatchQueue.main.async {
-                self.gameList.append(contentsOf: result)
-                self.page += 1
-                self.isLoadingMoreData = false
-            }
-        }
+        self.publisherDetailUseCase
+            .getGameListByPublisher(publisherId: slug, page: page, count: Constant.maxGameDataLoad)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { response in
+                    self.gameList.append(contentsOf: response)
+                    self.page += 1
+                    self.isLoadingMoreData = false
+                }
+            )
+            .store(in: &cancellableSet)
     }
 
     private func loadPublisherDetail() {
-        publisherRepo.getPublisherDetail(id: slug) { response in
-            guard let result = response.response else {
-                if response.error?.type == RequestError.NetworkError {
-                    self.showErrorNetwork = true
+        self.publisherDetailUseCase
+            .getPublisherDetail(id: slug)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { result in
+                    self.gameTitle = result.name
+                    self.imageUrl = result.imageBackground
+                    self.desc = result.description ?? ""
                 }
-                return
-            }
-
-            DispatchQueue.main.async {
-                self.gameTitle = result.name
-                self.imageUrl = result.imageBackground
-                self.desc = result.description ?? ""
-            }
-        }
+            )
+            .store(in: &cancellableSet)
     }
 }
