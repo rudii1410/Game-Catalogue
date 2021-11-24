@@ -18,22 +18,43 @@
 import SwiftUI
 
 class ServiceContainer {
+    typealias ServiceCreator = (ServiceContainer) -> AnyObject
     private var container: [String: AnyObject] = [:]
+    private var services: [String: ServiceCreator] = [:]
 
     static var instance = ServiceContainer()
 
-    func register(_ service: AnyObject) {
-        let key = String(describing: type(of: service))
-        self.container[key] = service
-        print("Registering \(key)")
+    func register(_ service: AnyClass, _ callback: @escaping ServiceCreator) {
+        let key = String(describing: service.self)
+        self.services[key] = callback
+        print("\(key) is registered")
+    }
+
+    func unregister(_ service: AnyClass) {
+        let key = String(describing: service.self)
+        self.services.removeValue(forKey: key)
     }
 
     func get<T>() -> T {
         let key = String(describing: T.self)
 
         guard let service = self.container[key] as? T else {
-            preconditionFailure("\(key) is not registered in service container")
+            print("\(key) object is not created, creating new object.")
+            return self.resolveService(key: key)
         }
         return service
+    }
+
+    func remove(_ service: AnyClass) {
+        let key = String(describing: service.self)
+        self.container.removeValue(forKey: key)
+    }
+
+    private func resolveService<T>(key: String) -> T {
+        guard let serviceObject = self.services[key]?(self) as? T else {
+            preconditionFailure("\(key) is not registered in service container")
+        }
+        self.container[key] = serviceObject as AnyObject
+        return serviceObject
     }
 }

@@ -31,10 +31,6 @@ class LocalDataSource: LocalDataSourceInterface {
     init(database: Database) {
         self.sharedDb = database
     }
-
-    static let instance: (Database) -> LocalDataSource = { database in
-        return LocalDataSource(database: database)
-    }
 }
 
 extension LocalDataSource {
