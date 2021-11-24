@@ -41,6 +41,8 @@
 		CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */; };
 		CF5AB40526CE16C30097C09D /* PublisherListScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */; };
 		CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */; };
+		CF5C8A03274E7C3A00AE681D /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF5C8A02274E7C3A00AE681D /* Core.framework */; };
+		CF5C8A04274E7C3A00AE681D /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF5C8A02274E7C3A00AE681D /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */; };
 		CF6213F326C3934200580054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F226C3934200580054 /* Assets.xcassets */; };
 		CF6213F626C3934200580054 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F526C3934200580054 /* Preview Assets.xcassets */; };
@@ -80,6 +82,20 @@
 		CFFC1B0C2743B0900056C0EC /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC1B0B2743B0900056C0EC /* DatabaseError.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CF5C8A05274E7C3A00AE681D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CF5C8A04274E7C3A00AE681D /* Core.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Game_Catalogue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3FC36BE2D4F44DB715F468 /* Pods-Game Catalogue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Catalogue.debug.xcconfig"; path = "Target Support Files/Pods-Game Catalogue/Pods-Game Catalogue.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +133,7 @@
 		CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreen.swift; sourceTree = "<group>"; };
 		CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreenViewModel.swift; sourceTree = "<group>"; };
 		CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardWithText.swift; sourceTree = "<group>"; };
+		CF5C8A02274E7C3A00AE681D /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6213EB26C3934100580054 /* Game Catalogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Catalogue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game_CatalogueApp.swift; sourceTree = "<group>"; };
 		CF6213F226C3934200580054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31B0BD083288C76F7BC78DFB /* Pods_Game_Catalogue.framework in Frameworks */,
+				CF5C8A03274E7C3A00AE681D /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +191,7 @@
 		9F9E4ABF0C4EAC14252D1F23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF5C8A02274E7C3A00AE681D /* Core.framework */,
 				12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */,
 			);
 			name = Frameworks;
@@ -193,6 +212,7 @@
 			children = (
 				CF68E7412744B72D002917F1 /* DI */,
 				CFFC1B0A2743B0550056C0EC /* Database */,
+				CFDB30EE274E025700DA692E /* Navigation */,
 				CFFD92C0274393A8005C24D1 /* Networking */,
 				CFDF6395272BE07A0055539D /* Errors.swift */,
 				CF1D4FCE274B8B1700B1E07B /* Mapper.swift */,
@@ -488,6 +508,13 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		CFDB30EE274E025700DA692E /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		CFFC1B0A2743B0550056C0EC /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,6 +555,7 @@
 				CF6213E926C3934100580054 /* Resources */,
 				CF62140226C393BA00580054 /* ShellScript */,
 				40C65CF5720FBC848ADE64DC /* [CP] Embed Pods Frameworks */,
+				CF5C8A05274E7C3A00AE681D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
