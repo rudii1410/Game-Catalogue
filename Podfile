@@ -20,6 +20,7 @@ target 'Game Catalogue' do
 
 end
 
+# region Library Module
 target 'Core' do
   project 'Lib/Core/Core'
 
@@ -29,4 +30,25 @@ target 'DesignSystem' do
   project 'Lib/DesignSystem/DesignSystem'
   
   pod 'SDWebImageSwiftUI'
+end
+
+# region Feature Module
+target 'Home' do
+  project 'Features/Home/Home'
+
+end
+
+target 'Publisher' do
+  project 'Features/Publisher/Publisher'
+
+end
+
+target 'Game' do
+  project 'Features/Game/Game'
+
+end
+
+target 'Genre' do
+  project 'Features/Genre/Genre'
+
 end

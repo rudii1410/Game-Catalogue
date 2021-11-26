@@ -13,4 +13,16 @@
    <FileRef
       location = "group:Lib/DesignSystem/DesignSystem.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Features/Game/Game.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Features/Genre/Genre.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Features/Home/Home.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Features/Publisher/Publisher.xcodeproj">
+   </FileRef>
 </Workspace>
