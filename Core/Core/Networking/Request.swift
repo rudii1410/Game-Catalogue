@@ -15,26 +15,24 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Foundation
 import SwiftUI
 import Combine
 
 // MARK: - RequestMethod
-enum RequestMethod: String {
+public enum RequestMethod: String {
     case GET
     case POST
 }
 
-
 // MARK: - Request
-class Request {
+public class Request {
     private var urlStr: String
     private var method: String
     private var query: [String: String] = [:]
     private var header: [String: String] = [:]
     private var body: Any = {}
 
-    init(_ url: String, method: RequestMethod = .GET) {
+    public init(_ url: String, method: RequestMethod = .GET) {
         self.urlStr = url
         self.method = method.rawValue
 

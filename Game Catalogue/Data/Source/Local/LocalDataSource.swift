@@ -17,6 +17,7 @@
 
 import Combine
 import Keys
+import Core
 
 protocol LocalDataSourceInterface {
     func addGameToFavourites(_ favourite: FavouriteEntity) -> AnyPublisher<Void, Error>
@@ -26,9 +27,9 @@ protocol LocalDataSourceInterface {
 }
 
 class LocalDataSource: LocalDataSourceInterface {
-    private let sharedDb: Database
+    private let sharedDb: CoreDataWrapper
 
-    init(database: Database) {
+    init(database: CoreDataWrapper) {
         self.sharedDb = database
     }
 }

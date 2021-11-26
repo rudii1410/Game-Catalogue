@@ -11,6 +11,11 @@
 		CF22FE17274E7A7900FAF9DD /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF22FE0D274E7A7900FAF9DD /* Core.framework */; };
 		CF22FE1C274E7A7900FAF9DD /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF22FE1B274E7A7900FAF9DD /* CoreTests.swift */; };
 		CF22FE1E274E7A7900FAF9DD /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = CF22FE10274E7A7900FAF9DD /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF8E614B2750E95700CDCFE2 /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E614A2750E95700CDCFE2 /* ServiceContainer.swift */; };
+		CF8E614E2750E98600CDCFE2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E614D2750E98600CDCFE2 /* Request.swift */; };
+		CF8E61502750E99A00CDCFE2 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E614F2750E99A00CDCFE2 /* RequestError.swift */; };
+		CF8E61532750EA0E00CDCFE2 /* CoreDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E61522750EA0E00CDCFE2 /* CoreDataWrapper.swift */; };
+		CF8E61552750EA2800CDCFE2 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E61542750EA2800CDCFE2 /* CoreDataError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +38,11 @@
 		CF22FE16274E7A7900FAF9DD /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF22FE1B274E7A7900FAF9DD /* CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTests.swift; sourceTree = "<group>"; };
 		CF22FE1D274E7A7900FAF9DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF8E614A2750E95700CDCFE2 /* ServiceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
+		CF8E614D2750E98600CDCFE2 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		CF8E614F2750E99A00CDCFE2 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		CF8E61522750EA0E00CDCFE2 /* CoreDataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWrapper.swift; sourceTree = "<group>"; };
+		CF8E61542750EA2800CDCFE2 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +98,9 @@
 		CF22FE0F274E7A7900FAF9DD /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CF8E61512750E9EF00CDCFE2 /* Core Data */,
+				CF8E614C2750E96300CDCFE2 /* Networking */,
+				CF8E61492750E94900CDCFE2 /* DI */,
 				CF22FE10274E7A7900FAF9DD /* Core.h */,
 				CF22FE11274E7A7900FAF9DD /* Info.plist */,
 			);
@@ -101,6 +114,32 @@
 				CF22FE1D274E7A7900FAF9DD /* Info.plist */,
 			);
 			path = CoreTests;
+			sourceTree = "<group>";
+		};
+		CF8E61492750E94900CDCFE2 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				CF8E614A2750E95700CDCFE2 /* ServiceContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		CF8E614C2750E96300CDCFE2 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CF8E614D2750E98600CDCFE2 /* Request.swift */,
+				CF8E614F2750E99A00CDCFE2 /* RequestError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		CF8E61512750E9EF00CDCFE2 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				CF8E61522750EA0E00CDCFE2 /* CoreDataWrapper.swift */,
+				CF8E61542750EA2800CDCFE2 /* CoreDataError.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 		E2FE99426BD52EE0BB921575 /* Frameworks */ = {
@@ -246,6 +285,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8E61532750EA0E00CDCFE2 /* CoreDataWrapper.swift in Sources */,
+				CF8E614B2750E95700CDCFE2 /* ServiceContainer.swift in Sources */,
+				CF8E61552750EA2800CDCFE2 /* CoreDataError.swift in Sources */,
+				CF8E614E2750E98600CDCFE2 /* Request.swift in Sources */,
+				CF8E61502750E99A00CDCFE2 /* RequestError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +490,7 @@
 		CF22FE25274E7A7900FAF9DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RLQU784C73;
 				INFOPLIST_FILE = CoreTests/Info.plist;
@@ -464,6 +509,7 @@
 		CF22FE26274E7A7900FAF9DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RLQU784C73;
 				INFOPLIST_FILE = CoreTests/Info.plist;

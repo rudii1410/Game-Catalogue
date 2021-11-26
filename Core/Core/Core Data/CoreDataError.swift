@@ -15,7 +15,7 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-public enum DatabaseError: Error, Equatable {
+public enum CoreDataError: Error, Equatable {
     case saveFail
     case deleteFail
     case fetchFail(error: String)

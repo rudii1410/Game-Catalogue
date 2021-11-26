@@ -16,12 +16,13 @@
 //
 
 import SwiftUI
+import Core
 
 @main
 struct GameCatalogueApp: App {
     init() {
-        ServiceContainer.instance.register(Database.self) { _ in
-            return Database()
+        ServiceContainer.instance.register(CoreDataWrapper.self) { _ in
+            return CoreDataWrapper()
         }
         ServiceContainer.instance.register(LocalDataSource.self) { service in
             return LocalDataSource(database: service.get())

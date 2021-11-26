@@ -17,6 +17,7 @@
 
 import Keys
 import Combine
+import Core
 
 protocol RemoteDataSourceInterface {
     func getUpcomingRelease(endDate inputEndDate: Date?, page: Int, count: Int) -> AnyPublisher<RawgListResponse<RawgGameShort>, Error>

@@ -17,6 +17,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Core
 
 struct GameDetailScreen: View {
     @ObservedObject private var model: GameDetailScreenViewModel

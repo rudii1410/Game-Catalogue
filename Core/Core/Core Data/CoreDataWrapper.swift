@@ -18,11 +18,11 @@
 import CoreData
 import Combine
 
-class Database {
-    let mainContext: NSManagedObjectContext
-    let bgContext: NSManagedObjectContext
+public class CoreDataWrapper {
+    public let mainContext: NSManagedObjectContext
+    public let bgContext: NSManagedObjectContext
 
-    init() {
+    public init() {
         let persistentContainer = NSPersistentContainer(name: "Database")
         persistentContainer.loadPersistentStores { _, error in
             if let error = error as NSError? {
@@ -34,32 +34,32 @@ class Database {
         bgContext = persistentContainer.newBackgroundContext()
     }
 
-    func save() -> Future<Void, Error> {
+    public func save() -> Future<Void, Error> {
         Future { promise in
             do {
                 try self.bgContext.save()
                 promise(.success(()))
             } catch {
-                promise(.failure(DatabaseError.saveFail))
+                promise(.failure(CoreDataError.saveFail))
                 self.bgContext.rollback()
             }
         }
     }
 
-    func delete<T: NSManagedObject>(item: T) -> Future<Void, Error> {
+    public func delete<T: NSManagedObject>(item: T) -> Future<Void, Error> {
         Future { promise in
             do {
                 self.bgContext.delete(item)
                 try self.bgContext.save()
                 promise(.success(()))
             } catch {
-                promise(.failure(DatabaseError.deleteFail))
+                promise(.failure(CoreDataError.deleteFail))
                 self.bgContext.rollback()
             }
         }
     }
 
-    func fetchAll<T: NSManagedObject>(
+    public func fetchAll<T: NSManagedObject>(
         offset: Int? = nil,
         size: Int? = nil,
         predicate: NSPredicate? = nil,
@@ -76,12 +76,12 @@ class Database {
                 let result = try self.bgContext.fetch(request)
                 promise(.success(result))
             } catch {
-                promise(.failure(DatabaseError.fetchFail(error: error.localizedDescription)))
+                promise(.failure(CoreDataError.fetchFail(error: error.localizedDescription)))
             }
         }
     }
 
-    func fetchFirst<T: NSManagedObject>(predicate: NSPredicate? = nil) -> Future<T, Error> {
+    public func fetchFirst<T: NSManagedObject>(predicate: NSPredicate? = nil) -> Future<T, Error> {
         Future { promise in
             let request = NSFetchRequest<T>(entityName: String(describing: T.self))
             request.predicate = predicate
@@ -89,12 +89,12 @@ class Database {
             do {
                 let result = try self.bgContext.fetch(request)
                 if result.isEmpty {
-                    promise(.failure(DatabaseError.noData))
+                    promise(.failure(CoreDataError.noData))
                 } else {
                     promise(.success(result[0]))
                 }
             } catch {
-                promise(.failure(DatabaseError.fetchFail(error: error.localizedDescription)))
+                promise(.failure(CoreDataError.fetchFail(error: error.localizedDescription)))
             }
         }
     }

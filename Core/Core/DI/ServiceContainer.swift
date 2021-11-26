@@ -17,25 +17,26 @@
 
 import SwiftUI
 
-class ServiceContainer {
-    typealias ServiceCreator = (ServiceContainer) -> AnyObject
+public typealias ServiceCreator = (ServiceContainer) -> AnyObject
+
+public class ServiceContainer {
     private var container: [String: AnyObject] = [:]
     private var services: [String: ServiceCreator] = [:]
 
-    static var instance = ServiceContainer()
+    public static var instance = ServiceContainer()
 
-    func register(_ service: AnyClass, _ callback: @escaping ServiceCreator) {
+    public func register(_ service: AnyClass, _ callback: @escaping ServiceCreator) {
         let key = String(describing: service.self)
         self.services[key] = callback
         print("\(key) is registered")
     }
 
-    func unregister(_ service: AnyClass) {
+    public func unregister(_ service: AnyClass) {
         let key = String(describing: service.self)
         self.services.removeValue(forKey: key)
     }
 
-    func get<T>() -> T {
+    public func get<T>() -> T {
         let key = String(describing: T.self)
 
         guard let service = self.container[key] as? T else {
@@ -45,7 +46,7 @@ class ServiceContainer {
         return service
     }
 
-    func remove(_ service: AnyClass) {
+    public func remove(_ service: AnyClass) {
         let key = String(describing: service.self)
         self.container.removeValue(forKey: key)
     }
