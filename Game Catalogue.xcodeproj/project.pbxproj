@@ -27,6 +27,10 @@
 		CF1D4FDB274BBFF900B1E07B /* GenreDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FDA274BBFF900B1E07B /* GenreDetailInteractor.swift */; };
 		CF1D4FDD274BC0EC00B1E07B /* GenreListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FDC274BC0EC00B1E07B /* GenreListInteractor.swift */; };
 		CF1D4FDF274BC19500B1E07B /* GameDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FDE274BC19500B1E07B /* GameDetailInteractor.swift */; };
+		CF2C10AD2750F34F00ADB197 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10AC2750F34F00ADB197 /* Core.framework */; };
+		CF2C10AE2750F34F00ADB197 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10AC2750F34F00ADB197 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF2C10B12750F35300ADB197 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10B02750F35300ADB197 /* DesignSystem.framework */; };
+		CF2C10B22750F35300ADB197 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10B02750F35300ADB197 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF377CA726D6585700D1A9F4 /* RawgScreenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF377CA626D6585700D1A9F4 /* RawgScreenshot.swift */; };
 		CF3E795226CB84C80087227E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E795126CB84C80087227E /* SearchBar.swift */; };
 		CF4045C826CE4E1000560D4D /* PublisherDetailScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */; };
@@ -48,8 +52,6 @@
 		CF879AAE26D5330B0039EE8C /* RawgGameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF879AAD26D5330B0039EE8C /* RawgGameDetail.swift */; };
 		CF879AB126D5380E0039EE8C /* RawgGamePlatformDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF879AB026D5380E0039EE8C /* RawgGamePlatformDetail.swift */; };
 		CF879AB426D53C070039EE8C /* RawgBaseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF879AB326D53C070039EE8C /* RawgBaseDetail.swift */; };
-		CF8E61432750E60700CDCFE2 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8E61422750E60700CDCFE2 /* Core.framework */; };
-		CF8E61442750E60700CDCFE2 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF8E61422750E60700CDCFE2 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF9AC95B26CE575C004341BD /* PublisherDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC95A26CE575C004341BD /* PublisherDetailScreen.swift */; };
 		CF9AC95E26CE5B11004341BD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC95D26CE5B11004341BD /* LoadingView.swift */; };
 		CF9AC96726CE607C004341BD /* GenreDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC96626CE607C004341BD /* GenreDetailScreen.swift */; };
@@ -78,13 +80,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CF8E61452750E60700CDCFE2 /* Embed Frameworks */ = {
+		CF2C10AF2750F34F00ADB197 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CF8E61442750E60700CDCFE2 /* Core.framework in Embed Frameworks */,
+				CF2C10AE2750F34F00ADB197 /* Core.framework in Embed Frameworks */,
+				CF2C10B22750F35300ADB197 /* DesignSystem.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +117,8 @@
 		CF1D4FDA274BBFF900B1E07B /* GenreDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDetailInteractor.swift; sourceTree = "<group>"; };
 		CF1D4FDC274BC0EC00B1E07B /* GenreListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListInteractor.swift; sourceTree = "<group>"; };
 		CF1D4FDE274BC19500B1E07B /* GameDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailInteractor.swift; sourceTree = "<group>"; };
+		CF2C10AC2750F34F00ADB197 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF2C10B02750F35300ADB197 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF377CA626D6585700D1A9F4 /* RawgScreenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgScreenshot.swift; sourceTree = "<group>"; };
 		CF3E795126CB84C80087227E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CF4045C726CE4E1000560D4D /* PublisherDetailScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailScreenViewModel.swift; sourceTree = "<group>"; };
@@ -171,8 +176,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF2C10B12750F35300ADB197 /* DesignSystem.framework in Frameworks */,
 				31B0BD083288C76F7BC78DFB /* Pods_Game_Catalogue.framework in Frameworks */,
-				CF8E61432750E60700CDCFE2 /* Core.framework in Frameworks */,
+				CF2C10AD2750F34F00ADB197 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +188,8 @@
 		9F9E4ABF0C4EAC14252D1F23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF2C10B02750F35300ADB197 /* DesignSystem.framework */,
+				CF2C10AC2750F34F00ADB197 /* Core.framework */,
 				CF8E61422750E60700CDCFE2 /* Core.framework */,
 				CF5C8A02274E7C3A00AE681D /* Core.framework */,
 				12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */,
@@ -510,7 +518,7 @@
 				CF6213E926C3934100580054 /* Resources */,
 				CF62140226C393BA00580054 /* ShellScript */,
 				40C65CF5720FBC848ADE64DC /* [CP] Embed Pods Frameworks */,
-				CF8E61452750E60700CDCFE2 /* Embed Frameworks */,
+				CF2C10AF2750F34F00ADB197 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
