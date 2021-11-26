@@ -17,6 +17,7 @@
 
 import Keys
 import Combine
+import Core
 
 protocol GameRepositoryInterface {
     func getUpcomingRelease(endDate inputEndDate: Date?, page: Int, count: Int) -> AnyPublisher<[Game], Error>
@@ -34,9 +35,9 @@ protocol GameRepositoryInterface {
 class GameRepository: GameRepositoryInterface {
     private let localDataSource: LocalDataSource
     private let remoteDataSource: RemoteDataSource
-    private let database: Database
+    private let database: CoreDataWrapper
 
-    init(local: LocalDataSource, remote: RemoteDataSource, database: Database) {
+    init(local: LocalDataSource, remote: RemoteDataSource, database: CoreDataWrapper) {
         self.localDataSource = local
         self.remoteDataSource = remote
         self.database = database

@@ -16,38 +16,58 @@
 //
 
 import SwiftUI
+import Core
 
 @main
 struct GameCatalogueApp: App {
     init() {
-        let database = Database()
-        let gameRepo = GameRepository(
-            local: LocalDataSource.instance(database),
-            remote: RemoteDataSource.instance,
-            database: database
-        )
-        let publisherRepo = GamePublisherRepository(remote: RemoteDataSource.instance)
-        let genreRepo = GameGenreRepository(remote: RemoteDataSource.instance)
-        let profileRepo = ProfileRepository(userDef: UserDefaults.standard)
+        ServiceContainer.instance.register(CoreDataWrapper.self) { _ in
+            return CoreDataWrapper()
+        }
+        ServiceContainer.instance.register(LocalDataSource.self) { service in
+            return LocalDataSource(database: service.get())
+        }
+        ServiceContainer.instance.register(RemoteDataSource.self) { _ in
+            return RemoteDataSource()
+        }
 
-        ServiceContainer.instance.register(
-            HomeInteractor(
-                gameRepo: gameRepo,
-                publisherRepo: publisherRepo,
-                genreRepo: genreRepo
-            )
-        )
-        ServiceContainer.instance.register(FavouriteInteractor(gameRepo: gameRepo))
-        ServiceContainer.instance.register(ProfileInteractor(profileRepo: profileRepo))
-        ServiceContainer.instance.register(PublisherListInteractor(publisher: publisherRepo))
-        ServiceContainer.instance.register(
-            PublisherDetailInteractor(gameRepo: gameRepo, publisherRepo: publisherRepo)
-        )
-        ServiceContainer.instance.register(
-            GenreDetailInteractor(gameRepo: gameRepo, genreRepo: genreRepo)
-        )
-        ServiceContainer.instance.register(GenreListInteractor(genreRepo: genreRepo))
-        ServiceContainer.instance.register(GameDetailInteractor(gameRepo: gameRepo))
+        ServiceContainer.instance.register(GameRepository.self) { service in
+            return GameRepository(local: service.get(), remote: service.get(), database: service.get())
+        }
+        ServiceContainer.instance.register(GamePublisherRepository.self) { service in
+            return GamePublisherRepository(remote: service.get())
+        }
+        ServiceContainer.instance.register(GameGenreRepository.self) { service in
+            return GameGenreRepository(remote: service.get())
+        }
+        ServiceContainer.instance.register(ProfileRepository.self) { _ in
+            return ProfileRepository(userDef: UserDefaults.standard)
+        }
+
+        ServiceContainer.instance.register(HomeInteractor.self) { service in
+            return HomeInteractor(gameRepo: service.get(), publisherRepo: service.get(), genreRepo: service.get())
+        }
+        ServiceContainer.instance.register(FavouriteInteractor.self) { service in
+            return FavouriteInteractor(gameRepo: service.get())
+        }
+        ServiceContainer.instance.register(ProfileInteractor.self) { service in
+            return ProfileInteractor(profileRepo: service.get())
+        }
+        ServiceContainer.instance.register(PublisherListInteractor.self) { service in
+            return PublisherListInteractor(publisher: service.get())
+        }
+        ServiceContainer.instance.register(PublisherDetailInteractor.self) { service in
+            return PublisherDetailInteractor(gameRepo: service.get(), publisherRepo: service.get())
+        }
+        ServiceContainer.instance.register(GenreDetailInteractor.self) { service in
+            return GenreDetailInteractor(gameRepo: service.get(), genreRepo: service.get())
+        }
+        ServiceContainer.instance.register(GenreListInteractor.self) { service in
+            return GenreListInteractor(genreRepo: service.get())
+        }
+        ServiceContainer.instance.register(GameDetailInteractor.self) { service in
+            return GameDetailInteractor(gameRepo: service.get())
+        }
     }
 
     var body: some Scene {

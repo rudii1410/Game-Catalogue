@@ -16,6 +16,7 @@
 //
 
 import SwiftUI
+import Core
 
 private let columnCount = 2
 struct GenreListScreen: View {

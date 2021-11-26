@@ -18,6 +18,7 @@
 import SwiftUI
 import WebKit
 import SDWebImageSwiftUI
+import Core
 
 struct PublisherDetailScreen: View {
     @ObservedObject private var model: PublisherDetailScreenViewModel

@@ -17,6 +17,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Core
 
 struct GenreDetailScreen: View {
     @ObservedObject private var model: GenreDetailScreenViewModel
