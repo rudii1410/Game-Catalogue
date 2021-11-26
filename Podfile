@@ -4,10 +4,11 @@
 use_frameworks!
 
 workspace 'Game Catalogue'
+project 'Game Catalogue'
+
+pod 'SwiftLint'
 
 target 'Game Catalogue' do
-  pod 'SwiftLint'
-  
   # SDWebImage
   pod 'SDWebImageSwiftUI'
 
@@ -17,8 +18,10 @@ target 'Game Catalogue' do
       "RawgApiKey",
     ]
   }
+
 end
 
 target 'Core' do
-  project 'Core/Core'
+project 'Core/Core'
+
 end

@@ -173,6 +173,7 @@
 				TargetAttributes = {
 					CF22FE0C274E7A7900FAF9DD = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					CF22FE15274E7A7900FAF9DD = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -393,6 +394,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6FB092C57E2FF40C8FCE6047 /* Pods-Core.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RLQU784C73;
@@ -409,6 +411,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.rudiyanto.Game-Catalogue.Core";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -418,6 +421,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7D29F4D72469B046FF1FD433 /* Pods-Core.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RLQU784C73;

@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Game Catalogue.xcodeproj">
+      location = "group:Core/Core.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Core/Core.xcodeproj">
+      location = "group:Game Catalogue.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

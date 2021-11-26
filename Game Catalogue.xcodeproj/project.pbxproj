@@ -41,8 +41,6 @@
 		CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */; };
 		CF5AB40526CE16C30097C09D /* PublisherListScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */; };
 		CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */; };
-		CF5C8A03274E7C3A00AE681D /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF5C8A02274E7C3A00AE681D /* Core.framework */; };
-		CF5C8A04274E7C3A00AE681D /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF5C8A02274E7C3A00AE681D /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */; };
 		CF6213F326C3934200580054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F226C3934200580054 /* Assets.xcassets */; };
 		CF6213F626C3934200580054 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F526C3934200580054 /* Preview Assets.xcassets */; };
@@ -53,6 +51,8 @@
 		CF879AAE26D5330B0039EE8C /* RawgGameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF879AAD26D5330B0039EE8C /* RawgGameDetail.swift */; };
 		CF879AB126D5380E0039EE8C /* RawgGamePlatformDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF879AB026D5380E0039EE8C /* RawgGamePlatformDetail.swift */; };
 		CF879AB426D53C070039EE8C /* RawgBaseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF879AB326D53C070039EE8C /* RawgBaseDetail.swift */; };
+		CF8E61432750E60700CDCFE2 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8E61422750E60700CDCFE2 /* Core.framework */; };
+		CF8E61442750E60700CDCFE2 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF8E61422750E60700CDCFE2 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF9AC95B26CE575C004341BD /* PublisherDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC95A26CE575C004341BD /* PublisherDetailScreen.swift */; };
 		CF9AC95E26CE5B11004341BD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC95D26CE5B11004341BD /* LoadingView.swift */; };
 		CF9AC96726CE607C004341BD /* GenreDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC96626CE607C004341BD /* GenreDetailScreen.swift */; };
@@ -83,13 +83,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CF5C8A05274E7C3A00AE681D /* Embed Frameworks */ = {
+		CF8E61452750E60700CDCFE2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CF5C8A04274E7C3A00AE681D /* Core.framework in Embed Frameworks */,
+				CF8E61442750E60700CDCFE2 /* Core.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +146,7 @@
 		CF879AAD26D5330B0039EE8C /* RawgGameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgGameDetail.swift; sourceTree = "<group>"; };
 		CF879AB026D5380E0039EE8C /* RawgGamePlatformDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgGamePlatformDetail.swift; sourceTree = "<group>"; };
 		CF879AB326D53C070039EE8C /* RawgBaseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgBaseDetail.swift; sourceTree = "<group>"; };
+		CF8E61422750E60700CDCFE2 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9AC95A26CE575C004341BD /* PublisherDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailScreen.swift; sourceTree = "<group>"; };
 		CF9AC95D26CE5B11004341BD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CF9AC96626CE607C004341BD /* GenreDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDetailScreen.swift; sourceTree = "<group>"; };
@@ -181,7 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31B0BD083288C76F7BC78DFB /* Pods_Game_Catalogue.framework in Frameworks */,
-				CF5C8A03274E7C3A00AE681D /* Core.framework in Frameworks */,
+				CF8E61432750E60700CDCFE2 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +192,7 @@
 		9F9E4ABF0C4EAC14252D1F23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF8E61422750E60700CDCFE2 /* Core.framework */,
 				CF5C8A02274E7C3A00AE681D /* Core.framework */,
 				12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */,
 			);
@@ -555,7 +557,7 @@
 				CF6213E926C3934100580054 /* Resources */,
 				CF62140226C393BA00580054 /* ShellScript */,
 				40C65CF5720FBC848ADE64DC /* [CP] Embed Pods Frameworks */,
-				CF5C8A05274E7C3A00AE681D /* Embed Frameworks */,
+				CF8E61452750E60700CDCFE2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
