@@ -1,13 +1,14 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '12.0'
+ platform :ios, '14.0'
+
+use_frameworks!
+
+workspace 'Game Catalogue'
+project 'Game Catalogue'
+
+pod 'SwiftLint'
 
 target 'Game Catalogue' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  pod 'SwiftLint'
-  
-  # SDWebImage
   pod 'SDWebImageSwiftUI'
 
   plugin 'cocoapods-keys', {
@@ -16,4 +17,38 @@ target 'Game Catalogue' do
       "RawgApiKey",
     ]
   }
+
+end
+
+# region Library Module
+target 'Core' do
+  project 'Lib/Core/Core'
+
+end
+
+target 'DesignSystem' do
+  project 'Lib/DesignSystem/DesignSystem'
+  
+  pod 'SDWebImageSwiftUI'
+end
+
+# region Feature Module
+target 'Home' do
+  project 'Features/Home/Home'
+
+end
+
+target 'Publisher' do
+  project 'Features/Publisher/Publisher'
+
+end
+
+target 'Game' do
+  project 'Features/Game/Game'
+
+end
+
+target 'Genre' do
+  project 'Features/Genre/Genre'
+
 end

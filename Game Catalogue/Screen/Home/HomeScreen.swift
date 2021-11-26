@@ -16,6 +16,7 @@
 //
 
 import SwiftUI
+import Core
 
 struct HomeScreen: View {
     @ObservedObject var model: HomeScreenViewModel

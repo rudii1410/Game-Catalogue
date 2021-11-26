@@ -17,6 +17,7 @@
 
 import Keys
 import Combine
+import Core
 
 protocol RemoteDataSourceInterface {
     func getUpcomingRelease(endDate inputEndDate: Date?, page: Int, count: Int) -> AnyPublisher<RawgListResponse<RawgGameShort>, Error>
@@ -32,8 +33,6 @@ protocol RemoteDataSourceInterface {
 
 final class RemoteDataSource: RemoteDataSourceInterface {
     private let rawgApiKey = GameCatalogueKeys().rawgApiKey
-
-    static let instance = RemoteDataSource()
 }
 
 extension RemoteDataSource {
