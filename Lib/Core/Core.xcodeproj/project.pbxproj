@@ -11,6 +11,10 @@
 		CF22FE17274E7A7900FAF9DD /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF22FE0D274E7A7900FAF9DD /* Core.framework */; };
 		CF22FE1C274E7A7900FAF9DD /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF22FE1B274E7A7900FAF9DD /* CoreTests.swift */; };
 		CF22FE1E274E7A7900FAF9DD /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = CF22FE10274E7A7900FAF9DD /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF4E92242750FD590012E743 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4E92232750FD590012E743 /* Module.swift */; };
+		CF85DA692754D6BE00C500B0 /* ModuleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85DA682754D6BE00C500B0 /* ModuleLoader.swift */; };
+		CF85DA6E2754DC8A00C500B0 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85DA6D2754DC8A00C500B0 /* Provider.swift */; };
+		CF85DA742754E5E000C500B0 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85DA732754E5E000C500B0 /* Navigator.swift */; };
 		CF8E614B2750E95700CDCFE2 /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E614A2750E95700CDCFE2 /* ServiceContainer.swift */; };
 		CF8E614E2750E98600CDCFE2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E614D2750E98600CDCFE2 /* Request.swift */; };
 		CF8E61502750E99A00CDCFE2 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E614F2750E99A00CDCFE2 /* RequestError.swift */; };
@@ -38,6 +42,10 @@
 		CF22FE16274E7A7900FAF9DD /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF22FE1B274E7A7900FAF9DD /* CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTests.swift; sourceTree = "<group>"; };
 		CF22FE1D274E7A7900FAF9DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF4E92232750FD590012E743 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		CF85DA682754D6BE00C500B0 /* ModuleLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleLoader.swift; sourceTree = "<group>"; };
+		CF85DA6D2754DC8A00C500B0 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		CF85DA732754E5E000C500B0 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		CF8E614A2750E95700CDCFE2 /* ServiceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
 		CF8E614D2750E98600CDCFE2 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		CF8E614F2750E99A00CDCFE2 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
@@ -98,6 +106,7 @@
 		CF22FE0F274E7A7900FAF9DD /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CFC585942750FB7300B33AE7 /* Navigation */,
 				CF8E61512750E9EF00CDCFE2 /* Core Data */,
 				CF8E614C2750E96300CDCFE2 /* Networking */,
 				CF8E61492750E94900CDCFE2 /* DI */,
@@ -140,6 +149,17 @@
 				CF8E61542750EA2800CDCFE2 /* CoreDataError.swift */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		CFC585942750FB7300B33AE7 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				CF4E92232750FD590012E743 /* Module.swift */,
+				CF85DA682754D6BE00C500B0 /* ModuleLoader.swift */,
+				CF85DA6D2754DC8A00C500B0 /* Provider.swift */,
+				CF85DA732754E5E000C500B0 /* Navigator.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		E2FE99426BD52EE0BB921575 /* Frameworks */ = {
@@ -285,11 +305,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF85DA6E2754DC8A00C500B0 /* Provider.swift in Sources */,
 				CF8E61532750EA0E00CDCFE2 /* CoreDataWrapper.swift in Sources */,
+				CF85DA742754E5E000C500B0 /* Navigator.swift in Sources */,
 				CF8E614B2750E95700CDCFE2 /* ServiceContainer.swift in Sources */,
 				CF8E61552750EA2800CDCFE2 /* CoreDataError.swift in Sources */,
 				CF8E614E2750E98600CDCFE2 /* Request.swift in Sources */,
 				CF8E61502750E99A00CDCFE2 /* RequestError.swift in Sources */,
+				CF4E92242750FD590012E743 /* Module.swift in Sources */,
+				CF85DA692754D6BE00C500B0 /* ModuleLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

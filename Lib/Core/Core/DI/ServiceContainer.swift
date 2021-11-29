@@ -24,6 +24,7 @@ public class ServiceContainer {
     private var services: [String: ServiceCreator] = [:]
 
     public static var instance = ServiceContainer()
+    public init() {}
 
     public func register(_ service: AnyClass, _ callback: @escaping ServiceCreator) {
         let key = String(describing: service.self)
