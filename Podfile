@@ -20,6 +20,10 @@ target 'Game Catalogue' do
 
 end
 
+target 'Common' do
+  project 'Common/Common'
+end
+
 # region Library Module
 target 'Core' do
   project 'Lib/Core/Core'
@@ -35,7 +39,6 @@ end
 # region Feature Module
 target 'Home' do
   project 'Features/Home/Home'
-
 end
 
 target 'Publisher' do
