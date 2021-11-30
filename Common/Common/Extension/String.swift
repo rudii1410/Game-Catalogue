@@ -17,10 +17,10 @@
 
 import Foundation
 
-extension Date {
-    func toString(format: String? = nil) -> String {
+extension String {
+    public func toDate(format: String) -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format == nil ? "MMM d, y" : format
-        return dateFormatter.string(from: self)
+        dateFormatter.dateFormat = format
+        return dateFormatter.date(from: self)
     }
 }

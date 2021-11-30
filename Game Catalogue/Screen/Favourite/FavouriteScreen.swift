@@ -18,6 +18,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 import Core
+import Common
 
 struct FavouritesScreen: View {
     @ObservedObject private var model: FavouriteScreenViewModel

@@ -17,6 +17,7 @@
 
 import Combine
 import Keys
+import Common
 
 protocol GameGenreRepositoryInterface {
     func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error>

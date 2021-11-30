@@ -17,6 +17,7 @@
 
 import Combine
 import Foundation
+import Common
 
 class GenreDetailScreenViewModel: ObservableObject {
     @Published var imageUrl = ""

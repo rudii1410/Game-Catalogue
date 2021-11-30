@@ -17,6 +17,7 @@
 
 import Foundation
 import Combine
+import Common
 
 class PublisherListScreenViewModel: ObservableObject {
     @Published var gamePublisher: [BaseDetail] = []

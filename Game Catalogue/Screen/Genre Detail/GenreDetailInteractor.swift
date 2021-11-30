@@ -16,6 +16,7 @@
 //
 
 import Combine
+import Common
 
 protocol GenreDetailUseCase {
     func getGameListByGenres(genres: String, page: Int, count: Int) -> AnyPublisher<[Game], Error>

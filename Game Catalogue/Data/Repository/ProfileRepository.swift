@@ -16,6 +16,7 @@
 //
 
 import Foundation
+import Common
 
 class ProfileRepository {
     static let fullnameKey = "fullname"

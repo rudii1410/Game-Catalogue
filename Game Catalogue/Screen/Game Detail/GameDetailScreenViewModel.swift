@@ -17,6 +17,7 @@
 
 import Combine
 import Foundation
+import Common
 
 class GameDetailScreenViewModel: ObservableObject {
     @Published var bannerImage: String = ""

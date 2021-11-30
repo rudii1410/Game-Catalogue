@@ -17,6 +17,7 @@
 
 import Combine
 import Foundation
+import Common
 
 class FavouriteScreenViewModel: ObservableObject {
     @Published var favourites: [Favourite] = []

@@ -17,6 +17,7 @@
 
 import Combine
 import Foundation
+import Common
 
 protocol HomeUseCase {
     func getUpcomingRelease(endDate inputEndDate: Date?, page: Int, count: Int) -> AnyPublisher<[Game], Error>

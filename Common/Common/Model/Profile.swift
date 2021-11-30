@@ -16,15 +16,15 @@
 //
 
 public struct Profile {
-    let fullname, profilePic, webUrl: String
+    public let fullname, profilePic, webUrl: String
 
-    init(fullname: String?, profilePic: String?, webUrl: String?) {
+    public init(fullname: String?, profilePic: String?, webUrl: String?) {
         self.fullname = fullname ?? ""
         self.profilePic = profilePic ?? ""
         self.webUrl = webUrl ?? ""
     }
 
-    func isEmpty() -> Bool {
+    public func isEmpty() -> Bool {
         return fullname.isEmpty && profilePic.isEmpty && webUrl.isEmpty
     }
 }

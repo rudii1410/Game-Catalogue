@@ -21,6 +21,8 @@ end
 
 target 'Common' do
   project 'Common/Common.xcodeproj'
+
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 end
 
 # region Library Module

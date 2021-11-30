@@ -16,6 +16,7 @@
 //
 
 import Combine
+import Common
 
 protocol PublisherDetailUseCase {
     func getGameListByPublisher(publisherId: String, page: Int, count: Int) -> AnyPublisher<[Game], Error>

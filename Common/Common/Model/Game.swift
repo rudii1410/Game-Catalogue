@@ -16,24 +16,28 @@
 //
 
 public class BaseDetail {
-    var id: Int = 0
-    var name: String = ""
-    var slug: String = ""
-    var gamesCount: Int = 0
-    var imageBackground: String = ""
-    var description: String?
+    public var id: Int = 0
+    public var name: String = ""
+    public var slug: String = ""
+    public var gamesCount: Int = 0
+    public var imageBackground: String = ""
+    public var description: String?
+
+    public init() {}
 }
 
 public class Game: BaseDetail {
-    var released: String?
-    var rating: Double?
-    var ratingsCount: Int?
-    var genres: [Genre]?
-    var platforms: [GamePlatform]?
-    var publishers: [GamePublisher]?
-    var developers: [Developer]?
+    public var released: String?
+    public var rating: Double?
+    public var ratingsCount: Int?
+    public var genres: [Genre]?
+    public var platforms: [GamePlatform]?
+    public var publishers: [GamePublisher]?
+    public var developers: [Developer]?
 
-    func getFormattedString(format: String) -> String {
+    public override init() {}
+
+    public func getFormattedString(format: String) -> String {
         guard let data = released?.toDate(format: "yyyy-MM-dd") else {
             return released ?? "-"
         }
@@ -42,24 +46,36 @@ public class Game: BaseDetail {
 }
 
 public class GamePlatform {
-    var platform: GamePlatformDetail?
-    var releasedAt: String = ""
-    var requirements: Requirements?
+    public var platform: GamePlatformDetail?
+    public var releasedAt: String = ""
+    public var requirements: Requirements?
+
+    public init() {}
 }
 
 public class GamePlatformDetail: BaseDetail {
-    var image: String?
-    var yearStart: Int?
-    var yearEnd: Int?
+    public var image: String?
+    public var yearStart: Int?
+    public var yearEnd: Int?
+
+    public override init() {}
 }
 
 public class Requirements {
-    var minimum: String?
-    var recommended: String?
+    public var minimum: String?
+    public var recommended: String?
+
+    public init() {}
 }
 
-public class Genre: BaseDetail {}
+public class Genre: BaseDetail {
+    public override init() {}
+}
 
-public class GamePublisher: BaseDetail {}
+public class GamePublisher: BaseDetail {
+    public override init() {}
+}
 
-public class Developer: BaseDetail {}
+public class Developer: BaseDetail {
+    public override init() {}
+}

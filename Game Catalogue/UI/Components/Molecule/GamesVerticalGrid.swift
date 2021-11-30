@@ -17,6 +17,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Common
 
 struct GamesVerticalGrid: View {
     private static let ColumnCount = 2

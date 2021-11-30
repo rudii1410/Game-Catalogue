@@ -16,6 +16,7 @@
 //
 
 import Combine
+import Common
 
 protocol GenreListUseCase {
     func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error>

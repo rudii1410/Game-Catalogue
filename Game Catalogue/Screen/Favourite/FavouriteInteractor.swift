@@ -16,6 +16,7 @@
 //
 
 import Combine
+import Common
 
 protocol FavouriteUseCase {
     func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[Favourite], Error>

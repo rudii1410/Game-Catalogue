@@ -16,9 +16,11 @@
 //
 
 public class Screenshot {
-    var id: Int = 0
-    var image: String = ""
-    var width: Int = 0
-    var height: Int = 0
-    var isDeleted = false
+    public var id: Int = 0
+    public var image: String = ""
+    public var width: Int = 0
+    public var height: Int = 0
+    public var isDeleted = false
+
+    public init() {}
 }

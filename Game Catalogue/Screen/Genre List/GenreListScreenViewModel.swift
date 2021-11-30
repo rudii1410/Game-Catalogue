@@ -17,6 +17,7 @@
 
 import Combine
 import Foundation
+import Common
 
 class GenreListScreenViewModel: ObservableObject {
     @Published var navigateToGenreDetail = false

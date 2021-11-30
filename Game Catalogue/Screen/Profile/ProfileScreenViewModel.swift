@@ -17,6 +17,7 @@
 
 import Combine
 import Foundation
+import Common
 
 class ProfileScreenViewModel: ObservableObject {
     private let profileUsecase: ProfileUseCase

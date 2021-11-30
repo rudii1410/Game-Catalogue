@@ -15,6 +15,8 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+import Common
+
 protocol ProfileUseCase {
     func storeProfileData(profile: Profile)
     func getProfile() -> Profile

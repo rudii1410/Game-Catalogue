@@ -16,6 +16,7 @@
 //
 
 import Combine
+import Common
 
 protocol GameDetailUseCase {
     func addGameToFavourites(_ favourite: Favourite) -> AnyPublisher<Void, Error>
