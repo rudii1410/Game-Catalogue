@@ -15,7 +15,7 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class BaseDetail {
+public class BaseDetail {
     var id: Int = 0
     var name: String = ""
     var slug: String = ""
@@ -24,7 +24,7 @@ class BaseDetail {
     var description: String?
 }
 
-class Game: BaseDetail {
+public class Game: BaseDetail {
     var released: String?
     var rating: Double?
     var ratingsCount: Int?
@@ -41,25 +41,25 @@ class Game: BaseDetail {
     }
 }
 
-class GamePlatform {
+public class GamePlatform {
     var platform: GamePlatformDetail?
     var releasedAt: String = ""
     var requirements: Requirements?
 }
 
-class GamePlatformDetail: BaseDetail {
+public class GamePlatformDetail: BaseDetail {
     var image: String?
     var yearStart: Int?
     var yearEnd: Int?
 }
 
-class Requirements {
+public class Requirements {
     var minimum: String?
     var recommended: String?
 }
 
-class Genre: BaseDetail {}
+public class Genre: BaseDetail {}
 
-class GamePublisher: BaseDetail {}
+public class GamePublisher: BaseDetail {}
 
-class Developer: BaseDetail {}
+public class Developer: BaseDetail {}

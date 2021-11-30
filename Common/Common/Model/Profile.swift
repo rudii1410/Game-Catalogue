@@ -15,7 +15,7 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-struct Profile {
+public struct Profile {
     let fullname, profilePic, webUrl: String
 
     init(fullname: String?, profilePic: String?, webUrl: String?) {
