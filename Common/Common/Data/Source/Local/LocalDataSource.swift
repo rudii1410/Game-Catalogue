@@ -19,42 +19,42 @@ import Combine
 import Keys
 import Core
 
-protocol LocalDataSourceInterface {
+public protocol LocalDataSourceInterface {
     func addGameToFavourites(_ favourite: FavouriteEntity) -> AnyPublisher<Void, Error>
     func removeGameFavouriteByEntity(_ favourite: FavouriteEntity) -> AnyPublisher<Void, Error>
     func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[FavouriteEntity], Error>
     func getFavouriteBySlug(slug: String) -> AnyPublisher<FavouriteEntity, Error>
 }
 
-class LocalDataSource: LocalDataSourceInterface {
+public class LocalDataSource: LocalDataSourceInterface {
     private let sharedDb: CoreDataWrapper
 
-    init(database: CoreDataWrapper) {
+    public init(database: CoreDataWrapper) {
         self.sharedDb = database
     }
 }
 
 extension LocalDataSource {
-    func addGameToFavourites(_ entity: FavouriteEntity) -> AnyPublisher<Void, Error> {
+    public func addGameToFavourites(_ entity: FavouriteEntity) -> AnyPublisher<Void, Error> {
         return sharedDb.save()
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 
-    func removeGameFavouriteByEntity(_ item: FavouriteEntity) -> AnyPublisher<Void, Error> {
+    public func removeGameFavouriteByEntity(_ item: FavouriteEntity) -> AnyPublisher<Void, Error> {
         return sharedDb.delete(item: item)
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 
-    func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[FavouriteEntity], Error> {
+    public func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[FavouriteEntity], Error> {
         let sort = NSSortDescriptor(key: #keyPath(FavouriteEntity.createdAt), ascending: false)
         return sharedDb.fetchAll(offset: offset, size: limit, sortDesc: [sort])
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 
-    func getFavouriteBySlug(slug: String) -> AnyPublisher<FavouriteEntity, Error> {
+    public func getFavouriteBySlug(slug: String) -> AnyPublisher<FavouriteEntity, Error> {
         let predicate = NSPredicate(
             format: "slug = %@", slug
         )

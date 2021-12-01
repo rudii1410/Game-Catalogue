@@ -17,7 +17,7 @@
 
 import CoreData
 
-class FavouriteEntity: NSManagedObject, Identifiable {
+public class FavouriteEntity: NSManagedObject, Identifiable {
     @nonobjc
     public class func fetchRequest() -> NSFetchRequest<FavouriteEntity> {
         return NSFetchRequest<FavouriteEntity>(entityName: "FavouriteEntity")
