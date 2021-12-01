@@ -17,36 +17,35 @@
 
 import Combine
 import Keys
-import Common
 
-protocol GameGenreRepositoryInterface {
-    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error>
-    func getGenreDetail(id: String) -> AnyPublisher<Genre, Error>
+public protocol GamePublisherRepositoryInterface {
+    func getPublisherList(page: Int, count: Int) -> AnyPublisher<[GamePublisher], Error>
+    func getPublisherDetail(id: String) -> AnyPublisher<GamePublisher, Error>
 }
 
-class GameGenreRepository: GameGenreRepositoryInterface {
+public class GamePublisherRepository: GamePublisherRepositoryInterface {
     private let remoteDataSource: RemoteDataSource
 
-    init(remote: RemoteDataSource) {
+    public init(remote: RemoteDataSource) {
         self.remoteDataSource = remote
     }
 }
 
-extension GameGenreRepository {
-    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error> {
-        return self.remoteDataSource
-            .getGenreList(page: page, count: count)
+extension GamePublisherRepository {
+    public func getPublisherList(page: Int, count: Int) -> AnyPublisher<[GamePublisher], Error> {
+        self.remoteDataSource
+            .getPublisherList(page: page, count: count)
             .tryMap { output in
-                return Mapper.mapRawgGenreListToModel(output.results)
+                return Mapper.mapRawgPublisherListToModel(output.results)
             }
             .eraseToAnyPublisher()
     }
 
-    func getGenreDetail(id: String) -> AnyPublisher<Genre, Error> {
-        return self.remoteDataSource
-            .getGenreDetail(id: id)
+    public func getPublisherDetail(id: String) -> AnyPublisher<GamePublisher, Error> {
+        self.remoteDataSource
+            .getPublisherDetail(id: id)
             .tryMap { output in
-                return Mapper.mapRawgGenreToModel(output)
+                return Mapper.mapRawgPublisherToModel(output)
             }
             .eraseToAnyPublisher()
     }

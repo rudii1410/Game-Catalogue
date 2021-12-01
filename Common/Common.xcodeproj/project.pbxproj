@@ -32,6 +32,9 @@
 		CF7EA5E52757A67E000E2E57 /* FavouriteEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5E42757A67E000E2E57 /* FavouriteEntity.swift */; };
 		CF7EA5E72757A698000E2E57 /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5E62757A698000E2E57 /* LocalDataSource.swift */; };
 		CF7EA5EA2757A75E000E2E57 /* Game Catalogue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5E82757A75E000E2E57 /* Game Catalogue.xcdatamodeld */; };
+		CF7EA5ED2757A8D8000E2E57 /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5EC2757A8D8000E2E57 /* GameRepository.swift */; };
+		CF7EA5EF2757A8FC000E2E57 /* GamePublisherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5EE2757A8FC000E2E57 /* GamePublisherRepository.swift */; };
+		CF7EA5F12757A90C000E2E57 /* GameGenreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5F02757A90C000E2E57 /* GameGenreRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,9 @@
 		CF7EA5E42757A67E000E2E57 /* FavouriteEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEntity.swift; sourceTree = "<group>"; };
 		CF7EA5E62757A698000E2E57 /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
 		CF7EA5E92757A75E000E2E57 /* Game Catalogue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Game Catalogue.xcdatamodel"; sourceTree = "<group>"; };
+		CF7EA5EC2757A8D8000E2E57 /* GameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
+		CF7EA5EE2757A8FC000E2E57 /* GamePublisherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePublisherRepository.swift; sourceTree = "<group>"; };
+		CF7EA5F02757A90C000E2E57 /* GameGenreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGenreRepository.swift; sourceTree = "<group>"; };
 		F29BC4942FCE9904EF6E366D /* Pods-Common.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Common.release.xcconfig"; path = "Target Support Files/Pods-Common/Pods-Common.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +193,7 @@
 		CF7EA5CB2757A138000E2E57 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				CF7EA5EB2757A8C8000E2E57 /* Repository */,
 				CF7EA5CC2757A316000E2E57 /* Source */,
 			);
 			path = Data;
@@ -248,6 +255,16 @@
 				CF7EA5E42757A67E000E2E57 /* FavouriteEntity.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		CF7EA5EB2757A8C8000E2E57 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA5EC2757A8D8000E2E57 /* GameRepository.swift */,
+				CF7EA5EE2757A8FC000E2E57 /* GamePublisherRepository.swift */,
+				CF7EA5F02757A90C000E2E57 /* GameGenreRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		D299F8F87A7DC22C11830CCE /* Frameworks */ = {
@@ -405,13 +422,16 @@
 				CF226B4127563BB200C8FBBC /* Profile.swift in Sources */,
 				CF226B4A27563CDD00C8FBBC /* Date.swift in Sources */,
 				CF226B4627563C4E00C8FBBC /* Screenshot.swift in Sources */,
+				CF7EA5EF2757A8FC000E2E57 /* GamePublisherRepository.swift in Sources */,
 				CF7EA5DC2757A475000E2E57 /* RawgScreenshot.swift in Sources */,
 				CF7EA5D22757A39E000E2E57 /* RawgListResponse.swift in Sources */,
 				CF7EA5DA2757A452000E2E57 /* RawgBaseDetail.swift in Sources */,
 				CF7EA5E12757A5AC000E2E57 /* Mapper.swift in Sources */,
 				CF226B4327563BCD00C8FBBC /* Game.swift in Sources */,
 				CF7EA5E52757A67E000E2E57 /* FavouriteEntity.swift in Sources */,
+				CF7EA5F12757A90C000E2E57 /* GameGenreRepository.swift in Sources */,
 				CF7EA5EA2757A75E000E2E57 /* Game Catalogue.xcdatamodeld in Sources */,
+				CF7EA5ED2757A8D8000E2E57 /* GameRepository.swift in Sources */,
 				CF7EA5DF2757A595000E2E57 /* Error.swift in Sources */,
 				CF226B4827563C6400C8FBBC /* Favourite.swift in Sources */,
 			);

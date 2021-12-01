@@ -24,22 +24,6 @@ struct GameCatalogueApp: App {
         ServiceContainer.instance.register(CoreDataWrapper.self) { _ in
             return CoreDataWrapper()
         }
-        ServiceContainer.instance.register(LocalDataSource.self) { service in
-            return LocalDataSource(database: service.get())
-        }
-        ServiceContainer.instance.register(RemoteDataSource.self) { _ in
-            return RemoteDataSource()
-        }
-
-        ServiceContainer.instance.register(GameRepository.self) { service in
-            return GameRepository(local: service.get(), remote: service.get(), database: service.get())
-        }
-        ServiceContainer.instance.register(GamePublisherRepository.self) { service in
-            return GamePublisherRepository(remote: service.get())
-        }
-        ServiceContainer.instance.register(GameGenreRepository.self) { service in
-            return GameGenreRepository(remote: service.get())
-        }
         ServiceContainer.instance.register(ProfileRepository.self) { _ in
             return ProfileRepository(userDef: UserDefaults.standard)
         }

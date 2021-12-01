@@ -18,9 +18,8 @@
 import Keys
 import Combine
 import Core
-import Common
 
-protocol GameRepositoryInterface {
+public protocol GameRepositoryInterface {
     func getUpcomingRelease(endDate inputEndDate: Date?, page: Int, count: Int) -> AnyPublisher<[Game], Error>
     func getGameListByPublisher(publisherId: String, page: Int, count: Int) -> AnyPublisher<[Game], Error>
     func getGameListByGenres(genres: String, page: Int, count: Int) -> AnyPublisher<[Game], Error>
@@ -33,12 +32,12 @@ protocol GameRepositoryInterface {
     func getUserFavouriteGameGenre() -> AnyPublisher<[String], Error>
 }
 
-class GameRepository: GameRepositoryInterface {
+public class GameRepository: GameRepositoryInterface {
     private let localDataSource: LocalDataSource
     private let remoteDataSource: RemoteDataSource
     private let database: CoreDataWrapper
 
-    init(local: LocalDataSource, remote: RemoteDataSource, database: CoreDataWrapper) {
+    public init(local: LocalDataSource, remote: RemoteDataSource, database: CoreDataWrapper) {
         self.localDataSource = local
         self.remoteDataSource = remote
         self.database = database
@@ -46,7 +45,7 @@ class GameRepository: GameRepositoryInterface {
 }
 
 extension GameRepository {
-    func getUpcomingRelease(
+    public func getUpcomingRelease(
         endDate inputEndDate: Date? = nil,
         page: Int = 1,
         count: Int = 10
@@ -59,7 +58,7 @@ extension GameRepository {
             .eraseToAnyPublisher()
     }
 
-    func getGameListByPublisher(
+    public func getGameListByPublisher(
         publisherId: String,
         page: Int = 1,
         count: Int = 10
@@ -72,7 +71,7 @@ extension GameRepository {
             .eraseToAnyPublisher()
     }
 
-    func getGameListByGenres(
+    public func getGameListByGenres(
         genres: String,
         page: Int = 1,
         count: Int = 10
@@ -85,7 +84,7 @@ extension GameRepository {
             .eraseToAnyPublisher()
     }
 
-    func getGameDetail(id: String) -> AnyPublisher<Game, Error> {
+    public func getGameDetail(id: String) -> AnyPublisher<Game, Error> {
         return self.remoteDataSource
             .getGameDetail(id: id)
             .tryMap { output in
@@ -94,7 +93,7 @@ extension GameRepository {
             .eraseToAnyPublisher()
     }
 
-    func getGameScreenShots(id: String) -> AnyPublisher<[Screenshot], Error> {
+    public func getGameScreenShots(id: String) -> AnyPublisher<[Screenshot], Error> {
         return self.remoteDataSource
             .getGameScreenShots(id: id)
             .tryMap { output in
@@ -103,7 +102,7 @@ extension GameRepository {
             .eraseToAnyPublisher()
     }
 
-    func addGameToFavourites(_ favourite: Favourite) -> AnyPublisher<Void, Error> {
+    public func addGameToFavourites(_ favourite: Favourite) -> AnyPublisher<Void, Error> {
         let entity = FavouriteEntity(context: self.database.bgContext)
         entity.slug = favourite.slug
         entity.name = favourite.name
@@ -117,7 +116,7 @@ extension GameRepository {
             .eraseToAnyPublisher()
     }
 
-    func removeGameFromFavourites(_ slug: String) -> AnyPublisher<Void, Error> {
+    public func removeGameFromFavourites(_ slug: String) -> AnyPublisher<Void, Error> {
         return self.localDataSource
             .getFavouriteBySlug(slug: slug)
             .tryMap { output in
@@ -127,7 +126,7 @@ extension GameRepository {
             .eraseToAnyPublisher()
     }
 
-    func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[Favourite], Error> {
+    public func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[Favourite], Error> {
         return self.localDataSource
             .fetchFavourites(offset: offset, limit: limit)
             .tryMap { output in
@@ -136,7 +135,7 @@ extension GameRepository {
             .eraseToAnyPublisher()
     }
 
-    func getFavouriteBySlug(slug: String) -> AnyPublisher<Favourite, Error> {
+    public func getFavouriteBySlug(slug: String) -> AnyPublisher<Favourite, Error> {
         return self.localDataSource
             .getFavouriteBySlug(slug: slug)
             .tryMap { output in
@@ -145,7 +144,7 @@ extension GameRepository {
             .eraseToAnyPublisher()
     }
 
-    func getUserFavouriteGameGenre() -> AnyPublisher<[String], Error> {
+    public func getUserFavouriteGameGenre() -> AnyPublisher<[String], Error> {
         return self.fetchFavourites(offset: nil, limit: nil)
             .tryMap { output in
                 var genres = Set<String>()
