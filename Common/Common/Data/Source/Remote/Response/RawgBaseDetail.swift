@@ -15,14 +15,17 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class RawgScreenshot: Codable {
-    let id: Int
-    let image: String
-    let width, height: Int
-    let isDeleted: Bool
+public class RawgBaseDetail: Codable {
+    public let id: Int
+    public let name, slug: String
+    public let gamesCount: Int
+    public let imageBackground: String
+    public let description: String?
 
-    enum CodingKeys: String, CodingKey {
-        case id, image, width, height
-        case isDeleted = "is_deleted"
+    private enum CodingKeys: String, CodingKey {
+        case id, name, slug
+        case gamesCount = "games_count"
+        case imageBackground = "image_background"
+        case description
     }
 }

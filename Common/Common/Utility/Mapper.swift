@@ -15,9 +15,7 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Common
-
-enum Mapper {
+public enum Mapper {
     static func mapRawgGameShortListToModel(_ rawList: [RawgGameShort]) -> [Game] {
         return rawList.map { raw in
             let game = Game()

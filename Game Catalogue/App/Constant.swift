@@ -16,7 +16,6 @@
 //
 
 enum Constant {
-    static let rawgApiUrl: String = "https://api.rawg.io/api"
     static let maxPublisherDataLoad: Int = 10
     static let maxGameDataLoad: Int = 10
     static let maxGenreDataLoad: Int = 10

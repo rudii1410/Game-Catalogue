@@ -19,7 +19,7 @@ import Keys
 import Combine
 import Core
 
-protocol RemoteDataSourceInterface {
+public protocol RemoteDataSourceInterface {
     func getUpcomingRelease(endDate inputEndDate: Date?, page: Int, count: Int) -> AnyPublisher<RawgListResponse<RawgGameShort>, Error>
     func getGameListByPublisher(publisherId: String, page: Int, count: Int) -> AnyPublisher<RawgListResponse<RawgGameShort>, Error>
     func getGameListByGenres(genres: String, page: Int, count: Int) -> AnyPublisher<RawgListResponse<RawgGameShort>, Error>
@@ -31,12 +31,13 @@ protocol RemoteDataSourceInterface {
     func getGenreDetail(id: String) -> AnyPublisher<RawgBaseDetail, Error>
 }
 
-final class RemoteDataSource: RemoteDataSourceInterface {
+public final class RemoteDataSource: RemoteDataSourceInterface {
     private let rawgApiKey = GameCatalogueKeys().rawgApiKey
+    private let rawgApiUrl = "https://api.rawg.io/api"
 }
 
 extension RemoteDataSource {
-    func getUpcomingRelease(
+    public func getUpcomingRelease(
         endDate inputEndDate: Date? = nil,
         page: Int = 1,
         count: Int = 10
@@ -64,7 +65,7 @@ extension RemoteDataSource {
         format.dateFormat = "yyyy-MM-dd"
         let fDates = "\(format.string(from: startDate)),\(format.string(from: endDate))"
 
-        return Request("\(Constant.rawgApiUrl)/games")
+        return Request("\(rawgApiUrl)/games")
             .addQuery(key: "key", value: rawgApiKey)
             .addQuery(key: "dates", value: fDates)
             .addQuery(key: "ordering", value: "-rating")
@@ -73,12 +74,12 @@ extension RemoteDataSource {
             .resultPublisher()
     }
 
-    func getGameListByPublisher(
+    public func getGameListByPublisher(
         publisherId: String,
         page: Int = 1,
         count: Int = 10
     ) -> AnyPublisher<RawgListResponse<RawgGameShort>, Error> {
-        return Request("\(Constant.rawgApiUrl)/games")
+        return Request("\(rawgApiUrl)/games")
             .addQuery(key: "key", value: rawgApiKey)
             .addQuery(key: "publishers", value: publisherId)
             .addQuery(key: "page", value: String(page))
@@ -86,12 +87,12 @@ extension RemoteDataSource {
             .resultPublisher()
     }
 
-    func getGameListByGenres(
+    public func getGameListByGenres(
         genres: String,
         page: Int = 1,
         count: Int = 10
     ) -> AnyPublisher<RawgListResponse<RawgGameShort>, Error> {
-        return Request("\(Constant.rawgApiUrl)/games")
+        return Request("\(rawgApiUrl)/games")
             .addQuery(key: "key", value: rawgApiKey)
             .addQuery(key: "genres", value: genres)
             .addQuery(key: "page", value: String(page))
@@ -99,43 +100,43 @@ extension RemoteDataSource {
             .resultPublisher()
     }
 
-    func getGameDetail(id: String) -> AnyPublisher<RawgGameDetail, Error> {
-        return Request("\(Constant.rawgApiUrl)/games/\(id)")
+    public func getGameDetail(id: String) -> AnyPublisher<RawgGameDetail, Error> {
+        return Request("\(rawgApiUrl)/games/\(id)")
             .addQuery(key: "key", value: rawgApiKey)
             .resultPublisher()
     }
 
-    func getGameScreenShots(id: String) -> AnyPublisher<RawgListResponse<RawgScreenshot>, Error> {
-        return Request("\(Constant.rawgApiUrl)/games/\(id)/screenshots")
+    public func getGameScreenShots(id: String) -> AnyPublisher<RawgListResponse<RawgScreenshot>, Error> {
+        return Request("\(rawgApiUrl)/games/\(id)/screenshots")
             .addQuery(key: "key", value: rawgApiKey)
             .addQuery(key: "page_size", value: "10")
             .resultPublisher()
     }
 
-    func getPublisherList(page: Int, count: Int) -> AnyPublisher<RawgListResponse<RawgBaseDetail>, Error> {
-        return Request("\(Constant.rawgApiUrl)/publishers")
+    public func getPublisherList(page: Int, count: Int) -> AnyPublisher<RawgListResponse<RawgBaseDetail>, Error> {
+        return Request("\(rawgApiUrl)/publishers")
             .addQuery(key: "key", value: rawgApiKey)
             .addQuery(key: "page", value: String(page))
             .addQuery(key: "page_size", value: String(count))
             .resultPublisher()
     }
 
-    func getPublisherDetail(id: String) -> AnyPublisher<RawgBaseDetail, Error> {
-        return Request("\(Constant.rawgApiUrl)/publishers/\(id)")
+    public func getPublisherDetail(id: String) -> AnyPublisher<RawgBaseDetail, Error> {
+        return Request("\(rawgApiUrl)/publishers/\(id)")
             .addQuery(key: "key", value: rawgApiKey)
             .resultPublisher()
     }
 
-    func getGenreList(page: Int, count: Int) -> AnyPublisher<RawgListResponse<RawgBaseDetail>, Error> {
-        return Request("\(Constant.rawgApiUrl)/genres")
+    public func getGenreList(page: Int, count: Int) -> AnyPublisher<RawgListResponse<RawgBaseDetail>, Error> {
+        return Request("\(rawgApiUrl)/genres")
             .addQuery(key: "key", value: rawgApiKey)
             .addQuery(key: "page", value: String(page))
             .addQuery(key: "page_size", value: String(count))
             .resultPublisher()
     }
 
-    func getGenreDetail(id: String) -> AnyPublisher<RawgBaseDetail, Error> {
-        return Request("\(Constant.rawgApiUrl)/genres/\(id)")
+    public func getGenreDetail(id: String) -> AnyPublisher<RawgBaseDetail, Error> {
+        return Request("\(rawgApiUrl)/genres/\(id)")
             .addQuery(key: "key", value: rawgApiKey)
             .resultPublisher()
     }

@@ -15,14 +15,14 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-class RawgGamePlatformDetail: Codable {
-    let id: Int
-    let name, slug: String
-    let gamesCount: Int?
-    let imageBackground: String?
-    let platformDescription: String?
-    let image: String?
-    let yearStart, yearEnd: Int?
+public class RawgGamePlatformDetail: Codable {
+    public let id: Int
+    public let name, slug: String
+    public let gamesCount: Int?
+    public let imageBackground: String?
+    public let platformDescription: String?
+    public let image: String?
+    public let yearStart, yearEnd: Int?
 
     enum CodingKeys: String, CodingKey {
         case id, name, slug

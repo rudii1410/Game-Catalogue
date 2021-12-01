@@ -15,41 +15,18 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Foundation
-
-class RawgGameDetail: Codable {
-    let id: Int
-    let slug, name, description: String
-    let released: String?
-    let backgroundImage: String
-    let rating: Double?
-    let ratingsCount: Int?
-    let genres: [RawgBaseDetail]?
-    let platforms: [RawgGamePlatform]?
-    let publishers: [RawgBaseDetail]?
-    let developers: [RawgBaseDetail]?
+public class RawgGameShort: Codable {
+    public let id: Int
+    public let slug, name: String
+    public let released: String?
+    public let backgroundImage: String
+    public let rating: Double?
+    public let ratingsCount: Int?
 
     enum CodingKeys: String, CodingKey {
-        case id, slug, name, description, released
+        case id, slug, name, released
         case backgroundImage = "background_image"
         case rating
         case ratingsCount = "ratings_count"
-        case genres, platforms, publishers, developers
     }
-}
-
-class RawgGamePlatform: Codable {
-    let platform: RawgGamePlatformDetail
-    let releasedAt: String
-    let requirements: RawgRequirements
-
-    enum CodingKeys: String, CodingKey {
-        case platform
-        case releasedAt = "released_at"
-        case requirements
-    }
-}
-
-class RawgRequirements: Codable {
-    let minimum, recommended: String?
 }

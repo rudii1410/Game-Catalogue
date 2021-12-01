@@ -20,6 +20,15 @@
 		CF3543652754C0690012D5C7 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF35435B2754C0680012D5C7 /* Common.framework */; };
 		CF35436A2754C0690012D5C7 /* CommonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3543692754C0690012D5C7 /* CommonTests.swift */; };
 		CF35436C2754C0690012D5C7 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = CF35435E2754C0680012D5C7 /* Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF7EA5CF2757A33D000E2E57 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5CE2757A33D000E2E57 /* RemoteDataSource.swift */; };
+		CF7EA5D22757A39E000E2E57 /* RawgListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5D12757A39E000E2E57 /* RawgListResponse.swift */; };
+		CF7EA5D42757A3B9000E2E57 /* RawgGameShort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5D32757A3B9000E2E57 /* RawgGameShort.swift */; };
+		CF7EA5D62757A3E1000E2E57 /* RawgGameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5D52757A3E1000E2E57 /* RawgGameDetail.swift */; };
+		CF7EA5D82757A434000E2E57 /* RawgGamePlatformDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5D72757A434000E2E57 /* RawgGamePlatformDetail.swift */; };
+		CF7EA5DA2757A452000E2E57 /* RawgBaseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5D92757A452000E2E57 /* RawgBaseDetail.swift */; };
+		CF7EA5DC2757A475000E2E57 /* RawgScreenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5DB2757A475000E2E57 /* RawgScreenshot.swift */; };
+		CF7EA5DF2757A595000E2E57 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5DE2757A595000E2E57 /* Error.swift */; };
+		CF7EA5E12757A5AC000E2E57 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5E02757A5AC000E2E57 /* Mapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +72,15 @@
 		CF3543642754C0690012D5C7 /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3543692754C0690012D5C7 /* CommonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTests.swift; sourceTree = "<group>"; };
 		CF35436B2754C0690012D5C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF7EA5CE2757A33D000E2E57 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
+		CF7EA5D12757A39E000E2E57 /* RawgListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgListResponse.swift; sourceTree = "<group>"; };
+		CF7EA5D32757A3B9000E2E57 /* RawgGameShort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgGameShort.swift; sourceTree = "<group>"; };
+		CF7EA5D52757A3E1000E2E57 /* RawgGameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgGameDetail.swift; sourceTree = "<group>"; };
+		CF7EA5D72757A434000E2E57 /* RawgGamePlatformDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgGamePlatformDetail.swift; sourceTree = "<group>"; };
+		CF7EA5D92757A452000E2E57 /* RawgBaseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgBaseDetail.swift; sourceTree = "<group>"; };
+		CF7EA5DB2757A475000E2E57 /* RawgScreenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgScreenshot.swift; sourceTree = "<group>"; };
+		CF7EA5DE2757A595000E2E57 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		CF7EA5E02757A5AC000E2E57 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		F29BC4942FCE9904EF6E366D /* Pods-Common.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Common.release.xcconfig"; path = "Target Support Files/Pods-Common/Pods-Common.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,8 +159,10 @@
 		CF35435D2754C0680012D5C7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CF7EA5CB2757A138000E2E57 /* Data */,
 				CF226B4427563C1C00C8FBBC /* Extension */,
 				CF226B3F27563B9F00C8FBBC /* Model */,
+				CF7EA5DD2757A572000E2E57 /* Utility */,
 				CF35435E2754C0680012D5C7 /* Common.h */,
 				CF35435F2754C0680012D5C7 /* Info.plist */,
 			);
@@ -156,6 +176,53 @@
 				CF35436B2754C0690012D5C7 /* Info.plist */,
 			);
 			path = CommonTests;
+			sourceTree = "<group>";
+		};
+		CF7EA5CB2757A138000E2E57 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA5CC2757A316000E2E57 /* Source */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CF7EA5CC2757A316000E2E57 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA5CD2757A320000E2E57 /* Remote */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		CF7EA5CD2757A320000E2E57 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA5D02757A354000E2E57 /* Response */,
+				CF7EA5CE2757A33D000E2E57 /* RemoteDataSource.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		CF7EA5D02757A354000E2E57 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA5D12757A39E000E2E57 /* RawgListResponse.swift */,
+				CF7EA5D32757A3B9000E2E57 /* RawgGameShort.swift */,
+				CF7EA5D52757A3E1000E2E57 /* RawgGameDetail.swift */,
+				CF7EA5D72757A434000E2E57 /* RawgGamePlatformDetail.swift */,
+				CF7EA5D92757A452000E2E57 /* RawgBaseDetail.swift */,
+				CF7EA5DB2757A475000E2E57 /* RawgScreenshot.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		CF7EA5DD2757A572000E2E57 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA5DE2757A595000E2E57 /* Error.swift */,
+				CF7EA5E02757A5AC000E2E57 /* Mapper.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		D299F8F87A7DC22C11830CCE /* Frameworks */ = {
@@ -303,12 +370,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7EA5CF2757A33D000E2E57 /* RemoteDataSource.swift in Sources */,
+				CF7EA5D42757A3B9000E2E57 /* RawgGameShort.swift in Sources */,
+				CF7EA5D82757A434000E2E57 /* RawgGamePlatformDetail.swift in Sources */,
 				CF226B4E27563D0700C8FBBC /* WebImage.swift in Sources */,
+				CF7EA5D62757A3E1000E2E57 /* RawgGameDetail.swift in Sources */,
 				CF226B4C27563CEE00C8FBBC /* String.swift in Sources */,
 				CF226B4127563BB200C8FBBC /* Profile.swift in Sources */,
 				CF226B4A27563CDD00C8FBBC /* Date.swift in Sources */,
 				CF226B4627563C4E00C8FBBC /* Screenshot.swift in Sources */,
+				CF7EA5DC2757A475000E2E57 /* RawgScreenshot.swift in Sources */,
+				CF7EA5D22757A39E000E2E57 /* RawgListResponse.swift in Sources */,
+				CF7EA5DA2757A452000E2E57 /* RawgBaseDetail.swift in Sources */,
+				CF7EA5E12757A5AC000E2E57 /* Mapper.swift in Sources */,
 				CF226B4327563BCD00C8FBBC /* Game.swift in Sources */,
+				CF7EA5DF2757A595000E2E57 /* Error.swift in Sources */,
 				CF226B4827563C6400C8FBBC /* Favourite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
