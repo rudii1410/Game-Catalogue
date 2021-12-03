@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BD984E904B9A170A5B9B46A6 /* Pods_Publisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE965FEF698EB9132958CE /* Pods_Publisher.framework */; };
 		CF2C10EB2750F60600ADB197 /* Publisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10E12750F60600ADB197 /* Publisher.framework */; };
-		CF2C10F02750F60600ADB197 /* PublisherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C10EF2750F60600ADB197 /* PublisherTests.swift */; };
 		CF2C10F22750F60600ADB197 /* Publisher.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2C10E42750F60600ADB197 /* Publisher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF976935275A35EC009EB0FA /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF976934275A35EC009EB0FA /* Core.framework */; };
 		CF976936275A35EC009EB0FA /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF976934275A35EC009EB0FA /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -59,7 +58,6 @@
 		CF2C10E42750F60600ADB197 /* Publisher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Publisher.h; sourceTree = "<group>"; };
 		CF2C10E52750F60600ADB197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF2C10EA2750F60600ADB197 /* PublisherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PublisherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF2C10EF2750F60600ADB197 /* PublisherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherTests.swift; sourceTree = "<group>"; };
 		CF2C10F12750F60600ADB197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF976934275A35EC009EB0FA /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF976938275A35F0009EB0FA /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +150,6 @@
 		CF2C10EE2750F60600ADB197 /* PublisherTests */ = {
 			isa = PBXGroup;
 			children = (
-				CF2C10EF2750F60600ADB197 /* PublisherTests.swift */,
 				CF2C10F12750F60600ADB197 /* Info.plist */,
 			);
 			path = PublisherTests;
@@ -337,7 +334,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF2C10F02750F60600ADB197 /* PublisherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

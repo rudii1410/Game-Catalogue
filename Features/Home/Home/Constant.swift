@@ -15,6 +15,6 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-struct Constant {
-    static let maxDataLoad: Int = 10
+enum Constant {
+    public static let maxDataLoad: Int = 10
 }

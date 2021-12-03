@@ -24,7 +24,8 @@ struct HomeScreen: View {
     @ObservedObject var model: HomeScreenViewModel
     private let gameProvider: GameProviderInterface = Navigator.instance.getProvider(GameProviderInterface.self)
     private let genreProvider: GenreProviderInterface = Navigator.instance.getProvider(GenreProviderInterface.self)
-    private let publisherProvider: PublisherProviderInterface = Navigator.instance.getProvider(PublisherProviderInterface.self)
+    private let publisherProvider: PublisherProviderInterface =
+        Navigator.instance.getProvider(PublisherProviderInterface.self)
 
     init(model: HomeScreenViewModel) {
         self.model = model

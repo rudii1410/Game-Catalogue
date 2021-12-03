@@ -27,7 +27,7 @@ public class HomeModule: Module, HomeProviderInterface {
     }
 
     public func load() {
-        self.container.register(ProfileRepositoryInterface.self) { resolver in
+        self.container.register(ProfileRepositoryInterface.self) { _ in
             return ProfileRepository(userDef: UserDefaults.standard)
         }
 

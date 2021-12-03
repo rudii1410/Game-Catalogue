@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4DD66554877F1FE7B6B3BE47 /* Pods_Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E1187C8C9D0D1184D721D0D /* Pods_Home.framework */; };
 		CF2C10C72750F41A00ADB197 /* Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10BD2750F41A00ADB197 /* Home.framework */; };
-		CF2C10CC2750F41A00ADB197 /* HomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C10CB2750F41A00ADB197 /* HomeTests.swift */; };
 		CF2C10CE2750F41A00ADB197 /* Home.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2C10C02750F41A00ADB197 /* Home.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF7EA5F52757AA27000E2E57 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5F42757AA27000E2E57 /* HomeScreen.swift */; };
 		CF7EA5F72757AA40000E2E57 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5F62757AA40000E2E57 /* HomeScreenViewModel.swift */; };
@@ -70,7 +69,6 @@
 		CF2C10C02750F41A00ADB197 /* Home.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Home.h; sourceTree = "<group>"; };
 		CF2C10C12750F41A00ADB197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF2C10C62750F41A00ADB197 /* HomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF2C10CB2750F41A00ADB197 /* HomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTests.swift; sourceTree = "<group>"; };
 		CF2C10CD2750F41A00ADB197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF7EA5F42757AA27000E2E57 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		CF7EA5F62757AA40000E2E57 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 		CF2C10CA2750F41A00ADB197 /* HomeTests */ = {
 			isa = PBXGroup;
 			children = (
-				CF2C10CB2750F41A00ADB197 /* HomeTests.swift */,
 				CF2C10CD2750F41A00ADB197 /* Info.plist */,
 			);
 			path = HomeTests;
@@ -433,7 +430,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF2C10CC2750F41A00ADB197 /* HomeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

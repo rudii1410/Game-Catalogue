@@ -25,7 +25,7 @@ public class PublisherModule: Module, PublisherProviderInterface {
     public required init(container: ServiceContainer) {
         self.container = container
     }
-    
+
     public func load() {
         self.container.register(PublisherDetailUseCase.self) { resolver in
             return PublisherDetailInteractor(gameRepo: resolver.get(), publisherRepo: resolver.get())

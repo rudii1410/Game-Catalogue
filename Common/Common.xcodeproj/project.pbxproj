@@ -16,7 +16,6 @@
 		CF2755AC27564A4C0077B632 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2755AB27564A4C0077B632 /* Core.framework */; };
 		CF2755AD27564A4C0077B632 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF2755AB27564A4C0077B632 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF3543652754C0690012D5C7 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF35435B2754C0680012D5C7 /* Common.framework */; };
-		CF35436A2754C0690012D5C7 /* CommonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3543692754C0690012D5C7 /* CommonTests.swift */; };
 		CF35436C2754C0690012D5C7 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = CF35435E2754C0680012D5C7 /* Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF7EA5CF2757A33D000E2E57 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5CE2757A33D000E2E57 /* RemoteDataSource.swift */; };
 		CF7EA5D22757A39E000E2E57 /* RawgListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5D12757A39E000E2E57 /* RawgListResponse.swift */; };
@@ -80,7 +79,6 @@
 		CF35435E2754C0680012D5C7 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		CF35435F2754C0680012D5C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF3543642754C0690012D5C7 /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF3543692754C0690012D5C7 /* CommonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTests.swift; sourceTree = "<group>"; };
 		CF35436B2754C0690012D5C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF7EA5CE2757A33D000E2E57 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 		CF7EA5D12757A39E000E2E57 /* RawgListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawgListResponse.swift; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 		CF3543682754C0690012D5C7 /* CommonTests */ = {
 			isa = PBXGroup;
 			children = (
-				CF3543692754C0690012D5C7 /* CommonTests.swift */,
 				CF35436B2754C0690012D5C7 /* Info.plist */,
 			);
 			path = CommonTests;
@@ -483,7 +480,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF35436A2754C0690012D5C7 /* CommonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
