@@ -28,7 +28,7 @@ public class ServiceContainer {
 
     public func register(_ service: Any, _ callback: @escaping ServiceCreator) {
         let key = String(describing: service.self)
-        if (self.services[key] == nil) {
+        if self.services[key] == nil {
             self.services[key] = callback
             print("\(key) is registered")
         }

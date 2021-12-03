@@ -16,7 +16,6 @@
 		CF7EA6232757B45E000E2E57 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA6222757B45E000E2E57 /* RoundedCorner.swift */; };
 		CF976931275A30D5009EB0FA /* ImageCardWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF976930275A30D5009EB0FA /* ImageCardWithText.swift */; };
 		CFB926FA2750F2F400829020 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB926F02750F2F400829020 /* DesignSystem.framework */; };
-		CFB926FF2750F2F400829020 /* DesignSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB926FE2750F2F400829020 /* DesignSystemTests.swift */; };
 		CFB927012750F2F400829020 /* DesignSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB926F32750F2F400829020 /* DesignSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFD300D5275A045D00A97944 /* HTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300D4275A045D00A97944 /* HTMLView.swift */; };
 /* End PBXBuildFile section */
@@ -45,7 +44,6 @@
 		CFB926F32750F2F400829020 /* DesignSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DesignSystem.h; sourceTree = "<group>"; };
 		CFB926F42750F2F400829020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFB926F92750F2F400829020 /* DesignSystemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesignSystemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFB926FE2750F2F400829020 /* DesignSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemTests.swift; sourceTree = "<group>"; };
 		CFB927002750F2F400829020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFD300D4275A045D00A97944 /* HTMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLView.swift; sourceTree = "<group>"; };
 		F6E41EFF3E19B85F443A6C8B /* Pods-DesignSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesignSystem.debug.xcconfig"; path = "Target Support Files/Pods-DesignSystem/Pods-DesignSystem.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 		CFB926FD2750F2F400829020 /* DesignSystemTests */ = {
 			isa = PBXGroup;
 			children = (
-				CFB926FE2750F2F400829020 /* DesignSystemTests.swift */,
 				CFB927002750F2F400829020 /* Info.plist */,
 			);
 			path = DesignSystemTests;
@@ -325,7 +322,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFB926FF2750F2F400829020 /* DesignSystemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

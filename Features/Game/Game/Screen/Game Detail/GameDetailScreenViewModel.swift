@@ -130,19 +130,19 @@ class GameDetailScreenViewModel: ObservableObject {
                 receiveValue: { result in
                     let platformStr = self.joinArrayString(result.platforms?.map { $0.platform?.name ?? "" })
 
-                    self.currentGameGenreId     = self.joinArrayString(result.genres?.map { String($0.id) }, ",")
-                    self.bannerImage            = result.imageBackground
-                    self.gameTitle              = result.name
-                    self.genreStr               = self.joinArrayString(result.genres?.map { $0.name })
-                    self.rating                 = String(result.rating ?? 0)
-                    self.ratingCount            = String(result.ratingsCount ?? 0)
-                    self.desc                   = result.description ?? ""
-                    self.platformStr            = platformStr
-                    self.releaseDate            = self.reformatDate(date: result.released)
-                    self.developers             = self.joinArrayString(result.developers?.map { $0.name })
-                    self.publisher              = self.joinArrayString(result.publishers?.map { $0.name })
-                    self.genreSlugStr           = self.joinArrayString(result.genres?.map { $0.slug })
-                    self.isLoadingData          = false
+                    self.currentGameGenreId = self.joinArrayString(result.genres?.map { String($0.id) }, ",")
+                    self.bannerImage = result.imageBackground
+                    self.gameTitle = result.name
+                    self.genreStr = self.joinArrayString(result.genres?.map { $0.name })
+                    self.rating = String(result.rating ?? 0)
+                    self.ratingCount = String(result.ratingsCount ?? 0)
+                    self.desc = result.description ?? ""
+                    self.platformStr = platformStr
+                    self.releaseDate = self.reformatDate(date: result.released)
+                    self.developers = self.joinArrayString(result.developers?.map { $0.name })
+                    self.publisher = self.joinArrayString(result.publishers?.map { $0.name })
+                    self.genreSlugStr = self.joinArrayString(result.genres?.map { $0.slug })
+                    self.isLoadingData = false
 
                     self.updateLoadingState()
                     self.loadGames()
