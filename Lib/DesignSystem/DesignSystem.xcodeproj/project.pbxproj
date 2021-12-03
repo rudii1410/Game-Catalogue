@@ -14,6 +14,7 @@
 		CF7EA61C2757B140000E2E57 /* WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA61B2757B140000E2E57 /* WebImage.swift */; };
 		CF7EA61E2757B167000E2E57 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA61D2757B167000E2E57 /* LoadingView.swift */; };
 		CF7EA6232757B45E000E2E57 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA6222757B45E000E2E57 /* RoundedCorner.swift */; };
+		CF976931275A30D5009EB0FA /* ImageCardWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF976930275A30D5009EB0FA /* ImageCardWithText.swift */; };
 		CFB926FA2750F2F400829020 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB926F02750F2F400829020 /* DesignSystem.framework */; };
 		CFB926FF2750F2F400829020 /* DesignSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB926FE2750F2F400829020 /* DesignSystemTests.swift */; };
 		CFB927012750F2F400829020 /* DesignSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB926F32750F2F400829020 /* DesignSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,6 +40,7 @@
 		CF7EA61B2757B140000E2E57 /* WebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImage.swift; sourceTree = "<group>"; };
 		CF7EA61D2757B167000E2E57 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CF7EA6222757B45E000E2E57 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		CF976930275A30D5009EB0FA /* ImageCardWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardWithText.swift; sourceTree = "<group>"; };
 		CFB926F02750F2F400829020 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB926F32750F2F400829020 /* DesignSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DesignSystem.h; sourceTree = "<group>"; };
 		CFB926F42750F2F400829020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				CF7EA6192757B10A000E2E57 /* ImageSlider.swift */,
 				CF7EA61D2757B167000E2E57 /* LoadingView.swift */,
+				CF976930275A30D5009EB0FA /* ImageCardWithText.swift */,
 			);
 			path = Molecule;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF976931275A30D5009EB0FA /* ImageCardWithText.swift in Sources */,
 				CF7EA6232757B45E000E2E57 /* RoundedCorner.swift in Sources */,
 				CF7EA6162757B0C3000E2E57 /* View.swift in Sources */,
 				CF7EA60F2757B039000E2E57 /* Text.swift in Sources */,

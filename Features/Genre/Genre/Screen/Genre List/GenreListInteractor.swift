@@ -18,26 +18,19 @@
 import Combine
 import Common
 
-protocol GenreDetailUseCase {
-    func getGameListByGenres(genres: String, page: Int, count: Int) -> AnyPublisher<[Game], Error>
-    func getGenreDetail(id: String) -> AnyPublisher<Genre, Error>
+protocol GenreListUseCase {
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error>
 }
 
-class GenreDetailInteractor: GenreDetailUseCase {
+class GenreListInteractor: GenreListUseCase {
     private let genreRepo: GameGenreRepositoryInterface
-    private let gameRepo: GameRepositoryInterface
-    init(gameRepo: GameRepository, genreRepo: GameGenreRepository) {
-        self.gameRepo = gameRepo
+    init(genreRepo: GameGenreRepositoryInterface) {
         self.genreRepo = genreRepo
     }
 }
 
-extension GenreDetailInteractor {
-    func getGameListByGenres(genres: String, page: Int, count: Int) -> AnyPublisher<[Game], Error> {
-        return self.gameRepo.getGameListByGenres(genres: genres, page: page, count: count)
-    }
-
-    func getGenreDetail(id: String) -> AnyPublisher<Genre, Error> {
-        return self.genreRepo.getGenreDetail(id: id)
+extension GenreListInteractor {
+    func getGenreList(page: Int, count: Int) -> AnyPublisher<[Genre], Error> {
+        return self.genreRepo.getGenreList(page: page, count: count)
     }
 }

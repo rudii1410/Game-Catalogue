@@ -23,6 +23,7 @@ import Common
 struct HomeScreen: View {
     @ObservedObject var model: HomeScreenViewModel
     private let gameProvider: GameProviderInterface = Navigator.instance.getProvider(GameProviderInterface.self)
+    private let genreProvider: GenreProviderInterface = Navigator.instance.getProvider(GenreProviderInterface.self)
 
     init(model: HomeScreenViewModel) {
         self.model = model
@@ -123,22 +124,16 @@ extension HomeScreen {
 extension HomeScreen {
     func renderGameGenre() -> some View {
         return Group {
-//            NavigationLink(
-//                destination: GenreListScreen(
-//                    model: .init(interactor: ServiceContainer.instance.get()),
-//                    self.model.genreList
-//                ),
-//                isActive: self.$model.navigateToGenreList,
-//                label: { EmptyView() }
-//            )
-//            NavigationLink(
-//                destination: GenreDetailScreen(
-//                    model: .init(interactor: ServiceContainer.instance.get()),
-//                    slug: self.model.selectedGenreSlug
-//                ),
-//                isActive: self.$model.navigateToGenreDetail,
-//                label: { EmptyView() }
-//            )
+            NavigationLink(
+                destination: genreProvider.getGenreListScreenView(self.model.genreList),
+                isActive: self.$model.navigateToGenreList,
+                label: { EmptyView() }
+            )
+            NavigationLink(
+                destination: genreProvider.getGenreDetailScreenView(self.model.selectedGenreSlug),
+                isActive: self.$model.navigateToGenreDetail,
+                label: { EmptyView() }
+            )
             ItemGrid(
                 sectionTitle: "Popular Genres",
                 data: self.model.gameGenreList,

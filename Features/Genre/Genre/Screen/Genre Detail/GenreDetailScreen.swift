@@ -19,6 +19,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 import Core
 import Common
+import DesignSystem
 
 struct GenreDetailScreen: View {
     @ObservedObject private var model: GenreDetailScreenViewModel
@@ -55,13 +56,13 @@ struct GenreDetailScreen: View {
                 Divider()
                     .padding(.vertical, 12)
 
-//                GamesVerticalGrid(
-//                    title: "Game from this genre",
-//                    datas: self.$model.gameList,
-//                    loadMore: self.model.loadGameList,
-//                    onItemTap: self.model.onGameTap
-//                )
-//                .padding(.bottom, 8)
+                GamesVerticalGrid(
+                    title: "Game from this genre",
+                    games: self.$model.gameList,
+                    loadMore: self.model.loadGameList,
+                    onItemTap: self.model.onGameTap
+                )
+                .padding(.bottom, 8)
                 LoadingView()
             }
         }

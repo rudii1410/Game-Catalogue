@@ -47,6 +47,7 @@ end
 target 'Publisher' do
   project 'Features/Publisher/Publisher.xcodeproj'
 
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 end
 
 target 'Game' do
@@ -58,4 +59,5 @@ end
 target 'Genre' do
   project 'Features/Genre/Genre.xcodeproj'
 
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 end

@@ -36,6 +36,7 @@
 		CF7EA5FE2757ABA5000E2E57 /* HomeProviderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5FD2757ABA5000E2E57 /* HomeProviderInterface.swift */; };
 		CF7EA62B2757B64E000E2E57 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA62A2757B64E000E2E57 /* DesignSystem.framework */; };
 		CF7EA62C2757B64E000E2E57 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA62A2757B64E000E2E57 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF97690E275A2C15009EB0FA /* GenreProviderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97690D275A2C15009EB0FA /* GenreProviderInterface.swift */; };
 		CFD300BC275A003500A97944 /* GameProviderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300BB275A003500A97944 /* GameProviderInterface.swift */; };
 		CFD300D2275A03FA00A97944 /* GamesVerticalGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300D1275A03FA00A97944 /* GamesVerticalGrid.swift */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		CF7EA5F02757A90C000E2E57 /* GameGenreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGenreRepository.swift; sourceTree = "<group>"; };
 		CF7EA5FD2757ABA5000E2E57 /* HomeProviderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProviderInterface.swift; sourceTree = "<group>"; };
 		CF7EA62A2757B64E000E2E57 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF97690D275A2C15009EB0FA /* GenreProviderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreProviderInterface.swift; sourceTree = "<group>"; };
 		CFD300BB275A003500A97944 /* GameProviderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProviderInterface.swift; sourceTree = "<group>"; };
 		CFD300D1275A03FA00A97944 /* GamesVerticalGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GamesVerticalGrid.swift; path = ../../../../Lib/DesignSystem/DesignSystem/Component/Molecule/GamesVerticalGrid.swift; sourceTree = "<group>"; };
 		F29BC4942FCE9904EF6E366D /* Pods-Common.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Common.release.xcconfig"; path = "Target Support Files/Pods-Common/Pods-Common.release.xcconfig"; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			children = (
 				CF7EA5FD2757ABA5000E2E57 /* HomeProviderInterface.swift */,
 				CFD300BB275A003500A97944 /* GameProviderInterface.swift */,
+				CF97690D275A2C15009EB0FA /* GenreProviderInterface.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				CF7EA5D42757A3B9000E2E57 /* RawgGameShort.swift in Sources */,
 				CF7EA5D82757A434000E2E57 /* RawgGamePlatformDetail.swift in Sources */,
 				CF7EA5D62757A3E1000E2E57 /* RawgGameDetail.swift in Sources */,
+				CF97690E275A2C15009EB0FA /* GenreProviderInterface.swift in Sources */,
 				CF226B4C27563CEE00C8FBBC /* String.swift in Sources */,
 				CF7EA5E72757A698000E2E57 /* LocalDataSource.swift in Sources */,
 				CF7EA5FE2757ABA5000E2E57 /* HomeProviderInterface.swift in Sources */,

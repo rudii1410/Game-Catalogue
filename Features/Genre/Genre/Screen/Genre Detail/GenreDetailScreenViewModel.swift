@@ -34,7 +34,7 @@ class GenreDetailScreenViewModel: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     private let genreDetailUseCase: GenreDetailUseCase
 
-    init(interactor: GenreDetailInteractor) {
+    init(interactor: GenreDetailUseCase) {
         self.genreDetailUseCase = interactor
     }
 
@@ -54,7 +54,7 @@ class GenreDetailScreenViewModel: ObservableObject {
 
         isLoadingMoreData = true
         self.genreDetailUseCase
-            .getGameListByGenres(genres: slug, page: page, count: Constant.maxGameDataLoad)
+            .getGameListByGenres(genres: slug, page: page, count: 10)
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { response in

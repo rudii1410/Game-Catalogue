@@ -18,10 +18,12 @@
 import SwiftUI
 import Core
 import Common
+import DesignSystem
 
 private let columnCount = 2
 struct GenreListScreen: View {
     private let gridLayout = [GridItem](repeating: GridItem(.flexible()), count: columnCount)
+    private let genreProvider: GenreProviderInterface = Navigator.instance.getProvider(GenreProviderInterface.self)
 
     @ObservedObject private var model: GenreListScreenViewModel
 
@@ -33,10 +35,7 @@ struct GenreListScreen: View {
     var body: some View {
         ScrollView {
             NavigationLink(
-                destination: GenreDetailScreen(
-                    model: .init(interactor: ServiceContainer.instance.get()),
-                    slug: self.model.selectedSlug
-                ),
+                destination: genreProvider.getGenreDetailScreenView(self.model.selectedSlug),
                 isActive: self.$model.navigateToGenreDetail,
                 label: { EmptyView() }
             )

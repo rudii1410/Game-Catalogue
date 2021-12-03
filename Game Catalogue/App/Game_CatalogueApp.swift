@@ -21,6 +21,7 @@ import Core
 import Common
 import Home
 import Game
+import Genre
 
 @main
 struct GameCatalogueApp: App {
@@ -69,6 +70,9 @@ struct GameCatalogueApp: App {
         }
         moduleLoader.registerModule(module: GameModule.self, provider: GameProviderInterface.self) { _ in
             return GameModule(container: container)
+        }
+        moduleLoader.registerModule(module: GenreModule.self, provider: GenreProviderInterface.self) { _ in
+            return GenreModule(container: container)
         }
 
         moduleLoader.loadAllModules()
