@@ -1,15 +1,16 @@
 language: swift
 osx_image: xcode12 
-xcode_project: Game Catalogue.xcodeproj
+xcode_workspace: Game Catalogue.xcworkspace
 xcode_scheme: Game Catalogue
 xcode_destination: platform=iOS Simulator,OS=14.0,name=iPhone 11 Pro
-
-addons:
-  sonarcloud:
-    organization: "rudii1410"
 
 before_install:
   - gem install cocoapods-keys
 
-script:
-  - sonar-scanner
+jobs:
+  include:
+    - name: "Build App"
+      script: scripts/build_script.sh
+    - name: "Swiftlink Check"
+      install: scripts/install_swiftlint.sh
+      script: scripts/run_swiftlint.sh
