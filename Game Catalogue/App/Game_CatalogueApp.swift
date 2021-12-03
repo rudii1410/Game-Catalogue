@@ -22,6 +22,7 @@ import Common
 import Home
 import Game
 import Genre
+import Publisher
 
 @main
 struct GameCatalogueApp: App {
@@ -73,6 +74,9 @@ struct GameCatalogueApp: App {
         }
         moduleLoader.registerModule(module: GenreModule.self, provider: GenreProviderInterface.self) { _ in
             return GenreModule(container: container)
+        }
+        moduleLoader.registerModule(module: PublisherModule.self, provider: PublisherProviderInterface.self) { _ in
+            return PublisherModule(container: container)
         }
 
         moduleLoader.loadAllModules()

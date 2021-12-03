@@ -35,7 +35,7 @@ class PublisherDetailScreenViewModel: ObservableObject {
 
     private let publisherDetailUseCase: PublisherDetailUseCase
 
-    init(interactor: PublisherDetailInteractor) {
+    init(interactor: PublisherDetailUseCase) {
         self.publisherDetailUseCase = interactor
     }
 
@@ -55,7 +55,7 @@ class PublisherDetailScreenViewModel: ObservableObject {
 
         isLoadingMoreData = true
         self.publisherDetailUseCase
-            .getGameListByPublisher(publisherId: slug, page: page, count: Constant.maxGameDataLoad)
+            .getGameListByPublisher(publisherId: slug, page: page, count: 10)
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { response in

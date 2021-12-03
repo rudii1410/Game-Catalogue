@@ -30,7 +30,7 @@ class PublisherListScreenViewModel: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     private let publisherListUsecase: PublisherListUseCase
 
-    init(interactor: PublisherListInteractor) {
+    init(interactor: PublisherListUseCase) {
         self.publisherListUsecase = interactor
     }
 
@@ -55,7 +55,7 @@ class PublisherListScreenViewModel: ObservableObject {
     private func loadMore() {
         isLoadingMoreData = true
         self.publisherListUsecase
-            .getPublisherList(page: page, count: Constant.maxPublisherDataLoad)
+            .getPublisherList(page: page, count: 10)
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { response in

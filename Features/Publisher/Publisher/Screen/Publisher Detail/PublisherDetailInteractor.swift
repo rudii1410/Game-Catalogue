@@ -26,7 +26,7 @@ protocol PublisherDetailUseCase {
 class PublisherDetailInteractor: PublisherDetailUseCase {
     private let publisherRepo: GamePublisherRepositoryInterface
     private let gameRepo: GameRepositoryInterface
-    init(gameRepo: GameRepository, publisherRepo: GamePublisherRepository) {
+    init(gameRepo: GameRepositoryInterface, publisherRepo: GamePublisherRepositoryInterface) {
         self.gameRepo = gameRepo
         self.publisherRepo = publisherRepo
     }

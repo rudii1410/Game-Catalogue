@@ -24,6 +24,7 @@ struct HomeScreen: View {
     @ObservedObject var model: HomeScreenViewModel
     private let gameProvider: GameProviderInterface = Navigator.instance.getProvider(GameProviderInterface.self)
     private let genreProvider: GenreProviderInterface = Navigator.instance.getProvider(GenreProviderInterface.self)
+    private let publisherProvider: PublisherProviderInterface = Navigator.instance.getProvider(PublisherProviderInterface.self)
 
     init(model: HomeScreenViewModel) {
         self.model = model
@@ -92,22 +93,16 @@ extension HomeScreen {
 extension HomeScreen {
     func renderGamePublisher() -> some View {
         return Group {
-//            NavigationLink(
-//                destination: PublisherListScreen(
-//                    model: .init(interactor: ServiceContainer.instance.get()),
-//                    self.model.publisherList
-//                ),
-//                isActive: self.$model.navigateToPublisherList,
-//                label: { EmptyView() }
-//            )
-//            NavigationLink(
-//                destination: PublisherDetailScreen(
-//                    model: .init(interactor: ServiceContainer.instance.get()),
-//                    slug: self.model.selectedPublisherSlug
-//                ),
-//                isActive: self.$model.navigateToPublisherDetail,
-//                label: { EmptyView() }
-//            )
+            NavigationLink(
+                destination: publisherProvider.getPublisherListScreenView(self.model.publisherList),
+                isActive: self.$model.navigateToPublisherList,
+                label: { EmptyView() }
+            )
+            NavigationLink(
+                destination: publisherProvider.getPublisherDetailScreenView(self.model.selectedPublisherSlug),
+                isActive: self.$model.navigateToPublisherDetail,
+                label: { EmptyView() }
+            )
             ItemListHorizontal(
                 sectionTitle: "Game Publisher",
                 data: self.model.gamePublisherList,

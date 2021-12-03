@@ -18,11 +18,13 @@
 import SwiftUI
 import Core
 import Common
+import DesignSystem
 
 private let columnCount = 2
 
 struct PublisherListScreen: View {
     private let gridLayout = [GridItem](repeating: GridItem(.flexible()), count: columnCount)
+    private let publisherProvier: PublisherProviderInterface = Navigator.instance.getProvider(PublisherProviderInterface.self)
 
     @ObservedObject private var model: PublisherListScreenViewModel
 
@@ -34,9 +36,8 @@ struct PublisherListScreen: View {
     var body: some View {
         ScrollView {
             NavigationLink(
-                destination: PublisherDetailScreen(
-                    model: .init(interactor: ServiceContainer.instance.get()),
-                    slug: self.model.selectedPublisher?.slug ?? ""
+                destination: publisherProvier.getPublisherDetailScreenView(
+                    self.model.selectedPublisher?.slug ?? ""
                 ),
                 isActive: self.$model.navigateToPublisherDetail,
                 label: { EmptyView() }

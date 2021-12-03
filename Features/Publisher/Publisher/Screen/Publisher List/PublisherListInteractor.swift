@@ -15,8 +15,22 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-enum Constant {
-    static let maxPublisherDataLoad: Int = 10
-    static let maxGameDataLoad: Int = 10
-    static let maxGenreDataLoad: Int = 10
+import Combine
+import Common
+
+protocol PublisherListUseCase {
+    func getPublisherList(page: Int, count: Int) -> AnyPublisher<[GamePublisher], Error>
+}
+
+class PublisherListInteractor: PublisherListUseCase {
+    private let publisherRepo: GamePublisherRepositoryInterface
+    init(publisher: GamePublisherRepositoryInterface) {
+        self.publisherRepo = publisher
+    }
+}
+
+extension PublisherListInteractor {
+    func getPublisherList(page: Int, count: Int) -> AnyPublisher<[GamePublisher], Error> {
+        return self.publisherRepo.getPublisherList(page: page, count: count)
+    }
 }

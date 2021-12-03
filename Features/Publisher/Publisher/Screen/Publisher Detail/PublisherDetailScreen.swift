@@ -20,6 +20,7 @@ import WebKit
 import SDWebImageSwiftUI
 import Core
 import Common
+import DesignSystem
 
 struct PublisherDetailScreen: View {
     @ObservedObject private var model: PublisherDetailScreenViewModel
@@ -56,13 +57,13 @@ struct PublisherDetailScreen: View {
                 Divider()
                     .padding(.vertical, 12)
 
-//                GamesVerticalGrid(
-//                    title: "Game from this publisher",
-//                    datas: self.$model.gameList,
-//                    loadMore: self.model.loadGameList,
-//                    onItemTap: self.model.onGameTap
-//                )
-//                .padding(.bottom, 8)
+                GamesVerticalGrid(
+                    title: "Game from this publisher",
+                    games: self.$model.gameList,
+                    loadMore: self.model.loadGameList,
+                    onItemTap: self.model.onGameTap
+                )
+                .padding(.bottom, 8)
                 LoadingView()
             }
         }
