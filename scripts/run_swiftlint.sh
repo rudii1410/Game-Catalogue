@@ -1,1 +1,1 @@
-./temp/swiftlint lint --strict
+swiftlint lint --strict

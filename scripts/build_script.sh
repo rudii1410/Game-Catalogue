@@ -1,1 +1,1 @@
-xcodebuild -workspace "Game Catalogue.xcworkspace" -scheme "Game Catalogue" -destination "OS=14.5,name=iPhone 11"
+xcodebuild -workspace "Game Catalogue.xcworkspace" -scheme "Game Catalogue" -destination "OS=14.0,name=iPhone 11 Pro"
