@@ -29,7 +29,7 @@ class ProfileScreenViewModel: ObservableObject {
     @Published var tempWebUrlStr = ""
     @Published var showImgUrlAlert = false
 
-    init(interactor: ProfileInteractor) {
+    init(interactor: ProfileUseCase) {
         self.profileUsecase = interactor
         self.profile = ProfileRepository.defaultProfile
         loadProfileData()

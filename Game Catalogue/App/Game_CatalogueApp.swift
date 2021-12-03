@@ -28,7 +28,6 @@ struct GameCatalogueApp: App {
         self.container = ServiceContainer()
 
         initDIContainer(container: container)
-        initTempDiContainer(container: container)
         loadFeatureModule(container: container)
     }
 
@@ -52,15 +51,6 @@ struct GameCatalogueApp: App {
         }
         container.register(GameGenreRepositoryInterface.self) { resolver in
             return GameGenreRepository(remote: resolver.get())
-        }
-    }
-
-    private func initTempDiContainer(container: ServiceContainer) {
-        container.register(ProfileRepository.self) { _ in
-            return ProfileRepository(userDef: UserDefaults.standard)
-        }
-        container.register(ProfileInteractor.self) { resolver in
-            return ProfileInteractor(profileRepo: resolver.get())
         }
     }
 
@@ -108,7 +98,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                ProfileScreen(model: .init(interactor: container.get()))
+                homeProvider.getProfileScreenView()
                     .navigationBarTitle("My Profile", displayMode: .inline)
             }
             .tag(Tab.profile)

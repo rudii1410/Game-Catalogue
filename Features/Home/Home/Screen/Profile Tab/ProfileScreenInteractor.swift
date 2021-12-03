@@ -23,8 +23,8 @@ protocol ProfileUseCase {
 }
 
 class ProfileInteractor: ProfileUseCase {
-    private let profileRepo: ProfileRepository
-    init(profileRepo: ProfileRepository) {
+    private let profileRepo: ProfileRepositoryInterface
+    init(profileRepo: ProfileRepositoryInterface) {
         self.profileRepo = profileRepo
     }
 }

@@ -27,6 +27,10 @@ public class HomeModule: Module, HomeProviderInterface {
     }
 
     public func load() {
+        self.container.register(ProfileRepositoryInterface.self) { resolver in
+            return ProfileRepository(userDef: UserDefaults.standard)
+        }
+
         self.container.register(HomeUseCase.self) { resolver in
             return HomeInteractor(
                 gameRepo: resolver.get(),
@@ -36,6 +40,9 @@ public class HomeModule: Module, HomeProviderInterface {
         }
         self.container.register(FavouriteUseCase.self) { resolver in
             return FavouriteInteractor(gameRepo: resolver.get())
+        }
+        self.container.register(ProfileUseCase.self) { resolver in
+            return ProfileInteractor(profileRepo: resolver.get())
         }
     }
 
@@ -52,6 +59,12 @@ public class HomeModule: Module, HomeProviderInterface {
             FavouritesScreen(
                 model: .init(interactor: self.container.get())
             )
+        )
+    }
+
+    public func getProfileScreenView() -> AnyView {
+        return AnyView(
+            ProfileScreen(model: .init(interactor: self.container.get()))
         )
     }
 }

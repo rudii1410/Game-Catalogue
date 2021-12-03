@@ -28,6 +28,12 @@
 		CFD3009C2759FBF600A97944 /* FavouriteScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3009B2759FBF600A97944 /* FavouriteScreenViewModel.swift */; };
 		CFD3009E2759FC0F00A97944 /* FavouriteScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3009D2759FC0F00A97944 /* FavouriteScreenInteractor.swift */; };
 		CFD300A02759FCC900A97944 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3009F2759FCC900A97944 /* SearchBar.swift */; };
+		CFD300A32759FD2100A97944 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300A22759FD2100A97944 /* ProfileScreen.swift */; };
+		CFD300A52759FD4700A97944 /* ProfileScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300A42759FD4700A97944 /* ProfileScreenInteractor.swift */; };
+		CFD300A72759FD7300A97944 /* ProfileScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300A62759FD7300A97944 /* ProfileScreenViewModel.swift */; };
+		CFD300AB2759FDAE00A97944 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300AA2759FDAE00A97944 /* ProfileRepository.swift */; };
+		CFD300AE2759FDE400A97944 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300AD2759FDE400A97944 /* Profile.swift */; };
+		CFD300B12759FE3700A97944 /* TextfieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300B02759FE3700A97944 /* TextfieldAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +86,12 @@
 		CFD3009B2759FBF600A97944 /* FavouriteScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreenViewModel.swift; sourceTree = "<group>"; };
 		CFD3009D2759FC0F00A97944 /* FavouriteScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreenInteractor.swift; sourceTree = "<group>"; };
 		CFD3009F2759FCC900A97944 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		CFD300A22759FD2100A97944 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		CFD300A42759FD4700A97944 /* ProfileScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenInteractor.swift; sourceTree = "<group>"; };
+		CFD300A62759FD7300A97944 /* ProfileScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewModel.swift; sourceTree = "<group>"; };
+		CFD300AA2759FDAE00A97944 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		CFD300AD2759FDE400A97944 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		CFD300B02759FE3700A97944 /* TextfieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +161,8 @@
 		CF2C10BF2750F41A00ADB197 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CFD300AC2759FDD800A97944 /* Model */,
+				CFD300A82759FD9E00A97944 /* Data */,
 				CF7EA6092757AFDD000E2E57 /* UI */,
 				CF7EA5F22757A9C9000E2E57 /* Screen */,
 				CF7EA5FA2757AB59000E2E57 /* HomeModule.swift */,
@@ -171,6 +185,7 @@
 		CF7EA5F22757A9C9000E2E57 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				CFD300A12759FD1400A97944 /* Profile Tab */,
 				CFD300982759FBAF00A97944 /* Favourite Tab */,
 				CF7EA5F32757A9FA000E2E57 /* Home Tab */,
 			);
@@ -190,6 +205,7 @@
 		CF7EA6092757AFDD000E2E57 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CFD300AF2759FE2900A97944 /* Atom */,
 				CF7EA60A2757AFE6000E2E57 /* Molecule */,
 			);
 			path = UI;
@@ -213,6 +229,48 @@
 				CFD3009D2759FC0F00A97944 /* FavouriteScreenInteractor.swift */,
 			);
 			path = "Favourite Tab";
+			sourceTree = "<group>";
+		};
+		CFD300A12759FD1400A97944 /* Profile Tab */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300A22759FD2100A97944 /* ProfileScreen.swift */,
+				CFD300A42759FD4700A97944 /* ProfileScreenInteractor.swift */,
+				CFD300A62759FD7300A97944 /* ProfileScreenViewModel.swift */,
+			);
+			path = "Profile Tab";
+			sourceTree = "<group>";
+		};
+		CFD300A82759FD9E00A97944 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300A92759FDA200A97944 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CFD300A92759FDA200A97944 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300AA2759FDAE00A97944 /* ProfileRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		CFD300AC2759FDD800A97944 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300AD2759FDE400A97944 /* Profile.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CFD300AF2759FE2900A97944 /* Atom */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300B02759FE3700A97944 /* TextfieldAlert.swift */,
+			);
+			path = Atom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,11 +412,17 @@
 				CFD3009C2759FBF600A97944 /* FavouriteScreenViewModel.swift in Sources */,
 				CF7EA6202757B3D9000E2E57 /* Constant.swift in Sources */,
 				CFD3009E2759FC0F00A97944 /* FavouriteScreenInteractor.swift in Sources */,
+				CFD300AB2759FDAE00A97944 /* ProfileRepository.swift in Sources */,
 				CF7EA5F52757AA27000E2E57 /* HomeScreen.swift in Sources */,
+				CFD300B12759FE3700A97944 /* TextfieldAlert.swift in Sources */,
 				CF7EA5F72757AA40000E2E57 /* HomeScreenViewModel.swift in Sources */,
 				CF7EA6142757B09C000E2E57 /* ItemGrid.swift in Sources */,
 				CF7EA5FB2757AB59000E2E57 /* HomeModule.swift in Sources */,
+				CFD300A32759FD2100A97944 /* ProfileScreen.swift in Sources */,
+				CFD300AE2759FDE400A97944 /* Profile.swift in Sources */,
+				CFD300A52759FD4700A97944 /* ProfileScreenInteractor.swift in Sources */,
 				CFD3009A2759FBD500A97944 /* FavouriteScreen.swift in Sources */,
+				CFD300A72759FD7300A97944 /* ProfileScreenViewModel.swift in Sources */,
 				CF7EA60C2757AFF5000E2E57 /* ItemListHorizontal.swift in Sources */,
 				CFD300A02759FCC900A97944 /* SearchBar.swift in Sources */,
 				CF7EA5F92757AA5F000E2E57 /* HomeScreenInteractor.swift in Sources */,

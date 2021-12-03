@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AFD357A8F491C64D94266B84 /* Pods_Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B758FBA43978030295B8F88A /* Pods_Common.framework */; };
-		CF226B4127563BB200C8FBBC /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF226B4027563BB200C8FBBC /* Profile.swift */; };
 		CF226B4327563BCD00C8FBBC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF226B4227563BCD00C8FBBC /* Game.swift */; };
 		CF226B4627563C4E00C8FBBC /* Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF226B4527563C4E00C8FBBC /* Screenshot.swift */; };
 		CF226B4827563C6400C8FBBC /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF226B4727563C6400C8FBBC /* Favourite.swift */; };
@@ -68,7 +67,6 @@
 /* Begin PBXFileReference section */
 		B21E47C55EE3076F511A8099 /* Pods-Common.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Common.debug.xcconfig"; path = "Target Support Files/Pods-Common/Pods-Common.debug.xcconfig"; sourceTree = "<group>"; };
 		B758FBA43978030295B8F88A /* Pods_Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF226B4027563BB200C8FBBC /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		CF226B4227563BCD00C8FBBC /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		CF226B4527563C4E00C8FBBC /* Screenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screenshot.swift; sourceTree = "<group>"; };
 		CF226B4727563C6400C8FBBC /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 		CF226B3F27563B9F00C8FBBC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CF226B4027563BB200C8FBBC /* Profile.swift */,
 				CF226B4227563BCD00C8FBBC /* Game.swift */,
 				CF226B4527563C4E00C8FBBC /* Screenshot.swift */,
 				CF226B4727563C6400C8FBBC /* Favourite.swift */,
@@ -452,7 +449,6 @@
 				CF226B4C27563CEE00C8FBBC /* String.swift in Sources */,
 				CF7EA5E72757A698000E2E57 /* LocalDataSource.swift in Sources */,
 				CF7EA5FE2757ABA5000E2E57 /* HomeProviderInterface.swift in Sources */,
-				CF226B4127563BB200C8FBBC /* Profile.swift in Sources */,
 				CF226B4A27563CDD00C8FBBC /* Date.swift in Sources */,
 				CF226B4627563C4E00C8FBBC /* Screenshot.swift in Sources */,
 				CF7EA5EF2757A8FC000E2E57 /* GamePublisherRepository.swift in Sources */,

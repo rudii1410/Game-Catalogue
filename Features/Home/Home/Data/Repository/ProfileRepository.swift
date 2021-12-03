@@ -16,9 +16,14 @@
 //
 
 import Foundation
-import Common
 
-class ProfileRepository {
+protocol ProfileRepositoryInterface {
+    init(userDef: UserDefaults)
+    func storeProfileData(profile: Profile)
+    func getProfile() -> Profile
+}
+
+class ProfileRepository: ProfileRepositoryInterface {
     static let fullnameKey = "fullname"
     static let profilePicKey = "profilePic"
     static let webUrlKey = "webUrl"
@@ -29,7 +34,7 @@ class ProfileRepository {
     )
 
     private let userDef: UserDefaults
-    init(userDef: UserDefaults) {
+    required init(userDef: UserDefaults) {
         self.userDef = userDef
     }
 
