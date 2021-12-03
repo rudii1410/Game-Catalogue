@@ -2,7 +2,7 @@ language: swift
 osx_image: xcode12 
 xcode_workspace: Game Catalogue.xcworkspace
 xcode_scheme: Game Catalogue
-xcode_destination: platform=iOS Simulator,OS=14.0,name=iPhone 11 Pro
+xcode_destination: platform=iOS Simulator,OS=14.5,name=iPhone 11
 
 before_install:
   - gem install cocoapods-keys
