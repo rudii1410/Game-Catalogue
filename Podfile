@@ -52,6 +52,7 @@ end
 target 'Game' do
   project 'Features/Game/Game.xcodeproj'
 
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 end
 
 target 'Genre' do

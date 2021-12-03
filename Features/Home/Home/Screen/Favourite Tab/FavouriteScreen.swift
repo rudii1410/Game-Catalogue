@@ -23,6 +23,7 @@ import Common
 struct FavouritesScreen: View {
     @ObservedObject private var model: FavouriteScreenViewModel
     @State var searchText: String = ""
+    private let gameProvider: GameProviderInterface = Navigator.instance.getProvider(GameProviderInterface.self)
 
     init(model: FavouriteScreenViewModel) {
         self.model = model
@@ -30,14 +31,11 @@ struct FavouritesScreen: View {
 
     var body: some View {
         VStack(spacing: 12) {
-//            NavigationLink(
-//                destination: GameDetailScreen(
-//                    model: .init(interactor: ServiceContainer.instance.get()),
-//                    slug: self.model.selectedSlug
-//                ),
-//                isActive: self.$model.navigateToGameDetail,
-//                label: { EmptyView() }
-//            )
+            NavigationLink(
+                destination: gameProvider.getGameDetailScreen(slug: self.model.selectedSlug),
+                isActive: self.$model.navigateToGameDetail,
+                label: { EmptyView() }
+            )
             SearchBar(searchText: $searchText)
                 .padding(.horizontal, 12)
                 .padding(.top, 12)

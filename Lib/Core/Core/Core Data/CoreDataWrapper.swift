@@ -32,8 +32,20 @@ public class CoreDataWrapper: CoreDataWrapperInterface {
     public let mainContext: NSManagedObjectContext
     public let bgContext: NSManagedObjectContext
 
-    public init() {
-        let persistentContainer = NSPersistentContainer(name: "Database")
+    public init(_ name: String) {
+        let persistentContainer = NSPersistentContainer(name: name)
+        persistentContainer.loadPersistentStores { _, error in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+
+        mainContext = persistentContainer.viewContext
+        bgContext = persistentContainer.newBackgroundContext()
+    }
+
+    public init(_ name: String, managedModel: NSManagedObjectModel) {
+        let persistentContainer = NSPersistentContainer(name: name, managedObjectModel: managedModel)
         persistentContainer.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")

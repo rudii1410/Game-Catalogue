@@ -22,6 +22,7 @@ import Common
 
 struct HomeScreen: View {
     @ObservedObject var model: HomeScreenViewModel
+    private let gameProvider: GameProviderInterface = Navigator.instance.getProvider(GameProviderInterface.self)
 
     init(model: HomeScreenViewModel) {
         self.model = model
@@ -31,14 +32,11 @@ struct HomeScreen: View {
 
     var body: some View {
         GeometryReader { fullScreen in
-//            NavigationLink(
-//                destination: GameDetailScreen(
-//                    model: .init(interactor: ServiceContainer.instance.get()),
-//                    slug: self.model.selectedGameSlug
-//                ),
-//                isActive: self.$model.navigateToGameDetail,
-//                label: { EmptyView() }
-//            )
+            NavigationLink(
+                destination: gameProvider.getGameDetailScreen(slug: self.model.selectedGameSlug),
+                isActive: self.$model.navigateToGameDetail,
+                label: { EmptyView() }
+            )
             ScrollView {
                 renderImageSlider(fullScreen)
                 Divider()

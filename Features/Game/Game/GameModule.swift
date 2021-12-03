@@ -15,8 +15,29 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
+import Core
+import Common
 import SwiftUI
 
-public protocol Provider {
-    
+public class GameModule: Module, GameProviderInterface {
+    private let container: ServiceContainer
+
+    public required init(container: ServiceContainer) {
+        self.container = container
+    }
+
+    public func load() {
+        self.container.register(GameDetailUseCase.self) { resolver in
+            return GameDetailInteractor(gameRepo: resolver.get())
+        }
+    }
+
+    public func getGameDetailScreen(slug: String) -> AnyView {
+        return AnyView(
+            GameDetailScreen(
+                model: .init(interactor: self.container.get()),
+                slug: slug
+            )
+        )
+    }
 }

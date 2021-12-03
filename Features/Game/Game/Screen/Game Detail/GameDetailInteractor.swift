@@ -29,7 +29,7 @@ protocol GameDetailUseCase {
 
 class GameDetailInteractor: GameDetailUseCase {
     private let gameRepo: GameRepositoryInterface
-    init(gameRepo: GameRepository) {
+    init(gameRepo: GameRepositoryInterface) {
         self.gameRepo = gameRepo
     }
 }

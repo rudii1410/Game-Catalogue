@@ -17,6 +17,7 @@
 		CFB926FA2750F2F400829020 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB926F02750F2F400829020 /* DesignSystem.framework */; };
 		CFB926FF2750F2F400829020 /* DesignSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB926FE2750F2F400829020 /* DesignSystemTests.swift */; };
 		CFB927012750F2F400829020 /* DesignSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB926F32750F2F400829020 /* DesignSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFD300D5275A045D00A97944 /* HTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300D4275A045D00A97944 /* HTMLView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		CFB926F92750F2F400829020 /* DesignSystemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesignSystemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB926FE2750F2F400829020 /* DesignSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemTests.swift; sourceTree = "<group>"; };
 		CFB927002750F2F400829020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFD300D4275A045D00A97944 /* HTMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLView.swift; sourceTree = "<group>"; };
 		F6E41EFF3E19B85F443A6C8B /* Pods-DesignSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesignSystem.debug.xcconfig"; path = "Target Support Files/Pods-DesignSystem/Pods-DesignSystem.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 		CF7EA6172757B0FB000E2E57 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFD300D3275A044500A97944 /* Atom */,
 				CF7EA6182757B102000E2E57 /* Molecule */,
 			);
 			path = Component;
@@ -149,6 +152,14 @@
 				CFB927002750F2F400829020 /* Info.plist */,
 			);
 			path = DesignSystemTests;
+			sourceTree = "<group>";
+		};
+		CFD300D3275A044500A97944 /* Atom */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300D4275A045D00A97944 /* HTMLView.swift */,
+			);
+			path = Atom;
 			sourceTree = "<group>";
 		};
 		DEC27E9CC9BA5E11DD2FE6B4 /* Pods */ = {
@@ -299,6 +310,7 @@
 				CF7EA6232757B45E000E2E57 /* RoundedCorner.swift in Sources */,
 				CF7EA6162757B0C3000E2E57 /* View.swift in Sources */,
 				CF7EA60F2757B039000E2E57 /* Text.swift in Sources */,
+				CFD300D5275A045D00A97944 /* HTMLView.swift in Sources */,
 				CF7EA61C2757B140000E2E57 /* WebImage.swift in Sources */,
 				CF7EA61E2757B167000E2E57 /* LoadingView.swift in Sources */,
 				CF7EA61A2757B10A000E2E57 /* ImageSlider.swift in Sources */,

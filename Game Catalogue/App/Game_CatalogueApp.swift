@@ -16,10 +16,11 @@
 //
 
 import SwiftUI
+import CoreData
 import Core
 import Common
-
 import Home
+import Game
 
 @main
 struct GameCatalogueApp: App {
@@ -33,7 +34,14 @@ struct GameCatalogueApp: App {
 
     private func initDIContainer(container: ServiceContainer) {
         container.register(CoreDataWrapperInterface.self) { _ in
-            return CoreDataWrapper()
+            let messageKitBundle = Bundle(identifier: "dev.rudiyanto.Game-Catalogue.Common")
+            guard let modelURL = messageKitBundle?.url(forResource: "Game Catalogue", withExtension: "momd") else {
+                preconditionFailure("Fail to load database model")
+            }
+            guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL) else {
+                preconditionFailure("Fail to load database model")
+            }
+            return CoreDataWrapper("Game Catalogue", managedModel: managedObjectModel)
         }
 
         container.register(LocalDataSourceInterface.self) { resolver in
@@ -58,6 +66,9 @@ struct GameCatalogueApp: App {
         let moduleLoader = ModuleLoader()
         moduleLoader.registerModule(module: HomeModule.self, provider: HomeProviderInterface.self) { _ in
             return HomeModule(container: container)
+        }
+        moduleLoader.registerModule(module: GameModule.self, provider: GameProviderInterface.self) { _ in
+            return GameModule(container: container)
         }
 
         moduleLoader.loadAllModules()

@@ -18,10 +18,13 @@
 import SwiftUI
 import SDWebImageSwiftUI
 import Core
+import Common
+import DesignSystem
 
 struct GameDetailScreen: View {
     @ObservedObject private var model: GameDetailScreenViewModel
     @State private var htmlHeight: CGFloat = 50.0
+    private let gameProvider: GameProviderInterface = Navigator.instance.getProvider(GameProviderInterface.self)
 
     init(model: GameDetailScreenViewModel, slug: String) {
         self.model = model
@@ -79,10 +82,7 @@ struct GameDetailScreen: View {
             ScrollView {
                 VStack {
                     NavigationLink(
-                        destination: GameDetailScreen(
-                            model: .init(interactor: ServiceContainer.instance.get()),
-                            slug: self.model.selectedGameSlug
-                        ),
+                        destination: gameProvider.getGameDetailScreen(slug: self.model.selectedGameSlug),
                         isActive: self.$model.navigateToGameDetail,
                         label: { EmptyView() }
                     )
@@ -96,13 +96,13 @@ struct GameDetailScreen: View {
                         .padding(.bottom, 22)
                     renderDeveloperAndPublisherSection()
                         .padding(.bottom, 22)
-//                    GamesVerticalGrid(
-//                        title: "Game like this",
-//                        datas: self.$model.gameList,
-//                        loadMore: self.model.loadGames,
-//                        onItemTap: self.model.onGameTap
-//                    )
-//                    .padding(.bottom, 8)
+                    GamesVerticalGrid(
+                        title: "Game like this",
+                        games: self.$model.gameList,
+                        loadMore: self.model.loadGames,
+                        onItemTap: self.model.onGameTap
+                    )
+                    .padding(.bottom, 8)
                     LoadingView()
                     Spacer(minLength: 22)
                 }

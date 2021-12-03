@@ -12,7 +12,6 @@
 		CF22FE1C274E7A7900FAF9DD /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF22FE1B274E7A7900FAF9DD /* CoreTests.swift */; };
 		CF22FE1E274E7A7900FAF9DD /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = CF22FE10274E7A7900FAF9DD /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF4E92242750FD590012E743 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4E92232750FD590012E743 /* Module.swift */; };
-		CF7EA62E2757C4B7000E2E57 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA62D2757C4B7000E2E57 /* Provider.swift */; };
 		CF85DA692754D6BE00C500B0 /* ModuleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85DA682754D6BE00C500B0 /* ModuleLoader.swift */; };
 		CF85DA742754E5E000C500B0 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85DA732754E5E000C500B0 /* Navigator.swift */; };
 		CF8E614B2750E95700CDCFE2 /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E614A2750E95700CDCFE2 /* ServiceContainer.swift */; };
@@ -43,7 +42,6 @@
 		CF22FE1B274E7A7900FAF9DD /* CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTests.swift; sourceTree = "<group>"; };
 		CF22FE1D274E7A7900FAF9DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF4E92232750FD590012E743 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
-		CF7EA62D2757C4B7000E2E57 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		CF85DA682754D6BE00C500B0 /* ModuleLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleLoader.swift; sourceTree = "<group>"; };
 		CF85DA732754E5E000C500B0 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		CF8E614A2750E95700CDCFE2 /* ServiceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 				CF4E92232750FD590012E743 /* Module.swift */,
 				CF85DA682754D6BE00C500B0 /* ModuleLoader.swift */,
 				CF85DA732754E5E000C500B0 /* Navigator.swift */,
-				CF7EA62D2757C4B7000E2E57 /* Provider.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -309,7 +306,6 @@
 				CF85DA742754E5E000C500B0 /* Navigator.swift in Sources */,
 				CF8E614B2750E95700CDCFE2 /* ServiceContainer.swift in Sources */,
 				CF8E61552750EA2800CDCFE2 /* CoreDataError.swift in Sources */,
-				CF7EA62E2757C4B7000E2E57 /* Provider.swift in Sources */,
 				CF8E614E2750E98600CDCFE2 /* Request.swift in Sources */,
 				CF8E61502750E99A00CDCFE2 /* RequestError.swift in Sources */,
 				CF4E92242750FD590012E743 /* Module.swift in Sources */,

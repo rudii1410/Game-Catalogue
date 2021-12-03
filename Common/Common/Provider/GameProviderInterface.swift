@@ -17,8 +17,6 @@
 
 import SwiftUI
 
-public protocol HomeProviderInterface {
-    func getHomeScreenView() -> AnyView
-    func getFavouriteScreenView() -> AnyView
-    func getProfileScreenView() -> AnyView
+public protocol GameProviderInterface {
+    func getGameDetailScreen(slug: String) -> AnyView
 }

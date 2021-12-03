@@ -18,11 +18,13 @@
 import SwiftUI
 import SDWebImageSwiftUI
 import Core
+import Common
 
 struct GenreDetailScreen: View {
     @ObservedObject private var model: GenreDetailScreenViewModel
     @State private var htmlHeight: CGFloat = 50.0
     private var slug: String
+    private let gameModuleProvider: GameProviderInterface = Navigator.instance.getProvider(GameProviderInterface.self)
 
     init(model: GenreDetailScreenViewModel, slug: String) {
         self.model = model
@@ -32,10 +34,7 @@ struct GenreDetailScreen: View {
     var body: some View {
         ScrollView {
             NavigationLink(
-                destination: GameDetailScreen(
-                    model: .init(interactor: ServiceContainer.instance.get()),
-                    slug: self.model.selectedGameSlug
-                ),
+                destination: gameModuleProvider.getGameDetailScreen(slug: self.model.selectedGameSlug),
                 isActive: self.$model.navigateToGameDetail,
                 label: { EmptyView() }
             )
