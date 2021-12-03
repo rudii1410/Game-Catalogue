@@ -16,74 +16,88 @@
 //
 
 import SwiftUI
+import CoreData
 import Core
+import Common
+import Home
+import Game
+import Genre
+import Publisher
 
 @main
 struct GameCatalogueApp: App {
+    private let container: ServiceContainer
     init() {
-        ServiceContainer.instance.register(CoreDataWrapper.self) { _ in
-            return CoreDataWrapper()
+        self.container = ServiceContainer()
+
+        initDIContainer(container: container)
+        loadFeatureModule(container: container)
+    }
+
+    private func initDIContainer(container: ServiceContainer) {
+        container.register(CoreDataWrapperInterface.self) { _ in
+            let messageKitBundle = Bundle(identifier: "dev.rudiyanto.Game-Catalogue.Common")
+            guard let modelURL = messageKitBundle?.url(forResource: "Game Catalogue", withExtension: "momd") else {
+                preconditionFailure("Fail to load database model")
+            }
+            guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL) else {
+                preconditionFailure("Fail to load database model")
+            }
+            return CoreDataWrapper("Game Catalogue", managedModel: managedObjectModel)
         }
-        ServiceContainer.instance.register(LocalDataSource.self) { service in
-            return LocalDataSource(database: service.get())
+
+        container.register(LocalDataSourceInterface.self) { resolver in
+            return LocalDataSource(database: resolver.get())
         }
-        ServiceContainer.instance.register(RemoteDataSource.self) { _ in
+        container.register(RemoteDataSourceInterface.self) { _ in
             return RemoteDataSource()
         }
 
-        ServiceContainer.instance.register(GameRepository.self) { service in
-            return GameRepository(local: service.get(), remote: service.get(), database: service.get())
+        container.register(GameRepositoryInterface.self) { resolver in
+            return GameRepository(local: resolver.get(), remote: resolver.get(), database: resolver.get())
         }
-        ServiceContainer.instance.register(GamePublisherRepository.self) { service in
-            return GamePublisherRepository(remote: service.get())
+        container.register(GamePublisherRepositoryInterface.self) { resolver in
+            return GamePublisherRepository(remote: resolver.get())
         }
-        ServiceContainer.instance.register(GameGenreRepository.self) { service in
-            return GameGenreRepository(remote: service.get())
+        container.register(GameGenreRepositoryInterface.self) { resolver in
+            return GameGenreRepository(remote: resolver.get())
         }
-        ServiceContainer.instance.register(ProfileRepository.self) { _ in
-            return ProfileRepository(userDef: UserDefaults.standard)
+    }
+
+    private func loadFeatureModule(container: ServiceContainer) {
+        let moduleLoader = ModuleLoader()
+        moduleLoader.registerModule(module: HomeModule.self, provider: HomeProviderInterface.self) { _ in
+            return HomeModule(container: container)
+        }
+        moduleLoader.registerModule(module: GameModule.self, provider: GameProviderInterface.self) { _ in
+            return GameModule(container: container)
+        }
+        moduleLoader.registerModule(module: GenreModule.self, provider: GenreProviderInterface.self) { _ in
+            return GenreModule(container: container)
+        }
+        moduleLoader.registerModule(module: PublisherModule.self, provider: PublisherProviderInterface.self) { _ in
+            return PublisherModule(container: container)
         }
 
-        ServiceContainer.instance.register(HomeInteractor.self) { service in
-            return HomeInteractor(gameRepo: service.get(), publisherRepo: service.get(), genreRepo: service.get())
-        }
-        ServiceContainer.instance.register(FavouriteInteractor.self) { service in
-            return FavouriteInteractor(gameRepo: service.get())
-        }
-        ServiceContainer.instance.register(ProfileInteractor.self) { service in
-            return ProfileInteractor(profileRepo: service.get())
-        }
-        ServiceContainer.instance.register(PublisherListInteractor.self) { service in
-            return PublisherListInteractor(publisher: service.get())
-        }
-        ServiceContainer.instance.register(PublisherDetailInteractor.self) { service in
-            return PublisherDetailInteractor(gameRepo: service.get(), publisherRepo: service.get())
-        }
-        ServiceContainer.instance.register(GenreDetailInteractor.self) { service in
-            return GenreDetailInteractor(gameRepo: service.get(), genreRepo: service.get())
-        }
-        ServiceContainer.instance.register(GenreListInteractor.self) { service in
-            return GenreListInteractor(genreRepo: service.get())
-        }
-        ServiceContainer.instance.register(GameDetailInteractor.self) { service in
-            return GameDetailInteractor(gameRepo: service.get())
-        }
+        moduleLoader.loadAllModules()
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(container: self.container)
         }
     }
 }
 
 struct ContentView: View {
     @State private var currentTab: Tab = .home
+    let container: ServiceContainer
 
+    let homeProvider: HomeProviderInterface = Navigator.instance.getProvider(HomeProviderInterface.self)
     var body: some View {
         TabView(selection: $currentTab) {
             NavigationView {
-                HomeScreen(model: .init(interactor: ServiceContainer.instance.get()))
+                homeProvider.getHomeScreenView()
                     .navigationBarTitle("Games catalogue", displayMode: .large)
             }
             .tag(Tab.home)
@@ -93,7 +107,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                FavouritesScreen(model: .init(interactor: ServiceContainer.instance.get()))
+                homeProvider.getFavouriteScreenView()
                     .navigationBarTitle("Favourite Games", displayMode: .large)
             }
             .tag(Tab.favourite)
@@ -103,7 +117,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                ProfileScreen(model: .init(interactor: ServiceContainer.instance.get()))
+                homeProvider.getProfileScreenView()
                     .navigationBarTitle("My Profile", displayMode: .inline)
             }
             .tag(Tab.profile)

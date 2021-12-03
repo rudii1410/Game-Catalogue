@@ -11,6 +11,29 @@
 		CF2C10C72750F41A00ADB197 /* Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10BD2750F41A00ADB197 /* Home.framework */; };
 		CF2C10CC2750F41A00ADB197 /* HomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C10CB2750F41A00ADB197 /* HomeTests.swift */; };
 		CF2C10CE2750F41A00ADB197 /* Home.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2C10C02750F41A00ADB197 /* Home.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF7EA5F52757AA27000E2E57 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5F42757AA27000E2E57 /* HomeScreen.swift */; };
+		CF7EA5F72757AA40000E2E57 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5F62757AA40000E2E57 /* HomeScreenViewModel.swift */; };
+		CF7EA5F92757AA5F000E2E57 /* HomeScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5F82757AA5F000E2E57 /* HomeScreenInteractor.swift */; };
+		CF7EA5FB2757AB59000E2E57 /* HomeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5FA2757AB59000E2E57 /* HomeModule.swift */; };
+		CF7EA6032757ADA0000E2E57 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA6022757ADA0000E2E57 /* Core.framework */; };
+		CF7EA6042757ADA0000E2E57 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA6022757ADA0000E2E57 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF7EA6072757ADAC000E2E57 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA6062757ADAC000E2E57 /* Common.framework */; };
+		CF7EA6082757ADAC000E2E57 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA6062757ADAC000E2E57 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF7EA60C2757AFF5000E2E57 /* ItemListHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA60B2757AFF5000E2E57 /* ItemListHorizontal.swift */; };
+		CF7EA6112757B068000E2E57 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA6102757B068000E2E57 /* DesignSystem.framework */; };
+		CF7EA6122757B068000E2E57 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA6102757B068000E2E57 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF7EA6142757B09C000E2E57 /* ItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA6132757B09C000E2E57 /* ItemGrid.swift */; };
+		CF7EA6202757B3D9000E2E57 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA61F2757B3D9000E2E57 /* Constant.swift */; };
+		CFD3009A2759FBD500A97944 /* FavouriteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300992759FBD500A97944 /* FavouriteScreen.swift */; };
+		CFD3009C2759FBF600A97944 /* FavouriteScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3009B2759FBF600A97944 /* FavouriteScreenViewModel.swift */; };
+		CFD3009E2759FC0F00A97944 /* FavouriteScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3009D2759FC0F00A97944 /* FavouriteScreenInteractor.swift */; };
+		CFD300A02759FCC900A97944 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3009F2759FCC900A97944 /* SearchBar.swift */; };
+		CFD300A32759FD2100A97944 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300A22759FD2100A97944 /* ProfileScreen.swift */; };
+		CFD300A52759FD4700A97944 /* ProfileScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300A42759FD4700A97944 /* ProfileScreenInteractor.swift */; };
+		CFD300A72759FD7300A97944 /* ProfileScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300A62759FD7300A97944 /* ProfileScreenViewModel.swift */; };
+		CFD300AB2759FDAE00A97944 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300AA2759FDAE00A97944 /* ProfileRepository.swift */; };
+		CFD300AE2759FDE400A97944 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300AD2759FDE400A97944 /* Profile.swift */; };
+		CFD300B12759FE3700A97944 /* TextfieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300B02759FE3700A97944 /* TextfieldAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +46,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CF7EA6052757ADA0000E2E57 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CF7EA6122757B068000E2E57 /* DesignSystem.framework in Embed Frameworks */,
+				CF7EA6042757ADA0000E2E57 /* Core.framework in Embed Frameworks */,
+				CF7EA6082757ADAC000E2E57 /* Common.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5E1187C8C9D0D1184D721D0D /* Pods_Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AE7E2A3297594D29CD850E /* Pods-Home.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Home.debug.xcconfig"; path = "Target Support Files/Pods-Home/Pods-Home.debug.xcconfig"; sourceTree = "<group>"; };
@@ -33,6 +72,26 @@
 		CF2C10C62750F41A00ADB197 /* HomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2C10CB2750F41A00ADB197 /* HomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTests.swift; sourceTree = "<group>"; };
 		CF2C10CD2750F41A00ADB197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF7EA5F42757AA27000E2E57 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		CF7EA5F62757AA40000E2E57 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
+		CF7EA5F82757AA5F000E2E57 /* HomeScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenInteractor.swift; sourceTree = "<group>"; };
+		CF7EA5FA2757AB59000E2E57 /* HomeModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModule.swift; sourceTree = "<group>"; };
+		CF7EA6022757ADA0000E2E57 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF7EA6062757ADAC000E2E57 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF7EA60B2757AFF5000E2E57 /* ItemListHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListHorizontal.swift; sourceTree = "<group>"; };
+		CF7EA6102757B068000E2E57 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF7EA6132757B09C000E2E57 /* ItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGrid.swift; sourceTree = "<group>"; };
+		CF7EA61F2757B3D9000E2E57 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		CFD300992759FBD500A97944 /* FavouriteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreen.swift; sourceTree = "<group>"; };
+		CFD3009B2759FBF600A97944 /* FavouriteScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreenViewModel.swift; sourceTree = "<group>"; };
+		CFD3009D2759FC0F00A97944 /* FavouriteScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreenInteractor.swift; sourceTree = "<group>"; };
+		CFD3009F2759FCC900A97944 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		CFD300A22759FD2100A97944 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		CFD300A42759FD4700A97944 /* ProfileScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenInteractor.swift; sourceTree = "<group>"; };
+		CFD300A62759FD7300A97944 /* ProfileScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewModel.swift; sourceTree = "<group>"; };
+		CFD300AA2759FDAE00A97944 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		CFD300AD2759FDE400A97944 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		CFD300B02759FE3700A97944 /* TextfieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +99,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7EA6072757ADAC000E2E57 /* Common.framework in Frameworks */,
+				CF7EA6112757B068000E2E57 /* DesignSystem.framework in Frameworks */,
 				4DD66554877F1FE7B6B3BE47 /* Pods_Home.framework in Frameworks */,
+				CF7EA6032757ADA0000E2E57 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +130,9 @@
 		1D6B506A6A8BA3F977FC67A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF7EA6102757B068000E2E57 /* DesignSystem.framework */,
+				CF7EA6062757ADAC000E2E57 /* Common.framework */,
+				CF7EA6022757ADA0000E2E57 /* Core.framework */,
 				5E1187C8C9D0D1184D721D0D /* Pods_Home.framework */,
 			);
 			name = Frameworks;
@@ -96,8 +161,14 @@
 		CF2C10BF2750F41A00ADB197 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CFD300AC2759FDD800A97944 /* Model */,
+				CFD300A82759FD9E00A97944 /* Data */,
+				CF7EA6092757AFDD000E2E57 /* UI */,
+				CF7EA5F22757A9C9000E2E57 /* Screen */,
+				CF7EA5FA2757AB59000E2E57 /* HomeModule.swift */,
 				CF2C10C02750F41A00ADB197 /* Home.h */,
 				CF2C10C12750F41A00ADB197 /* Info.plist */,
+				CF7EA61F2757B3D9000E2E57 /* Constant.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -109,6 +180,97 @@
 				CF2C10CD2750F41A00ADB197 /* Info.plist */,
 			);
 			path = HomeTests;
+			sourceTree = "<group>";
+		};
+		CF7EA5F22757A9C9000E2E57 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300A12759FD1400A97944 /* Profile Tab */,
+				CFD300982759FBAF00A97944 /* Favourite Tab */,
+				CF7EA5F32757A9FA000E2E57 /* Home Tab */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		CF7EA5F32757A9FA000E2E57 /* Home Tab */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA5F42757AA27000E2E57 /* HomeScreen.swift */,
+				CF7EA5F62757AA40000E2E57 /* HomeScreenViewModel.swift */,
+				CF7EA5F82757AA5F000E2E57 /* HomeScreenInteractor.swift */,
+			);
+			path = "Home Tab";
+			sourceTree = "<group>";
+		};
+		CF7EA6092757AFDD000E2E57 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300AF2759FE2900A97944 /* Atom */,
+				CF7EA60A2757AFE6000E2E57 /* Molecule */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CF7EA60A2757AFE6000E2E57 /* Molecule */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA60B2757AFF5000E2E57 /* ItemListHorizontal.swift */,
+				CF7EA6132757B09C000E2E57 /* ItemGrid.swift */,
+				CFD3009F2759FCC900A97944 /* SearchBar.swift */,
+			);
+			path = Molecule;
+			sourceTree = "<group>";
+		};
+		CFD300982759FBAF00A97944 /* Favourite Tab */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300992759FBD500A97944 /* FavouriteScreen.swift */,
+				CFD3009B2759FBF600A97944 /* FavouriteScreenViewModel.swift */,
+				CFD3009D2759FC0F00A97944 /* FavouriteScreenInteractor.swift */,
+			);
+			path = "Favourite Tab";
+			sourceTree = "<group>";
+		};
+		CFD300A12759FD1400A97944 /* Profile Tab */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300A22759FD2100A97944 /* ProfileScreen.swift */,
+				CFD300A42759FD4700A97944 /* ProfileScreenInteractor.swift */,
+				CFD300A62759FD7300A97944 /* ProfileScreenViewModel.swift */,
+			);
+			path = "Profile Tab";
+			sourceTree = "<group>";
+		};
+		CFD300A82759FD9E00A97944 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300A92759FDA200A97944 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CFD300A92759FDA200A97944 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300AA2759FDAE00A97944 /* ProfileRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		CFD300AC2759FDD800A97944 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300AD2759FDE400A97944 /* Profile.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CFD300AF2759FE2900A97944 /* Atom */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300B02759FE3700A97944 /* TextfieldAlert.swift */,
+			);
+			path = Atom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +296,7 @@
 				CF2C10B92750F41A00ADB197 /* Sources */,
 				CF2C10BA2750F41A00ADB197 /* Frameworks */,
 				CF2C10BB2750F41A00ADB197 /* Resources */,
+				CF7EA6052757ADA0000E2E57 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,6 +336,7 @@
 				TargetAttributes = {
 					CF2C10BC2750F41A00ADB197 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					CF2C10C52750F41A00ADB197 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -245,6 +409,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD3009C2759FBF600A97944 /* FavouriteScreenViewModel.swift in Sources */,
+				CF7EA6202757B3D9000E2E57 /* Constant.swift in Sources */,
+				CFD3009E2759FC0F00A97944 /* FavouriteScreenInteractor.swift in Sources */,
+				CFD300AB2759FDAE00A97944 /* ProfileRepository.swift in Sources */,
+				CF7EA5F52757AA27000E2E57 /* HomeScreen.swift in Sources */,
+				CFD300B12759FE3700A97944 /* TextfieldAlert.swift in Sources */,
+				CF7EA5F72757AA40000E2E57 /* HomeScreenViewModel.swift in Sources */,
+				CF7EA6142757B09C000E2E57 /* ItemGrid.swift in Sources */,
+				CF7EA5FB2757AB59000E2E57 /* HomeModule.swift in Sources */,
+				CFD300A32759FD2100A97944 /* ProfileScreen.swift in Sources */,
+				CFD300AE2759FDE400A97944 /* Profile.swift in Sources */,
+				CFD300A52759FD4700A97944 /* ProfileScreenInteractor.swift in Sources */,
+				CFD3009A2759FBD500A97944 /* FavouriteScreen.swift in Sources */,
+				CFD300A72759FD7300A97944 /* ProfileScreenViewModel.swift in Sources */,
+				CF7EA60C2757AFF5000E2E57 /* ItemListHorizontal.swift in Sources */,
+				CFD300A02759FCC900A97944 /* SearchBar.swift in Sources */,
+				CF7EA5F92757AA5F000E2E57 /* HomeScreenInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +574,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 96AE7E2A3297594D29CD850E /* Pods-Home.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RLQU784C73;
@@ -409,6 +591,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.rudiyanto.Game-Catalogue.feature.Home";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -418,6 +601,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B6433A14FB29592FB4EFAB9C /* Pods-Home.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RLQU784C73;
@@ -442,6 +626,7 @@
 		CF2C10D52750F41A00ADB197 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RLQU784C73;
 				INFOPLIST_FILE = HomeTests/Info.plist;
@@ -460,6 +645,7 @@
 		CF2C10D62750F41A00ADB197 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RLQU784C73;
 				INFOPLIST_FILE = HomeTests/Info.plist;

@@ -3,13 +3,13 @@
 
 use_frameworks!
 
-workspace 'Game Catalogue'
-project 'Game Catalogue'
+# Framework version
+$sdwebimageswiftui_version              = '2.0.2'
 
-pod 'SwiftLint'
+workspace 'Game Catalogue'
 
 target 'Game Catalogue' do
-  pod 'SDWebImageSwiftUI'
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 
   plugin 'cocoapods-keys', {
     :project => "GameCatalogue",
@@ -17,38 +17,47 @@ target 'Game Catalogue' do
       "RawgApiKey",
     ]
   }
+end
 
+target 'Common' do
+  project 'Common/Common.xcodeproj'
+
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 end
 
 # region Library Module
 target 'Core' do
-  project 'Lib/Core/Core'
+  project 'Lib/Core/Core.xcodeproj'
 
 end
 
 target 'DesignSystem' do
-  project 'Lib/DesignSystem/DesignSystem'
+  project 'Lib/DesignSystem/DesignSystem.xcodeproj'
   
-  pod 'SDWebImageSwiftUI'
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 end
 
 # region Feature Module
 target 'Home' do
-  project 'Features/Home/Home'
+  project 'Features/Home/Home.xcodeproj'
 
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 end
 
 target 'Publisher' do
-  project 'Features/Publisher/Publisher'
+  project 'Features/Publisher/Publisher.xcodeproj'
 
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 end
 
 target 'Game' do
-  project 'Features/Game/Game'
+  project 'Features/Game/Game.xcodeproj'
 
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 end
 
 target 'Genre' do
-  project 'Features/Genre/Genre'
+  project 'Features/Genre/Genre.xcodeproj'
 
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 end

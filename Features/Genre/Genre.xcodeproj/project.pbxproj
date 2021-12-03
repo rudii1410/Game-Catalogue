@@ -11,6 +11,19 @@
 		CF2C11332750F62E00ADB197 /* Genre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C11292750F62E00ADB197 /* Genre.framework */; };
 		CF2C11382750F62E00ADB197 /* GenreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C11372750F62E00ADB197 /* GenreTests.swift */; };
 		CF2C113A2750F62E00ADB197 /* Genre.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2C112C2750F62E00ADB197 /* Genre.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF976910275A2C44009EB0FA /* GenreModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97690F275A2C44009EB0FA /* GenreModule.swift */; };
+		CF976912275A2C4D009EB0FA /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF976911275A2C4D009EB0FA /* Common.framework */; };
+		CF976913275A2C4D009EB0FA /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF976911275A2C4D009EB0FA /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF976916275A2C52009EB0FA /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF976915275A2C52009EB0FA /* Core.framework */; };
+		CF976917275A2C52009EB0FA /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF976915275A2C52009EB0FA /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF97691B275A2CC6009EB0FA /* GenreListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97691A275A2CC6009EB0FA /* GenreListInteractor.swift */; };
+		CF97691D275A2CE7009EB0FA /* GenreListScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97691C275A2CE7009EB0FA /* GenreListScreenViewModel.swift */; };
+		CF97691F275A2D06009EB0FA /* GenreListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97691E275A2D06009EB0FA /* GenreListScreen.swift */; };
+		CF976922275A2D3E009EB0FA /* GenreDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF976921275A2D3E009EB0FA /* GenreDetailInteractor.swift */; };
+		CF976924275A2D89009EB0FA /* GenreDetailScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF976923275A2D89009EB0FA /* GenreDetailScreenViewModel.swift */; };
+		CF976926275A2DA9009EB0FA /* GenreDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF976925275A2DA9009EB0FA /* GenreDetailScreen.swift */; };
+		CF97692E275A3065009EB0FA /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF97692D275A3065009EB0FA /* DesignSystem.framework */; };
+		CF97692F275A3065009EB0FA /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF97692D275A3065009EB0FA /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +36,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CF976914275A2C4D009EB0FA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CF97692F275A3065009EB0FA /* DesignSystem.framework in Embed Frameworks */,
+				CF976913275A2C4D009EB0FA /* Common.framework in Embed Frameworks */,
+				CF976917275A2C52009EB0FA /* Core.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8675886D87440F434A39C783 /* Pods-Genre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Genre.release.xcconfig"; path = "Target Support Files/Pods-Genre/Pods-Genre.release.xcconfig"; sourceTree = "<group>"; };
 		CF2C11292750F62E00ADB197 /* Genre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Genre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,6 +60,16 @@
 		CF2C11322750F62E00ADB197 /* GenreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GenreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2C11372750F62E00ADB197 /* GenreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTests.swift; sourceTree = "<group>"; };
 		CF2C11392750F62E00ADB197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF97690F275A2C44009EB0FA /* GenreModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreModule.swift; sourceTree = "<group>"; };
+		CF976911275A2C4D009EB0FA /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF976915275A2C52009EB0FA /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF97691A275A2CC6009EB0FA /* GenreListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListInteractor.swift; sourceTree = "<group>"; };
+		CF97691C275A2CE7009EB0FA /* GenreListScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListScreenViewModel.swift; sourceTree = "<group>"; };
+		CF97691E275A2D06009EB0FA /* GenreListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListScreen.swift; sourceTree = "<group>"; };
+		CF976921275A2D3E009EB0FA /* GenreDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDetailInteractor.swift; sourceTree = "<group>"; };
+		CF976923275A2D89009EB0FA /* GenreDetailScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDetailScreenViewModel.swift; sourceTree = "<group>"; };
+		CF976925275A2DA9009EB0FA /* GenreDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDetailScreen.swift; sourceTree = "<group>"; };
+		CF97692D275A3065009EB0FA /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CC215325804C1D5F038FF6 /* Pods_Genre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Genre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF673D01D8CE618EE3584C97 /* Pods-Genre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Genre.debug.xcconfig"; path = "Target Support Files/Pods-Genre/Pods-Genre.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,6 +80,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				99B12EC939578BFE4CF9F2BE /* Pods_Genre.framework in Frameworks */,
+				CF97692E275A3065009EB0FA /* DesignSystem.framework in Frameworks */,
+				CF976916275A2C52009EB0FA /* Core.framework in Frameworks */,
+				CF976912275A2C4D009EB0FA /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +100,9 @@
 		65EACAAA775A7DA4B9AFD6DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF97692D275A3065009EB0FA /* DesignSystem.framework */,
+				CF976915275A2C52009EB0FA /* Core.framework */,
+				CF976911275A2C4D009EB0FA /* Common.framework */,
 				E7CC215325804C1D5F038FF6 /* Pods_Genre.framework */,
 			);
 			name = Frameworks;
@@ -86,8 +131,10 @@
 		CF2C112B2750F62E00ADB197 /* Genre */ = {
 			isa = PBXGroup;
 			children = (
+				CF976918275A2C9D009EB0FA /* Screen */,
 				CF2C112C2750F62E00ADB197 /* Genre.h */,
 				CF2C112D2750F62E00ADB197 /* Info.plist */,
+				CF97690F275A2C44009EB0FA /* GenreModule.swift */,
 			);
 			path = Genre;
 			sourceTree = "<group>";
@@ -99,6 +146,35 @@
 				CF2C11392750F62E00ADB197 /* Info.plist */,
 			);
 			path = GenreTests;
+			sourceTree = "<group>";
+		};
+		CF976918275A2C9D009EB0FA /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				CF976920275A2D22009EB0FA /* Genre Detail */,
+				CF976919275A2CBA009EB0FA /* Genre List */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		CF976919275A2CBA009EB0FA /* Genre List */ = {
+			isa = PBXGroup;
+			children = (
+				CF97691A275A2CC6009EB0FA /* GenreListInteractor.swift */,
+				CF97691C275A2CE7009EB0FA /* GenreListScreenViewModel.swift */,
+				CF97691E275A2D06009EB0FA /* GenreListScreen.swift */,
+			);
+			path = "Genre List";
+			sourceTree = "<group>";
+		};
+		CF976920275A2D22009EB0FA /* Genre Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CF976921275A2D3E009EB0FA /* GenreDetailInteractor.swift */,
+				CF976923275A2D89009EB0FA /* GenreDetailScreenViewModel.swift */,
+				CF976925275A2DA9009EB0FA /* GenreDetailScreen.swift */,
+			);
+			path = "Genre Detail";
 			sourceTree = "<group>";
 		};
 		ED9A2FA1A13236724B6ED5AB /* Pods */ = {
@@ -134,6 +210,7 @@
 				CF2C11252750F62E00ADB197 /* Sources */,
 				CF2C11262750F62E00ADB197 /* Frameworks */,
 				CF2C11272750F62E00ADB197 /* Resources */,
+				CF976914275A2C4D009EB0FA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,6 +250,7 @@
 				TargetAttributes = {
 					CF2C11282750F62E00ADB197 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					CF2C11312750F62E00ADB197 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -245,6 +323,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF97691B275A2CC6009EB0FA /* GenreListInteractor.swift in Sources */,
+				CF976922275A2D3E009EB0FA /* GenreDetailInteractor.swift in Sources */,
+				CF97691F275A2D06009EB0FA /* GenreListScreen.swift in Sources */,
+				CF976910275A2C44009EB0FA /* GenreModule.swift in Sources */,
+				CF976924275A2D89009EB0FA /* GenreDetailScreenViewModel.swift in Sources */,
+				CF97691D275A2CE7009EB0FA /* GenreListScreenViewModel.swift in Sources */,
+				CF976926275A2DA9009EB0FA /* GenreDetailScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF673D01D8CE618EE3584C97 /* Pods-Genre.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RLQU784C73;
@@ -409,6 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.rudiyanto.Game-Catalogue.feature.Genre";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -418,6 +505,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8675886D87440F434A39C783 /* Pods-Genre.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RLQU784C73;
@@ -442,6 +530,7 @@
 		CF2C11412750F62E00ADB197 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RLQU784C73;
 				INFOPLIST_FILE = GenreTests/Info.plist;
@@ -460,6 +549,7 @@
 		CF2C11422750F62E00ADB197 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RLQU784C73;
 				INFOPLIST_FILE = GenreTests/Info.plist;
