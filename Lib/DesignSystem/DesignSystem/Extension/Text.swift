@@ -17,6 +17,10 @@
 
 import SwiftUI
 
-public protocol Provider {
-    
+extension Text {
+    public func asSectionTitle() -> some View {
+        self.font(.title2)
+            .fontWeight(.semibold)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
 }

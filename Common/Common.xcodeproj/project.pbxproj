@@ -14,7 +14,6 @@
 		CF226B4827563C6400C8FBBC /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF226B4727563C6400C8FBBC /* Favourite.swift */; };
 		CF226B4A27563CDD00C8FBBC /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF226B4927563CDD00C8FBBC /* Date.swift */; };
 		CF226B4C27563CEE00C8FBBC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF226B4B27563CEE00C8FBBC /* String.swift */; };
-		CF226B4E27563D0700C8FBBC /* WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF226B4D27563D0700C8FBBC /* WebImage.swift */; };
 		CF2755AC27564A4C0077B632 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2755AB27564A4C0077B632 /* Core.framework */; };
 		CF2755AD27564A4C0077B632 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF2755AB27564A4C0077B632 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF3543652754C0690012D5C7 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF35435B2754C0680012D5C7 /* Common.framework */; };
@@ -35,6 +34,10 @@
 		CF7EA5ED2757A8D8000E2E57 /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5EC2757A8D8000E2E57 /* GameRepository.swift */; };
 		CF7EA5EF2757A8FC000E2E57 /* GamePublisherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5EE2757A8FC000E2E57 /* GamePublisherRepository.swift */; };
 		CF7EA5F12757A90C000E2E57 /* GameGenreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5F02757A90C000E2E57 /* GameGenreRepository.swift */; };
+		CF7EA5FE2757ABA5000E2E57 /* HomeProviderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5FD2757ABA5000E2E57 /* HomeProviderInterface.swift */; };
+		CF7EA6292757B61C000E2E57 /* GamesVerticalGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA6282757B61C000E2E57 /* GamesVerticalGrid.swift */; };
+		CF7EA62B2757B64E000E2E57 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA62A2757B64E000E2E57 /* DesignSystem.framework */; };
+		CF7EA62C2757B64E000E2E57 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA62A2757B64E000E2E57 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				CF2755AD27564A4C0077B632 /* Core.framework in Embed Frameworks */,
+				CF7EA62C2757B64E000E2E57 /* DesignSystem.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,7 +74,6 @@
 		CF226B4727563C6400C8FBBC /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
 		CF226B4927563CDD00C8FBBC /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		CF226B4B27563CEE00C8FBBC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		CF226B4D27563D0700C8FBBC /* WebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImage.swift; sourceTree = "<group>"; };
 		CF2755AB27564A4C0077B632 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF35435B2754C0680012D5C7 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF35435E2754C0680012D5C7 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -93,6 +96,9 @@
 		CF7EA5EC2757A8D8000E2E57 /* GameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
 		CF7EA5EE2757A8FC000E2E57 /* GamePublisherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePublisherRepository.swift; sourceTree = "<group>"; };
 		CF7EA5F02757A90C000E2E57 /* GameGenreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGenreRepository.swift; sourceTree = "<group>"; };
+		CF7EA5FD2757ABA5000E2E57 /* HomeProviderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProviderInterface.swift; sourceTree = "<group>"; };
+		CF7EA6282757B61C000E2E57 /* GamesVerticalGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesVerticalGrid.swift; sourceTree = "<group>"; };
+		CF7EA62A2757B64E000E2E57 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29BC4942FCE9904EF6E366D /* Pods-Common.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Common.release.xcconfig"; path = "Target Support Files/Pods-Common/Pods-Common.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7EA62B2757B64E000E2E57 /* DesignSystem.framework in Frameworks */,
 				AFD357A8F491C64D94266B84 /* Pods_Common.framework in Frameworks */,
 				CF2755AC27564A4C0077B632 /* Core.framework in Frameworks */,
 			);
@@ -143,7 +150,6 @@
 			children = (
 				CF226B4927563CDD00C8FBBC /* Date.swift */,
 				CF226B4B27563CEE00C8FBBC /* String.swift */,
-				CF226B4D27563D0700C8FBBC /* WebImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -171,6 +177,8 @@
 		CF35435D2754C0680012D5C7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CF7EA6262757B606000E2E57 /* Component */,
+				CF7EA5FC2757AB8E000E2E57 /* Provider */,
 				CF7EA5CB2757A138000E2E57 /* Data */,
 				CF226B4427563C1C00C8FBBC /* Extension */,
 				CF226B3F27563B9F00C8FBBC /* Model */,
@@ -267,9 +275,34 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		CF7EA5FC2757AB8E000E2E57 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA5FD2757ABA5000E2E57 /* HomeProviderInterface.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		CF7EA6262757B606000E2E57 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA6272757B611000E2E57 /* Molecule */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		CF7EA6272757B611000E2E57 /* Molecule */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA6282757B61C000E2E57 /* GamesVerticalGrid.swift */,
+			);
+			path = Molecule;
+			sourceTree = "<group>";
+		};
 		D299F8F87A7DC22C11830CCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF7EA62A2757B64E000E2E57 /* DesignSystem.framework */,
 				CF2755AB27564A4C0077B632 /* Core.framework */,
 				B758FBA43978030295B8F88A /* Pods_Common.framework */,
 			);
@@ -415,10 +448,10 @@
 				CF7EA5CF2757A33D000E2E57 /* RemoteDataSource.swift in Sources */,
 				CF7EA5D42757A3B9000E2E57 /* RawgGameShort.swift in Sources */,
 				CF7EA5D82757A434000E2E57 /* RawgGamePlatformDetail.swift in Sources */,
-				CF226B4E27563D0700C8FBBC /* WebImage.swift in Sources */,
 				CF7EA5D62757A3E1000E2E57 /* RawgGameDetail.swift in Sources */,
 				CF226B4C27563CEE00C8FBBC /* String.swift in Sources */,
 				CF7EA5E72757A698000E2E57 /* LocalDataSource.swift in Sources */,
+				CF7EA5FE2757ABA5000E2E57 /* HomeProviderInterface.swift in Sources */,
 				CF226B4127563BB200C8FBBC /* Profile.swift in Sources */,
 				CF226B4A27563CDD00C8FBBC /* Date.swift in Sources */,
 				CF226B4627563C4E00C8FBBC /* Screenshot.swift in Sources */,
@@ -434,6 +467,7 @@
 				CF7EA5ED2757A8D8000E2E57 /* GameRepository.swift in Sources */,
 				CF7EA5DF2757A595000E2E57 /* Error.swift in Sources */,
 				CF226B4827563C6400C8FBBC /* Favourite.swift in Sources */,
+				CF7EA6292757B61C000E2E57 /* GamesVerticalGrid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

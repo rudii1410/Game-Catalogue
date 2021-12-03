@@ -17,6 +17,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import DesignSystem
 
 struct ItemGrid: View {
     private static let ColumnCount = 3
@@ -34,7 +35,7 @@ struct ItemGrid: View {
         VStack(spacing: 6) {
             HStack {
                 Text(sectionTitle)
-//                    .asSectionTitle()
+                    .asSectionTitle()
                 if self.onSeeAllPressed != nil {
                     Button("See all") {
                         self.onSeeAllPressed?()
@@ -59,7 +60,7 @@ struct ItemGrid: View {
                             .padding(.vertical, 6)
                     }
                     .frame(width: cardWidth)
-//                    .asCard()
+                    .asCard()
                     .onTapGesture {
                         self.onItemPressed(self.data[idx].id)
                     }

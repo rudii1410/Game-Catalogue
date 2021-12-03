@@ -71,7 +71,7 @@ class HomeScreenViewModel: ObservableObject {
 
     func fetchPublisherList() {
         self.homeUseCase
-            .getPublisherList(page: 1, count: Constant.maxPublisherDataLoad)
+            .getPublisherList(page: 1, count: Constant.maxDataLoad)
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { response in
@@ -90,7 +90,7 @@ class HomeScreenViewModel: ObservableObject {
 
     func fetchGenreList() {
         self.homeUseCase
-            .getGenreList(page: 1, count: Constant.maxGenreDataLoad)
+            .getGenreList(page: 1, count: Constant.maxDataLoad)
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { response in
@@ -109,7 +109,7 @@ class HomeScreenViewModel: ObservableObject {
         self.isLoadingGameData = true
 
         self.homeUseCase
-            .getGameListByUserFavourites(page: self.gameListPage, count: Constant.maxGameDataLoad)
+            .getGameListByUserFavourites(page: self.gameListPage, count: Constant.maxDataLoad)
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: {

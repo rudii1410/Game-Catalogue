@@ -17,9 +17,9 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import Common
+import DesignSystem
 
-struct GamesVerticalGrid: View {
+public struct GamesVerticalGrid: View {
     private static let ColumnCount = 2
     private static let Spacing = 15
     private static let screenWidth = UIScreen.main.bounds.width
@@ -32,7 +32,14 @@ struct GamesVerticalGrid: View {
     var loadMore: (() -> Void)?
     var onItemTap: ((String) -> Void)?
 
-    var body: some View {
+    public init (title: String, games: Binding<[Game]>, loadMore: (() -> Void)?, onItemTap: ((String) -> Void)?) {
+        self.title = title
+        self._datas = games
+        self.loadMore = loadMore
+        self.onItemTap = onItemTap
+    }
+
+    public var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(title)
                 .asSectionTitle()

@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		84ED8A6EA2CC588D50D77BF5 /* Pods_DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BC29111B812D55F54D67793 /* Pods_DesignSystem.framework */; };
+		CF7EA60F2757B039000E2E57 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA60E2757B039000E2E57 /* Text.swift */; };
+		CF7EA6162757B0C3000E2E57 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA6152757B0C3000E2E57 /* View.swift */; };
+		CF7EA61A2757B10A000E2E57 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA6192757B10A000E2E57 /* ImageSlider.swift */; };
+		CF7EA61C2757B140000E2E57 /* WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA61B2757B140000E2E57 /* WebImage.swift */; };
+		CF7EA61E2757B167000E2E57 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA61D2757B167000E2E57 /* LoadingView.swift */; };
+		CF7EA6232757B45E000E2E57 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA6222757B45E000E2E57 /* RoundedCorner.swift */; };
 		CFB926FA2750F2F400829020 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB926F02750F2F400829020 /* DesignSystem.framework */; };
 		CFB926FF2750F2F400829020 /* DesignSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB926FE2750F2F400829020 /* DesignSystemTests.swift */; };
 		CFB927012750F2F400829020 /* DesignSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB926F32750F2F400829020 /* DesignSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,6 +32,12 @@
 /* Begin PBXFileReference section */
 		473F26F0139D8E534B81C948 /* Pods-DesignSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesignSystem.release.xcconfig"; path = "Target Support Files/Pods-DesignSystem/Pods-DesignSystem.release.xcconfig"; sourceTree = "<group>"; };
 		7BC29111B812D55F54D67793 /* Pods_DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF7EA60E2757B039000E2E57 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		CF7EA6152757B0C3000E2E57 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		CF7EA6192757B10A000E2E57 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
+		CF7EA61B2757B140000E2E57 /* WebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImage.swift; sourceTree = "<group>"; };
+		CF7EA61D2757B167000E2E57 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CF7EA6222757B45E000E2E57 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		CFB926F02750F2F400829020 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB926F32750F2F400829020 /* DesignSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DesignSystem.h; sourceTree = "<group>"; };
 		CFB926F42750F2F400829020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,6 +75,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF7EA60D2757B023000E2E57 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA60E2757B039000E2E57 /* Text.swift */,
+				CF7EA6152757B0C3000E2E57 /* View.swift */,
+				CF7EA61B2757B140000E2E57 /* WebImage.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CF7EA6172757B0FB000E2E57 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA6182757B102000E2E57 /* Molecule */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		CF7EA6182757B102000E2E57 /* Molecule */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA6192757B10A000E2E57 /* ImageSlider.swift */,
+				CF7EA61D2757B167000E2E57 /* LoadingView.swift */,
+			);
+			path = Molecule;
+			sourceTree = "<group>";
+		};
+		CF7EA6212757B453000E2E57 /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EA6222757B45E000E2E57 /* RoundedCorner.swift */,
+			);
+			path = Shape;
+			sourceTree = "<group>";
+		};
 		CFB926E62750F2F400829020 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +133,9 @@
 		CFB926F22750F2F400829020 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				CF7EA6212757B453000E2E57 /* Shape */,
+				CF7EA6172757B0FB000E2E57 /* Component */,
+				CF7EA60D2757B023000E2E57 /* Extension */,
 				CFB926F32750F2F400829020 /* DesignSystem.h */,
 				CFB926F42750F2F400829020 /* Info.plist */,
 			);
@@ -173,6 +223,7 @@
 				TargetAttributes = {
 					CFB926EF2750F2F400829020 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					CFB926F82750F2F400829020 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -245,6 +296,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7EA6232757B45E000E2E57 /* RoundedCorner.swift in Sources */,
+				CF7EA6162757B0C3000E2E57 /* View.swift in Sources */,
+				CF7EA60F2757B039000E2E57 /* Text.swift in Sources */,
+				CF7EA61C2757B140000E2E57 /* WebImage.swift in Sources */,
+				CF7EA61E2757B167000E2E57 /* LoadingView.swift in Sources */,
+				CF7EA61A2757B10A000E2E57 /* ImageSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +450,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6E41EFF3E19B85F443A6C8B /* Pods-DesignSystem.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RLQU784C73;
@@ -409,6 +467,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.rudiyanto.Game-Catalogue.DesignSystem";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -418,6 +477,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 473F26F0139D8E534B81C948 /* Pods-DesignSystem.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RLQU784C73;
@@ -442,6 +502,7 @@
 		CFB927082750F2F400829020 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RLQU784C73;
 				INFOPLIST_FILE = DesignSystemTests/Info.plist;
@@ -460,6 +521,7 @@
 		CFB927092750F2F400829020 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RLQU784C73;
 				INFOPLIST_FILE = DesignSystemTests/Info.plist;

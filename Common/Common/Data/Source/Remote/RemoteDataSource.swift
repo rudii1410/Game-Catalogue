@@ -34,6 +34,8 @@ public protocol RemoteDataSourceInterface {
 public final class RemoteDataSource: RemoteDataSourceInterface {
     private let rawgApiKey = GameCatalogueKeys().rawgApiKey
     private let rawgApiUrl = "https://api.rawg.io/api"
+
+    public init() {}
 }
 
 extension RemoteDataSource {

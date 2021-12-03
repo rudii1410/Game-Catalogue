@@ -33,11 +33,11 @@ public protocol GameRepositoryInterface {
 }
 
 public class GameRepository: GameRepositoryInterface {
-    private let localDataSource: LocalDataSource
-    private let remoteDataSource: RemoteDataSource
-    private let database: CoreDataWrapper
+    private let localDataSource: LocalDataSourceInterface
+    private let remoteDataSource: RemoteDataSourceInterface
+    private let database: CoreDataWrapperInterface
 
-    public init(local: LocalDataSource, remote: RemoteDataSource, database: CoreDataWrapper) {
+    public init(local: LocalDataSourceInterface, remote: RemoteDataSourceInterface, database: CoreDataWrapperInterface) {
         self.localDataSource = local
         self.remoteDataSource = remote
         self.database = database

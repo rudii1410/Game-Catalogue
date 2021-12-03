@@ -17,6 +17,11 @@
 
 import SwiftUI
 
-public protocol Provider {
-    
+extension View {
+    public func asCard() -> some View {
+        self.overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.gray, lineWidth: 1)
+        )
+    }
 }

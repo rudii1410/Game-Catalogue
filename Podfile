@@ -40,6 +40,8 @@ end
 # region Feature Module
 target 'Home' do
   project 'Features/Home/Home.xcodeproj'
+
+  pod 'SDWebImageSwiftUI', $sdwebimageswiftui_version
 end
 
 target 'Publisher' do

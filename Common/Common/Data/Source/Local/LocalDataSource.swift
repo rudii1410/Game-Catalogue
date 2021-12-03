@@ -27,9 +27,9 @@ public protocol LocalDataSourceInterface {
 }
 
 public class LocalDataSource: LocalDataSourceInterface {
-    private let sharedDb: CoreDataWrapper
+    private let sharedDb: CoreDataWrapperInterface
 
-    public init(database: CoreDataWrapper) {
+    public init(database: CoreDataWrapperInterface) {
         self.sharedDb = database
     }
 }
@@ -49,7 +49,7 @@ extension LocalDataSource {
 
     public func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[FavouriteEntity], Error> {
         let sort = NSSortDescriptor(key: #keyPath(FavouriteEntity.createdAt), ascending: false)
-        return sharedDb.fetchAll(offset: offset, size: limit, sortDesc: [sort])
+        return sharedDb.fetchAll(offset: offset, size: limit, predicate: nil, sortDesc: [sort])
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }

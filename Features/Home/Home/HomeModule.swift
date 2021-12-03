@@ -15,27 +15,32 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Combine
+import Core
 import Common
+import SwiftUI
 
-protocol FavouriteUseCase {
-    func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[Favourite], Error>
-    func removeGameFromFavourites(_ slug: String) -> AnyPublisher<Void, Error>
-}
+public class HomeModule: Module, HomeProviderInterface {
+    private let container: ServiceContainer
 
-class FavouriteInteractor: FavouriteUseCase {
-    private let gameRepo: GameRepositoryInterface
-    init(gameRepo: GameRepositoryInterface) {
-        self.gameRepo = gameRepo
-    }
-}
-
-extension FavouriteInteractor {
-    func fetchFavourites(offset: Int?, limit: Int?) -> AnyPublisher<[Favourite], Error> {
-        return self.gameRepo.fetchFavourites(offset: offset, limit: limit)
+    public required init(container: ServiceContainer) {
+        self.container = container
     }
 
-    func removeGameFromFavourites(_ slug: String) -> AnyPublisher<Void, Error> {
-        return self.gameRepo.removeGameFromFavourites(slug)
+    public func load() {
+        self.container.register(HomeInteractor.self) { service in
+            return HomeInteractor(
+                gameRepo: service.get(),
+                publisherRepo: service.get(),
+                genreRepo: service.get()
+            )
+        }
+    }
+
+    public func getHomeScreenView() -> AnyView {
+        return AnyView(
+            HomeScreen(
+                model: .init(interactor: self.container.get())
+            )
+        )
     }
 }

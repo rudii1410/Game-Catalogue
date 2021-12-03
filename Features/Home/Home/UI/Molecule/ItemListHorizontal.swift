@@ -17,6 +17,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import DesignSystem
 
 struct ItemListHorizontal: View {
     var sectionTitle: String = ""
@@ -27,8 +28,8 @@ struct ItemListHorizontal: View {
     var body: some View {
         VStack(spacing: 6) {
             HStack {
-//                Text(sectionTitle)
-//                    .asSectionTitle()
+                Text(sectionTitle)
+                    .asSectionTitle()
                 if self.onSeeAllPressed != nil {
                     Button("See all") {
                         self.onSeeAllPressed?()

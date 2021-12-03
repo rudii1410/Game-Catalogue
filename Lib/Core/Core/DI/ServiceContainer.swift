@@ -26,10 +26,12 @@ public class ServiceContainer {
     public static var instance = ServiceContainer()
     public init() {}
 
-    public func register(_ service: AnyClass, _ callback: @escaping ServiceCreator) {
+    public func register(_ service: Any, _ callback: @escaping ServiceCreator) {
         let key = String(describing: service.self)
-        self.services[key] = callback
-        print("\(key) is registered")
+        if (self.services[key] == nil) {
+            self.services[key] = callback
+            print("\(key) is registered")
+        }
     }
 
     public func unregister(_ service: AnyClass) {

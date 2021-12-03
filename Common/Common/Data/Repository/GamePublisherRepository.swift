@@ -24,9 +24,9 @@ public protocol GamePublisherRepositoryInterface {
 }
 
 public class GamePublisherRepository: GamePublisherRepositoryInterface {
-    private let remoteDataSource: RemoteDataSource
+    private let remoteDataSource: RemoteDataSourceInterface
 
-    public init(remote: RemoteDataSource) {
+    public init(remote: RemoteDataSourceInterface) {
         self.remoteDataSource = remote
     }
 }

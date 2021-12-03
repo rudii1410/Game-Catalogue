@@ -30,14 +30,14 @@ struct FavouritesScreen: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            NavigationLink(
-                destination: GameDetailScreen(
-                    model: .init(interactor: ServiceContainer.instance.get()),
-                    slug: self.model.selectedSlug
-                ),
-                isActive: self.$model.navigateToGameDetail,
-                label: { EmptyView() }
-            )
+//            NavigationLink(
+//                destination: GameDetailScreen(
+//                    model: .init(interactor: ServiceContainer.instance.get()),
+//                    slug: self.model.selectedSlug
+//                ),
+//                isActive: self.$model.navigateToGameDetail,
+//                label: { EmptyView() }
+//            )
             SearchBar(searchText: $searchText)
                 .padding(.horizontal, 12)
                 .padding(.top, 12)

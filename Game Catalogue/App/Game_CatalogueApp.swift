@@ -17,57 +17,81 @@
 
 import SwiftUI
 import Core
+import Common
+
+import Home
 
 @main
 struct GameCatalogueApp: App {
+    private let container: ServiceContainer
     init() {
-        ServiceContainer.instance.register(CoreDataWrapper.self) { _ in
+        self.container = ServiceContainer()
+
+        initDIContainer(container: container)
+        initTempDiContainer(container: container)
+        loadFeatureModule(container: container)
+    }
+
+    private func initDIContainer(container: ServiceContainer) {
+        container.register(CoreDataWrapperInterface.self) { _ in
             return CoreDataWrapper()
         }
-        ServiceContainer.instance.register(ProfileRepository.self) { _ in
-            return ProfileRepository(userDef: UserDefaults.standard)
+
+        container.register(LocalDataSourceInterface.self) { resolver in
+            return LocalDataSource(database: resolver.get())
+        }
+        container.register(RemoteDataSourceInterface.self) { _ in
+            return RemoteDataSource()
         }
 
-        ServiceContainer.instance.register(HomeInteractor.self) { service in
-            return HomeInteractor(gameRepo: service.get(), publisherRepo: service.get(), genreRepo: service.get())
+        container.register(GameRepositoryInterface.self) { resolver in
+            return GameRepository(local: resolver.get(), remote: resolver.get(), database: resolver.get())
         }
-        ServiceContainer.instance.register(FavouriteInteractor.self) { service in
-            return FavouriteInteractor(gameRepo: service.get())
+        container.register(GamePublisherRepositoryInterface.self) { resolver in
+            return GamePublisherRepository(remote: resolver.get())
         }
-        ServiceContainer.instance.register(ProfileInteractor.self) { service in
-            return ProfileInteractor(profileRepo: service.get())
+        container.register(GameGenreRepositoryInterface.self) { resolver in
+            return GameGenreRepository(remote: resolver.get())
         }
-        ServiceContainer.instance.register(PublisherListInteractor.self) { service in
-            return PublisherListInteractor(publisher: service.get())
+    }
+
+    private func initTempDiContainer(container: ServiceContainer) {
+        container.register(ProfileRepository.self) { _ in
+            return ProfileRepository(userDef: UserDefaults.standard)
         }
-        ServiceContainer.instance.register(PublisherDetailInteractor.self) { service in
-            return PublisherDetailInteractor(gameRepo: service.get(), publisherRepo: service.get())
+        container.register(FavouriteInteractor.self) { resolver in
+            return FavouriteInteractor(gameRepo: resolver.get())
         }
-        ServiceContainer.instance.register(GenreDetailInteractor.self) { service in
-            return GenreDetailInteractor(gameRepo: service.get(), genreRepo: service.get())
+        container.register(ProfileInteractor.self) { resolver in
+            return ProfileInteractor(profileRepo: resolver.get())
         }
-        ServiceContainer.instance.register(GenreListInteractor.self) { service in
-            return GenreListInteractor(genreRepo: service.get())
+    }
+
+    private func loadFeatureModule(container: ServiceContainer) {
+        let moduleLoader = ModuleLoader()
+        moduleLoader.registerModule(module: HomeModule.self, provider: HomeProviderInterface.self) { _ in
+            return HomeModule(container: container)
         }
-        ServiceContainer.instance.register(GameDetailInteractor.self) { service in
-            return GameDetailInteractor(gameRepo: service.get())
-        }
+
+        moduleLoader.loadAllModules()
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(container: self.container)
         }
     }
 }
 
 struct ContentView: View {
     @State private var currentTab: Tab = .home
+    let container: ServiceContainer
 
+    let homeProvider: HomeProviderInterface = Navigator.instance.getProvider(HomeProviderInterface.self)
     var body: some View {
         TabView(selection: $currentTab) {
             NavigationView {
-                HomeScreen(model: .init(interactor: ServiceContainer.instance.get()))
+                homeProvider.getHomeScreenView()
                     .navigationBarTitle("Games catalogue", displayMode: .large)
             }
             .tag(Tab.home)
@@ -77,7 +101,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                FavouritesScreen(model: .init(interactor: ServiceContainer.instance.get()))
+                FavouritesScreen(model: .init(interactor: container.get()))
                     .navigationBarTitle("Favourite Games", displayMode: .large)
             }
             .tag(Tab.favourite)
@@ -87,7 +111,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                ProfileScreen(model: .init(interactor: ServiceContainer.instance.get()))
+                ProfileScreen(model: .init(interactor: container.get()))
                     .navigationBarTitle("My Profile", displayMode: .inline)
             }
             .tag(Tab.profile)

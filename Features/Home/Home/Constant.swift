@@ -15,8 +15,6 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import SwiftUI
-
-public protocol Provider {
-    
+struct Constant {
+    static let maxDataLoad: Int = 10
 }

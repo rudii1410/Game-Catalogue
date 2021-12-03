@@ -17,6 +17,8 @@
 
 import SwiftUI
 import Core
+import DesignSystem
+import Common
 
 struct HomeScreen: View {
     @ObservedObject var model: HomeScreenViewModel
@@ -29,14 +31,14 @@ struct HomeScreen: View {
 
     var body: some View {
         GeometryReader { fullScreen in
-            NavigationLink(
-                destination: GameDetailScreen(
-                    model: .init(interactor: ServiceContainer.instance.get()),
-                    slug: self.model.selectedGameSlug
-                ),
-                isActive: self.$model.navigateToGameDetail,
-                label: { EmptyView() }
-            )
+//            NavigationLink(
+//                destination: GameDetailScreen(
+//                    model: .init(interactor: ServiceContainer.instance.get()),
+//                    slug: self.model.selectedGameSlug
+//                ),
+//                isActive: self.$model.navigateToGameDetail,
+//                label: { EmptyView() }
+//            )
             ScrollView {
                 renderImageSlider(fullScreen)
                 Divider()
@@ -91,22 +93,22 @@ extension HomeScreen {
 extension HomeScreen {
     func renderGamePublisher() -> some View {
         return Group {
-            NavigationLink(
-                destination: PublisherListScreen(
-                    model: .init(interactor: ServiceContainer.instance.get()),
-                    self.model.publisherList
-                ),
-                isActive: self.$model.navigateToPublisherList,
-                label: { EmptyView() }
-            )
-            NavigationLink(
-                destination: PublisherDetailScreen(
-                    model: .init(interactor: ServiceContainer.instance.get()),
-                    slug: self.model.selectedPublisherSlug
-                ),
-                isActive: self.$model.navigateToPublisherDetail,
-                label: { EmptyView() }
-            )
+//            NavigationLink(
+//                destination: PublisherListScreen(
+//                    model: .init(interactor: ServiceContainer.instance.get()),
+//                    self.model.publisherList
+//                ),
+//                isActive: self.$model.navigateToPublisherList,
+//                label: { EmptyView() }
+//            )
+//            NavigationLink(
+//                destination: PublisherDetailScreen(
+//                    model: .init(interactor: ServiceContainer.instance.get()),
+//                    slug: self.model.selectedPublisherSlug
+//                ),
+//                isActive: self.$model.navigateToPublisherDetail,
+//                label: { EmptyView() }
+//            )
             ItemListHorizontal(
                 sectionTitle: "Game Publisher",
                 data: self.model.gamePublisherList,
@@ -123,22 +125,22 @@ extension HomeScreen {
 extension HomeScreen {
     func renderGameGenre() -> some View {
         return Group {
-            NavigationLink(
-                destination: GenreListScreen(
-                    model: .init(interactor: ServiceContainer.instance.get()),
-                    self.model.genreList
-                ),
-                isActive: self.$model.navigateToGenreList,
-                label: { EmptyView() }
-            )
-            NavigationLink(
-                destination: GenreDetailScreen(
-                    model: .init(interactor: ServiceContainer.instance.get()),
-                    slug: self.model.selectedGenreSlug
-                ),
-                isActive: self.$model.navigateToGenreDetail,
-                label: { EmptyView() }
-            )
+//            NavigationLink(
+//                destination: GenreListScreen(
+//                    model: .init(interactor: ServiceContainer.instance.get()),
+//                    self.model.genreList
+//                ),
+//                isActive: self.$model.navigateToGenreList,
+//                label: { EmptyView() }
+//            )
+//            NavigationLink(
+//                destination: GenreDetailScreen(
+//                    model: .init(interactor: ServiceContainer.instance.get()),
+//                    slug: self.model.selectedGenreSlug
+//                ),
+//                isActive: self.$model.navigateToGenreDetail,
+//                label: { EmptyView() }
+//            )
             ItemGrid(
                 sectionTitle: "Popular Genres",
                 data: self.model.gameGenreList,
@@ -160,7 +162,7 @@ extension HomeScreen {
     func renderGameList() -> some View {
         return GamesVerticalGrid(
             title: "You may like these games",
-            datas: self.$model.gameList,
+            games: self.$model.gameList,
             loadMore: self.model.fetchGameList,
             onItemTap: self.model.onGameSelected
         )

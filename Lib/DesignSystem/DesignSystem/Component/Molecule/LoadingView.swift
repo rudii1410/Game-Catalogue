@@ -17,6 +17,21 @@
 
 import SwiftUI
 
-public protocol Provider {
-    
+public struct LoadingView: View {
+    let loadingText: String?
+
+    public init(loadingText: String? = nil) {
+        self.loadingText = loadingText
+    }
+
+    public var body: some View {
+        HStack(alignment: .center, spacing: 6) {
+            Spacer()
+            ProgressView()
+            Text(self.loadingText ?? "Fetching more data for you, hang tight!")
+                .font(.system(size: 12))
+                .fontWeight(.medium)
+            Spacer()
+        }
+    }
 }

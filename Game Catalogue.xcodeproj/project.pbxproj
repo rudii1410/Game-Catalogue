@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31B0BD083288C76F7BC78DFB /* Pods_Game_Catalogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */; };
-		CF0595AB26CD020E00143D6E /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0595AA26CD020E00143D6E /* HomeScreenViewModel.swift */; };
 		CF15055A26CFB4B90064809A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15055926CFB4B90064809A /* Constant.swift */; };
-		CF1D4FD1274BA55000B1E07B /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD0274BA55000B1E07B /* HomeInteractor.swift */; };
 		CF1D4FD3274BB93C00B1E07B /* PublisherListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD2274BB93C00B1E07B /* PublisherListInteractor.swift */; };
 		CF1D4FD5274BB95700B1E07B /* FavouriteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD4274BB95700B1E07B /* FavouriteInteractor.swift */; };
 		CF1D4FD7274BBBAA00B1E07B /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4FD6274BBBAA00B1E07B /* ProfileInteractor.swift */; };
@@ -29,7 +27,6 @@
 		CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */; };
 		CF432A2B26C799BA00A73D96 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF432A2A26C799BA00A73D96 /* ImageSlider.swift */; };
 		CF4D587D26D205C8002F6F54 /* HTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D587C26D205C8002F6F54 /* HTMLView.swift */; };
-		CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54A3B826C6514E00F89E4F /* HomeScreen.swift */; };
 		CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */; };
 		CF5AB40526CE16C30097C09D /* PublisherListScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */; };
 		CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */; };
@@ -37,6 +34,8 @@
 		CF6213F326C3934200580054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F226C3934200580054 /* Assets.xcassets */; };
 		CF6213F626C3934200580054 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6213F526C3934200580054 /* Preview Assets.xcassets */; };
 		CF68E7402744B6F1002917F1 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68E73F2744B6F1002917F1 /* BaseView.swift */; };
+		CF7EA6002757AD44000E2E57 /* Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA5FF2757AD44000E2E57 /* Home.framework */; };
+		CF7EA6012757AD44000E2E57 /* Home.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA5FF2757AD44000E2E57 /* Home.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF81947626CFC653002EAD89 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CF81947526CFC653002EAD89 /* .swiftlint.yml */; };
 		CF9AC95B26CE575C004341BD /* PublisherDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC95A26CE575C004341BD /* PublisherDetailScreen.swift */; };
 		CF9AC95E26CE5B11004341BD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC95D26CE5B11004341BD /* LoadingView.swift */; };
@@ -50,7 +49,6 @@
 		CFD34EA126C8F52E001832D8 /* ItemListHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */; };
 		CFD34EA526C9017D001832D8 /* ItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA426C9017D001832D8 /* ItemGrid.swift */; };
 		CFD34EA926C90855001832D8 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EA826C90855001832D8 /* Text.swift */; };
-		CFD34EB326C93823001832D8 /* GamesVerticalGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EB226C93823001832D8 /* GamesVerticalGrid.swift */; };
 		CFD34EB726C93CB2001832D8 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EB626C93CB2001832D8 /* RoundedCorner.swift */; };
 		CFD34EBC26C93D06001832D8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD34EBB26C93D06001832D8 /* View.swift */; };
 		CFD515AF26EF0E4E004DE1A3 /* ProfileScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD515AE26EF0E4E004DE1A3 /* ProfileScreenViewModel.swift */; };
@@ -69,6 +67,7 @@
 				CF226B5127563D6300C8FBBC /* Common.framework in Embed Frameworks */,
 				CF2C10AE2750F34F00ADB197 /* Core.framework in Embed Frameworks */,
 				CF2C10B22750F35300ADB197 /* DesignSystem.framework in Embed Frameworks */,
+				CF7EA6012757AD44000E2E57 /* Home.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,9 +78,7 @@
 		12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Game_Catalogue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3FC36BE2D4F44DB715F468 /* Pods-Game Catalogue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Catalogue.debug.xcconfig"; path = "Target Support Files/Pods-Game Catalogue/Pods-Game Catalogue.debug.xcconfig"; sourceTree = "<group>"; };
 		C2444ACDC4281FD1375B1BDB /* Pods-Game Catalogue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Catalogue.release.xcconfig"; path = "Target Support Files/Pods-Game Catalogue/Pods-Game Catalogue.release.xcconfig"; sourceTree = "<group>"; };
-		CF0595AA26CD020E00143D6E /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		CF15055926CFB4B90064809A /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		CF1D4FD0274BA55000B1E07B /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		CF1D4FD2274BB93C00B1E07B /* PublisherListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListInteractor.swift; sourceTree = "<group>"; };
 		CF1D4FD4274BB95700B1E07B /* FavouriteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteInteractor.swift; sourceTree = "<group>"; };
 		CF1D4FD6274BBBAA00B1E07B /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
@@ -97,7 +94,6 @@
 		CF432A1A26C786DF00A73D96 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		CF432A2A26C799BA00A73D96 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
 		CF4D587C26D205C8002F6F54 /* HTMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLView.swift; sourceTree = "<group>"; };
-		CF54A3B826C6514E00F89E4F /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		CF5AB3FE26CE08A40097C09D /* PublisherListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreen.swift; sourceTree = "<group>"; };
 		CF5AB40426CE16C30097C09D /* PublisherListScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreenViewModel.swift; sourceTree = "<group>"; };
 		CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardWithText.swift; sourceTree = "<group>"; };
@@ -108,6 +104,7 @@
 		CF6213F526C3934200580054 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CF6213F726C3934200580054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF68E73F2744B6F1002917F1 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		CF7EA5FF2757AD44000E2E57 /* Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF81947526CFC653002EAD89 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		CF8E61422750E60700CDCFE2 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9AC95A26CE575C004341BD /* PublisherDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailScreen.swift; sourceTree = "<group>"; };
@@ -122,7 +119,6 @@
 		CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListHorizontal.swift; sourceTree = "<group>"; };
 		CFD34EA426C9017D001832D8 /* ItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGrid.swift; sourceTree = "<group>"; };
 		CFD34EA826C90855001832D8 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
-		CFD34EB226C93823001832D8 /* GamesVerticalGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesVerticalGrid.swift; sourceTree = "<group>"; };
 		CFD34EB626C93CB2001832D8 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		CFD34EBB26C93D06001832D8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CFD515AE26EF0E4E004DE1A3 /* ProfileScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewModel.swift; sourceTree = "<group>"; };
@@ -139,6 +135,7 @@
 				CF2C10B12750F35300ADB197 /* DesignSystem.framework in Frameworks */,
 				CF226B5027563D6300C8FBBC /* Common.framework in Frameworks */,
 				31B0BD083288C76F7BC78DFB /* Pods_Game_Catalogue.framework in Frameworks */,
+				CF7EA6002757AD44000E2E57 /* Home.framework in Frameworks */,
 				CF2C10AD2750F34F00ADB197 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +146,7 @@
 		9F9E4ABF0C4EAC14252D1F23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF7EA5FF2757AD44000E2E57 /* Home.framework */,
 				CF226B4F27563D6300C8FBBC /* Common.framework */,
 				CF2C10B02750F35300ADB197 /* DesignSystem.framework */,
 				CF2C10AC2750F34F00ADB197 /* Core.framework */,
@@ -157,16 +155,6 @@
 				12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CF0595A926CD01FC00143D6E /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				CF54A3B826C6514E00F89E4F /* HomeScreen.swift */,
-				CF0595AA26CD020E00143D6E /* HomeScreenViewModel.swift */,
-				CF1D4FD0274BA55000B1E07B /* HomeInteractor.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		CF15055426CFB3A60064809A /* App */ = {
@@ -223,7 +211,6 @@
 				CF9AC96526CE6047004341BD /* Genre Detail */,
 				CF4045C126CE461A00560D4D /* Publisher Detail */,
 				CF5AB3FD26CE08470097C09D /* Publisher List */,
-				CF0595A926CD01FC00143D6E /* Home */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -305,7 +292,6 @@
 				CFD34EA426C9017D001832D8 /* ItemGrid.swift */,
 				CF3E795126CB84C80087227E /* SearchBar.swift */,
 				CFD34EA026C8F52E001832D8 /* ItemListHorizontal.swift */,
-				CFD34EB226C93823001832D8 /* GamesVerticalGrid.swift */,
 				CF5AB40726CE181B0097C09D /* ImageCardWithText.swift */,
 				CF9AC95D26CE5B11004341BD /* LoadingView.swift */,
 				CF432A2A26C799BA00A73D96 /* ImageSlider.swift */,
@@ -524,7 +510,6 @@
 			files = (
 				CFD34EBC26C93D06001832D8 /* View.swift in Sources */,
 				CF5AB40526CE16C30097C09D /* PublisherListScreenViewModel.swift in Sources */,
-				CF1D4FD1274BA55000B1E07B /* HomeInteractor.swift in Sources */,
 				CF1D4FDF274BC19500B1E07B /* GameDetailInteractor.swift in Sources */,
 				CF5AB40826CE181B0097C09D /* ImageCardWithText.swift in Sources */,
 				CF5AB3FF26CE08A40097C09D /* PublisherListScreen.swift in Sources */,
@@ -536,7 +521,6 @@
 				CFD34EA526C9017D001832D8 /* ItemGrid.swift in Sources */,
 				CF9AC97226CE61B1004341BD /* GenreListScreenViewModel.swift in Sources */,
 				CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */,
-				CFD34EB326C93823001832D8 /* GamesVerticalGrid.swift in Sources */,
 				CF4045C826CE4E1000560D4D /* PublisherDetailScreenViewModel.swift in Sources */,
 				CF1D4FD9274BBEA300B1E07B /* PublisherDetailInteractor.swift in Sources */,
 				CF9AC97926CE64CA004341BD /* GameDetailScreenViewModel.swift in Sources */,
@@ -548,7 +532,6 @@
 				CFC61BEC26EB665300417D1D /* FavouriteScreenViewModel.swift in Sources */,
 				CF1D4FDD274BC0EC00B1E07B /* GenreListInteractor.swift in Sources */,
 				CF1D4FD7274BBBAA00B1E07B /* ProfileInteractor.swift in Sources */,
-				CF54A3B926C6514E00F89E4F /* HomeScreen.swift in Sources */,
 				CF1D4FD3274BB93C00B1E07B /* PublisherListInteractor.swift in Sources */,
 				CF3E795226CB84C80087227E /* SearchBar.swift in Sources */,
 				CF9AC96F26CE617A004341BD /* GenreListScreen.swift in Sources */,
@@ -556,7 +539,6 @@
 				CFD34EA126C8F52E001832D8 /* ItemListHorizontal.swift in Sources */,
 				CFD515B126EF2739004DE1A3 /* TextfieldAlert.swift in Sources */,
 				CF432A1B26C786DF00A73D96 /* ProfileScreen.swift in Sources */,
-				CF0595AB26CD020E00143D6E /* HomeScreenViewModel.swift in Sources */,
 				CF9AC95B26CE575C004341BD /* PublisherDetailScreen.swift in Sources */,
 				CFE8D9E126D8F99B0054834B /* FavouriteScreen.swift in Sources */,
 				CF9AC95E26CE5B11004341BD /* LoadingView.swift in Sources */,

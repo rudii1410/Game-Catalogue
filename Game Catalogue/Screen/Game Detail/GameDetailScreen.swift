@@ -96,13 +96,13 @@ struct GameDetailScreen: View {
                         .padding(.bottom, 22)
                     renderDeveloperAndPublisherSection()
                         .padding(.bottom, 22)
-                    GamesVerticalGrid(
-                        title: "Game like this",
-                        datas: self.$model.gameList,
-                        loadMore: self.model.loadGames,
-                        onItemTap: self.model.onGameTap
-                    )
-                    .padding(.bottom, 8)
+//                    GamesVerticalGrid(
+//                        title: "Game like this",
+//                        datas: self.$model.gameList,
+//                        loadMore: self.model.loadGames,
+//                        onItemTap: self.model.onGameTap
+//                    )
+//                    .padding(.bottom, 8)
                     LoadingView()
                     Spacer(minLength: 22)
                 }
