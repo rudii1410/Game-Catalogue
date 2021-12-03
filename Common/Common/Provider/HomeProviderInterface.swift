@@ -20,4 +20,5 @@ import SwiftUI
 
 public protocol HomeProviderInterface: Provider {
     func getHomeScreenView() -> AnyView
+    func getFavouriteScreenView() -> AnyView
 }

@@ -30,7 +30,7 @@ class FavouriteScreenViewModel: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
 
     private let favouriteUsecase: FavouriteUseCase
-    init(interactor: FavouriteInteractor) {
+    init(interactor: FavouriteUseCase) {
         self.favouriteUsecase = interactor
     }
 

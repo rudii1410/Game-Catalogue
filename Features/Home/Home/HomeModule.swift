@@ -27,18 +27,29 @@ public class HomeModule: Module, HomeProviderInterface {
     }
 
     public func load() {
-        self.container.register(HomeInteractor.self) { service in
+        self.container.register(HomeUseCase.self) { resolver in
             return HomeInteractor(
-                gameRepo: service.get(),
-                publisherRepo: service.get(),
-                genreRepo: service.get()
+                gameRepo: resolver.get(),
+                publisherRepo: resolver.get(),
+                genreRepo: resolver.get()
             )
+        }
+        self.container.register(FavouriteUseCase.self) { resolver in
+            return FavouriteInteractor(gameRepo: resolver.get())
         }
     }
 
     public func getHomeScreenView() -> AnyView {
         return AnyView(
             HomeScreen(
+                model: .init(interactor: self.container.get())
+            )
+        )
+    }
+
+    public func getFavouriteScreenView() -> AnyView {
+        return AnyView(
+            FavouritesScreen(
                 model: .init(interactor: self.container.get())
             )
         )

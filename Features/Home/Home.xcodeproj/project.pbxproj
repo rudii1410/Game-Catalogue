@@ -24,6 +24,10 @@
 		CF7EA6122757B068000E2E57 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF7EA6102757B068000E2E57 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF7EA6142757B09C000E2E57 /* ItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA6132757B09C000E2E57 /* ItemGrid.swift */; };
 		CF7EA6202757B3D9000E2E57 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA61F2757B3D9000E2E57 /* Constant.swift */; };
+		CFD3009A2759FBD500A97944 /* FavouriteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300992759FBD500A97944 /* FavouriteScreen.swift */; };
+		CFD3009C2759FBF600A97944 /* FavouriteScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3009B2759FBF600A97944 /* FavouriteScreenViewModel.swift */; };
+		CFD3009E2759FC0F00A97944 /* FavouriteScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3009D2759FC0F00A97944 /* FavouriteScreenInteractor.swift */; };
+		CFD300A02759FCC900A97944 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3009F2759FCC900A97944 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,10 @@
 		CF7EA6102757B068000E2E57 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7EA6132757B09C000E2E57 /* ItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGrid.swift; sourceTree = "<group>"; };
 		CF7EA61F2757B3D9000E2E57 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		CFD300992759FBD500A97944 /* FavouriteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreen.swift; sourceTree = "<group>"; };
+		CFD3009B2759FBF600A97944 /* FavouriteScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreenViewModel.swift; sourceTree = "<group>"; };
+		CFD3009D2759FC0F00A97944 /* FavouriteScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreenInteractor.swift; sourceTree = "<group>"; };
+		CFD3009F2759FCC900A97944 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +171,7 @@
 		CF7EA5F22757A9C9000E2E57 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				CFD300982759FBAF00A97944 /* Favourite Tab */,
 				CF7EA5F32757A9FA000E2E57 /* Home Tab */,
 			);
 			path = Screen;
@@ -191,8 +200,19 @@
 			children = (
 				CF7EA60B2757AFF5000E2E57 /* ItemListHorizontal.swift */,
 				CF7EA6132757B09C000E2E57 /* ItemGrid.swift */,
+				CFD3009F2759FCC900A97944 /* SearchBar.swift */,
 			);
 			path = Molecule;
+			sourceTree = "<group>";
+		};
+		CFD300982759FBAF00A97944 /* Favourite Tab */ = {
+			isa = PBXGroup;
+			children = (
+				CFD300992759FBD500A97944 /* FavouriteScreen.swift */,
+				CFD3009B2759FBF600A97944 /* FavouriteScreenViewModel.swift */,
+				CFD3009D2759FC0F00A97944 /* FavouriteScreenInteractor.swift */,
+			);
+			path = "Favourite Tab";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,12 +351,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD3009C2759FBF600A97944 /* FavouriteScreenViewModel.swift in Sources */,
 				CF7EA6202757B3D9000E2E57 /* Constant.swift in Sources */,
+				CFD3009E2759FC0F00A97944 /* FavouriteScreenInteractor.swift in Sources */,
 				CF7EA5F52757AA27000E2E57 /* HomeScreen.swift in Sources */,
 				CF7EA5F72757AA40000E2E57 /* HomeScreenViewModel.swift in Sources */,
 				CF7EA6142757B09C000E2E57 /* ItemGrid.swift in Sources */,
 				CF7EA5FB2757AB59000E2E57 /* HomeModule.swift in Sources */,
+				CFD3009A2759FBD500A97944 /* FavouriteScreen.swift in Sources */,
 				CF7EA60C2757AFF5000E2E57 /* ItemListHorizontal.swift in Sources */,
+				CFD300A02759FCC900A97944 /* SearchBar.swift in Sources */,
 				CF7EA5F92757AA5F000E2E57 /* HomeScreenInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

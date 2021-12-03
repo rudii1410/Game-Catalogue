@@ -59,9 +59,6 @@ struct GameCatalogueApp: App {
         container.register(ProfileRepository.self) { _ in
             return ProfileRepository(userDef: UserDefaults.standard)
         }
-        container.register(FavouriteInteractor.self) { resolver in
-            return FavouriteInteractor(gameRepo: resolver.get())
-        }
         container.register(ProfileInteractor.self) { resolver in
             return ProfileInteractor(profileRepo: resolver.get())
         }
@@ -101,7 +98,7 @@ struct ContentView: View {
             }
 
             NavigationView {
-                FavouritesScreen(model: .init(interactor: container.get()))
+                homeProvider.getFavouriteScreenView()
                     .navigationBarTitle("Favourite Games", displayMode: .large)
             }
             .tag(Tab.favourite)

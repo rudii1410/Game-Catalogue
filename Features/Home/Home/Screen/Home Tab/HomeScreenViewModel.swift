@@ -44,7 +44,7 @@ class HomeScreenViewModel: ObservableObject {
 
     private let homeUseCase: HomeUseCase
 
-    init(interactor: HomeInteractor) {
+    init(interactor: HomeUseCase) {
         self.homeUseCase = interactor
     }
 
