@@ -25,4 +25,7 @@
    <FileRef
       location = "group:Features/Publisher/Publisher.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Common/Common.xcodeproj">
+   </FileRef>
 </Workspace>

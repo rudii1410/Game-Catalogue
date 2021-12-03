@@ -11,6 +11,19 @@
 		CF2C10EB2750F60600ADB197 /* Publisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10E12750F60600ADB197 /* Publisher.framework */; };
 		CF2C10F02750F60600ADB197 /* PublisherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C10EF2750F60600ADB197 /* PublisherTests.swift */; };
 		CF2C10F22750F60600ADB197 /* Publisher.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2C10E42750F60600ADB197 /* Publisher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF976935275A35EC009EB0FA /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF976934275A35EC009EB0FA /* Core.framework */; };
+		CF976936275A35EC009EB0FA /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF976934275A35EC009EB0FA /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF976939275A35F0009EB0FA /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF976938275A35F0009EB0FA /* Common.framework */; };
+		CF97693A275A35F0009EB0FA /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF976938275A35F0009EB0FA /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF97693C275A35F4009EB0FA /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF97693B275A35F4009EB0FA /* DesignSystem.framework */; };
+		CF97693D275A35F4009EB0FA /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF97693B275A35F4009EB0FA /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CF97693F275A3C8A009EB0FA /* PublisherModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97693E275A3C8A009EB0FA /* PublisherModule.swift */; };
+		CF976943275A3D3F009EB0FA /* PublisherListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF976942275A3D3F009EB0FA /* PublisherListInteractor.swift */; };
+		CF976945275A3D59009EB0FA /* PublisherListScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF976944275A3D59009EB0FA /* PublisherListScreenViewModel.swift */; };
+		CF976947275A3D80009EB0FA /* PublisherListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF976946275A3D80009EB0FA /* PublisherListScreen.swift */; };
+		CF97694A275A3DBD009EB0FA /* PublisherDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF976949275A3DBD009EB0FA /* PublisherDetailInteractor.swift */; };
+		CF97694C275A3DFA009EB0FA /* PublisherDetailScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97694B275A3DFA009EB0FA /* PublisherDetailScreenViewModel.swift */; };
+		CF97694E275A3E1B009EB0FA /* PublisherDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97694D275A3E1B009EB0FA /* PublisherDetailScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +36,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CF976937275A35EC009EB0FA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CF97693D275A35F4009EB0FA /* DesignSystem.framework in Embed Frameworks */,
+				CF976936275A35EC009EB0FA /* Core.framework in Embed Frameworks */,
+				CF97693A275A35F0009EB0FA /* Common.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		449C3DCB1995E15B58108DC1 /* Pods-Publisher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Publisher.debug.xcconfig"; path = "Target Support Files/Pods-Publisher/Pods-Publisher.debug.xcconfig"; sourceTree = "<group>"; };
 		BF226DDF12EDC39BE0088426 /* Pods-Publisher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Publisher.release.xcconfig"; path = "Target Support Files/Pods-Publisher/Pods-Publisher.release.xcconfig"; sourceTree = "<group>"; };
@@ -32,6 +61,16 @@
 		CF2C10EA2750F60600ADB197 /* PublisherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PublisherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2C10EF2750F60600ADB197 /* PublisherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherTests.swift; sourceTree = "<group>"; };
 		CF2C10F12750F60600ADB197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF976934275A35EC009EB0FA /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF976938275A35F0009EB0FA /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF97693B275A35F4009EB0FA /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF97693E275A3C8A009EB0FA /* PublisherModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherModule.swift; sourceTree = "<group>"; };
+		CF976942275A3D3F009EB0FA /* PublisherListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListInteractor.swift; sourceTree = "<group>"; };
+		CF976944275A3D59009EB0FA /* PublisherListScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreenViewModel.swift; sourceTree = "<group>"; };
+		CF976946275A3D80009EB0FA /* PublisherListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherListScreen.swift; sourceTree = "<group>"; };
+		CF976949275A3DBD009EB0FA /* PublisherDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailInteractor.swift; sourceTree = "<group>"; };
+		CF97694B275A3DFA009EB0FA /* PublisherDetailScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailScreenViewModel.swift; sourceTree = "<group>"; };
+		CF97694D275A3E1B009EB0FA /* PublisherDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherDetailScreen.swift; sourceTree = "<group>"; };
 		D4CE965FEF698EB9132958CE /* Pods_Publisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Publisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -40,7 +79,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF976939275A35F0009EB0FA /* Common.framework in Frameworks */,
+				CF97693C275A35F4009EB0FA /* DesignSystem.framework in Frameworks */,
 				BD984E904B9A170A5B9B46A6 /* Pods_Publisher.framework in Frameworks */,
+				CF976935275A35EC009EB0FA /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +100,9 @@
 		1B838AE3C25AC1C12465A01C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF97693B275A35F4009EB0FA /* DesignSystem.framework */,
+				CF976938275A35F0009EB0FA /* Common.framework */,
+				CF976934275A35EC009EB0FA /* Core.framework */,
 				D4CE965FEF698EB9132958CE /* Pods_Publisher.framework */,
 			);
 			name = Frameworks;
@@ -96,8 +141,10 @@
 		CF2C10E32750F60600ADB197 /* Publisher */ = {
 			isa = PBXGroup;
 			children = (
+				CF976940275A3D28009EB0FA /* Screen */,
 				CF2C10E42750F60600ADB197 /* Publisher.h */,
 				CF2C10E52750F60600ADB197 /* Info.plist */,
+				CF97693E275A3C8A009EB0FA /* PublisherModule.swift */,
 			);
 			path = Publisher;
 			sourceTree = "<group>";
@@ -109,6 +156,35 @@
 				CF2C10F12750F60600ADB197 /* Info.plist */,
 			);
 			path = PublisherTests;
+			sourceTree = "<group>";
+		};
+		CF976940275A3D28009EB0FA /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				CF976948275A3DAE009EB0FA /* Publisher Detail */,
+				CF976941275A3D2D009EB0FA /* Publisher List */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		CF976941275A3D2D009EB0FA /* Publisher List */ = {
+			isa = PBXGroup;
+			children = (
+				CF976942275A3D3F009EB0FA /* PublisherListInteractor.swift */,
+				CF976944275A3D59009EB0FA /* PublisherListScreenViewModel.swift */,
+				CF976946275A3D80009EB0FA /* PublisherListScreen.swift */,
+			);
+			path = "Publisher List";
+			sourceTree = "<group>";
+		};
+		CF976948275A3DAE009EB0FA /* Publisher Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CF976949275A3DBD009EB0FA /* PublisherDetailInteractor.swift */,
+				CF97694B275A3DFA009EB0FA /* PublisherDetailScreenViewModel.swift */,
+				CF97694D275A3E1B009EB0FA /* PublisherDetailScreen.swift */,
+			);
+			path = "Publisher Detail";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +210,7 @@
 				CF2C10DD2750F60600ADB197 /* Sources */,
 				CF2C10DE2750F60600ADB197 /* Frameworks */,
 				CF2C10DF2750F60600ADB197 /* Resources */,
+				CF976937275A35EC009EB0FA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,6 +250,7 @@
 				TargetAttributes = {
 					CF2C10E02750F60600ADB197 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					CF2C10E92750F60600ADB197 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -245,6 +323,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF97694C275A3DFA009EB0FA /* PublisherDetailScreenViewModel.swift in Sources */,
+				CF976945275A3D59009EB0FA /* PublisherListScreenViewModel.swift in Sources */,
+				CF97693F275A3C8A009EB0FA /* PublisherModule.swift in Sources */,
+				CF97694A275A3DBD009EB0FA /* PublisherDetailInteractor.swift in Sources */,
+				CF976947275A3D80009EB0FA /* PublisherListScreen.swift in Sources */,
+				CF976943275A3D3F009EB0FA /* PublisherListInteractor.swift in Sources */,
+				CF97694E275A3E1B009EB0FA /* PublisherDetailScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 449C3DCB1995E15B58108DC1 /* Pods-Publisher.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RLQU784C73;
@@ -409,6 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.rudiyanto.Game-Catalogue.feature.Publisher";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -418,6 +505,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BF226DDF12EDC39BE0088426 /* Pods-Publisher.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RLQU784C73;
@@ -442,6 +530,7 @@
 		CF2C10F92750F60600ADB197 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RLQU784C73;
 				INFOPLIST_FILE = PublisherTests/Info.plist;
@@ -460,6 +549,7 @@
 		CF2C10FA2750F60600ADB197 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RLQU784C73;
 				INFOPLIST_FILE = PublisherTests/Info.plist;

@@ -18,12 +18,34 @@
 import CoreData
 import Combine
 
-public class CoreDataWrapper {
+public protocol CoreDataWrapperInterface {
+    var mainContext: NSManagedObjectContext { get }
+    var bgContext: NSManagedObjectContext { get }
+
+    func save() -> Future<Void, Error>
+    func delete<T: NSManagedObject>(item: T) -> Future<Void, Error>
+    func fetchAll<T: NSManagedObject>(offset: Int?, size: Int?, predicate: NSPredicate?, sortDesc: [NSSortDescriptor]) -> Future<[T], Error>
+    func fetchFirst<T: NSManagedObject>(predicate: NSPredicate?) -> Future<T, Error>
+}
+
+public class CoreDataWrapper: CoreDataWrapperInterface {
     public let mainContext: NSManagedObjectContext
     public let bgContext: NSManagedObjectContext
 
-    public init() {
-        let persistentContainer = NSPersistentContainer(name: "Database")
+    public init(_ name: String) {
+        let persistentContainer = NSPersistentContainer(name: name)
+        persistentContainer.loadPersistentStores { _, error in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+
+        mainContext = persistentContainer.viewContext
+        bgContext = persistentContainer.newBackgroundContext()
+    }
+
+    public init(_ name: String, managedModel: NSManagedObjectModel) {
+        let persistentContainer = NSPersistentContainer(name: name, managedObjectModel: managedModel)
         persistentContainer.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
