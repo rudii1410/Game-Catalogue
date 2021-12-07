@@ -17,7 +17,7 @@
 
 import Combine
 import Keys
-import Core
+import GameCatalogue_Core
 
 public protocol LocalDataSourceInterface {
     func addGameToFavourites(_ favourite: FavouriteEntity) -> AnyPublisher<Void, Error>

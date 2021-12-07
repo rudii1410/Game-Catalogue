@@ -15,7 +15,7 @@
 //  along with Game Catalogue.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Core
+import GameCatalogue_Core
 import Common
 import SwiftUI
 

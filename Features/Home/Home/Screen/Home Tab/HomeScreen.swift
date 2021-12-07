@@ -16,7 +16,7 @@
 //
 
 import SwiftUI
-import Core
+import GameCatalogue_Core
 import DesignSystem
 import Common
 

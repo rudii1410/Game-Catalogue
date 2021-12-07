@@ -10,8 +10,6 @@
 		31B0BD083288C76F7BC78DFB /* Pods_Game_Catalogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12316A9D2518443FFF5ABFF2 /* Pods_Game_Catalogue.framework */; };
 		CF226B5027563D6300C8FBBC /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF226B4F27563D6300C8FBBC /* Common.framework */; };
 		CF226B5127563D6300C8FBBC /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF226B4F27563D6300C8FBBC /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CF2C10AD2750F34F00ADB197 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10AC2750F34F00ADB197 /* Core.framework */; };
-		CF2C10AE2750F34F00ADB197 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10AC2750F34F00ADB197 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF2C10B12750F35300ADB197 /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10B02750F35300ADB197 /* DesignSystem.framework */; };
 		CF2C10B22750F35300ADB197 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C10B02750F35300ADB197 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF6213EF26C3934100580054 /* Game_CatalogueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6213EE26C3934100580054 /* Game_CatalogueApp.swift */; };
@@ -37,7 +35,6 @@
 			files = (
 				CFD300BF275A011A00A97944 /* Game.framework in Embed Frameworks */,
 				CF226B5127563D6300C8FBBC /* Common.framework in Embed Frameworks */,
-				CF2C10AE2750F34F00ADB197 /* Core.framework in Embed Frameworks */,
 				CF2C10B22750F35300ADB197 /* DesignSystem.framework in Embed Frameworks */,
 				CF97692C275A2EC5009EB0FA /* Publisher.framework in Embed Frameworks */,
 				CF976929275A2EBE009EB0FA /* Genre.framework in Embed Frameworks */,
@@ -81,7 +78,6 @@
 				CF7EA6002757AD44000E2E57 /* Home.framework in Frameworks */,
 				CF97692B275A2EC5009EB0FA /* Publisher.framework in Frameworks */,
 				CFD300BE275A011A00A97944 /* Game.framework in Frameworks */,
-				CF2C10AD2750F34F00ADB197 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
