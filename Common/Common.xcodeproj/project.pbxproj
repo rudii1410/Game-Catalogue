@@ -13,8 +13,6 @@
 		CF226B4827563C6400C8FBBC /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF226B4727563C6400C8FBBC /* Favourite.swift */; };
 		CF226B4A27563CDD00C8FBBC /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF226B4927563CDD00C8FBBC /* Date.swift */; };
 		CF226B4C27563CEE00C8FBBC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF226B4B27563CEE00C8FBBC /* String.swift */; };
-		CF2755AC27564A4C0077B632 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2755AB27564A4C0077B632 /* Core.framework */; };
-		CF2755AD27564A4C0077B632 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF2755AB27564A4C0077B632 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF3543652754C0690012D5C7 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF35435B2754C0680012D5C7 /* Common.framework */; };
 		CF35436C2754C0690012D5C7 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = CF35435E2754C0680012D5C7 /* Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF7EA5CF2757A33D000E2E57 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EA5CE2757A33D000E2E57 /* RemoteDataSource.swift */; };
@@ -58,7 +56,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CF2755AD27564A4C0077B632 /* Core.framework in Embed Frameworks */,
 				CF7EA62C2757B64E000E2E57 /* DesignSystem.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -111,7 +108,6 @@
 			files = (
 				CF7EA62B2757B64E000E2E57 /* DesignSystem.framework in Frameworks */,
 				AFD357A8F491C64D94266B84 /* Pods_Common.framework in Frameworks */,
-				CF2755AC27564A4C0077B632 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

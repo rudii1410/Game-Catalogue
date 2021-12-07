@@ -13,8 +13,6 @@
 		CFD300B32759FFDE00A97944 /* GameModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300B22759FFDE00A97944 /* GameModule.swift */; };
 		CFD300B52759FFF200A97944 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD300B42759FFF200A97944 /* Common.framework */; };
 		CFD300B62759FFF200A97944 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFD300B42759FFF200A97944 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CFD300B92759FFF600A97944 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD300B82759FFF600A97944 /* Core.framework */; };
-		CFD300BA2759FFF600A97944 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFD300B82759FFF600A97944 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFD300C3275A016500A97944 /* GameDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300C2275A016500A97944 /* GameDetailScreen.swift */; };
 		CFD300C5275A017900A97944 /* GameDetailScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300C4275A017900A97944 /* GameDetailScreenViewModel.swift */; };
 		CFD300C7275A019100A97944 /* GameDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300C6275A019100A97944 /* GameDetailInteractor.swift */; };
@@ -41,7 +39,6 @@
 			files = (
 				CFD300CA275A02AC00A97944 /* DesignSystem.framework in Embed Frameworks */,
 				CFD300B62759FFF200A97944 /* Common.framework in Embed Frameworks */,
-				CFD300BA2759FFF600A97944 /* Core.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,7 +70,6 @@
 			files = (
 				7FCBEFC9CCF9AEED37F1D114 /* Pods_Game.framework in Frameworks */,
 				CFD300C9275A02AC00A97944 /* DesignSystem.framework in Frameworks */,
-				CFD300B92759FFF600A97944 /* Core.framework in Frameworks */,
 				CFD300B52759FFF200A97944 /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
