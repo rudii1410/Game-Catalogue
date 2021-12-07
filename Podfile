@@ -2,6 +2,7 @@
  platform :ios, '14.0'
 
 source 'https://github.com/rudii1410/GameCatalogue_Core'
+source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 
