@@ -1,0 +1,15 @@
+language: swift
+osx_image: xcode12 
+xcode_workspace: Game Catalogue.xcworkspace
+xcode_scheme: Game Catalogue
+xcode_destination: platform=iOS Simulator,OS=14.0,name=iPhone 11 Pro
+
+before_install:
+  - gem install cocoapods-keys
+
+jobs:
+  include:
+    - name: "Build App"
+      script: scripts/build_script.sh
+    - name: "Swiftlint Check"
+      script: scripts/run_swiftlint.sh

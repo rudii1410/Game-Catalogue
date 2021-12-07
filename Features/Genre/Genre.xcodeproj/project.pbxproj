@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		99B12EC939578BFE4CF9F2BE /* Pods_Genre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CC215325804C1D5F038FF6 /* Pods_Genre.framework */; };
 		CF2C11332750F62E00ADB197 /* Genre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C11292750F62E00ADB197 /* Genre.framework */; };
-		CF2C11382750F62E00ADB197 /* GenreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C11372750F62E00ADB197 /* GenreTests.swift */; };
 		CF2C113A2750F62E00ADB197 /* Genre.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2C112C2750F62E00ADB197 /* Genre.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF976910275A2C44009EB0FA /* GenreModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97690F275A2C44009EB0FA /* GenreModule.swift */; };
 		CF976912275A2C4D009EB0FA /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF976911275A2C4D009EB0FA /* Common.framework */; };
@@ -58,7 +57,6 @@
 		CF2C112C2750F62E00ADB197 /* Genre.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
 		CF2C112D2750F62E00ADB197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF2C11322750F62E00ADB197 /* GenreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GenreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF2C11372750F62E00ADB197 /* GenreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTests.swift; sourceTree = "<group>"; };
 		CF2C11392750F62E00ADB197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF97690F275A2C44009EB0FA /* GenreModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreModule.swift; sourceTree = "<group>"; };
 		CF976911275A2C4D009EB0FA /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,7 +140,6 @@
 		CF2C11362750F62E00ADB197 /* GenreTests */ = {
 			isa = PBXGroup;
 			children = (
-				CF2C11372750F62E00ADB197 /* GenreTests.swift */,
 				CF2C11392750F62E00ADB197 /* Info.plist */,
 			);
 			path = GenreTests;
@@ -337,7 +334,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF2C11382750F62E00ADB197 /* GenreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

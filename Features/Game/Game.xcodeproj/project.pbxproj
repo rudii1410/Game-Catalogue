@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7FCBEFC9CCF9AEED37F1D114 /* Pods_Game.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0DD2ADE7D84F7A949848A61 /* Pods_Game.framework */; };
 		CF2C110F2750F61C00ADB197 /* Game.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C11052750F61C00ADB197 /* Game.framework */; };
-		CF2C11142750F61D00ADB197 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C11132750F61D00ADB197 /* GameTests.swift */; };
 		CF2C11162750F61D00ADB197 /* Game.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2C11082750F61C00ADB197 /* Game.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFD300B32759FFDE00A97944 /* GameModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD300B22759FFDE00A97944 /* GameModule.swift */; };
 		CFD300B52759FFF200A97944 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD300B42759FFF200A97944 /* Common.framework */; };
@@ -56,7 +55,6 @@
 		CF2C11082750F61C00ADB197 /* Game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		CF2C11092750F61C00ADB197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF2C110E2750F61C00ADB197 /* GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF2C11132750F61D00ADB197 /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 		CF2C11152750F61D00ADB197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFD300B22759FFDE00A97944 /* GameModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModule.swift; sourceTree = "<group>"; };
 		CFD300B42759FFF200A97944 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,7 +144,6 @@
 		CF2C11122750F61D00ADB197 /* GameTests */ = {
 			isa = PBXGroup;
 			children = (
-				CF2C11132750F61D00ADB197 /* GameTests.swift */,
 				CF2C11152750F61D00ADB197 /* Info.plist */,
 			);
 			path = GameTests;
@@ -317,7 +314,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF2C11142750F61D00ADB197 /* GameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

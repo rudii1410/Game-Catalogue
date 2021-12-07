@@ -1,0 +1,1 @@
+swiftlint lint --strict | xcpretty
