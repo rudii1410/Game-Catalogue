@@ -1,8 +1,8 @@
 # Uncomment the next line to define a global platform for your project
  platform :ios, '14.0'
 
+source 'https://cdn.cocoapods.org'
 source 'https://github.com/rudii1410/GameCatalogue_Core'
-source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 

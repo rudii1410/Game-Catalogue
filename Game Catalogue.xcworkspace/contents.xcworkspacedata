@@ -8,9 +8,6 @@
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Lib/Core/Core.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Lib/DesignSystem/DesignSystem.xcodeproj">
    </FileRef>
    <FileRef

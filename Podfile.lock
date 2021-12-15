@@ -13,11 +13,11 @@ DEPENDENCIES:
   - SDWebImageSwiftUI (= 2.0.2)
 
 SPEC REPOS:
-  https://github.com/rudii1410/GameCatalogue_Core.git:
-    - GameCatalogue_Core
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - SDWebImage
     - SDWebImageSwiftUI
+  https://github.com/rudii1410/GameCatalogue_Core.git:
+    - GameCatalogue_Core
 
 EXTERNAL SOURCES:
   Keys:
@@ -29,6 +29,6 @@ SPEC CHECKSUMS:
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   SDWebImageSwiftUI: 8a3923c95108312b03a599ec1498754af55a6819
 
-PODFILE CHECKSUM: 4e6aee8dece280f3164b11cf201b2f1b89530f26
+PODFILE CHECKSUM: 9d2321199b1909e26ead27a6a8a13949e2e61d4c
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2
