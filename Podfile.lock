@@ -1,4 +1,5 @@
 PODS:
+  - GameCatalogue_Core (1.0.3)
   - Keys (1.0.1)
   - SDWebImage (5.12.1):
     - SDWebImage/Core (= 5.12.1)
@@ -7,23 +8,27 @@ PODS:
     - SDWebImage (~> 5.10)
 
 DEPENDENCIES:
+  - GameCatalogue_Core
   - Keys (from `Pods/CocoaPodsKeys`)
   - SDWebImageSwiftUI (= 2.0.2)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - SDWebImage
     - SDWebImageSwiftUI
+  https://github.com/rudii1410/GameCatalogue_Core.git:
+    - GameCatalogue_Core
 
 EXTERNAL SOURCES:
   Keys:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
+  GameCatalogue_Core: 49f9d9fcfc1e0a89dcd4e9dfa3ca8af4a4097b0e
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   SDWebImageSwiftUI: 8a3923c95108312b03a599ec1498754af55a6819
 
-PODFILE CHECKSUM: 81442b884c24dd81a6a1a6e83b9b8156a9f679c8
+PODFILE CHECKSUM: 9d2321199b1909e26ead27a6a8a13949e2e61d4c
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

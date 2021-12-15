@@ -17,7 +17,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import Core
+import GameCatalogue_Core
 import Common
 import DesignSystem
 

@@ -17,7 +17,7 @@
 
 import SwiftUI
 import CoreData
-import Core
+import GameCatalogue_Core
 import Common
 import Home
 import Game

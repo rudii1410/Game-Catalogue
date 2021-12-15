@@ -17,7 +17,7 @@
 
 import Keys
 import Combine
-import Core
+import GameCatalogue_Core
 
 public protocol GameRepositoryInterface {
     func getUpcomingRelease(endDate inputEndDate: Date?, page: Int, count: Int) -> AnyPublisher<[Game], Error>

@@ -13,8 +13,6 @@
 		CF976910275A2C44009EB0FA /* GenreModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97690F275A2C44009EB0FA /* GenreModule.swift */; };
 		CF976912275A2C4D009EB0FA /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF976911275A2C4D009EB0FA /* Common.framework */; };
 		CF976913275A2C4D009EB0FA /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF976911275A2C4D009EB0FA /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CF976916275A2C52009EB0FA /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF976915275A2C52009EB0FA /* Core.framework */; };
-		CF976917275A2C52009EB0FA /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF976915275A2C52009EB0FA /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF97691B275A2CC6009EB0FA /* GenreListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97691A275A2CC6009EB0FA /* GenreListInteractor.swift */; };
 		CF97691D275A2CE7009EB0FA /* GenreListScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97691C275A2CE7009EB0FA /* GenreListScreenViewModel.swift */; };
 		CF97691F275A2D06009EB0FA /* GenreListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97691E275A2D06009EB0FA /* GenreListScreen.swift */; };
@@ -44,7 +42,6 @@
 			files = (
 				CF97692F275A3065009EB0FA /* DesignSystem.framework in Embed Frameworks */,
 				CF976913275A2C4D009EB0FA /* Common.framework in Embed Frameworks */,
-				CF976917275A2C52009EB0FA /* Core.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,7 +76,6 @@
 			files = (
 				99B12EC939578BFE4CF9F2BE /* Pods_Genre.framework in Frameworks */,
 				CF97692E275A3065009EB0FA /* DesignSystem.framework in Frameworks */,
-				CF976916275A2C52009EB0FA /* Core.framework in Frameworks */,
 				CF976912275A2C4D009EB0FA /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
